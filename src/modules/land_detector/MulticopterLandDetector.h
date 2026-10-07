@@ -79,6 +79,8 @@ protected:
 
 	void _set_hysteresis_factor(const int factor) override;
 private:
+	friend class MulticopterLandDetectorTest;
+
 	bool _is_close_to_ground();
 
 	/** Time in us that freefall has to hold before triggering freefall */

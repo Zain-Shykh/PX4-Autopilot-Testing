@@ -108,4 +108,7 @@ src/systemcmds/topic_listener/listener_generated.cpp
 
 # colcon
 log/
-keys/
+# Work plans & local virtual environment
+work_plan*.md
+myenv/
+myenv/

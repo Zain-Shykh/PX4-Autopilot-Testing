@@ -45,3 +45,5 @@ px4_add_module(
 	DEPENDS
 		hysteresis
 	)
+
+px4_add_functional_gtest(SRC LandDetectorTest.cpp LINKLIBS modules__land_detector geo)

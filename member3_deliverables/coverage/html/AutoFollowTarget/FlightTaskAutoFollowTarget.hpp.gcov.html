@@ -1,0 +1,386 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - PX4 Scope 3 Functional Coverage - AutoFollowTarget/FlightTaskAutoFollowTarget.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../gcov.css">
+</head>
+
+<body>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="title">LCOV - code coverage report</td></tr>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+
+            <tr>
+              <td width="100%">
+                <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="10%" class="headerValue"><a href="../index.html">top level</a> - <a href="index.html">AutoFollowTarget</a> - FlightTaskAutoFollowTarget.hpp<span style="font-size: 80%;"> (source / <a href="FlightTaskAutoFollowTarget.hpp.func-c.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="5%"></td>
+            <td width="5%" class="headerCovTableHead">Coverage</td>
+            <td width="5%" class="headerCovTableHead" title="Covered + Uncovered code">Total</td>
+            <td width="5%" class="headerCovTableHead" title="Exercised code only">Hit</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">PX4 Scope 3 Functional Coverage</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test Date:</td>
+            <td class="headerValue">2026-10-08 04:35:40</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">0</td>
+          </tr>
+                  <tr><td><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+          </table>
+
+          <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td>
+<pre class="sourceHeading">            Line data    Source code</pre>
+<pre class="source">
+<span id="L1"><span class="lineNum">       1</span>              : /****************************************************************************</span>
+<span id="L2"><span class="lineNum">       2</span>              :  *</span>
+<span id="L3"><span class="lineNum">       3</span>              :  *   Copyright (c) 2022 PX4 Development Team. All rights reserved.</span>
+<span id="L4"><span class="lineNum">       4</span>              :  *</span>
+<span id="L5"><span class="lineNum">       5</span>              :  * Redistribution and use in source and binary forms, with or without</span>
+<span id="L6"><span class="lineNum">       6</span>              :  * modification, are permitted provided that the following conditions</span>
+<span id="L7"><span class="lineNum">       7</span>              :  * are met:</span>
+<span id="L8"><span class="lineNum">       8</span>              :  *</span>
+<span id="L9"><span class="lineNum">       9</span>              :  * 1. Redistributions of source code must retain the above copyright</span>
+<span id="L10"><span class="lineNum">      10</span>              :  *    notice, this list of conditions and the following disclaimer.</span>
+<span id="L11"><span class="lineNum">      11</span>              :  * 2. Redistributions in binary form must reproduce the above copyright</span>
+<span id="L12"><span class="lineNum">      12</span>              :  *    notice, this list of conditions and the following disclaimer in</span>
+<span id="L13"><span class="lineNum">      13</span>              :  *    the documentation and/or other materials provided with the</span>
+<span id="L14"><span class="lineNum">      14</span>              :  *    distribution.</span>
+<span id="L15"><span class="lineNum">      15</span>              :  * 3. Neither the name PX4 nor the names of its contributors may be</span>
+<span id="L16"><span class="lineNum">      16</span>              :  *    used to endorse or promote products derived from this software</span>
+<span id="L17"><span class="lineNum">      17</span>              :  *    without specific prior written permission.</span>
+<span id="L18"><span class="lineNum">      18</span>              :  *</span>
+<span id="L19"><span class="lineNum">      19</span>              :  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS</span>
+<span id="L20"><span class="lineNum">      20</span>              :  * &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT</span>
+<span id="L21"><span class="lineNum">      21</span>              :  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS</span>
+<span id="L22"><span class="lineNum">      22</span>              :  * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE</span>
+<span id="L23"><span class="lineNum">      23</span>              :  * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,</span>
+<span id="L24"><span class="lineNum">      24</span>              :  * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,</span>
+<span id="L25"><span class="lineNum">      25</span>              :  * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS</span>
+<span id="L26"><span class="lineNum">      26</span>              :  * OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED</span>
+<span id="L27"><span class="lineNum">      27</span>              :  * AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT</span>
+<span id="L28"><span class="lineNum">      28</span>              :  * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN</span>
+<span id="L29"><span class="lineNum">      29</span>              :  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE</span>
+<span id="L30"><span class="lineNum">      30</span>              :  * POSSIBILITY OF SUCH DAMAGE.</span>
+<span id="L31"><span class="lineNum">      31</span>              :  *</span>
+<span id="L32"><span class="lineNum">      32</span>              :  ****************************************************************************/</span>
+<span id="L33"><span class="lineNum">      33</span>              : </span>
+<span id="L34"><span class="lineNum">      34</span>              : /**</span>
+<span id="L35"><span class="lineNum">      35</span>              :  * @file FlightTaskAutoFollowTarget.hpp</span>
+<span id="L36"><span class="lineNum">      36</span>              :  *</span>
+<span id="L37"><span class="lineNum">      37</span>              :  * Flight task for autonomous, gps driven follow-me mode.</span>
+<span id="L38"><span class="lineNum">      38</span>              :  *</span>
+<span id="L39"><span class="lineNum">      39</span>              :  * @author Alessandro Simovic &lt;potaito-dev@protonmail.com&gt;</span>
+<span id="L40"><span class="lineNum">      40</span>              :  * @author Junwoo Hwang &lt;junwoo091400@gmail.com&gt;</span>
+<span id="L41"><span class="lineNum">      41</span>              :  */</span>
+<span id="L42"><span class="lineNum">      42</span>              : </span>
+<span id="L43"><span class="lineNum">      43</span>              : #pragma once</span>
+<span id="L44"><span class="lineNum">      44</span>              : </span>
+<span id="L45"><span class="lineNum">      45</span>              : #include &quot;FlightTaskAuto.hpp&quot;</span>
+<span id="L46"><span class="lineNum">      46</span>              : #include &quot;follow_target_estimator/TargetEstimator.hpp&quot;</span>
+<span id="L47"><span class="lineNum">      47</span>              : </span>
+<span id="L48"><span class="lineNum">      48</span>              : #include &lt;parameters/param.h&gt;</span>
+<span id="L49"><span class="lineNum">      49</span>              : #include &lt;mathlib/mathlib.h&gt;</span>
+<span id="L50"><span class="lineNum">      50</span>              : </span>
+<span id="L51"><span class="lineNum">      51</span>              : #include &lt;uORB/Subscription.hpp&gt;</span>
+<span id="L52"><span class="lineNum">      52</span>              : #include &lt;uORB/Publication.hpp&gt;</span>
+<span id="L53"><span class="lineNum">      53</span>              : #include &lt;uORB/topics/follow_target_status.h&gt;</span>
+<span id="L54"><span class="lineNum">      54</span>              : #include &lt;uORB/topics/follow_target_estimator.h&gt;</span>
+<span id="L55"><span class="lineNum">      55</span>              : #include &lt;uORB/topics/gimbal_manager_set_attitude.h&gt;</span>
+<span id="L56"><span class="lineNum">      56</span>              : #include &lt;uORB/topics/vehicle_command.h&gt;</span>
+<span id="L57"><span class="lineNum">      57</span>              : </span>
+<span id="L58"><span class="lineNum">      58</span>              : #include &lt;lib/mathlib/math/filter/second_order_reference_model.hpp&gt;</span>
+<span id="L59"><span class="lineNum">      59</span>              : #include &lt;lib/sticks/Sticks.hpp&gt;</span>
+<span id="L60"><span class="lineNum">      60</span>              : #include &lt;motion_planning/VelocitySmoothing.hpp&gt;</span>
+<span id="L61"><span class="lineNum">      61</span>              : </span>
+<span id="L62"><span class="lineNum">      62</span>              : // &lt;&lt; Follow Target Behavior related constants &gt;&gt;</span>
+<span id="L63"><span class="lineNum">      63</span>              : </span>
+<span id="L64"><span class="lineNum">      64</span>              : // [m] Minimum safety altitude above home (or bottom distance sensor)</span>
+<span id="L65"><span class="lineNum">      65</span>              : // underneath which the flight task will stop moving horizontally</span>
+<span id="L66"><span class="lineNum">      66</span>              : static constexpr float MINIMUM_SAFETY_ALTITUDE = 1.0f;</span>
+<span id="L67"><span class="lineNum">      67</span>              : </span>
+<span id="L68"><span class="lineNum">      68</span>              : // [m/s] Vertical ascent speed when the drone detects that it is too close</span>
+<span id="L69"><span class="lineNum">      69</span>              : // to the ground (below MINIMUM_SAFETY_ALTITUDE).</span>
+<span id="L70"><span class="lineNum">      70</span>              : static constexpr float EMERGENCY_ASCENT_SPEED = 0.5f;</span>
+<span id="L71"><span class="lineNum">      71</span>              : </span>
+<span id="L72"><span class="lineNum">      72</span>              : // [m] max vertical deviation from position setpoint, above</span>
+<span id="L73"><span class="lineNum">      73</span>              : // which no horizontal control is done</span>
+<span id="L74"><span class="lineNum">      74</span>              : static constexpr float ALT_ACCEPTANCE_THRESHOLD = 3.0f;</span>
+<span id="L75"><span class="lineNum">      75</span>              : </span>
+<span id="L76"><span class="lineNum">      76</span>              : // [m] Minimum distance between drone and target for the drone to do any yaw control.</span>
+<span id="L77"><span class="lineNum">      77</span>              : static constexpr float MINIMUM_DISTANCE_TO_TARGET_FOR_YAW_CONTROL = 1.0f;</span>
+<span id="L78"><span class="lineNum">      78</span>              : </span>
+<span id="L79"><span class="lineNum">      79</span>              : // &lt;&lt; Target Position Velocity Estimator related constants &gt;&gt;</span>
+<span id="L80"><span class="lineNum">      80</span>              : </span>
+<span id="L81"><span class="lineNum">      81</span>              : // [rad/s] Second Order reference model filter natural frequency</span>
+<span id="L82"><span class="lineNum">      82</span>              : static constexpr float TARGET_POS_VEL_FILTER_NATURAL_FREQUENCY = 1.0f;</span>
+<span id="L83"><span class="lineNum">      83</span>              : </span>
+<span id="L84"><span class="lineNum">      84</span>              : // [.] Second Order reference model filter damping ratio</span>
+<span id="L85"><span class="lineNum">      85</span>              : static constexpr float TARGET_POS_VEL_FILTER_DAMPING_RATIO = 0.7071;</span>
+<span id="L86"><span class="lineNum">      86</span>              : </span>
+<span id="L87"><span class="lineNum">      87</span>              : // [us] If target estimator isn't updated longer than this, reset the target pos/vel filter.</span>
+<span id="L88"><span class="lineNum">      88</span>              : static constexpr uint64_t TARGET_ESTIMATOR_TIMEOUT_US = 1500000UL;</span>
+<span id="L89"><span class="lineNum">      89</span>              : </span>
+<span id="L90"><span class="lineNum">      90</span>              : // &lt;&lt; Target Course Angle Tracking related constants &gt;&gt;</span>
+<span id="L91"><span class="lineNum">      91</span>              : </span>
+<span id="L92"><span class="lineNum">      92</span>              : // [m/s] Speed deadzone for which, under this velocity, the target orientation</span>
+<span id="L93"><span class="lineNum">      93</span>              : // tracking will freeze, since orientation can be noisy in low velocities</span>
+<span id="L94"><span class="lineNum">      94</span>              : static constexpr float TARGET_SPEED_DEADZONE_FOR_ORIENTATION_TRACKING = 1.0;</span>
+<span id="L95"><span class="lineNum">      95</span>              : </span>
+<span id="L96"><span class="lineNum">      96</span>              : // &lt;&lt; Orbit Angle control related constants &gt;&gt;</span>
+<span id="L97"><span class="lineNum">      97</span>              : </span>
+<span id="L98"><span class="lineNum">      98</span>              : // [m/s^3] Maximum Jerk setting for generating the Follow Target Orbit trajectory</span>
+<span id="L99"><span class="lineNum">      99</span>              : static constexpr float ORBIT_TRAJECTORY_MAX_JERK = 4.0;</span>
+<span id="L100"><span class="lineNum">     100</span>              : </span>
+<span id="L101"><span class="lineNum">     101</span>              : // [m/s^2] Maximum acceleration setting for generating the Follow Target Orbit trajectory</span>
+<span id="L102"><span class="lineNum">     102</span>              : static constexpr float ORBIT_TRAJECTORY_MAX_ACCELERATION = 2.0;</span>
+<span id="L103"><span class="lineNum">     103</span>              : </span>
+<span id="L104"><span class="lineNum">     104</span>              : // &lt;&lt; manual Adjustment related constants &gt;&gt;</span>
+<span id="L105"><span class="lineNum">     105</span>              : </span>
+<span id="L106"><span class="lineNum">     106</span>              : // [m/s] Speed with which the follow distance will be adjusted by when commanded with deflection via sticks</span>
+<span id="L107"><span class="lineNum">     107</span>              : static constexpr float FOLLOW_DISTANCE_USER_ADJUST_SPEED = 2.0;</span>
+<span id="L108"><span class="lineNum">     108</span>              : </span>
+<span id="L109"><span class="lineNum">     109</span>              : // [m] Maximum follow distance that can be set by user's manual adjustment</span>
+<span id="L110"><span class="lineNum">     110</span>              : static constexpr float FOLLOW_DISTANCE_MAX = 100.f;</span>
+<span id="L111"><span class="lineNum">     111</span>              : </span>
+<span id="L112"><span class="lineNum">     112</span>              : // [m/s] Speed with which the follow height will be adjusted by when commanded with deflection via sticks</span>
+<span id="L113"><span class="lineNum">     113</span>              : static constexpr float FOLLOW_HEIGHT_USER_ADJUST_SPEED = 1.5;</span>
+<span id="L114"><span class="lineNum">     114</span>              : </span>
+<span id="L115"><span class="lineNum">     115</span>              : // [m] Maximum follow height that can be set by user's manual adjustment</span>
+<span id="L116"><span class="lineNum">     116</span>              : static constexpr float FOLLOW_HEIGHT_MAX = 100.f;</span>
+<span id="L117"><span class="lineNum">     117</span>              : </span>
+<span id="L118"><span class="lineNum">     118</span>              : // [rad/s] Angular rate with which the follow distance will be adjusted by when commanded with full deflection via sticks</span>
+<span id="L119"><span class="lineNum">     119</span>              : static constexpr float FOLLOW_ANGLE_USER_ADJUST_SPEED = 1.5;</span>
+<span id="L120"><span class="lineNum">     120</span>              : </span>
+<span id="L121"><span class="lineNum">     121</span>              : // [s] Time window constant that gets multiplied to user adjustment speed, to calculate the</span>
+<span id="L122"><span class="lineNum">     122</span>              : // 'acceptable' error in orbit angle / height / distance. If the difference between the setpoint</span>
+<span id="L123"><span class="lineNum">     123</span>              : // and actual state of the drone is smaller than this error, manual adjustments get applied.</span>
+<span id="L124"><span class="lineNum">     124</span>              : // Prevents setpoints diverging from the vehicle's actual position too much</span>
+<span id="L125"><span class="lineNum">     125</span>              : static constexpr float USER_ADJUSTMENT_ERROR_TIME_WINDOW = 0.5f;</span>
+<span id="L126"><span class="lineNum">     126</span>              : </span>
+<span id="L127"><span class="lineNum">     127</span>              : </span>
+<span id="L128"><span class="lineNum">     128</span>              : class FlightTaskAutoFollowTarget : public FlightTask</span>
+<span id="L129"><span class="lineNum">     129</span>              : {</span>
+<span id="L130"><span class="lineNum">     130</span>              : public:</span>
+<span id="L131"><span class="lineNum">     131</span>              :         FlightTaskAutoFollowTarget();</span>
+<span id="L132"><span class="lineNum">     132</span>              :         virtual ~FlightTaskAutoFollowTarget();</span>
+<span id="L133"><span class="lineNum">     133</span>              : </span>
+<span id="L134"><span class="lineNum">     134</span>              :         bool activate(const trajectory_setpoint_s &amp;last_setpoint) override;</span>
+<span id="L135"><span class="lineNum">     135</span>              :         bool update() override;</span>
+<span id="L136"><span class="lineNum">     136</span>              : </span>
+<span id="L137"><span class="lineNum">     137</span>              :         // Override parameter update function to check when Follow Target properties are changed</span>
+<span id="L138"><span class="lineNum">     138</span>              :         void updateParams() override;</span>
+<span id="L139"><span class="lineNum">     139</span>              : </span>
+<span id="L140"><span class="lineNum">     140</span>              : protected:</span>
+<span id="L141"><span class="lineNum">     141</span>              :         // Follow Altitude modes set by the parameter FLW_TGT_ALT_M</span>
+<span id="L142"><span class="lineNum">     142</span>              :         enum kFollowAltitudeMode {</span>
+<span id="L143"><span class="lineNum">     143</span>              :                 kFollowAltitudeModeConstant,</span>
+<span id="L144"><span class="lineNum">     144</span>              :                 kFollowAltitudeModeTerrain,</span>
+<span id="L145"><span class="lineNum">     145</span>              :                 kFollowAltitudeModeTrackTarget</span>
+<span id="L146"><span class="lineNum">     146</span>              :         };</span>
+<span id="L147"><span class="lineNum">     147</span>              : </span>
+<span id="L148"><span class="lineNum">     148</span>              :         /**</span>
+<span id="L149"><span class="lineNum">     149</span>              :          * Update the Follow height based on stick inputs</span>
+<span id="L150"><span class="lineNum">     150</span>              :          *</span>
+<span id="L151"><span class="lineNum">     151</span>              :          * If the drone's height error to the setpoint is within the an user adjustment error time window</span>
+<span id="L152"><span class="lineNum">     152</span>              :          * follow_height will be adjusted with a speed proportional to user stick inputs</span>
+<span id="L153"><span class="lineNum">     153</span>              :          *</span>
+<span id="L154"><span class="lineNum">     154</span>              :          * @param sticks Sticks object to get manually values for adjustments</span>
+<span id="L155"><span class="lineNum">     155</span>              :          */</span>
+<span id="L156"><span class="lineNum">     156</span>              :         void updateRcAdjustedFollowHeight(const Sticks &amp;sticks);</span>
+<span id="L157"><span class="lineNum">     157</span>              : </span>
+<span id="L158"><span class="lineNum">     158</span>              :         /**</span>
+<span id="L159"><span class="lineNum">     159</span>              :          * Update the Follow distance based on stick inputs</span>
+<span id="L160"><span class="lineNum">     160</span>              :          *</span>
+<span id="L161"><span class="lineNum">     161</span>              :          * If the drone's distance error to the setpoint is within the an user adjustment error time window</span>
+<span id="L162"><span class="lineNum">     162</span>              :          * follow_distance will be adjusted with a speed proportional to user stick inputs</span>
+<span id="L163"><span class="lineNum">     163</span>              :          *</span>
+<span id="L164"><span class="lineNum">     164</span>              :          * @param sticks Sticks object to get manually values for adjustments</span>
+<span id="L165"><span class="lineNum">     165</span>              :          * @param drone_to_target_vector [m] Tracked follow distance variable reference which will be updated to the new value</span>
+<span id="L166"><span class="lineNum">     166</span>              :          */</span>
+<span id="L167"><span class="lineNum">     167</span>              :         void updateRcAdjustedFollowDistance(const Sticks &amp;sticks, const Vector2f &amp;drone_to_target_vector);</span>
+<span id="L168"><span class="lineNum">     168</span>              : </span>
+<span id="L169"><span class="lineNum">     169</span>              :         /**</span>
+<span id="L170"><span class="lineNum">     170</span>              :          * Update the Follow angle based on stick inputs</span>
+<span id="L171"><span class="lineNum">     171</span>              :          *</span>
+<span id="L172"><span class="lineNum">     172</span>              :          * If the drone's orbit angle in relation to target is within the an user adjustment error time window</span>
+<span id="L173"><span class="lineNum">     173</span>              :          * away from the orbit angle setpoint, follow_angle will be adjusted with a speed proportional to user stick inputs</span>
+<span id="L174"><span class="lineNum">     174</span>              :          *</span>
+<span id="L175"><span class="lineNum">     175</span>              :          * @param sticks Sticks object to get manually values for adjustments</span>
+<span id="L176"><span class="lineNum">     176</span>              :          * @param measured_angle [rad] Measured current drone's orbit angle around the target (depends on tracked target orientation for reference)</span>
+<span id="L177"><span class="lineNum">     177</span>              :          * @param tracked_orbit_angle_setpoint [rad] Rate constrained orbit angle setpoint value from last command</span>
+<span id="L178"><span class="lineNum">     178</span>              :          */</span>
+<span id="L179"><span class="lineNum">     179</span>              :         void updateRcAdjustedFollowAngle(const Sticks &amp;sticks, const float measured_orbit_angle,</span>
+<span id="L180"><span class="lineNum">     180</span>              :                                          const float tracked_orbit_angle_setpoint);</span>
+<span id="L181"><span class="lineNum">     181</span>              : </span>
+<span id="L182"><span class="lineNum">     182</span>              :         /**</span>
+<span id="L183"><span class="lineNum">     183</span>              :          * Update the Second Order Target Position + Velocity Filter to track kinematically feasible target position and velocity</span>
+<span id="L184"><span class="lineNum">     184</span>              :          *</span>
+<span id="L185"><span class="lineNum">     185</span>              :          * @param follow_target_estimator Received value from alpha-beta-gamma target estimator filter output</span>
+<span id="L186"><span class="lineNum">     186</span>              :          */</span>
+<span id="L187"><span class="lineNum">     187</span>              :         void updateTargetPositionVelocityFilter(const follow_target_estimator_s &amp;follow_target_estimator);</span>
+<span id="L188"><span class="lineNum">     188</span>              : </span>
+<span id="L189"><span class="lineNum">     189</span>              :         /**</span>
+<span id="L190"><span class="lineNum">     190</span>              :          * Calculate the tracked target orientation</span>
+<span id="L191"><span class="lineNum">     191</span>              :          *</span>
+<span id="L192"><span class="lineNum">     192</span>              :          * Note : Filtered target velocity is generated via 2nd order filter can have overshooting behaviors</span>
+<span id="L193"><span class="lineNum">     193</span>              :          * when target stops it's motion. This can generate a target velocity output that is opposite direction to where target was heading originally.</span>
+<span id="L194"><span class="lineNum">     194</span>              :          * To check if the filtered velocity is staying true to target's actual motion, unfiltered velocity needs to be taken into account. Since during</span>
+<span id="L195"><span class="lineNum">     195</span>              :          * overshoot, the unfiltered velocity stays close to 0 (indicating target already stopped), therefore not triggering a target orientation setting.</span>
+<span id="L196"><span class="lineNum">     196</span>              :          *</span>
+<span id="L197"><span class="lineNum">     197</span>              :          * @param current_target_orientation [rad] Tracked target orientation</span>
+<span id="L198"><span class="lineNum">     198</span>              :          * @param target_velocity [m/s] Filtered Target velocity from which we will calculate target orientation</span>
+<span id="L199"><span class="lineNum">     199</span>              :          * @param target_velocity_unfiltered [m/s] Unfiltered Target velocity that aids in verifying if filtered velocity is accurate</span>
+<span id="L200"><span class="lineNum">     200</span>              :          *</span>
+<span id="L201"><span class="lineNum">     201</span>              :          * @return [rad] Updated target orientation</span>
+<span id="L202"><span class="lineNum">     202</span>              :          */</span>
+<span id="L203"><span class="lineNum">     203</span>              :         float updateTargetOrientation(const float current_target_orientation, const Vector2f &amp;target_velocity,</span>
+<span id="L204"><span class="lineNum">     204</span>              :                                       const Vector2f &amp;target_velocity_unfiltered) const;</span>
+<span id="L205"><span class="lineNum">     205</span>              : </span>
+<span id="L206"><span class="lineNum">     206</span>              :         /**</span>
+<span id="L207"><span class="lineNum">     207</span>              :          * Updates the orbit angle setpoint and a jerk limited trajectory to reach it.</span>
+<span id="L208"><span class="lineNum">     208</span>              :          *</span>
+<span id="L209"><span class="lineNum">     209</span>              :          * @param target_orientation [rad] Tracked target orientation</span>
+<span id="L210"><span class="lineNum">     210</span>              :          * @param previous_orbit_angle_setpoint [rad] Previous orbit angle setpoint</span>
+<span id="L211"><span class="lineNum">     211</span>              :          *</span>
+<span id="L212"><span class="lineNum">     212</span>              :          * @return [rad] Next feasible orbit angle setpoint</span>
+<span id="L213"><span class="lineNum">     213</span>              :          */</span>
+<span id="L214"><span class="lineNum">     214</span>              :         float updateOrbitAngleTrajectory(const float target_orientation, const float previous_orbit_angle_setpoint);</span>
+<span id="L215"><span class="lineNum">     215</span>              : </span>
+<span id="L216"><span class="lineNum">     216</span>              :         /**</span>
+<span id="L217"><span class="lineNum">     217</span>              :          * Returns the orbit tangential velocity at the orbit angle setpoint, generated by the orbit angle trajectory generator</span>
+<span id="L218"><span class="lineNum">     218</span>              :          *</span>
+<span id="L219"><span class="lineNum">     219</span>              :          * @param orbit_angle_setpoint [rad] Orbit angle setpoint</span>
+<span id="L220"><span class="lineNum">     220</span>              :          *</span>
+<span id="L221"><span class="lineNum">     221</span>              :          * @return [m/s] 2D Velocity Vector of current orbit position setpoint (Local NED frame)</span>
+<span id="L222"><span class="lineNum">     222</span>              :         */</span>
+<span id="L223"><span class="lineNum">     223</span>              :         Vector2f getOrbitTangentialVelocity(const float orbit_angle_setpoint) const;</span>
+<span id="L224"><span class="lineNum">     224</span>              : </span>
+<span id="L225"><span class="lineNum">     225</span>              :         /**</span>
+<span id="L226"><span class="lineNum">     226</span>              :          * Calculates desired drone position taking into account orbit angle and the follow target altitude mode</span>
+<span id="L227"><span class="lineNum">     227</span>              :          *</span>
+<span id="L228"><span class="lineNum">     228</span>              :          * @param target_position [m] Target position (Local NED frame)</span>
+<span id="L229"><span class="lineNum">     229</span>              :          * @param orbit_angle_setpoint [rad] Current orbit angle setpoint around the target</span>
+<span id="L230"><span class="lineNum">     230</span>              :          *</span>
+<span id="L231"><span class="lineNum">     231</span>              :          * @return [m] Final position setpoint for the drone (Local NED frame)</span>
+<span id="L232"><span class="lineNum">     232</span>              :          */</span>
+<span id="L233"><span class="lineNum">     233</span>              :         Vector3f calculateDesiredDronePosition(const Vector3f &amp;target_position, const float orbit_angle_setpoint) const;</span>
+<span id="L234"><span class="lineNum">     234</span>              : </span>
+<span id="L235"><span class="lineNum">     235</span>              :         /**</span>
+<span id="L236"><span class="lineNum">     236</span>              :          * Calculate the gimbal height offset to the target</span>
+<span id="L237"><span class="lineNum">     237</span>              :          *</span>
+<span id="L238"><span class="lineNum">     238</span>              :          * @param altitude_mode Current Follow Target Altitude mode</span>
+<span id="L239"><span class="lineNum">     239</span>              :          * @param target_pos_z [m] Target's local position z value to use for 3D tracking</span>
+<span id="L240"><span class="lineNum">     240</span>              :          *</span>
+<span id="L241"><span class="lineNum">     241</span>              :          * @return [m] Height Difference between the target and the drone</span>
+<span id="L242"><span class="lineNum">     242</span>              :          */</span>
+<span id="L243"><span class="lineNum">     243</span>              :         float calculateGimbalHeight(const kFollowAltitudeMode altitude_mode, const float target_pos_z) const;</span>
+<span id="L244"><span class="lineNum">     244</span>              : </span>
+<span id="L245"><span class="lineNum">     245</span>              :         /**</span>
+<span id="L246"><span class="lineNum">     246</span>              :          * Publishes gimbal control command to track the target, given xy distance and z (height) difference</span>
+<span id="L247"><span class="lineNum">     247</span>              :          *</span>
+<span id="L248"><span class="lineNum">     248</span>              :          * @param xy_distance [m] Horizontal distance to target</span>
+<span id="L249"><span class="lineNum">     249</span>              :          * @param z_distance [m] Vertical distance to target</span>
+<span id="L250"><span class="lineNum">     250</span>              :          *</span>
+<span id="L251"><span class="lineNum">     251</span>              :          * @return [rad] Gimbal pitch setpoint, for logging in follow_target_status uORB message</span>
+<span id="L252"><span class="lineNum">     252</span>              :          */</span>
+<span id="L253"><span class="lineNum">     253</span>              :         float pointGimbalAt(const float xy_distance, const float z_distance);</span>
+<span id="L254"><span class="lineNum">     254</span>              : </span>
+<span id="L255"><span class="lineNum">     255</span>              :         /**</span>
+<span id="L256"><span class="lineNum">     256</span>              :          * Release Gimbal Control</span>
+<span id="L257"><span class="lineNum">     257</span>              :          *</span>
+<span id="L258"><span class="lineNum">     258</span>              :          * Releases Gimbal Control Authority of Follow-Target Flight Task, to allow other modules / Ground station</span>
+<span id="L259"><span class="lineNum">     259</span>              :          * to control the gimbal when the task exits.</span>
+<span id="L260"><span class="lineNum">     260</span>              :          * Fore more information on gimbal v2, see https://mavlink.io/en/services/gimbal_v2.html</span>
+<span id="L261"><span class="lineNum">     261</span>              :          */</span>
+<span id="L262"><span class="lineNum">     262</span>              :         void releaseGimbalControl();</span>
+<span id="L263"><span class="lineNum">     263</span>              : </span>
+<span id="L264"><span class="lineNum">     264</span>              :         // Sticks object to read in stick commands from the user</span>
+<span id="L265"><span class="lineNum">     265</span>              :         Sticks _sticks;</span>
+<span id="L266"><span class="lineNum">     266</span>              : </span>
+<span id="L267"><span class="lineNum">     267</span>              :         // Alpha-Beta-Gamma estimator for initial estimation of target position and velocity</span>
+<span id="L268"><span class="lineNum">     268</span>              :         TargetEstimator _target_estimator;</span>
+<span id="L269"><span class="lineNum">     269</span>              :         // Struct to hold target estimator's output data</span>
+<span id="L270"><span class="lineNum">     270</span>              :         follow_target_estimator_s _follow_target_estimator;</span>
+<span id="L271"><span class="lineNum">     271</span>              : </span>
+<span id="L272"><span class="lineNum">     272</span>              :         // Last target estimator timestamp to handle timeout filter reset</span>
+<span id="L273"><span class="lineNum">     273</span>              :         uint64_t _last_valid_target_estimator_timestamp{0};</span>
+<span id="L274"><span class="lineNum">     274</span>              : </span>
+<span id="L275"><span class="lineNum">     275</span>              :         // Second Order Filter to calculate kinematically feasible target position</span>
+<span id="L276"><span class="lineNum">     276</span>              :         SecondOrderReferenceModel&lt;matrix::Vector3f&gt; _target_position_velocity_filter;</span>
+<span id="L277"><span class="lineNum">     277</span>              : </span>
+<span id="L278"><span class="lineNum">     278</span>              :         // Internally tracked Follow Target characteristics, to allow manual control input adjustments</span>
+<span id="L279"><span class="lineNum">     279</span>              :         float _follow_distance{8.0f}; // [m]</span>
+<span id="L280"><span class="lineNum">     280</span>              :         float _follow_height{10.0f}; // [m]</span>
+<span id="L281"><span class="lineNum">     281</span>              :         float _follow_angle_rad{0.0f}; // [rad]</span>
+<span id="L282"><span class="lineNum">     282</span>              : </span>
+<span id="L283"><span class="lineNum">     283</span>              :         // Tracked estimate of target's course (where velocity vector is pointing). Initialized as North direction</span>
+<span id="L284"><span class="lineNum">     284</span>              :         float _target_course_rad{0.0f};</span>
+<span id="L285"><span class="lineNum">     285</span>              :         // Tracked orbit angle setpoint that gets calculated from Jerk-limited trajectory. Initialized in North direction.</span>
+<span id="L286"><span class="lineNum">     286</span>              :         float _orbit_angle_setpoint_rad{0.0f};</span>
+<span id="L287"><span class="lineNum">     287</span>              : </span>
+<span id="L288"><span class="lineNum">     288</span>              :         // Angular Jerk limited orbit angle setpoint trajectory generator</span>
+<span id="L289"><span class="lineNum">     289</span>              :         VelocitySmoothing _orbit_angle_traj_generator;</span>
+<span id="L290"><span class="lineNum">     290</span>              : </span>
+<span id="L291"><span class="lineNum">     291</span>              :         // Variable to remember the home position (take-off point) z coordinate, where the follow height will be measured from</span>
+<span id="L292"><span class="lineNum">     292</span>              :         float _home_position_z;</span>
+<span id="L293"><span class="lineNum">     293</span>              : </span>
+<span id="L294"><span class="lineNum">     294</span> <span class="tlaUNC tlaBgUNC">           0 :         DEFINE_PARAMETERS_CUSTOM_PARENT(</span></span>
+<span id="L295"><span class="lineNum">     295</span>              :                 FlightTask,</span>
+<span id="L296"><span class="lineNum">     296</span>              :                 (ParamInt&lt;px4::params::MAV_SYS_ID&gt;) _param_mav_sys_id,</span>
+<span id="L297"><span class="lineNum">     297</span>              :                 (ParamInt&lt;px4::params::MAV_COMP_ID&gt;) _param_mav_comp_id,</span>
+<span id="L298"><span class="lineNum">     298</span>              :                 (ParamFloat&lt;px4::params::FLW_TGT_HT&gt;) _param_flw_tgt_ht,</span>
+<span id="L299"><span class="lineNum">     299</span>              :                 (ParamFloat&lt;px4::params::FLW_TGT_DST&gt;) _param_flw_tgt_dst,</span>
+<span id="L300"><span class="lineNum">     300</span>              :                 (ParamFloat&lt;px4::params::FLW_TGT_FA&gt;) _param_flw_tgt_fa,</span>
+<span id="L301"><span class="lineNum">     301</span>              :                 (ParamInt&lt;px4::params::FLW_TGT_ALT_M&gt;) _param_flw_tgt_alt_m,</span>
+<span id="L302"><span class="lineNum">     302</span>              :                 (ParamFloat&lt;px4::params::FLW_TGT_MAX_VEL&gt;) _param_flw_tgt_max_vel</span>
+<span id="L303"><span class="lineNum">     303</span>              :         )</span>
+<span id="L304"><span class="lineNum">     304</span>              : </span>
+<span id="L305"><span class="lineNum">     305</span>              :         uORB::Subscription _follow_target_estimator_sub{ORB_ID(follow_target_estimator)};</span>
+<span id="L306"><span class="lineNum">     306</span>              : </span>
+<span id="L307"><span class="lineNum">     307</span>              :         uORB::Publication&lt;follow_target_status_s&gt; _follow_target_status_pub{ORB_ID(follow_target_status)};</span>
+<span id="L308"><span class="lineNum">     308</span>              :         uORB::Publication&lt;gimbal_manager_set_attitude_s&gt; _gimbal_manager_set_attitude_pub{ORB_ID(gimbal_manager_set_attitude)};</span>
+<span id="L309"><span class="lineNum">     309</span>              :         uORB::Publication&lt;vehicle_command_s&gt; _vehicle_command_pub{ORB_ID(vehicle_command)};</span>
+<span id="L310"><span class="lineNum">     310</span>              : };</span>
+        </pre>
+              </td>
+            </tr>
+          </table>
+          <br>
+
+          <table width="100%" border=0 cellspacing=0 cellpadding=0>
+            <tr><td class="ruler"><img src="../glass.png" width=3 height=3 alt=""></td></tr>
+            <tr><td class="versionInfo">Generated by: <a href="https://github.com//linux-test-project/lcov" target="_parent">LCOV version 2.0-1</a></td></tr>
+          </table>
+          <br>
+
+</body>
+</html>

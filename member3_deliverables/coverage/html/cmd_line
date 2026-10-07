@@ -1,0 +1,1 @@
+genhtml coverage/lcov_scope3.info --output-directory coverage/html_scope3 --title 'PX4 Scope 3 Functional Coverage' --ignore-errors mismatch,source,corrupt

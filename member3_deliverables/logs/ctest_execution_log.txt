@@ -1,0 +1,221 @@
+UpdateCTestConfiguration  from :/home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 4
+    Start   4: functional-Battery
+
+4: Test command: /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-Battery
+4: Working Directory: /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/battery
+4: Test timeout computed to be: 1500
+4: ERROR [px4_work_queue] not running
+4: ERROR [px4_work_queue] wq:lp_default not available
+4: ERROR [px4_work_queue] init failed
+4: [==========] Running 11 tests from 1 test suite.
+4: [----------] Global test environment set-up.
+4: [----------] 11 tests from BatteryStatusTest
+4: [ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+4: [       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+4: [ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+4: [       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+4: [ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+4: [       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+4: [ RUN      ] BatteryStatusTest.DetermineWarningLadder
+4: [       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+4: [ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+4: [       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+4: [ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+4: [       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+4: [ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+4: [       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+4: [ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+4: [       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+4: [ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+4: [       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+4: [ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+4: [       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+4: [ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+4: ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+4: ERROR [parameters] get: param 65535 invalid
+4: [       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+4: [----------] 11 tests from BatteryStatusTest (4 ms total)
+4: 
+4: [----------] Global test environment tear-down
+4: [==========] 11 tests from 1 test suite ran. (4 ms total)
+4: [  PASSED  ] 11 tests.
+1/2 Test   #4: functional-Battery ...............   Passed    0.22 sec
+test 106
+    Start 106: functional-FlightModeManager
+
+106: Test command: /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-FlightModeManager
+106: Working Directory: /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/flight_mode_manager
+106: Test timeout computed to be: 1500
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:lp_default not available
+106: ERROR [px4_work_queue] init failed
+106: [==========] Running 12 tests from 1 test suite.
+106: [----------] Global test environment set-up.
+106: [----------] 12 tests from FlightModeManagerTest
+106: [ RUN      ] FlightModeManagerTest.TaskSwitchingBasics
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.TaskSwitchingBasics (1 ms)
+106: [ RUN      ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex (0 ms)
+106: [ RUN      ] FlightModeManagerTest.ErrorToStringMapping
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.ErrorToStringMapping (0 ms)
+106: [ RUN      ] FlightModeManagerTest.StartFlightTaskAutoModes
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.StartFlightTaskAutoModes (1 ms)
+106: [ RUN      ] FlightModeManagerTest.StartFlightTaskPositionControlModes
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [flight_mode_manager] MPC_POS_MODE 99 invalid, resetting
+106: [       OK ] FlightModeManagerTest.StartFlightTaskPositionControlModes (1 ms)
+106: [ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes (0 ms)
+106: [ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend (0 ms)
+106: [ RUN      ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback (0 ms)
+106: [ RUN      ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange (0 ms)
+106: [ RUN      ] FlightModeManagerTest.TryApplyCommandTimeout
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: WARN  [FlightTaskOrbit] Orbit radius limit exceeded	
+106: [       OK ] FlightModeManagerTest.TryApplyCommandTimeout (0 ms)
+106: [ RUN      ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear (0 ms)
+106: [ RUN      ] FlightModeManagerTest.StatusAndUsageFunctions
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: INFO  [flight_mode_manager] Running, no flight task active
+106: flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+106: INFO  [flight_mode_manager] Running, active flight task: 11
+106: flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+106: 
+106: ### Description
+106: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+106: Usage: flight_mode_manager <command> [arguments...]
+106:  Commands:
+106: 
+106:    start
+106: 
+106:    stop
+106: 
+106:    status        print status info
+106: WARN  [flight_mode_manager] Testing usage error string
+106: 
+106: 
+106: ### Description
+106: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+106: Usage: flight_mode_manager <command> [arguments...]
+106:  Commands:
+106: 
+106:    start
+106: 
+106:    stop
+106: 
+106:    status        print status info
+106: WARN  [flight_mode_manager] unknown command
+106: 
+106: 
+106: ### Description
+106: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+106: Usage: flight_mode_manager <command> [arguments...]
+106:  Commands:
+106: 
+106:    start
+106: 
+106:    stop
+106: 
+106:    status        print status info
+106: [       OK ] FlightModeManagerTest.StatusAndUsageFunctions (1 ms)
+106: [----------] 12 tests from FlightModeManagerTest (11 ms total)
+106: 
+106: [----------] Global test environment tear-down
+106: [==========] 12 tests from 1 test suite ran. (11 ms total)
+106: [  PASSED  ] 12 tests.
+2/2 Test #106: functional-FlightModeManager .....   Passed    0.11 sec
+
+The following tests passed:
+	functional-Battery
+	functional-FlightModeManager
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.42 sec

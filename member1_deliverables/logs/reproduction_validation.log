@@ -1,0 +1,5 @@
+baseline: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/baseline/html/index.html
+student: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/student/html/index.html
+final: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/html/index.html
+Workbook validated: 51 tests (36 Member 1 + 15 Member 2), 26 imported MC/DC rows, exactly 2 sheets.
+Both patches applied cleanly and reconstructed the submitted files exactly.

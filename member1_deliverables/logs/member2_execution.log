@@ -1,0 +1,112 @@
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 108
+    Start 108: functional-LandDetector
+
+108: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-LandDetector
+108: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/land_detector
+108: Test timeout computed to be: 30
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:lp_default not available
+108: ERROR [px4_work_queue] init failed
+108: [==========] Running 15 tests from 1 test suite.
+108: [----------] Global test environment set-up.
+108: [----------] 15 tests from LandDetectorFixture
+108: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+108: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+108: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+108: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+108: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+108: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+108: [ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+108: [ RUN      ] LandDetectorFixture.Landed_StateTransitions
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] LandDetectorFixture.Landed_StateTransitions (1 ms)
+108: [----------] 15 tests from LandDetectorFixture (6 ms total)
+108: 
+108: [----------] Global test environment tear-down
+108: [==========] 15 tests from 1 test suite ran. (7 ms total)
+108: [  PASSED  ] 15 tests.
+1/1 Test #108: functional-LandDetector ..........   Passed    0.03 sec
+
+The following tests passed:
+	functional-LandDetector
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.05 sec

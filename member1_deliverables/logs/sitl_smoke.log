@@ -1,0 +1,80 @@
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 135
+    Start 135: sitl-mathlib
+
+135: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/bin/px4 "-s" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_mathlib_generated" "-t" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/test_data" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/ROMFS/px4fmu_test"
+135: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/rootfs
+135: Test timeout computed to be: 30
+135: ERROR [px4_daemon] error binding socket /tmp/px4-sock-0, error = Operation not permitted
+135: 
+135: ______  __   __    ___ 
+135: | ___ \ \ \ / /   /   |
+135: | |_/ /  \ V /   / /| |
+135: |  __/   /   \  / /_| |
+135: | |     / /^\ \ \___  |
+135: \_|     \/   \/     |_/
+135: 
+135: px4 starting.
+135: 
+135: INFO  [px4] startup script: /bin/sh /home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_mathlib_gene
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: libgcov profiling error:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/modules__attitude_estimator_q.dir/attitude_estimator_q_main.cpp.gcda:overwriting an existing profile data with a different checksum
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+135: ERROR [px4] Startup script returned with return value: 65280
+1/2 Test #135: sitl-mathlib .....................***Failed  Required regular expression not found. Regex=[mathlib PASSED
+]  0.25 sec
+test 136
+    Start 136: sitl-matrix
+
+136: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/bin/px4 "-s" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_matrix_generated" "-t" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/test_data" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/ROMFS/px4fmu_test"
+136: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/rootfs
+136: Test timeout computed to be: 30
+136: ERROR [px4_daemon] error binding socket /tmp/px4-sock-0, error = Operation not permitted
+136: 
+136: ______  __   __    ___ 
+136: | ___ \ \ \ / /   /   |
+136: | |_/ /  \ V /   / /| |
+136: |  __/   /   \  / /_| |
+136: | |     / /^\ \ \___  |
+136: \_|     \/   \/     |_/
+136: 
+136: px4 starting.
+136: 
+136: INFO  [px4] startup script: /bin/sh /home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_matrix_gener
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4_daemon] error connecting to socket: Operation not permitted
+136: ERROR [px4] Startup script returned with return value: 65280
+2/2 Test #136: sitl-matrix ......................***Failed  Required regular expression not found. Regex=[matrix PASSED
+]  0.24 sec
+
+0% tests passed, 2 tests failed out of 2
+
+Total Test time (real) =   0.50 sec
+
+The following tests FAILED:
+	135 - sitl-mathlib (Failed)
+	136 - sitl-matrix (Failed)
+Errors while running CTest
+Output from these tests are in: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

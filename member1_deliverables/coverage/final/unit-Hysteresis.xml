@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="7" failures="0" disabled="0" errors="0" time="0.002" timestamp="2026-10-08T03:25:21.607" name="AllTests">
+  <testsuite name="Hysteresis" tests="7" failures="0" disabled="0" skipped="0" errors="0" time="0.002" timestamp="2026-10-08T03:25:21.607">
+    <testcase name="InitFalse" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="47" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.607" classname="Hysteresis" />
+    <testcase name="InitTrue" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="53" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.608" classname="Hysteresis" />
+    <testcase name="Zero" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="59" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.608" classname="Hysteresis" />
+    <testcase name="ChangeAfterTime" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="81" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.608" classname="Hysteresis" />
+    <testcase name="HysteresisChanged" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="110" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.609" classname="Hysteresis" />
+    <testcase name="ChangeAfterMultipleSets" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="142" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.609" classname="Hysteresis" />
+    <testcase name="TakeChangeBack" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/HysteresisTest.cpp" line="171" status="run" result="completed" time="0." timestamp="2026-10-08T03:25:21.610" classname="Hysteresis" />
+  </testsuite>
+</testsuites>

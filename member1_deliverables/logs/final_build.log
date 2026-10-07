@@ -1,0 +1,15 @@
+[1/15] Generating px4 event json file from source
+[2/15] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/modules__attitude_estimator_q.dir/attitude_estimator_q_main.cpp.o
+[3/15] Linking CXX static library src/modules/attitude_estimator_q/libmodules__attitude_estimator_q.a
+[4/15] Generating combined event json file
+[5/15] Generating component_general.json and checksums.h
+[6/15] Building CXX object src/modules/logger/CMakeFiles/modules__logger.dir/logger.cpp.o
+[7/15] Linking CXX static library src/modules/logger/libmodules__logger.a
+[8/15] ROMFS: copying extras
+[9/15] Building CXX object src/modules/land_detector/CMakeFiles/functional-LandDetector.dir/LandDetectorTest.cpp.o
+[10/15] Linking CXX executable functional-LandDetector
+[11/15] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o
+[12/15] Building CXX object src/modules/mavlink/CMakeFiles/modules__mavlink.dir/mavlink_messages.cpp.o
+[13/15] Linking CXX static library src/modules/mavlink/libmodules__mavlink.a
+[14/15] Linking CXX executable functional-AttitudeEstimatorQ
+[15/15] Linking CXX executable bin/px4

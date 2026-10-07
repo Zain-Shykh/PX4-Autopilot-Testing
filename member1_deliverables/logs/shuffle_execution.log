@@ -1,0 +1,479 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 2026 .
+[==========] Running 29 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 29 tests from AttitudeEstimatorQAssignment
+[ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] init failed, vehicle_attitude already advertised
+[       OK ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+[       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (1 ms)
+[----------] 29 tests from AttitudeEstimatorQAssignment (32 ms total)
+
+[==========] 29 tests from 1 test suite ran. (32 ms total)
+[  PASSED  ] 29 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 2027 .
+[==========] Running 29 tests from 1 test suite.
+[----------] 29 tests from AttitudeEstimatorQAssignment
+[ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] init failed, vehicle_attitude already advertised
+[       OK ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+[       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (0 ms)
+[----------] 29 tests from AttitudeEstimatorQAssignment (33 ms total)
+
+[==========] 29 tests from 1 test suite ran. (33 ms total)
+[  PASSED  ] 29 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 2028 .
+[==========] Running 29 tests from 1 test suite.
+[----------] 29 tests from AttitudeEstimatorQAssignment
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+[       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [functional-AttitudeEstimatorQ] init failed, vehicle_attitude already advertised
+[       OK ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (0 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (1 ms)
+[ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (0 ms)
+[----------] 29 tests from AttitudeEstimatorQAssignment (32 ms total)
+
+[----------] Global test environment tear-down
+[==========] 29 tests from 1 test suite ran. (32 ms total)
+[  PASSED  ] 29 tests.

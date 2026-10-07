@@ -1,0 +1,189 @@
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 135
+    Start 135: sitl-mathlib
+
+135: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/bin/px4 "-s" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_mathlib_generated" "-t" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/test_data" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/ROMFS/px4fmu_test"
+135: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/rootfs
+135: Test timeout computed to be: 30
+135: 
+135: ______  __   __    ___ 
+135: | ___ \ \ \ / /   /   |
+135: | |_/ /  \ V /   / /| |
+135: |  __/   /   \  / /_| |
+135: | |     / /^\ \ \___  |
+135: \_|     \/   \/     |_/
+135: 
+135: px4 starting.
+135: 
+135: INFO  [px4] startup script: /bin/sh /home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_mathlib_gene
+135: INFO  [param] selected parameter default file parameters.bson
+135: INFO  [dataman] data manager file './dataman' size is 1208528 bytes
+135: INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
+135: INFO  [tests] RUNNING TEST: testVector2
+135: INFO  [tests] Constructor matrix::Vector2f(): 0.006533us
+135: INFO  [tests] Constructor matrix::Vector2f(matrix::Vector2f): 0.278933us
+135: INFO  [tests] Constructor matrix::Vector2f(float[]): 0.048867us
+135: INFO  [tests] Constructor matrix::Vector2f(float, float): 0.067300us
+135: INFO  [tests] matrix::Vector2f = matrix::Vector2f: 0.084967us
+135: INFO  [tests] matrix::Vector2f + matrix::Vector2f: 0.360700us
+135: INFO  [tests] matrix::Vector2f - matrix::Vector2f: 0.343833us
+135: INFO  [tests] matrix::Vector2f += matrix::Vector2f: 0.081200us
+135: INFO  [tests] matrix::Vector2f -= matrix::Vector2f: 0.077800us
+135: INFO  [tests] matrix::Vector2f * matrix::Vector2f: 0.191833us
+135: INFO  [tests] matrix::Vector2f % matrix::Vector2f: 0.082900us
+135: INFO  [tests] TEST PASSED: testVector2
+135: INFO  [tests] RUNNING TEST: testVector3
+135: INFO  [tests] Constructor matrix::Vector3f(): 0.005433us
+135: INFO  [tests] Constructor matrix::Vector3f(matrix::Vector3f): 0.285800us
+135: INFO  [tests] Constructor matrix::Vector3f(float[]): 0.060500us
+135: INFO  [tests] Constructor matrix::Vector3f(float, float, float): 0.091367us
+135: INFO  [tests] matrix::Vector3f = matrix::Vector3f: 0.113733us
+135: INFO  [tests] matrix::Vector3f + matrix::Vector3f: 0.554967us
+135: INFO  [tests] matrix::Vector3f - matrix::Vector3f: 0.535567us
+135: INFO  [tests] matrix::Vector3f += matrix::Vector3f: 0.105833us
+135: INFO  [tests] matrix::Vector3f -= matrix::Vector3f: 0.101400us
+135: INFO  [tests] matrix::Vector3f * float: 0.383267us
+135: INFO  [tests] matrix::Vector3f / float: 0.326067us
+135: INFO  [tests] matrix::Vector3f *= float: 0.088567us
+135: INFO  [tests] matrix::Vector3f /= float: 0.111000us
+135: INFO  [tests] matrix::Vector3f * matrix::Vector3f: 0.287767us
+135: INFO  [tests] matrix::Vector3f % matrix::Vector3f: 0.494967us
+135: INFO  [tests] matrix::Vector3f length: 0.145067us
+135: INFO  [tests] matrix::Vector3f element read: 0.020100us
+135: INFO  [tests] matrix::Vector3f element write: 0.022033us
+135: INFO  [tests] TEST PASSED: testVector3
+135: INFO  [tests] RUNNING TEST: testMatrix3x3
+135: INFO  [tests] matrix::Matrix3f * matrix::Vector3f: 0.428800us
+135: INFO  [tests] matrix::Matrix3f + matrix::Matrix3f: 0.473600us
+135: INFO  [tests] matrix::Matrix3f * matrix::Matrix3f: 1.135000us
+135: INFO  [tests] TEST PASSED: testMatrix3x3
+135: INFO  [tests] RUNNING TEST: testMatrixNonsymmetric
+135: INFO  [tests] TEST PASSED: testMatrixNonsymmetric
+135: INFO  [tests] RUNNING TEST: testRotationMatrixQuaternion
+135: INFO  [tests] TEST PASSED: testRotationMatrixQuaternion
+135: INFO  [tests] RUNNING TEST: testQuaternionfrom_dcm
+135: INFO  [tests] TEST PASSED: testQuaternionfrom_dcm
+135: INFO  [tests] RUNNING TEST: testQuaternionfrom_euler
+135: INFO  [tests] TEST PASSED: testQuaternionfrom_euler
+135: INFO  [tests] RUNNING TEST: testQuaternionRotate
+135: INFO  [tests] TEST PASSED: testQuaternionRotate
+135: INFO  [tests] RUNNING TEST: testFinite
+135: INFO  [tests] TEST PASSED: testFinite
+135: INFO  [rc_tests] ALL TESTS PASSED
+135: INFO  [rc_tests]   Tests passed :      9
+135: INFO  [rc_tests]   Tests failed :      0
+135: INFO  [rc_tests]   Tested assertions : 256651
+135: INFO  [tests] mathlib PASSED
+135: 
+135: 
+135: 
+135: 
+135: 
+135: 
+135: 
+135: 
+135: 
+135: Exiting NOW.
+1/2 Test #135: sitl-mathlib .....................   Passed    0.59 sec
+test 136
+    Start 136: sitl-matrix
+
+136: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/bin/px4 "-s" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_matrix_generated" "-t" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/test_data" "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/ROMFS/px4fmu_test"
+136: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/rootfs
+136: Test timeout computed to be: 30
+136: 
+136: ______  __   __    ___ 
+136: | ___ \ \ \ / /   /   |
+136: | |_/ /  \ V /   / /| |
+136: |  __/   /   \  / /_| |
+136: | |     / /^\ \ \___  |
+136: \_|     \/   \/     |_/
+136: 
+136: px4 starting.
+136: 
+136: INFO  [px4] startup script: /bin/sh /home/muhammad/SQE_A2/PX4-Autopilot-Testing/posix-configs/SITL/init/test/test_matrix_gener
+136: INFO  [param] selected parameter default file parameters.bson
+136: INFO  [dataman] data manager file './dataman' size is 1208528 bytes
+136: INFO  [simulator_mavlink] Waiting for simulator to connect on UDP port 14560
+136: INFO  [tests] RUNNING TEST: attitudeTests
+136: INFO  [tests] TEST PASSED: attitudeTests
+136: INFO  [tests] RUNNING TEST: filterTests
+136: INFO  [tests] TEST PASSED: filterTests
+136: INFO  [tests] RUNNING TEST: helperTests
+136: INFO  [tests] TEST PASSED: helperTests
+136: INFO  [tests] RUNNING TEST: integrationTests
+136: INFO  [tests] TEST PASSED: integrationTests
+136: INFO  [tests] RUNNING TEST: inverseTests
+136: INFO  [tests] TEST PASSED: inverseTests
+136: INFO  [tests] RUNNING TEST: matrixAssignmentTests
+136: INFO  [tests] TEST PASSED: matrixAssignmentTests
+136: INFO  [tests] RUNNING TEST: matrixMultTests
+136: INFO  [tests] TEST PASSED: matrixMultTests
+136: INFO  [tests] RUNNING TEST: matrixScalarMultTests
+136: INFO  [tests] TEST PASSED: matrixScalarMultTests
+136: INFO  [tests] RUNNING TEST: setIdentityTests
+136: INFO  [tests] TEST PASSED: setIdentityTests
+136: INFO  [tests] RUNNING TEST: sliceTests
+136: INFO  [tests] TEST PASSED: sliceTests
+136: INFO  [tests] RUNNING TEST: squareMatrixTests
+136: INFO  [tests] TEST PASSED: squareMatrixTests
+136: INFO  [tests] RUNNING TEST: transposeTests
+136: INFO  [tests] TEST PASSED: transposeTests
+136: INFO  [tests] RUNNING TEST: vectorTests
+136: INFO  [tests] TEST PASSED: vectorTests
+136: INFO  [tests] RUNNING TEST: vector2Tests
+136: INFO  [tests] TEST PASSED: vector2Tests
+136: INFO  [tests] RUNNING TEST: vector3Tests
+136: INFO  [tests] TEST PASSED: vector3Tests
+136: INFO  [tests] RUNNING TEST: vectorAssignmentTests
+136: INFO  [tests] TEST PASSED: vectorAssignmentTests
+136: INFO  [tests] RUNNING TEST: dcmRenormTests
+136: INFO  [tests] TEST PASSED: dcmRenormTests
+136: INFO  [tests] RUNNING TEST: pseudoInverseTests
+136: INFO  [tests] TEST PASSED: pseudoInverseTests
+136: INFO  [rc_tests] ALL TESTS PASSED
+136: INFO  [rc_tests]   Tests passed :      18
+136: INFO  [rc_tests]   Tests failed :      0
+136: INFO  [rc_tests]   Tested assertions : 200
+136: INFO  [tests] matrix PASSED
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: 
+136: error: 1.486540e-04
+136: renorm error: 0.000000e+00
+136: 
+136: 
+136: Exiting NOW.
+2/2 Test #136: sitl-matrix ......................   Passed    0.29 sec
+
+The following tests passed:
+	sitl-mathlib
+	sitl-matrix
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.88 sec

@@ -1,0 +1,189 @@
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 12
+    Start 12: unit-HysteresisAssignment
+
+12: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/unit-HysteresisAssignment
+12: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+12: Test timeout computed to be: 30
+12: [==========] Running 7 tests from 1 test suite.
+12: [----------] Global test environment set-up.
+12: [----------] 7 tests from HysteresisAssignment
+12: [ RUN      ] HysteresisAssignment.ExactDeadlinesInBothDirections
+12: [       OK ] HysteresisAssignment.ExactDeadlinesInBothDirections (0 ms)
+12: [ RUN      ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay
+12: [       OK ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.ShortenPendingDelay
+12: [       OK ] HysteresisAssignment.ShortenPendingDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.ExtendPendingDelay
+12: [       OK ] HysteresisAssignment.ExtendPendingDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.PendingDelayCanBecomeImmediate
+12: [       OK ] HysteresisAssignment.PendingDelayCanBecomeImmediate (0 ms)
+12: [ RUN      ] HysteresisAssignment.InterleavedInstancesRemainIndependent
+12: [       OK ] HysteresisAssignment.InterleavedInstancesRemainIndependent (0 ms)
+12: [ RUN      ] HysteresisAssignment.LargeTimestampDeadline
+12: [       OK ] HysteresisAssignment.LargeTimestampDeadline (0 ms)
+12: [----------] 7 tests from HysteresisAssignment (2 ms total)
+12: 
+12: [----------] Global test environment tear-down
+12: [==========] 7 tests from 1 test suite ran. (2 ms total)
+12: [  PASSED  ] 7 tests.
+1/2 Test #12: unit-HysteresisAssignment ........   Passed    0.02 sec
+test 73
+    Start 73: functional-AttitudeEstimatorQ
+
+73: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-AttitudeEstimatorQ
+73: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q
+73: Test timeout computed to be: 30
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:lp_default not available
+73: ERROR [px4_work_queue] init failed
+73: [==========] Running 24 tests from 1 test suite.
+73: [----------] Global test environment set-up.
+73: [----------] 24 tests from AttitudeEstimatorQAssignment
+73: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+73: ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+73: [       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (0 ms)
+73: [----------] 24 tests from AttitudeEstimatorQAssignment (19 ms total)
+73: 
+73: [----------] Global test environment tear-down
+73: [==========] 24 tests from 1 test suite ran. (19 ms total)
+73: [  PASSED  ] 24 tests.
+2/2 Test #73: functional-AttitudeEstimatorQ ....   Passed    0.04 sec
+
+The following tests passed:
+	unit-HysteresisAssignment
+	functional-AttitudeEstimatorQ
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   0.07 sec

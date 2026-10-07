@@ -1,0 +1,49 @@
+{
+  "baseline": {
+    "src/lib/hysteresis/hysteresis.cpp": {
+      "lines_hit": 22,
+      "lines_total": 22,
+      "branches_hit": 17,
+      "branches_total": 20
+    },
+    "src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp": {
+      "lines_hit": 0,
+      "lines_total": 225,
+      "branches_hit": 0,
+      "branches_total": 556
+    }
+  },
+  "student": {
+    "src/lib/hysteresis/hysteresis.cpp": {
+      "lines_hit": 22,
+      "lines_total": 22,
+      "branches_hit": 17,
+      "branches_total": 20
+    },
+    "src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp": {
+      "lines_hit": 199,
+      "lines_total": 225,
+      "branches_hit": 347,
+      "branches_total": 556
+    }
+  },
+  "final": {
+    "src/lib/hysteresis/hysteresis.cpp": {
+      "lines_hit": 22,
+      "lines_total": 22,
+      "branches_hit": 17,
+      "branches_total": 20
+    },
+    "src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp": {
+      "lines_hit": 199,
+      "lines_total": 225,
+      "branches_hit": 347,
+      "branches_total": 556
+    }
+  },
+  "core_filter_and_message_methods": {
+    "definition": "Run through update_mag_declination, inclusive; source lines 201-587",
+    "lines_hit": 184,
+    "lines_total": 184
+  }
+}

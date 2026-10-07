@@ -1,0 +1,8 @@
+[1/8] Generating git version header
+[2/8] Building C object src/lib/version/CMakeFiles/version.dir/version.c.o
+[3/8] Linking C static library src/lib/version/libversion.a
+[4/8] Building CXX object src/modules/land_detector/CMakeFiles/modules__land_detector.dir/VtolLandDetector.cpp.o
+[5/8] Building CXX object src/modules/land_detector/CMakeFiles/modules__land_detector.dir/land_detector_main.cpp.o
+[6/8] Building CXX object src/modules/land_detector/CMakeFiles/modules__land_detector.dir/MulticopterLandDetector.cpp.o
+[7/8] Linking CXX static library src/modules/land_detector/libmodules__land_detector.a
+[8/8] Linking CXX executable bin/px4

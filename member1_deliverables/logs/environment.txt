@@ -1,0 +1,62 @@
+Session date: 2026-10-08 (Asia/Karachi)
+Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.5 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+$ git rev-parse HEAD
+b48cacd6c43dbb0b024dc68bca755917fe980ec1
+[exit=0]
+$ git rev-parse --verify d6f12ad1c4f70ad3230afd7d86e971421e02fef4^{commit}
+d6f12ad1c4f70ad3230afd7d86e971421e02fef4
+[exit=0]
+$ git describe --tags --exact-match d6f12ad1c4f70ad3230afd7d86e971421e02fef4
+fatal: No names found, cannot describe anything.
+[exit=128]
+$ git diff --name-only d6f12ad1c4f70ad3230afd7d86e971421e02fef4 -- src/modules/attitude_estimator_q src/lib/hysteresis
+src/lib/hysteresis/CMakeLists.txt
+src/modules/attitude_estimator_q/CMakeLists.txt
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp
+[exit=0]
+$ g++ --version
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[exit=0]
+$ cmake --version
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+[exit=0]
+$ ninja --version
+1.11.1
+[exit=0]
+$ gcov --version
+gcov (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[exit=0]
+$ lcov --version
+lcov: LCOV version 2.0-1
+[exit=0]
+$ python3 --version
+Python 3.12.3
+[exit=0]
+CMAKE_BUILD_TYPE:STRING=Coverage
+CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CONFIG:UNINITIALIZED=px4_sitl_test
+PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3

@@ -1,0 +1,756 @@
+diff --git a/src/lib/hysteresis/CMakeLists.txt b/src/lib/hysteresis/CMakeLists.txt
+index bd71aa5ef6..fd627b2db0 100644
+--- a/src/lib/hysteresis/CMakeLists.txt
++++ b/src/lib/hysteresis/CMakeLists.txt
+@@ -34,3 +34,4 @@
+ px4_add_library(hysteresis hysteresis.cpp)
+ 
+ px4_add_unit_gtest(SRC HysteresisTest.cpp LINKLIBS hysteresis)
++px4_add_unit_gtest(SRC HysteresisAssignmentTest.cpp LINKLIBS hysteresis)
+diff --git a/src/lib/hysteresis/HysteresisAssignmentTest.cpp b/src/lib/hysteresis/HysteresisAssignmentTest.cpp
+new file mode 100644
+index 0000000000..0b3d035dd3
+--- /dev/null
++++ b/src/lib/hysteresis/HysteresisAssignmentTest.cpp
+@@ -0,0 +1,117 @@
++// Assignment 02, Member 1. New boundary and interrupted-transition tests.
++#include <gtest/gtest.h>
++#include <limits>
++#include "hysteresis.h"
++
++// TC_M1_H01: asymmetric delays include the deadline, in both directions.
++TEST(HysteresisAssignment, ExactDeadlinesInBothDirections)
++{
++	systemlib::Hysteresis h(false);
++	h.set_hysteresis_time_from(false, 11);
++	h.set_hysteresis_time_from(true, 7);
++	h.set_state_and_update(true, 100);
++	h.update(110);
++	EXPECT_FALSE(h.get_state());
++	h.set_state_and_update(true, 111);
++	ASSERT_TRUE(h.get_state());
++	h.set_state_and_update(false, 120);
++	h.update(126);
++	EXPECT_TRUE(h.get_state());
++	h.set_state_and_update(false, 127);
++	EXPECT_FALSE(h.get_state());
++}
++
++// TC_M1_H02: cancellation at the deadline must beat the pending update.
++TEST(HysteresisAssignment, CancelAtDeadlineAndRestartFullDelay)
++{
++	for (bool initial : {false, true}) {
++		systemlib::Hysteresis h(initial);
++		h.set_hysteresis_time_from(initial, 10);
++		h.set_state_and_update(!initial, 100);
++		h.set_state_and_update(initial, 110);
++		EXPECT_EQ(h.get_state(), initial);
++		h.update(200);
++		EXPECT_EQ(h.get_state(), initial);
++		h.set_state_and_update(!initial, 200);
++		h.update(209);
++		EXPECT_EQ(h.get_state(), initial);
++		h.update(210);
++		EXPECT_EQ(h.get_state(), !initial);
++	}
++}
++
++// TC_M1_H03: duration changes while pending retain the original request time.
++TEST(HysteresisAssignment, ShortenPendingDelay)
++{
++	for (bool initial : {false, true}) {
++		systemlib::Hysteresis h(initial);
++		h.set_hysteresis_time_from(initial, 20);
++		h.set_state_and_update(!initial, 100);
++		h.update(109);
++		h.set_hysteresis_time_from(initial, 10);
++		h.update(110);
++		EXPECT_EQ(h.get_state(), !initial);
++	}
++}
++
++// TC_M1_H04: extending the delay invalidates the old deadline.
++TEST(HysteresisAssignment, ExtendPendingDelay)
++{
++	for (bool initial : {false, true}) {
++		systemlib::Hysteresis h(initial);
++		h.set_hysteresis_time_from(initial, 10);
++		h.set_state_and_update(!initial, 100);
++		h.set_hysteresis_time_from(initial, 20);
++		h.update(110);
++		EXPECT_EQ(h.get_state(), initial);
++		h.update(119);
++		EXPECT_EQ(h.get_state(), initial);
++		h.update(120);
++		EXPECT_EQ(h.get_state(), !initial);
++	}
++}
++
++// TC_M1_H05: zero-delay change during a pending request, same timestamp.
++TEST(HysteresisAssignment, PendingDelayCanBecomeImmediate)
++{
++	systemlib::Hysteresis h(true);
++	h.set_hysteresis_time_from(true, 50);
++	h.set_state_and_update(false, 0);
++	ASSERT_TRUE(h.get_state());
++	h.set_hysteresis_time_from(true, 0);
++	h.update(0);
++	EXPECT_FALSE(h.get_state());
++	h.set_state_and_update(true, 0);
++	EXPECT_TRUE(h.get_state());
++}
++
++// TC_M1_H06: updates of an unrelated object cannot share pending state.
++TEST(HysteresisAssignment, InterleavedInstancesRemainIndependent)
++{
++	systemlib::Hysteresis a(false), b(true);
++	a.set_hysteresis_time_from(false, 5);
++	b.set_hysteresis_time_from(true, 9);
++	a.set_state_and_update(true, 100);
++	b.set_state_and_update(false, 100);
++	a.update(105);
++	b.update(105);
++	EXPECT_TRUE(a.get_state());
++	EXPECT_TRUE(b.get_state());
++	b.update(109);
++	EXPECT_FALSE(b.get_state());
++	a.update(109);
++	EXPECT_TRUE(a.get_state());
++}
++
++// TC_M1_H07: exact deadline near the representable limit, without overflow.
++TEST(HysteresisAssignment, LargeTimestampDeadline)
++{
++	const hrt_abstime end = std::numeric_limits<hrt_abstime>::max();
++	systemlib::Hysteresis h(false);
++	h.set_hysteresis_time_from(false, 10);
++	h.set_state_and_update(true, end - 10);
++	h.update(end - 1);
++	EXPECT_FALSE(h.get_state());
++	h.update(end);
++	EXPECT_TRUE(h.get_state());
++}
+diff --git a/src/modules/attitude_estimator_q/CMakeLists.txt b/src/modules/attitude_estimator_q/CMakeLists.txt
+index b725408721..d634e3fe90 100644
+--- a/src/modules/attitude_estimator_q/CMakeLists.txt
++++ b/src/modules/attitude_estimator_q/CMakeLists.txt
+@@ -41,3 +41,9 @@ px4_add_module(
+ 	DEPENDS
+ 		world_magnetic_model
+ 	)
++
++# The class is defined in the .cpp, which the test includes exactly once.
++px4_add_functional_gtest(SRC AttitudeEstimatorQTest.cpp LINKLIBS world_magnetic_model geo)
++if(BUILD_TESTING)
++	target_link_options(functional-AttitudeEstimatorQ PRIVATE "-Wl,--wrap=hrt_absolute_time")
++endif()
+diff --git a/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp b/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp
+index f6b645397a..f67b28f8be 100644
+--- a/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp
++++ b/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp
+@@ -89,6 +89,8 @@ public:
+ 	bool init();
+ 
+ private:
++	// Assignment test peer; grants access without changing runtime behavior.
++	friend class AttitudeEstimatorQTestPeer;
+ 
+ 	void Run() override;
+ 
+diff --git a/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp b/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp
+new file mode 100644
+index 0000000000..f0f95f9d8f
+--- /dev/null
++++ b/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp
+@@ -0,0 +1,591 @@
++// Assignment 02, Member 1. Functional tests of the actual production implementation.
++#include <gtest/gtest.h>
++#include <limits>
++#include "attitude_estimator_q_main.cpp"
++
++// Link-time substitution is confined to this test executable. No sleeps or races.
++static hrt_abstime test_now = 10_s;
++extern "C" hrt_abstime __wrap_hrt_absolute_time() { return test_now; }
++
++class AttitudeEstimatorQTestPeer : public AttitudeEstimatorQ
++{
++public:
++	using AttitudeEstimatorQ::init_attitude_q;
++	using AttitudeEstimatorQ::update;
++	using AttitudeEstimatorQ::update_mag_declination;
++	using AttitudeEstimatorQ::update_parameters;
++	using AttitudeEstimatorQ::update_sensors;
++	using AttitudeEstimatorQ::update_magnetometer;
++	using AttitudeEstimatorQ::update_gps_position;
++	using AttitudeEstimatorQ::update_visual_odometry;
++	using AttitudeEstimatorQ::update_motion_capture_odometry;
++	using AttitudeEstimatorQ::update_vehicle_local_position;
++	using AttitudeEstimatorQ::update_vehicle_attitude;
++	using AttitudeEstimatorQ::Run;
++	using AttitudeEstimatorQ::_accel;
++	using AttitudeEstimatorQ::_gyro;
++	using AttitudeEstimatorQ::_gyro_bias;
++	using AttitudeEstimatorQ::_rates;
++	using AttitudeEstimatorQ::_mag;
++	using AttitudeEstimatorQ::_mocap_hdg;
++	using AttitudeEstimatorQ::_vision_hdg;
++	using AttitudeEstimatorQ::_pos_acc;
++	using AttitudeEstimatorQ::_vel_prev;
++	using AttitudeEstimatorQ::_q;
++	using AttitudeEstimatorQ::_imu_timestamp;
++	using AttitudeEstimatorQ::_imu_prev_timestamp;
++	using AttitudeEstimatorQ::_vel_prev_timestamp;
++	using AttitudeEstimatorQ::_bias_max;
++	using AttitudeEstimatorQ::_mag_decl;
++	using AttitudeEstimatorQ::_data_good;
++	using AttitudeEstimatorQ::_ext_hdg_good;
++	using AttitudeEstimatorQ::_initialized;
++	using AttitudeEstimatorQ::_param_att_w_acc;
++	using AttitudeEstimatorQ::_param_att_w_mag;
++	using AttitudeEstimatorQ::_param_att_w_ext_hdg;
++	using AttitudeEstimatorQ::_param_att_w_gyro_bias;
++	using AttitudeEstimatorQ::_param_att_ext_hdg_m;
++	using AttitudeEstimatorQ::_param_att_acc_comp;
++	using AttitudeEstimatorQ::_param_att_mag_decl_a;
++	using AttitudeEstimatorQ::_sensors_sub;
++	using AttitudeEstimatorQ::_vehicle_magnetometer_sub;
++	using AttitudeEstimatorQ::_vehicle_gps_position_sub;
++	using AttitudeEstimatorQ::_vehicle_local_position_sub;
++	using AttitudeEstimatorQ::_vehicle_visual_odometry_sub;
++	using AttitudeEstimatorQ::_vehicle_mocap_odometry_sub;
++	using AttitudeEstimatorQ::request_stop;
++};
++
++class AttitudeEstimatorQAssignment : public ::testing::Test
++{
++protected:
++	AttitudeEstimatorQTestPeer est;
++	void SetUp() override
++	{
++		test_now = 10_s;
++		param_control_autosave(false);
++		param_reset_all();
++		est.update_parameters(true);
++		// Drain retained uORB samples so cases are independent of execution order.
++		sensor_combined_s imu{};
++		vehicle_magnetometer_s mag{};
++		sensor_gps_s gps{};
++		vehicle_local_position_s lpos{};
++		vehicle_odometry_s odom{};
++		est._sensors_sub.copy(&imu);
++		est._vehicle_magnetometer_sub.copy(&mag);
++		est._vehicle_gps_position_sub.copy(&gps);
++		est._vehicle_local_position_sub.copy(&lpos);
++		est._vehicle_visual_odometry_sub.copy(&odom);
++		est._vehicle_mocap_odometry_sub.copy(&odom);
++		est._accel = Vector3f(0.f, 0.f, -CONSTANTS_ONE_G);
++		est._mag = Vector3f(1.f, 0.f, 0.f);
++		est._q = Quatf();
++		est._mag_decl = 0.f;
++		est._param_att_w_gyro_bias.set(0.f);
++	}
++
++	void ready()
++	{
++		est._data_good = true;
++		ASSERT_TRUE(est.update(0.01f));
++		ASSERT_TRUE(est._initialized);
++	}
++
++	static float yaw(const Quatf &q) { return Eulerf(q).psi(); }
++	static void same(const Vector3f &a, const Vector3f &b)
++	{
++		for (int i = 0; i < 3; ++i) { EXPECT_FLOAT_EQ(a(i), b(i)); }
++	}
++	static void same(const Quatf &a, const Quatf &b)
++	{
++		for (int i = 0; i < 4; ++i) { EXPECT_FLOAT_EQ(a(i), b(i)); }
++	}
++	static vehicle_odometry_s odometry()
++	{
++		vehicle_odometry_s m{};
++		m.timestamp = test_now;
++		m.timestamp_sample = test_now;
++		m.q[0] = 1.f;
++		return m;
++	}
++	static vehicle_local_position_s position()
++	{
++		vehicle_local_position_s p{};
++		p.timestamp = test_now - 1000;
++		p.v_xy_valid = true;
++		p.v_z_valid = true;
++		p.eph = 1.f;
++		return p;
++	}
++};
++
++// TC_M1_A01: initialization is gated by data availability.
++TEST_F(AttitudeEstimatorQAssignment, InitializationRequiresData)
++{
++	EXPECT_FALSE(est.update(0.01f));
++	EXPECT_FALSE(est._initialized);
++	ready();
++	EXPECT_NEAR(est._q(0), 1.f, 1e-6f);
++	EXPECT_NEAR(est._q.length(), 1.f, 1e-6f);
++}
++
++// TC_M1_A02: a nontrivial initial tilt and declination have an analytic oracle.
++TEST_F(AttitudeEstimatorQAssignment, InitializationRecoversTiltAndDeclination)
++{
++	const Quatf tilt(Eulerf(0.3f, -0.2f, 0.f));
++	est._accel = tilt.rotateVectorInverse(Vector3f(0.f, 0.f, -CONSTANTS_ONE_G));
++	est._mag = tilt.rotateVectorInverse(Vector3f(1.f, 0.f, 0.f));
++	est._mag_decl = 0.15f;
++	ASSERT_TRUE(est.init_attitude_q());
++	const Quatf expected = tilt * Quatf(Eulerf(0.f, 0.f, 0.15f));
++	for (int i = 0; i < 4; ++i) { EXPECT_NEAR(est._q(i), expected(i), 1e-6f); }
++}
++
++// TC_M1_A03: zero and collinear vectors expose normalization failure paths.
++TEST_F(AttitudeEstimatorQAssignment, DegenerateInitializationIsRejected)
++{
++	est._accel.zero();
++	EXPECT_FALSE(est.init_attitude_q());
++	EXPECT_FALSE(est._initialized);
++	est._accel = Vector3f(0.f, 0.f, -CONSTANTS_ONE_G);
++	est._mag = Vector3f(0.f, 0.f, 1.f);
++	EXPECT_FALSE(est.init_attitude_q());
++	est._mag = Vector3f(1.f, 0.f, 0.f);
++	EXPECT_TRUE(est.init_attitude_q());
++}
++
++// TC_M1_A04: quaternion integration of a constant z rate, no correction.
++TEST_F(AttitudeEstimatorQAssignment, GyroIntegrationNormalizesQuaternion)
++{
++	ready();
++	est._param_att_w_mag.set(0.f);
++	est._param_att_w_acc.set(0.f);
++	est._gyro = Vector3f(0.f, 0.f, 1.f);
++	ASSERT_TRUE(est.update(0.02f));
++	EXPECT_NEAR(yaw(est._q), 2.f * atanf(0.01f), 1e-6f);
++	EXPECT_NEAR(est._q.length(), 1.f, 1e-6f);
++	same(est._rates, est._gyro);
++}
++
++// TC_M1_A05: vision correction must take priority over conflicting mag input.
++TEST_F(AttitudeEstimatorQAssignment, VisionHeadingOverridesMagnetometer)
++{
++	ready();
++	est._param_att_ext_hdg_m.set(1);
++	est._ext_hdg_good = true;
++	est._vision_hdg = Vector3f(0.f, 1.f, 0.f);
++	est._mag = Vector3f(0.f, -1.f, 0.f);
++	est._param_att_w_ext_hdg.set(1.f);
++	ASSERT_TRUE(est.update(0.01f));
++	EXPECT_NEAR(yaw(est._q), 2.f * atanf(-M_PI_F * 0.0025f), 1e-6f);
++}
++
++// TC_M1_A06: mocap is the second external-heading source.
++TEST_F(AttitudeEstimatorQAssignment, MocapHeadingOverridesMagnetometer)
++{
++	ready();
++	est._param_att_ext_hdg_m.set(2);
++	est._ext_hdg_good = true;
++	est._mocap_hdg = Vector3f(0.f, -1.f, 0.f);
++	est._param_att_w_ext_hdg.set(1.f);
++	ASSERT_TRUE(est.update(0.01f));
++	EXPECT_GT(yaw(est._q), 0.f);
++}
++
++// TC_M1_A07: stale external heading restores magnetometer fusion.
++TEST_F(AttitudeEstimatorQAssignment, InvalidExternalHeadingFallsBackToMag)
++{
++	ready();
++	est._param_att_ext_hdg_m.set(1);
++	est._ext_hdg_good = false;
++	est._mag = Vector3f(0.f, 1.f, 0.f);
++	est._param_att_w_mag.set(1.f);
++	ASSERT_TRUE(est.update(0.01f));
++	EXPECT_LT(yaw(est._q), 0.f);
++}
++
++// TC_M1_A08: high spin gain scales continuously and caps at ten.
++TEST_F(AttitudeEstimatorQAssignment, MagnetometerSpinGainBoundaryAndCap)
++{
++	ready();
++	est._mag = Vector3f(0.f, 1.f, 0.f);
++	est._param_att_w_mag.set(1.f);
++	for (float spin : {0.873f, 1.746f, 20.f}) {
++		est._q = Quatf();
++		est._gyro = Vector3f(0.f, 0.f, spin);
++		ASSERT_TRUE(est.update(0.01f));
++		const float gain = spin <= 0.873f ? 1.f : fminf(spin / 0.873f, 10.f);
++		EXPECT_NEAR(yaw(est._q), 2.f * atanf((spin - M_PI_F * 0.5f * gain) * 0.005f), 1e-6f);
++	}
++}
++
++// TC_M1_A09: the acceleration acceptance interval excludes both endpoints.
++TEST_F(AttitudeEstimatorQAssignment, AccelerationGateExcludesExactLimits)
++{
++	ready();
++	est._param_att_w_acc.set(1.f);
++	est._param_att_acc_comp.set(0);
++	const float magnitudes[] = {CONSTANTS_ONE_G * 0.9f, CONSTANTS_ONE_G, CONSTANTS_ONE_G * 1.1f};
++	for (int index = 0; index < 3; ++index) {
++		est._q = Quatf();
++		est._accel = Vector3f(magnitudes[index], 0.f, 0.f);
++		ASSERT_TRUE(est.update(0.01f));
++		if (index == 1) { EXPECT_GT(est._q(2), 0.f); }
++		else { EXPECT_FLOAT_EQ(est._q(2), 0.f); }
++	}
++}
++
++// TC_M1_A10: compensation bypasses the norm gate and subtracts body acceleration.
++TEST_F(AttitudeEstimatorQAssignment, AccelerationCompensationSubtractsMotion)
++{
++	ready();
++	est._param_att_acc_comp.set(1);
++	est._accel = Vector3f(4.f, 0.f, -CONSTANTS_ONE_G);
++	est._pos_acc = Vector3f(4.f, 0.f, 0.f);
++	ASSERT_TRUE(est.update(0.01f));
++	same(est._q, Quatf());
++}
++
++// TC_M1_A11: bias learns below the strict spin boundary and clips symmetrically.
++TEST_F(AttitudeEstimatorQAssignment, BiasLearningClipsAndStopsAtSpinBoundary)
++{
++	ready();
++	est._bias_max = 0.02f;
++	est._param_att_w_gyro_bias.set(10.f);
++	est._param_att_w_mag.set(1.f);
++	for (float sign : {-1.f, 1.f}) {
++		est._q = Quatf();
++		est._gyro.zero();
++		est._gyro_bias.zero();
++		est._mag = Vector3f(0.f, sign, 0.f);
++		ASSERT_TRUE(est.update(0.1f));
++		EXPECT_FLOAT_EQ(est._gyro_bias(2), -sign * 0.02f);
++	}
++	const Vector3f saved = est._gyro_bias;
++	est._gyro = Vector3f(0.175f, 0.f, 0.f);
++	ASSERT_TRUE(est.update(0.01f));
++	same(est._gyro_bias, saved);
++}
++
++// TC_M1_A12: injected NaN must restore the last finite state and clear rates/bias.
++TEST_F(AttitudeEstimatorQAssignment, NonFiniteUpdateRollsBack)
++{
++	ready();
++	const Quatf before = est._q;
++	est._gyro_bias = Vector3f(0.01f, 0.02f, 0.03f);
++	est._gyro(0) = std::numeric_limits<float>::quiet_NaN();
++	EXPECT_FALSE(est.update(0.01f));
++	same(est._q, before);
++	same(est._gyro_bias, Vector3f());
++	same(est._rates, Vector3f());
++}
++
++// TC_M1_A13: zero corrected acceleration is another real rollback trigger.
++TEST_F(AttitudeEstimatorQAssignment, ZeroCorrectedAccelerationRollsBack)
++{
++	ready();
++	est._param_att_acc_comp.set(1);
++	est._pos_acc = est._accel;
++	EXPECT_FALSE(est.update(0.01f));
++	same(est._q, Quatf());
++}
++
++// TC_M1_A14: pre-init/small declination changes do not rotate; large changes do.
++TEST_F(AttitudeEstimatorQAssignment, DeclinationThresholdAndImmediateRotation)
++{
++	est.update_mag_declination(0.2f);
++	same(est._q, Quatf());
++	EXPECT_FLOAT_EQ(est._mag_decl, 0.2f);
++	ready();
++	const Quatf before = est._q;
++	est.update_mag_declination(0.20001f);
++	same(est._q, before);
++	est.update_mag_declination(0.4f);
++	EXPECT_NEAR(yaw(est._q), 0.39999f, 1e-6f);
++}
++
++// TC_M1_A15: no-mag and zero-gain configurations still initialize.
++TEST_F(AttitudeEstimatorQAssignment, ParameterUpdateSupportsMissingMagnetometer)
++{
++	int32_t no_mag = 0;
++	ASSERT_EQ(param_set_no_notification(param_find("SYS_HAS_MAG"), &no_mag), 0);
++	est.update_parameters(true);
++	EXPECT_FLOAT_EQ(est._param_att_w_mag.get(), 0.f);
++	same(est._mag, Vector3f(1.f, 0.f, 0.f));
++	ready();
++	est.update_parameters(false);
++	int32_t yes_mag = 1;
++	float zero = 0.f;
++	ASSERT_EQ(param_set_no_notification(param_find("SYS_HAS_MAG"), &yes_mag), 0);
++	ASSERT_EQ(param_set_no_notification(param_find("ATT_W_MAG"), &zero), 0);
++	est.update_parameters(true);
++	EXPECT_FLOAT_EQ(est._param_att_w_mag.get(), 0.f);
++}
++
++// TC_M1_A16: message timestamp and relative-accel validity are independent gates.
++TEST_F(AttitudeEstimatorQAssignment, SensorTimestampAndAccelerationValidity)
++{
++	uORB::Publication<sensor_combined_s> pub{ORB_ID(sensor_combined)};
++	sensor_combined_s m{};
++	m.timestamp = 123;
++	m.gyro_rad[0] = 0.3f;
++	m.accelerometer_m_s2[2] = -CONSTANTS_ONE_G;
++	ASSERT_TRUE(pub.publish(m));
++	est.update_sensors();
++	EXPECT_EQ(est._imu_timestamp, 123u);
++	EXPECT_FLOAT_EQ(est._gyro(0), 0.3f);
++	m.timestamp = 0;
++	m.gyro_rad[0] = 99.f;
++	m.accelerometer_timestamp_relative = sensor_combined_s::RELATIVE_TIMESTAMP_INVALID;
++	m.accelerometer_m_s2[2] = 99.f;
++	ASSERT_TRUE(pub.publish(m));
++	est.update_sensors();
++	EXPECT_EQ(est._imu_timestamp, 123u);
++	EXPECT_FLOAT_EQ(est._gyro(0), 0.3f);
++	EXPECT_FLOAT_EQ(est._accel(2), -CONSTANTS_ONE_G);
++	est.update_sensors(); // no new sample
++}
++
++// TC_M1_A17: sensor/mag degeneracy diagnostics and exact 0.01 threshold.
++TEST_F(AttitudeEstimatorQAssignment, DegenerateSensorVectorsAndRecovery)
++{
++	uORB::Publication<sensor_combined_s> imu_pub{ORB_ID(sensor_combined)};
++	sensor_combined_s imu{};
++	ASSERT_TRUE(imu_pub.publish(imu));
++	est.update_sensors();
++	same(est._accel, Vector3f());
++	imu.accelerometer_m_s2[0] = 0.01f;
++	ASSERT_TRUE(imu_pub.publish(imu));
++	est.update_sensors();
++	EXPECT_FLOAT_EQ(est._accel(0), 0.01f);
++	uORB::Publication<vehicle_magnetometer_s> mag_pub{ORB_ID(vehicle_magnetometer)};
++	vehicle_magnetometer_s mag{};
++	ASSERT_TRUE(mag_pub.publish(mag));
++	est.update_magnetometer();
++	same(est._mag, Vector3f());
++	mag.magnetometer_ga[0] = 0.01f;
++	ASSERT_TRUE(mag_pub.publish(mag));
++	est.update_magnetometer();
++	EXPECT_FLOAT_EQ(est._mag(0), 0.01f);
++	est.update_magnetometer();
++}
++
++// TC_M1_A18: automatic declination needs both enablement and eph strictly <20.
++TEST_F(AttitudeEstimatorQAssignment, GpsDeclinationAccuracyAndEnablement)
++{
++	uORB::Publication<sensor_gps_s> pub{ORB_ID(vehicle_gps_position)};
++	sensor_gps_s m{};
++	m.latitude_deg = 47.;
++	m.longitude_deg = 8.;
++	m.eph = 1.f;
++	est._param_att_mag_decl_a.set(0);
++	ASSERT_TRUE(pub.publish(m));
++	est.update_gps_position();
++	EXPECT_FLOAT_EQ(est._mag_decl, 0.f);
++	est._param_att_mag_decl_a.set(1);
++	m.eph = 20.f;
++	ASSERT_TRUE(pub.publish(m));
++	est.update_gps_position();
++	EXPECT_FLOAT_EQ(est._mag_decl, 0.f);
++	m.eph = 19.99f;
++	ASSERT_TRUE(pub.publish(m));
++	est.update_gps_position();
++	EXPECT_NEAR(est._mag_decl, math::radians(get_mag_declination_degrees(47., 8.)), 1e-6f);
++	est.update_gps_position();
++}
++
++// TC_M1_A19: both odometry sources reject nonfinite q and excessive variance.
++TEST_F(AttitudeEstimatorQAssignment, OdometryVarianceAndQuaternionValidation)
++{
++	for (bool vision : {true, false}) {
++		uORB::Publication<vehicle_odometry_s> pub{vision ? ORB_ID(vehicle_visual_odometry) : ORB_ID(vehicle_mocap_odometry)};
++		auto update = [&]() { if (vision) { est.update_visual_odometry(); } else { est.update_motion_capture_odometry(); } };
++		auto &heading = vision ? est._vision_hdg : est._mocap_hdg;
++		for (int variant = 0; variant < 5; ++variant) {
++			auto m = odometry();
++			heading = Vector3f(9.f, 9.f, 9.f);
++			if (variant == 0) { m.q[0] = NAN; }
++			if (variant == 1) { m.orientation_variance[2] = 10001.f; }
++			if (variant == 2) { m.orientation_variance[1] = 10000.f; }
++			if (variant == 3) { m.orientation_variance[0] = NAN; }
++			if (variant == 4) {
++				for (float &variance : m.orientation_variance) { variance = -1.f; }
++			}
++			ASSERT_TRUE(pub.publish(m));
++			update();
++			if (variant < 2 || variant == 4) { same(heading, Vector3f(9.f, 9.f, 9.f)); }
++			else { same(heading, Vector3f(1.f, 0.f, 0.4f)); }
++		}
++		update(); // no unread message
++	}
++}
++
++// TC_M1_A20: source selection plus zero/exact-timeout/fresh timestamp cases.
++TEST_F(AttitudeEstimatorQAssignment, OdometrySourceSelectionAndTimeout)
++{
++	for (bool vision : {true, false}) {
++		uORB::Publication<vehicle_odometry_s> pub{vision ? ORB_ID(vehicle_visual_odometry) : ORB_ID(vehicle_mocap_odometry)};
++		auto update = [&]() { if (vision) { est.update_visual_odometry(); } else { est.update_motion_capture_odometry(); } };
++		est._param_att_ext_hdg_m.set(vision ? 1 : 2);
++		for (hrt_abstime age : {hrt_abstime(0), hrt_abstime(499999), hrt_abstime(500000), test_now}) {
++			auto m = odometry();
++			m.timestamp_sample = test_now - age;
++			ASSERT_TRUE(pub.publish(m));
++			update();
++			EXPECT_EQ(est._ext_hdg_good, age < 500000);
++		}
++		est._param_att_ext_hdg_m.set(0);
++		est._ext_hdg_good = false;
++		ASSERT_TRUE(pub.publish(odometry()));
++		update();
++		EXPECT_FALSE(est._ext_hdg_good);
++	}
++}
++
++// TC_M1_A21: first/equal timestamps avoid division; next velocity gives body acceleration.
++TEST_F(AttitudeEstimatorQAssignment, PositionDerivativeAndRepeatedTimestamp)
++{
++	ready();
++	est._param_att_acc_comp.set(1);
++	uORB::Publication<vehicle_local_position_s> pub{ORB_ID(vehicle_local_position)};
++	auto p = position();
++	ASSERT_TRUE(pub.publish(p));
++	est.update_vehicle_local_position();
++	same(est._pos_acc, Vector3f());
++	p.vx = 1.f;
++	ASSERT_TRUE(pub.publish(p));
++	est.update_vehicle_local_position();
++	same(est._pos_acc, Vector3f());
++	est._q = Quatf(Eulerf(0.f, 0.f, M_PI_F * 0.5f));
++	p.timestamp += 1000;
++	p.vx = 1.002f;
++	ASSERT_TRUE(pub.publish(p));
++	est.update_vehicle_local_position();
++	EXPECT_NEAR(est._pos_acc(0), 0.f, 0.0002f);
++	EXPECT_NEAR(est._pos_acc(1), -2.f, 0.0002f);
++	est.update_vehicle_local_position();
++}
++
++// TC_M1_A22: vary every acceptance gate, verify all stale derivative state clears.
++TEST_F(AttitudeEstimatorQAssignment, PositionRejectionClearsHistory)
++{
++	ready();
++	uORB::Publication<vehicle_local_position_s> pub{ORB_ID(vehicle_local_position)};
++	for (int gate = 0; gate < 6; ++gate) {
++		auto p = position();
++		est._param_att_acc_comp.set(gate == 0 ? 0 : 1);
++		est._initialized = gate != 5;
++		if (gate == 1) { p.timestamp = test_now - 20_ms; }
++		if (gate == 2) { p.v_xy_valid = false; }
++		if (gate == 3) { p.v_z_valid = false; }
++		if (gate == 4) { p.eph = 5.f; }
++		est._pos_acc = Vector3f(1.f, 2.f, 3.f);
++		est._vel_prev = Vector3f(1.f, 2.f, 3.f);
++		est._vel_prev_timestamp = 42;
++		ASSERT_TRUE(pub.publish(p));
++		est.update_vehicle_local_position();
++		same(est._pos_acc, Vector3f());
++		same(est._vel_prev, Vector3f());
++		EXPECT_EQ(est._vel_prev_timestamp, 0u);
++	}
++}
++
++// TC_M1_A23: publishing is gated by success; sample timestamp is propagated.
++TEST_F(AttitudeEstimatorQAssignment, AttitudePublicationAndDtClamps)
++{
++	uORB::Subscription sub{ORB_ID(vehicle_attitude)};
++	vehicle_attitude_s out{};
++	sub.copy(&out);
++	est.update_vehicle_attitude();
++	EXPECT_FALSE(sub.updated());
++	ready();
++	est._param_att_w_mag.set(0.f);
++	est._gyro = Vector3f(0.f, 0.f, 1.f);
++	est._imu_timestamp = 1234;
++	for (hrt_abstime elapsed : {hrt_abstime(0), hrt_abstime(100000)}) {
++		est._q = Quatf();
++		est._imu_prev_timestamp = test_now - elapsed;
++		est.update_vehicle_attitude();
++		ASSERT_TRUE(sub.update(&out));
++		EXPECT_EQ(out.timestamp_sample, 1234u);
++		EXPECT_EQ(out.timestamp, test_now);
++		EXPECT_NEAR(yaw(Quatf(out.q)), 2.f * atanf((elapsed == 0 ? 0.00001f : 0.02f) * 0.5f), 1e-6f);
++	}
++}
++
++// TC_M1_A24: synchronous Run executes real message routing without a scheduler.
++TEST_F(AttitudeEstimatorQAssignment, RunProcessesOnlyNewImuSamples)
++{
++	est.Run();
++	EXPECT_FALSE(est._data_good);
++	uORB::Publication<sensor_combined_s> pub{ORB_ID(sensor_combined)};
++	sensor_combined_s m{};
++	m.timestamp = test_now;
++	m.accelerometer_m_s2[2] = -CONSTANTS_ONE_G;
++	ASSERT_TRUE(pub.publish(m));
++	est.Run();
++	EXPECT_TRUE(est._data_good);
++	EXPECT_TRUE(est._initialized);
++	est._data_good = false;
++	est.Run();
++	EXPECT_FALSE(est._data_good);
++}
++
++// TC_M1_A25: characterize a baseline defect, not an expected-correctness claim.
++TEST_F(AttitudeEstimatorQAssignment, ConfiguredBiasLimitIsNotApplied)
++{
++	const float configured_limit = 0.05f;
++	ASSERT_EQ(param_set_no_notification(param_find("ATT_BIAS_MAX"), &configured_limit), 0);
++	est.update_parameters(true);
++	float stored_limit = 0.f;
++	ASSERT_EQ(param_get(param_find("ATT_BIAS_MAX"), &stored_limit), 0);
++	ASSERT_FLOAT_EQ(stored_limit, configured_limit);
++	EXPECT_FLOAT_EQ(est._bias_max, 0.f); // Missing assignment in production update_parameters().
++	ready();
++	est._param_att_w_mag.set(1.f);
++	est._param_att_w_gyro_bias.set(0.1f);
++	est._mag = Vector3f(0.f, 1.f, 0.f);
++	ASSERT_TRUE(est.update(0.01f));
++	EXPECT_FLOAT_EQ(est._gyro_bias(2), 0.f); // Correct wiring would learn a negative bias.
++}
++
++// TC_M1_A26: a real parameter notification refreshes cached gains without force.
++TEST_F(AttitudeEstimatorQAssignment, ParameterNotificationRefreshesCachedGain)
++{
++	const float gain = 0.7f;
++	ASSERT_EQ(param_set_no_notification(param_find("ATT_W_MAG"), &gain), 0);
++	test_now += 2_s;
++	param_notify_changes();
++	est.update_parameters(false);
++	EXPECT_FLOAT_EQ(est._param_att_w_mag.get(), gain);
++}
++
++// TC_M1_A27: fresh competing estimator prevents startup; stale data permits it.
++TEST_F(AttitudeEstimatorQAssignment, StartupRejectsFreshCompetingAttitude)
++{
++	uORB::Publication<vehicle_attitude_s> pub{ORB_ID(vehicle_attitude)};
++	vehicle_attitude_s m{};
++	m.timestamp = test_now;
++	ASSERT_TRUE(pub.publish(m));
++	EXPECT_FALSE(est.init());
++	m.timestamp = test_now - 1_s;
++	ASSERT_TRUE(pub.publish(m));
++	EXPECT_TRUE(est.init());
++	est._sensors_sub.unregisterCallback();
++}
++
++// TC_M1_A28: stop request bypasses sensor processing and clears its callback.
++TEST_F(AttitudeEstimatorQAssignment, StopRequestBypassesProcessing)
++{
++	est.request_stop();
++	est.Run(); // Static ModuleBase::_object is null: no stack object is deleted.
++	EXPECT_FALSE(est._data_good);
++}
++
++// TC_M1_A29: absence of another publisher permits sensor callback registration.
++TEST_F(AttitudeEstimatorQAssignment, StartupWithoutCompetingPublisher)
++{
++	EXPECT_TRUE(est.init());
++	est._sensors_sub.unregisterCallback();
++}

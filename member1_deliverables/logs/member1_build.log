@@ -1,0 +1,63 @@
+[0/1] Re-running CMake...
+fatal: No names found, cannot describe anything.
+-- PX4_GIT_TAG: v0.0.0
+CMake Warning (dev) at CMakeLists.txt:176 (find_package):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- PX4 config file: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/boards/px4/sitl/test.px4board
+-- PLATFORM posix
+-- NOLOCKSTEP y
+-- ROMFSROOT px4fmu_common
+-- TESTING y
+-- ETHERNET y
+-- ROOT_PATH .
+-- PARAM_FILE /fs/mtd_params
+-- PX4 config: px4_sitl_test
+-- PX4 platform: posix
+-- PX4 lockstep: disabled
+-- cmake build type: Coverage
+-- Building for code coverage
+-- Coverage instrumentation enabled with flags: --coverage;-fprofile-update=atomic
+-- Adding fuzztest
+CMake Warning at build/px4_sitl_test/_deps/abseil-cpp-src/CMakeLists.txt:177 (message):
+    The default and system-level install directories are unsupported except in LTS   releases of Abseil.  Please set CMAKE_INSTALL_PREFIX to install Abseil in your   source or build tree directly.    
+
+
+-- Building without demo. To enable demo build use: -DWITH_DEMO=True
+-- ADDING TEST STUBS
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Gazebo simulation bridge module disabled: missing dependencies
+-- Could NOT find Protobuf (missing: Protobuf_LIBRARIES Protobuf_INCLUDE_DIR) 
+-- Could NOT find gz-transport (missing: gz-transport_DIR)
+-- Could NOT find gz-sim (missing: gz-sim_DIR)
+-- Could NOT find gz-sensors (missing: gz-sensors_DIR)
+-- Could NOT find gz-plugin (missing: gz-plugin_DIR)
+-- Could NOT find Java (missing: Java_JAVA_EXECUTABLE Java_JAR_EXECUTABLE Java_JAVAC_EXECUTABLE Java_JAVAH_EXECUTABLE Java_JAVADOC_EXECUTABLE) 
+-- ROMFS: ROMFS/px4fmu_common
+Architecture:  amd64
+==> CPACK_INSTALL_PREFIX = @DEB_INSTALL_PREFIX@
+-- Configuring done (15.9s)
+-- Generating done (1.4s)
+-- Build files have been written to: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+[1/4] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o
+FAILED: src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o 
+/usr/bin/c++ -DCENTIPEDE_DISABLE_RIEGELI -DCONFIG_ARCH_BOARD_PX4_SITL -DGTEST_HAS_ABSL=1 -DMODULE_NAME=\"functional-AttitudeEstimatorQ\" -D__CUSTOM_FILE_IO__ -D__PX4_LINUX -D__PX4_POSIX -D__STDC_FORMAT_MACROS -Dfunctional_AttitudeEstimatorQ_EXPORTS -Dnoreturn_function="__attribute__((noreturn))" -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/boards/px4/sitl/src -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/platforms/posix/src/px4/common/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/platforms/posix/src/px4/generic/generic/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/platforms/common -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/platforms/common/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/matrix -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/platforms/posix/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/external/Install/include -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/_deps/abseil-cpp-src -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/_deps/re2-src -I/home/muhammad/SQE_A2/PX4-Autopilot-Testing/test/fuzztest -isystem /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/_deps/googletest-src/googletest/include -isystem /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/_deps/googletest-src/googletest --coverage -ftest-coverage -fprofile-arcs -O0 -fno-default-inline -fno-inline -fno-elide-constructors -std=gnu++17 -fPIE --coverage -fprofile-update=atomic -g -fdata-sections -ffunction-sections -fomit-frame-pointer -fmerge-all-constants -fno-signed-zeros -fno-trapping-math -freciprocal-math -fno-math-errno -fno-strict-aliasing -fvisibility=hidden -include visibility.h -Wall -Wextra -Werror -Warray-bounds -Wcast-align -Wdisabled-optimization -Wdouble-promotion -Wfatal-errors -Wfloat-equal -Wformat-security -Winit-self -Wlogical-op -Wpointer-arith -Wshadow -Wuninitialized -Wunknown-pragmas -Wunused-variable -Wno-missing-field-initializers -Wno-missing-include-dirs -Wno-unused-parameter -fdiagnostics-color=always -Wno-stringop-truncation -fno-builtin-printf -fno-strength-reduce -Wformat=1 -Wunused-but-set-variable -Wno-format-truncation -fcheck-new -Wreorder -Wno-overloaded-virtual -MD -MT src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o -MF src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o.d -o src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o -c /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp
+/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp: In member function ‘virtual void AttitudeEstimatorQAssignment_AccelerationGateExcludesExactLimits_Test::TestBody()’:
+/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp:231:31: error: comparing floating-point with ‘==’ or ‘!=’ is unsafe [-Werror=float-equal]
+  231 |                 if (magnitude == CONSTANTS_ONE_G) { EXPECT_GT(est._q(2), 0.f); }
+      |                     ~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+compilation terminated due to -Wfatal-errors.
+cc1plus: all warnings being treated as errors
+[2/4] Building CXX object src/lib/hysteresis/CMakeFiles/unit-HysteresisAssignment.dir/HysteresisAssignmentTest.cpp.o
+ninja: build stopped: subcommand failed.
+[1/3] Linking CXX executable unit-HysteresisAssignment
+[2/3] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o
+[3/3] Linking CXX executable functional-AttitudeEstimatorQ
+[1/2] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o
+[2/2] Linking CXX executable functional-AttitudeEstimatorQ
+[1/2] Building CXX object src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.o
+[2/2] Linking CXX executable functional-AttitudeEstimatorQ

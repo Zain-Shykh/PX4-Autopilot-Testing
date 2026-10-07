@@ -1,0 +1,304 @@
+$ ctest --test-dir /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test -R '^(unit-Hysteresis|unit-HysteresisAssignment|functional-AttitudeEstimatorQ)$' --timeout 30 -V
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 11
+    Start 11: unit-Hysteresis
+
+11: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/unit-Hysteresis
+11: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+11: Test timeout computed to be: 30
+11: [==========] Running 7 tests from 1 test suite.
+11: [----------] Global test environment set-up.
+11: [----------] 7 tests from Hysteresis
+11: [ RUN      ] Hysteresis.InitFalse
+11: [       OK ] Hysteresis.InitFalse (0 ms)
+11: [ RUN      ] Hysteresis.InitTrue
+11: [       OK ] Hysteresis.InitTrue (0 ms)
+11: [ RUN      ] Hysteresis.Zero
+11: [       OK ] Hysteresis.Zero (0 ms)
+11: [ RUN      ] Hysteresis.ChangeAfterTime
+11: [       OK ] Hysteresis.ChangeAfterTime (0 ms)
+11: [ RUN      ] Hysteresis.HysteresisChanged
+11: [       OK ] Hysteresis.HysteresisChanged (0 ms)
+11: [ RUN      ] Hysteresis.ChangeAfterMultipleSets
+11: [       OK ] Hysteresis.ChangeAfterMultipleSets (0 ms)
+11: [ RUN      ] Hysteresis.TakeChangeBack
+11: [       OK ] Hysteresis.TakeChangeBack (0 ms)
+11: [----------] 7 tests from Hysteresis (2 ms total)
+11: 
+11: [----------] Global test environment tear-down
+11: [==========] 7 tests from 1 test suite ran. (2 ms total)
+11: [  PASSED  ] 7 tests.
+1/3 Test #11: unit-Hysteresis ..................   Passed    0.06 sec
+test 12
+    Start 12: unit-HysteresisAssignment
+
+12: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/unit-HysteresisAssignment
+12: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+12: Test timeout computed to be: 30
+12: [==========] Running 7 tests from 1 test suite.
+12: [----------] Global test environment set-up.
+12: [----------] 7 tests from HysteresisAssignment
+12: [ RUN      ] HysteresisAssignment.ExactDeadlinesInBothDirections
+12: [       OK ] HysteresisAssignment.ExactDeadlinesInBothDirections (0 ms)
+12: [ RUN      ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay
+12: [       OK ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.ShortenPendingDelay
+12: [       OK ] HysteresisAssignment.ShortenPendingDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.ExtendPendingDelay
+12: [       OK ] HysteresisAssignment.ExtendPendingDelay (0 ms)
+12: [ RUN      ] HysteresisAssignment.PendingDelayCanBecomeImmediate
+12: [       OK ] HysteresisAssignment.PendingDelayCanBecomeImmediate (0 ms)
+12: [ RUN      ] HysteresisAssignment.InterleavedInstancesRemainIndependent
+12: [       OK ] HysteresisAssignment.InterleavedInstancesRemainIndependent (0 ms)
+12: [ RUN      ] HysteresisAssignment.LargeTimestampDeadline
+12: [       OK ] HysteresisAssignment.LargeTimestampDeadline (0 ms)
+12: [----------] 7 tests from HysteresisAssignment (2 ms total)
+12: 
+12: [----------] Global test environment tear-down
+12: [==========] 7 tests from 1 test suite ran. (2 ms total)
+12: [  PASSED  ] 7 tests.
+2/3 Test #12: unit-HysteresisAssignment ........   Passed    0.02 sec
+test 73
+    Start 73: functional-AttitudeEstimatorQ
+
+73: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-AttitudeEstimatorQ
+73: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q
+73: Test timeout computed to be: 30
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:lp_default not available
+73: ERROR [px4_work_queue] init failed
+73: [==========] Running 29 tests from 1 test suite.
+73: [----------] Global test environment set-up.
+73: [----------] 29 tests from AttitudeEstimatorQAssignment
+73: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+73: ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+73: [       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: ERROR [functional-AttitudeEstimatorQ] init failed, vehicle_attitude already advertised
+73: [       OK ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude (0 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing (1 ms)
+73: [ RUN      ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher
+73: ERROR [px4_work_queue] not running
+73: ERROR [px4_work_queue] wq:nav_and_controllers not available
+73: ERROR [px4_work_queue] init failed
+73: [       OK ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher (1 ms)
+73: [----------] 29 tests from AttitudeEstimatorQAssignment (29 ms total)
+73: 
+73: [----------] Global test environment tear-down
+73: [==========] 29 tests from 1 test suite ran. (29 ms total)
+73: [  PASSED  ] 29 tests.
+3/3 Test #73: functional-AttitudeEstimatorQ ....   Passed    0.08 sec
+
+The following tests passed:
+	unit-Hysteresis
+	unit-HysteresisAssignment
+	functional-AttitudeEstimatorQ
+
+100% tests passed, 0 tests failed out of 3
+
+Total Test time (real) =   0.18 sec
+$ lcov --capture --initial --directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir --directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir --branch-coverage --ignore-errors mismatch,unused --base-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/hysteresis.cpp --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp -o /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/initial.info
+Capturing coverage data from /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir
+geninfo cmd: '/usr/bin/geninfo /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir --output-filename /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/initial.info --base-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test --ignore-errors mismatch --ignore-errors unused --initial --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/hysteresis.cpp --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_datwytw
+Scanning /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir for .gcno files ...
+Found 1 graph files in /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir/hysteresis.cpp.gcno
+Scanning /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir for .gcno files ...
+Found 1 graph files in /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.gcno
+Excluded data for 48 files due to include/exclude options
+Finished .info-file creation
+$ lcov --capture --directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis --directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q --branch-coverage --ignore-errors mismatch,unused --base-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/hysteresis.cpp --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp -o /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/executed.info
+Capturing coverage data from /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q
+geninfo cmd: '/usr/bin/geninfo /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q --output-filename /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/executed.info --base-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test --ignore-errors mismatch --ignore-errors unused --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/hysteresis/hysteresis.cpp --include /home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_datvpjp
+Scanning /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis for .gcda files ...
+Found 3 data files in /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis/CMakeFiles/hysteresis.dir/hysteresis.cpp.gcda
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis/CMakeFiles/unit-HysteresisAssignment.dir/HysteresisAssignmentTest.cpp.gcda
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/lib/hysteresis/CMakeFiles/unit-Hysteresis.dir/HysteresisTest.cpp.gcda
+Excluded data for 21 files due to include/exclude options
+Scanning /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q for .gcda files ...
+Found 1 data files in /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q
+Processing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/member1_profiles/final/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.gcda
+Excluded data for 51 files due to include/exclude options
+Finished .info-file creation
+$ lcov --branch-coverage -a /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/initial.info -a /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/executed.info -o /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/coverage.info
+Combining tracefiles.
+.. found 2 files to aggregate.
+Merging /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/initial.info..1 remaining
+Merging /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/executed.info..0 remaining
+Writing data to /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/coverage.info
+Summary coverage rate:
+  lines......: 89.5% (221 of 247 lines)
+  functions..: 79.2% (19 of 24 functions)
+  branches...: 63.2% (364 of 576 branches)
+$ genhtml --branch-coverage --legend --prefix /home/muhammad/SQE_A2/PX4-Autopilot-Testing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/coverage.info --output-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/html
+Found 2 entries.
+Using user-specified filename prefix "/home/muhammad/SQE_A2/PX4-Autopilot-Testing"
+Generating output.
+Processing file src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp
+  lines=225 hit=199 functions=21 hit=16 branches=556 hit=347
+Processing file src/lib/hysteresis/hysteresis.cpp
+  lines=22 hit=22 functions=3 hit=3 branches=20 hit=17
+Overall coverage rate:
+  lines......: 89.5% (221 of 247 lines)
+  functions......: 79.2% (19 of 24 functions)
+  branches......: 63.2% (364 of 576 branches)
+$ lcov --branch-coverage --summary /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/coverage.info
+Summary coverage rate:
+  lines......: 89.5% (221 of 247 lines)
+  functions..: 79.2% (19 of 24 functions)
+  branches...: 63.2% (364 of 576 branches)

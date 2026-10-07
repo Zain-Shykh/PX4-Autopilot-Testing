@@ -1,0 +1,1 @@
+genhtml --branch-coverage --legend --prefix /home/muhammad/SQE_A2/PX4-Autopilot-Testing /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/coverage.info --output-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/coverage/final/html

@@ -8,17 +8,17 @@ This document serves as the master work distribution blueprint and starting poin
 
 Because of the strict 1-day deadline, all work must be decoupled so that team members can work simultaneously on separate codebase modules and documentation sections without creating merge conflicts or blocking dependencies.
 
-### Primary Objectives
+### Primary Objectives & Assignment Constraints
 - **System Under Test (SUT)**: PX4-Autopilot Baseline Tag `v1.17.0` (Commit Hash: `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`).
 - **Equal Work Split**: Work is divided into 3 equal tracks with clear individual module ownership and shared integration responsibilities.
 - **Coverage Target**: 100% Statement Coverage & 100% Decision/Branch Coverage on selected business/control logic, alongside a rigorous **MC/DC (Modified Condition/Decision Coverage)** derivation on a designated critical component.
 - **Deliverables**:
   1. Detailed Comprehensive Technical Report (`Report.md` / PDF export).
-  2. Testing Workbook (`Testing_Workbook.xlsx` - exactly 2 sheets).
+  2. Testing Workbook (`Testing_Workbook.xlsx` - **strictly max 2 sheets**: Sheet 1 `Test Inventory`, Sheet 2 `MC/DC Evidence`).
   3. Student-Authored Test C++ Source Files & CMake Modifications.
   4. Git Patch File (`px4_assignment2_tests.patch` against `v1.17.0`).
   5. Baseline and Final `lcov` / `gcov` Coverage Reports (HTML + Machine-Readable).
-  6. AI Assistance Record.
+  6. AI Assistance Record (identifying material AI usage and assumptions introduced).
 
 ---
 
@@ -124,6 +124,7 @@ The work is split into **Shared/Collaborative Responsibilities** (where all 3 me
 ## 4. Member-Specific Roles, Scope & Detailed Responsibilities
 
 ### 👤 MEMBER 1: System Integrator & Estimation/State Logic Lead
+*(Evaluated against Rubric: Part 1 - Repository Analysis [20 Marks, CLO3] & Part 3A - Implementation [15 Marks, CLO2])*
 
 #### Primary Scope & Production Code Allocation
 1. **Target Area 1A**: `src/modules/attitude_estimator_q/` (`AttitudeEstimatorQ` C++ class)
@@ -134,15 +135,16 @@ The work is split into **Shared/Collaborative Responsibilities** (where all 3 me
    - *Test Level*: GTest Unit Test.
 
 #### Task List & Step-by-Step Instructions
-- [ ] **Part 1 Setup**: Record Git hash (`d6f12ad1c4f70ad3230afd7d86e971421e02fef4`) and local compiler details in report section 1.
+- [ ] **Part 1 Setup**: Record Git hash (`d6f12ad1c4f70ad3230afd7d86e971421e02fef4`), OS, compiler/toolchain details, and exact build/test commands in report section 1.
 - [ ] **Scope Analysis**: Analyze `AttitudeEstimatorQ` and `Hysteresis` decision logic; document state variables, inputs, parameters, and decision paths.
 - [ ] **Test Derivation**: Design test cases for 100% Statement and Decision/Branch coverage for `attitude_estimator_q` and `hysteresis`. Include boundary cases (zero division, quaternion normalization limits, edge state transitions).
 - [ ] **C++ Implementation**: Implement student-authored GTest unit tests under `src/modules/attitude_estimator_q/` and `src/lib/hysteresis/`. Update relevant `CMakeLists.txt` for test registration.
-- [ ] **Workbook Leadership**: Responsible for managing and integrating **Sheet 1 (Test Inventory)** of `Testing_Workbook.xlsx`.
+- [ ] **Workbook Leadership**: Responsible for managing and integrating **Sheet 1 (Test Inventory)** of `Testing_Workbook.xlsx` (Test ID, component/function, purpose/scenario, key controlled input/state, expected result, execution result, coverage target, test-file reference).
 
 ---
 
 ### 👤 MEMBER 2: Lead Structural Analyst & MC/DC Specialist
+*(Evaluated against Rubric: Part 2 - Structural Test Derivation & MC/DC [30 Marks, CLO2] & Part 4 - Quality Judgment [15 Marks, CLO3])*
 
 #### Primary Scope & Production Code Allocation
 1. **Target Area 2 (MC/DC Designated Critical Component)**: `src/modules/land_detector/` (`LandDetector` & `MulticopterLandDetector`)
@@ -155,13 +157,15 @@ The work is split into **Shared/Collaborative Responsibilities** (where all 3 me
   - Extract all non-trivial compound decisions from `MulticopterLandDetector::detect_land()` and related condition checks (e.g., altitude rate, acceleration, thrust vector, time hysteresis).
   - Define atomic Boolean conditions ($A, B, C, D, \dots$) for each compound decision.
   - Construct MC/DC Independence Pair matrices demonstrating each atomic condition's independent effect on the final decision outcome.
-- [ ] **Sheet 2 Workbook Leadership**: Build and format **Sheet 2 (MC/DC Evidence)** in `Testing_Workbook.xlsx` with complete Boolean truth tables, test pair references, and outcome evidence.
+  - **Condition Value Rule**: Ensure test set demonstrates every atomic condition taking both True and False values AND overall decision taking both True and False outcomes.
+- [ ] **Sheet 2 Workbook Leadership**: Build and format **Sheet 2 (MC/DC Evidence)** in `Testing_Workbook.xlsx` with complete Boolean truth tables, independence pairs, demonstrated conditions, and test references. (Strictly no extra sheets permitted!).
 - [ ] **C++ Test Suite**: Write comprehensive GTest suite for `LandDetector` reaching 100% branch/statement coverage and executing all MC/DC test condition pairs.
-- [ ] **Part 4 Quality Judgment Lead**: Draft the initial 300–400 word Final Quality Judgment section summarizing structural test coverage confidence and residual risk.
+- [ ] **Part 4 Quality Judgment Lead**: Draft the 300–400 word Final Quality Judgment section summarizing structural test coverage confidence and residual risk without overclaiming whole-repository quality.
 
 ---
 
 ### 👤 MEMBER 3: Environment, Flight Control & Coverage Pipeline Lead
+*(Evaluated against Rubric: Part 3B - Coverage Measurement & Gap Analysis [20 Marks, CLO2/CLO3])*
 
 #### Primary Scope & Production Code Allocation
 1. **Target Area 3A**: `src/modules/flight_mode_manager/` (`FlightModeManager` & Tasks)
@@ -177,8 +181,8 @@ The work is split into **Shared/Collaborative Responsibilities** (where all 3 me
 - [ ] **C++ Implementation**: Implement GTest functional/unit tests under `src/modules/flight_mode_manager/` and `src/modules/battery_status/`.
 - [ ] **Part 4 Coverage Gap & Defect Analysis Lead**:
   - Run final `lcov` report and perform line-by-line gap analysis.
-  - Document all uncovered statements/branches with technical justifications (e.g., defensive assertions, uninstantiated templates, hardware platform guards).
-  - Record any confirmed defects/blockers found during testing.
+  - Document all uncovered statements/branches with technical justifications (e.g., defensive assertions, uninstantiated templates, hardware platform guards). "Hardware dependent" alone is NOT acceptable justification.
+  - Record any confirmed defects/blockers found during testing (affected source location, reproduction conditions, expected vs actual result).
 
 ---
 
@@ -236,17 +240,25 @@ Each member's `work_plan.md` must include:
 
 ---
 
-## 8. Final Submission Checklist & Viva Preparation Guide
+## 8. Final Submission Checklist, Strict Formatting Rules & Viva Guide
 
-### 8.1 Deliverables Checklist
+### 8.1 File Naming & Formatting Constraints
+- All submitted files **must** follow the strict naming convention: `<Rollnumber1_Rollnumber2_Rollnumber3_Section>.<extension>` (unless specified otherwise by the LMS).
+- The testing workbook (`.xlsx`) **must contain strictly no more than 2 sheets**:
+  - Sheet 1: `Test Inventory`
+  - Sheet 2: `MC/DC Evidence`
+  - *(Do NOT create separate scope, coverage gap, or defect sheets; explain gaps and defects in prose in the report).*
+- **No Manufactured Failures**: Execution statuses (`PASS`, `FAIL`, `BLOCKED`) must accurately reflect execution outcomes. Do not manufacture artificial failures.
+
+### 8.2 Deliverables Checklist
 - [ ] **Concise Technical Report** (`Report.md` or PDF): Containing Group details, Environment specs, Commit hash `d6f12ad1c4f70ad3230afd7d86e971421e02fef4`, Scope justification, MC/DC derivation, Coverage analysis, Remaining gaps, and 300–400 word Final Quality Judgment.
 - [ ] **Student-Authored Test Files**: Located in proper `src/` module directories with modified `CMakeLists.txt`.
 - [ ] **Git Patch File**: `px4_assignment2_tests.patch` produced via `git diff v1.17.0 > px4_assignment2_tests.patch`.
 - [ ] **Testing Workbook (`Testing_Workbook.xlsx`)**: Exactly 2 sheets (`Test Inventory` & `MC/DC Evidence`).
 - [ ] **Coverage Evidence**: `lcov` HTML report folder & summary files.
-- [ ] **AI Assistance Record**: Summary of AI usage and verified assumptions.
+- [ ] **Brief AI-Assistance Record**: Documenting material AI use (navigation, build troubleshooting, test scaffolding) and any key assumptions introduced.
 
-### 8.2 Viva & Oral Defense Preparation Guide
+### 8.3 Viva & Oral Defense Preparation Guide
 During the viva, any member may be individually questioned on any part of the project. Ensure every team member can answer the following:
 1. **Baseline & Commands**: How do you build PX4 SITL and run only your student-authored test from the command line?
 2. **Source-to-Test Mapping**: Pick any test case in Sheet 1 and point to the exact lines of C++ code in `src/modules/...` that it exercises.

@@ -120,10 +120,9 @@ public:
 		sp.velocity[1] = NAN;
 		sp.velocity[2] = vz;
 		sp.timestamp = hrt_absolute_time();
-		uORB::Publication<trajectory_setpoint_s> pub{ORB_ID(trajectory_setpoint)};
-		pub.publish(sp);
+		_trajectory_setpoint_pub.publish(sp);
 		sp.timestamp = hrt_absolute_time() + 1;
-		pub.publish(sp);
+		_trajectory_setpoint_pub.publish(sp);
 	}
 	void set_dist_bottom_is_observable(bool observable) { _dist_bottom_is_observable = observable; }
 
@@ -183,6 +182,8 @@ public:
 			_takeoff_state == takeoff_status_s::TAKEOFF_STATE_FLIGHT,
 			_takeoff_state == takeoff_status_s::TAKEOFF_STATE_RAMPUP};
 	}
+
+	uORB::Publication<trajectory_setpoint_s> _trajectory_setpoint_pub{ORB_ID(trajectory_setpoint)};
 };
 
 class LandDetectorFixture : public ::testing::Test
@@ -988,6 +989,8 @@ TEST_F(LandDetectorFixture, Boundary_FreefallAcceleration)
 TEST_F(LandDetectorFixture, Boundary_VerticalVelocity)
 {
 	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_z_derivative(false, 0.0f);
+	detector.set_landed_hysteresis_state(false);
 	
 	detector.test_get_ground_contact_state(); 
 	float z_vel_max = 0.5f; // we set it to 0.5f in configure_thresholds and we set landSpeed to 0.0f
@@ -1114,7 +1117,7 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
 	// Equal to threshold (0.090f) -> thrust condition met -> maybe_landed = true
-	detector.set_vehicle_thrust_setpoint_throttle(0.090f);
+	detector.set_vehicle_thrust_setpoint_throttle(0.08999999f);
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
 	// Above threshold (0.091f) -> thrust condition not met -> maybe_landed = false

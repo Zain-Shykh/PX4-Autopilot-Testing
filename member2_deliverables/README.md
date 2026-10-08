@@ -20,7 +20,7 @@ Because personal work plans are ignored by Git, this folder serves as the dedica
 | **`part2_mcdc_analysis.md`** | Part 2 MC/DC Derivation & Independence Proofs | Technical Report (`Report.md` Part 2) | Team Report Lead |
 | **`sheet2_mcdc_evidence.csv`** | **34-Row** Master MC/DC Matrix (all 17 independence pairs) | Testing Workbook (`Testing_Workbook.xlsx` Sheet 2) | **Member 1** (Workbook Lead) |
 | **`part3_coverage_evidence.md`** | Part 3 Structural Coverage Stats & Gap Analysis | Technical Report (`Report.md` Part 3) | **Member 3** (Coverage Lead) |
-| **`part4_final_quality_judgment.md`** | Official 322-Word Final Quality Judgment | Technical Report (`Report.md` Part 4) | Team Report Lead |
+| **`part4_final_quality_judgment.md`** | 300–400-word Final Quality Judgment | Technical Report (`Report.md` Part 4) | Team Report Lead |
 | **`ctest_execution_log.txt`** | Raw `make tests` Command Line Execution Output | Submission Log Folder | Team Report Lead |
 
 ---
@@ -48,5 +48,5 @@ To compile and verify Member 2's deliverables from the terminal:
 ```bash
 # Compile and run Member 2 test suite
 make tests TESTFILTER=LandDetector
-# Expected Result: 100% tests passed (15/15 PASS)
+# Expected Result: 100% tests passed (19/19 PASS)
 ```

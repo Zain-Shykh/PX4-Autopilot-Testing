@@ -79,6 +79,7 @@ public:
 		_vehicle_local_position.dist_bottom = dist;
 	}
 	void set_in_descend(bool in_descend) { _in_descend = in_descend; }
+	void set_horizontal_movement(bool moving) { _horizontal_movement = moving; }
 	void set_flag_control_climb_rate_enabled(bool enabled) { _flag_control_climb_rate_enabled = enabled; }
 	void set_takeoff_state(uint8_t state) { _takeoff_state = state; }
 	void set_below_gnd_effect_hgt(bool below) { _below_gnd_effect_hgt = below; }
@@ -353,12 +354,11 @@ TEST_F(LandDetectorFixture, GroundEffectMCDC_ConditionB_NoHorizontalMovement)
 	detector.set_takeoff_state(takeoff_status_s::TAKEOFF_STATE_DISARMED);
 
 	// TP_D3_B1: B=True (Vx=0, Vy=0 -> no horizontal movement) -> D3 = True
-	detector.set_horizontal_velocity(0.0f, 0.0f);
+	detector.set_horizontal_movement(false);
 	EXPECT_TRUE(detector.test_get_ground_effect_state());
 
 	// TP_D3_B2: B=False (Vx=5m/s -> horizontal movement) -> D3 = False
-	detector.set_horizontal_velocity(5.0f, 0.0f);
-	detector.test_get_ground_contact_state(); // Refresh state flags
+	detector.set_horizontal_movement(true);
 	EXPECT_FALSE(detector.test_get_ground_effect_state());
 }
 

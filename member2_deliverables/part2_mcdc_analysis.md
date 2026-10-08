@@ -74,7 +74,7 @@ $$D_2 = A \lor \Big(B \land C \land D \land \big((E \land F) \lor (\neg E \land 
 | **B** | (TP_D2_B1, TP_D2_B2) | $[F, \mathbf{T}, T, T, T, T, F]$ | **True** | $[F, \mathbf{F}, T, T, T, T, F]$ | **False** | Varying $B$ flips $D_2$. |
 | **C** | (TP_D2_C1, TP_D2_C2) | $[F, T, \mathbf{T}, T, T, T, F]$ | **True** | $[F, T, \mathbf{F}, T, T, T, F]$ | **False** | Varying $C$ flips $D_2$. |
 | **D** | (TP_D2_D1, TP_D2_D2) | $[F, T, T, \mathbf{T}, T, T, F]$ | **True** | $[F, T, T, \mathbf{F}, T, T, F]$ | **False** | Varying $D$ flips $D_2$. |
-| **E** | (TP_D2_E1, TP_D2_E2) | $[F, T, T, T, \mathbf{T}, F, T]$ | **False** | $[F, T, T, T, \mathbf{F}, F, T]$ | **True** | Varying $E$ when $F=F, G=T$ flips $D_2$. |
+| **E** | (TP_D2_E1, TP_D2_E2) | $[F, T, T, T, \mathbf{F}, F, T]$ | **True** | $[F, T, T, T, \mathbf{T}, F, T]$ | **False** | Varying $E$ while $F=F, G=T$ flips $D_2$. |
 | **F** | (TP_D2_F1, TP_D2_F2) | $[F, T, T, T, T, \mathbf{T}, F]$ | **True** | $[F, T, T, T, T, \mathbf{F}, F]$ | **False** | Varying $F$ when $E=T, G=F$ flips $D_2$. |
 | **G** | (TP_D2_G1, TP_D2_G2) | $[F, T, T, T, F, F, \mathbf{T}]$ | **True** | $[F, T, T, T, F, F, \mathbf{F}]$ | **False** | Varying $G$ when $E=F, F=F$ flips $D_2$. |
 

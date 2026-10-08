@@ -32,49 +32,50 @@ lcov --summary coverage_multicopter.info --branch-coverage
 
 | Coverage Metric | Raw Count | Percentage | Notes |
 | --- | --- | --- | --- |
-| **Line / Statement Coverage** | 73 / 116 lines | **62.9%** (file total) | 100% coverage on all 5 analysed decision methods |
+| **Line / Statement Coverage** | 73 / 116 lines | **62.9%** (file total) | Includes the full source file; not 100% method coverage |
 | **Function Coverage** | 7 / 10 functions | **70.0%** | 3 infrastructure functions not exercised in unit isolation |
-| **Branch Coverage** | 100 / 192 branches | **52.1%** (file total) | 100% branches covered within decision logic methods |
+| **Branch Coverage** | 100 / 192 branches | **52.1%** (file total) | Includes branches in selected methods and infrastructure |
 
 ---
 
 ## 3. Scope Boundary: Analysed Decision Methods vs. Infrastructure
 
-### 3.1 Analysed Methods — 100% Line & Branch Coverage
+### 3.1 Analysed Methods
 
-These 5 methods contain all analysed compound decisions (D1, D2, D3) and were 100% exercised by the 19-test MC/DC suite:
+These five methods contain the selected decisions (D1-D3) and two simple state checks (D4-D5). The suite invokes each method, but invocation is not equivalent to complete line/branch coverage. LCOV records uncovered alternatives at lines 180, 260, 269, 276, and 280. The table identifies the tested logic, not a claim of complete coverage:
 
 | Method | Decision | Lines Executed | Branch Coverage |
 | --- | --- | --- | --- |
-| `_get_ground_contact_state()` | D1 | 100% | 100% |
-| `_get_maybe_landed_state()` | D2 | 100% | 100% |
-| `_get_ground_effect_state()` | D3 | 100% | 100% |
-| `_get_freefall_state()` | D4 (boundary) | 100% | 100% |
-| `_get_landed_state()` | D5 | 100% | 100% |
+| `_get_ground_contact_state()` | D1 | Invoked | Selected truth paths exercised |
+| `_get_maybe_landed_state()` | D2 | Invoked | Selected truth paths exercised |
+| `_get_ground_effect_state()` | D3 | Invoked | Selected truth paths exercised |
+| `_get_freefall_state()` | D4 (threshold) | Invoked | Boundary outcomes exercised |
+| `_get_landed_state()` | D5 | Invoked | Main outcomes exercised |
 
-### 3.2 Unexecuted Lines — Justified Infrastructure Exclusion
+### 3.2 Unexecuted Lines and Branches — Gap Analysis
 
-The **43 unexecuted lines** (116 total − 73 executed) and **92 unexecuted branches** belong exclusively to POSIX middleware infrastructure that cannot be exercised in GTest unit isolation:
+The **43 unexecuted lines** (116 total − 73 executed) and **92 unexecuted branches** are not exclusively middleware infrastructure. They include unexecuted topic/parameter paths and alternative branches inside the selected methods:
 
-1. **`_update_topics()` (~22 lines, ~40 branches)**: Live uORB topic subscriptions (`vehicle_local_position`, `vehicle_attitude`, `vehicle_angular_velocity`, `actuator_armed`, `vehicle_control_mode`). In unit tests, state is directly injected via test helper setters — no live publish/subscribe daemons are running.
+1. **`_update_topics()` (~22 lines, ~40 branches)**: Live uORB subscriptions for thrust setpoint, control mode, hover-thrust estimate, and takeoff status. In unit tests, state is directly injected via test helper setters — no live publish/subscribe flow is exercised.
 
-2. **`_update_params()` (~15 lines, ~30 branches)**: Parameter fetch calls (`param_get()`) for `LNDMC_Z_VEL_MAX`, `LNDMC_XY_VEL_MAX`, `LNDMC_ROT_MAX`, `LNDMC_THR_RANGE` via the PX4 parameter daemon. In unit tests, these parameters were initialized directly to deterministic values in test setup.
+2. **`_update_params()` (~15 lines, ~30 branches)**: Parameter fetches and the `LNDMC_Z_VEL_MAX` consistency correction via the PX4 parameter system. In unit tests, parameters were not exercised through this update path.
 
-3. **Constructor/destructor & registration boilerplate (~6 lines, ~22 branches)**: `ModuleBase` registration, `_minimum_thrust_8s_hysteresis.set_hysteresis_time_from(false, 8_s)` infrastructure setup only reached during live PX4 module instantiation.
+3. **Selected-method alternatives**: invalid or stale local-position data, velocity-validity fallbacks, distance-estimate handling, hover-thrust validity, and short-circuit outcomes remain partly uncovered.
+4. **Constructor/destructor & registration boilerplate**: constructor setup and hysteresis-factor paths are not fully represented by this unit fixture.
 
 ### 3.3 MC/DC Completeness Reconciliation
 
-Passing all 19 tests does not by itself establish complete MC/DC — the independence of each atomic Boolean condition must be **individually demonstrated**. This was verified:
+Passing all 19 tests does not by itself establish complete MC/DC — the independence of each atomic Boolean condition must be **individually demonstrated**. The matrix demonstrates the following selected pairs:
 
 - **D1** (5 conditions): 10 test rows proving A, B, C, D, E each independently flip the decision.
 - **D2** (7 conditions): 14 test rows proving A, B, C, D, E, F, G each independently flip the decision.
   - **D2-E** (`vertical_estimate`): Controlled via `set_local_position_timestamp(0)` (stale, making `local_position_updated=false`) vs. `set_local_position_timestamp(hrt_absolute_time())` (fresh). Verified `G=True, F=False` held constant.
   - **D2-F** (`_ground_contact_hysteresis`): Toggled directly with `E=True, G=False` held constant — path `(E&&F)` flips the decision.
   - **D2-G** (`_minimum_thrust_8s_hysteresis`): Toggled with `E=False, F=False` held constant — path `(!E&&G)` flips the decision. Hysteresis setter uses `timestamp=1` to ensure the 8-second threshold is elapsed when `_get_maybe_landed_state()` re-evaluates internally.
-- **D3** (5 conditions): 10 test rows proving A, B, C, D, E each independently flip the decision.
+- **D3** (5 conditions): 10 test rows proving A, B, C, D, E each independently flip the decision. The B pair directly controls `_horizontal_movement`, so changing B cannot also change A through `_get_ground_contact_state()`.
   - **D3-D** (`TAKEOFF_STATE_FLIGHT`): Toggled with `A=False, C=True, E=False` (not RAMPUP) held constant — path `(C&&D)` flips the decision.
 
-Total: **34 evidence rows, 17 independence pairs** — fully reconciling written derivation with executable test evidence.
+Total: **34 evidence rows, 17 independence pairs** for D1-D3. This is complete for the selected matrix only, not for every compound decision in the class.
 
 ---
 

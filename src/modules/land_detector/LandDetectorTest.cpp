@@ -1129,13 +1129,8 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
-<<<<<<< HEAD
 	// Equal to threshold
 	detector.set_vehicle_thrust_setpoint_throttle(0.08f + 0.01f);
-=======
-	// Equal to threshold (0.090f) -> thrust condition met -> maybe_landed = true
-	detector.set_vehicle_thrust_setpoint_throttle(0.08999999f);
->>>>>>> acea85ea5da940a6d17302dbd2c65b2c133fa21e
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
 	// Above threshold -> thrust condition not met -> maybe_landed = false

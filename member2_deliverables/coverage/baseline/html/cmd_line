@@ -1,0 +1,1 @@
+genhtml /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member2_deliverables/coverage/baseline/initial.info --output-directory /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member2_deliverables/coverage/baseline/html --title 'Member 2 Baseline Coverage' --legend --synthesize-missing --ignore-errors source

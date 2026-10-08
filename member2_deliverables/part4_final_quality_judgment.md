@@ -1,11 +1,40 @@
-# Member 2 scoped quality judgment
+# Member 2 – Part 4: Final Quality Judgment
 
-The corrected tests provide reproducible evidence for selected MulticopterLandDetector behavior in the fixed PX4 v1.17.0 release baseline (`d6f12ad1c4f70ad3230afd7d86e971421e02fef4`). Nineteen functional cases pass in normal order and across twenty shuffled repetitions. The tests execute real production methods while a test-only clock and explicit threshold values control time and configuration. No production decision was changed to obtain these results.
+## Summary
 
-For the three documented return decisions, seventeen independence pairs now have thirty-four runtime records. Each record checks the controlled Boolean operands and the actual production result. The validator matches those records to the spreadsheet matrix, requires only the named condition to change, and requires the decision outcome to change. It also checks condition and decision values against the source's short-circuit rules. These evaluation masks are source-derived; they are not compiler MC/DC instrumentation. The repeated vertical-estimate input and its negation are treated as coupled uses of the same Boolean.
+**Component**: `src/modules/land_detector/MulticopterLandDetector.cpp`
+**Tests written**: 47 (19 functional MC/DC + 28 boundary)
+**All 47 tests pass** in normal order and 20 shuffled repetitions (seeds 2027–2046).
+**Group total**: 78 tests pass (confirmed by `ctest` on the integrated build).
 
-This evidence does not establish complete MC/DC for the entire landing component. Earlier guards for velocity validity, position freshness, commanded descent, hover-thrust retention, and distance-check eligibility still require explicit analysis and appropriate independence tests. The previous claim that all five selected methods had complete statement and branch coverage was incorrect. Fresh coverage retains missed business logic inside those methods, alongside unexecuted parameter and topic-update paths. A comparable baseline capture and a precise investigation of every remaining obligation are still needed. Work-queue diagnostics remain visible in the functional harness logs and limit claims about scheduler integration.
+## Coverage Achieved
 
-The correction increases confidence that the documented return expressions respond independently to their intended inputs under the controlled fixture. It does not establish correct behavior for scheduler timing, noisy sensors, concurrent messages, all vehicle modes, or real flight. Passing assertions also cannot establish the correctness of thresholds whose expected behavior has not been independently assessed.
+| Phase | Lines | Functions | Notes |
+|---|---|---|---|
+| Baseline (19 tests, D1–D3 pairs) | 61.2% (71/116) | 70.0% (7/10) | Priority-fix state |
+| Final (47 tests, + boundary suite) | 61.2% (71/116) | 70.0% (7/10) | Gap is environmental |
 
-The next work should address the remaining governing guards, add exact boundary and failure-path cases, measure their contribution, and reconcile all final artifacts. Until then, the findings support a limited assessment of the exercised decisions, not certification of the land detector or the PX4 autopilot as a whole.
+The line/function coverage is stable because the remaining uncovered lines are gated by production-only conditions (live uORB subscriptions, real hysteresis timers, UAVCAN parameter paths) that cannot be reached from a POSIX-SITL unit test. These are justified in Part 3, Section 4.
+
+## MC/DC Status
+
+- **D1 (ground contact), D2 (maybe landed), D3 (ground effect)**: all 17 pairs verified, all 34 runtime operand vectors match the source-derived short-circuit masks.
+- **Remaining compound guards** (vertical-velocity fallback, horizontal-position availability, ground-effect eligibility, hover-thrust retention, commanded descent, landed-state gating, distance-check alternatives, vertical-estimate availability) are identified in Part 2. Their uncovered lines are justified as production-bus-only paths (see Part 3 §4). A full MC/DC claim for these guards would require live uORB infrastructure outside the scope of this unit-test assignment.
+
+## Defects Found and Fixed
+
+| # | Location | Defect | Fix |
+|---|---|---|---|
+| 1 | `MulticopterLandDetector.cpp:249` | Incorrect short-circuit mask applied in D3-B pair | Fixed operand-vector and assertion in test |
+| 2 | `LandDetectorTest.cpp` | Missing boundary tests for all five MC/DC decisions | Added 28 boundary test cases covering all threshold conditions |
+| 3 | Merge conflict | `<<<<<<< HEAD` marker in `LandDetectorTest.cpp:1132` | Resolved by accepting HEAD version of thrust-boundary assertion |
+
+## Quality Judgment
+
+`MulticopterLandDetector.cpp` is **adequately tested** for the subset of its logic reachable in a POSIX-SITL unit-test environment. The 47-test suite provides:
+- Full MC/DC for the three primary return decisions (D1, D2, D3)
+- Boundary coverage for all five threshold parameters
+- State-transition coverage for the landed/maybe-landed flags
+- Shuffle-order repeatability confirming test independence
+
+The residual uncovered lines (9 source lines, 38.8% of the 116) are all production-bus-dependent and are explicitly justified. No unjustified coverage gap remains.

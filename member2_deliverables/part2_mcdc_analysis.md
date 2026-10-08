@@ -127,3 +127,73 @@ $$D_3 = (A \land B) \lor (C \land D) \lor E$$
 | **C** | (TP_D3_C1, TP_D3_C2) | $[F, F, \mathbf{T}, T, F]$ | **True** | $[F, F, \mathbf{F}, T, F]$ | **False** | Varying $C$ while $A=F, D=T, E=F$ flips $D_3$. |
 | **D** | (TP_D3_D1, TP_D3_D2) | $[F, F, T, \mathbf{T}, F]$ | **True** | $[F, F, T, \mathbf{F}, F]$ | **False** | Varying $D$ while $A=F, C=T, E=F$ flips $D_3$. |
 | **E** | (TP_D3_E1, TP_D3_E2) | $[F, F, F, F, \mathbf{T}]$ | **True** | $[F, F, F, F, \mathbf{F}]$ | **False** | Varying $E$ while $A=F, C=F$ flips $D_3$. |
+
+## 5. Additional Governing Decisions (D4-D11)
+
+### 5.1 Decision D4: Vertical Velocity Validity / Fallback
+Located at `MulticopterLandDetector.cpp:177`:
+```cpp
+if (_vehicle_local_position.v_z_valid && (fabsf(_vehicle_local_position.vz) < vertical_velocity_threshold)) {
+    _vertical_movement = false;
+} else if (_vehicle_local_position.z_valid && (fabsf(_vehicle_local_position.z_deriv) < vertical_velocity_threshold)) {
+    _vertical_movement = false;
+} else {
+    _vertical_movement = true;
+}
+```
+**Decision Formula:** `!_vertical_movement = (A && B) || (C && D)`
+- A: `v_z_valid`
+- B: `|vz| < threshold`
+- C: `z_valid`
+- D: `|z_deriv| < threshold`
+
+### 5.2 Decision D5: Horizontal Position Availability
+Located at `MulticopterLandDetector.cpp:194`:
+```cpp
+if (lpos_available && _vehicle_local_position.v_xy_valid) {
+    const Vector2f v_xy{_vehicle_local_position.vx, _vehicle_local_position.vy};
+    _horizontal_movement = v_xy.longerThan(_param_lndmc_xy_vel_max.get());
+}
+```
+**Decision Formula:** `_horizontal_movement = A && B && C`
+- A: `lpos_available`
+- B: `v_xy_valid`
+- C: `v_xy > threshold`
+
+### 5.3 Decision D6: Ground-Effect Eligibility
+Located at `MulticopterLandDetector.cpp:202`:
+**Decision Formula:** `_below_gnd_effect_hgt = A && B && D` (C is implicitly true as alt_gnd_effect > 0)
+- A: `lpos_available`
+- B: `dist_bottom_valid`
+- D: `dist_bottom < alt_gnd_effect`
+
+### 5.4 Decision D7: Hover-Thrust Retention
+Located at `MulticopterLandDetector.cpp:211`:
+**Decision Formula:** `A || B`
+- A: `!_in_descend`
+- B: `hover_thrust_estimate_valid`
+
+### 5.5 Decision D8: Commanded Descent
+Located at `MulticopterLandDetector.cpp:229`:
+**Decision Formula:** `_in_descend = A && B`
+- A: `ISFINITE(trajectory_setpoint.velocity[2])`
+- B: `velocity[2] >= 1.1f * z_vel_max`
+
+### 5.6 Decision D9: Landed-State Gating
+Located at `MulticopterLandDetector.cpp:234`:
+**Decision Formula:** `A && B`
+- A: `!_maybe_landed_hysteresis`
+- B: `!_landed_hysteresis`
+
+### 5.7 Decision D10: Distance-Check Alternatives
+Located at `MulticopterLandDetector.cpp:245`:
+**Decision Formula:** `A || B || C`
+- A: `_is_close_to_ground()`
+- B: `!_dist_bottom_is_observable`
+- C: `!_vehicle_local_position.dist_bottom_valid`
+
+### 5.8 Decision D11: Vertical-Estimate Availability
+Located at `MulticopterLandDetector.cpp:285`:
+**Decision Formula:** `A && B`
+- A: `local_position_updated`
+- B: `vertical_velocity_valid`

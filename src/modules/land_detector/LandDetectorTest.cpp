@@ -62,6 +62,15 @@ public:
 	bool test_get_ground_effect_state() { return _get_ground_effect_state(); }
 	bool test_get_landed_state() { return _get_landed_state(); }
 
+	bool test_get_vertical_movement() { return _vertical_movement; }
+	bool test_get_horizontal_movement() { return _horizontal_movement; }
+	bool test_get_below_gnd_effect_hgt() { return _below_gnd_effect_hgt; }
+	bool test_get_close_to_ground_or_skipped_check() { return _close_to_ground_or_skipped_check; }
+	bool test_get_hover_thrust_estimate_valid() { return _hover_thrust_estimate_valid; }
+	bool test_get_in_descend() { return _in_descend; }
+	bool test_get_has_low_throttle() { return _has_low_throttle; }
+	bool test_get_rotational_movement() { return _rotational_movement; }
+
 	// Setters to control internal state variables for deterministic MC/DC testing
 	void set_armed(bool armed) { _armed = armed; }
 	void set_acceleration(const matrix::Vector3f &accel) { _acceleration = accel; }
@@ -102,6 +111,39 @@ public:
 	}
 	void set_local_position_timestamp(hrt_abstime time) { _vehicle_local_position.timestamp = time; }
 	void set_v_z_valid(bool valid) { _vehicle_local_position.v_z_valid = valid; }
+
+	
+	void set_hover_thrust_estimate_last_valid(hrt_abstime t) { _hover_thrust_estimate_last_valid = t; }
+	void publish_trajectory_setpoint(float vz) {
+		trajectory_setpoint_s sp{};
+		sp.velocity[0] = NAN;
+		sp.velocity[1] = NAN;
+		sp.velocity[2] = vz;
+		sp.timestamp = hrt_absolute_time();
+		uORB::Publication<trajectory_setpoint_s> pub{ORB_ID(trajectory_setpoint)};
+		pub.publish(sp);
+	}
+	void set_dist_bottom_is_observable(bool observable) { _dist_bottom_is_observable = observable; }
+
+	void set_z_derivative(bool valid, float deriv) {
+		_vehicle_local_position.z_valid = valid;
+		_vehicle_local_position.z_deriv = deriv;
+	}
+	void set_v_xy_valid(bool valid) {
+		_vehicle_local_position.v_xy_valid = valid;
+	}
+	void set_hover_thrust_estimate_valid(bool valid) {
+		_hover_thrust_estimate_valid = valid;
+	}
+	void set_trajectory_setpoint_vz(float vz) {
+		_flag_control_climb_rate_enabled = true; // To enter the block
+		// Note: We'd need to publish or somehow set _trajectory_setpoint_sub.
+		// Since we cannot easily publish without setting up uORB, maybe we can mock it?
+		// Wait, MulticopterLandDetector checks _trajectory_setpoint_sub.update(&trajectory_setpoint).
+		// We might need to just rely on _in_descend setter for other things, but for "commanded descent"
+		// we might need to publish.
+	}
+
 
 	void configure_thresholds()
 	{
@@ -502,19 +544,575 @@ TEST_F(LandDetectorFixture, GroundEffectMCDC_ConditionE_TakeoffRampup)
 	check_ground_effect("TP_D3_E2", {false, false, false, false, false}, false);
 }
 
+
+/* ============================================================================
+ * DECISION D4: Vertical Velocity Validity / Fallback
+ * D4 = (v_z_valid && |vz| < threshold) || (z_valid && |z_deriv| < threshold)
+ * Evaluated inside _get_ground_contact_state() to set !_vertical_movement
+ * ============================================================================ */
+
+TEST_F(LandDetectorFixture, MCDC_D4_VerticalVelocityFallback_A_VzValid)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_z_derivative(false, 10.0f); // C=False, D=False
+	detector.set_vertical_velocity(0.0f); // B=True
+
+	// TP_D4_A1: A=True -> !vertical_movement = True
+	detector.set_v_z_valid(true);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement());
+
+	// TP_D4_A2: A=False -> !vertical_movement = False
+	detector.set_v_z_valid(false);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D4_VerticalVelocityFallback_B_VzLow)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_z_derivative(false, 10.0f); // C=False, D=False
+	detector.set_v_z_valid(true); // A=True
+
+	// TP_D4_B1: B=True -> !vertical_movement = True
+	detector.set_vertical_velocity(0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement());
+
+	// TP_D4_B2: B=False -> !vertical_movement = False
+	detector.set_vertical_velocity(10.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D4_VerticalVelocityFallback_C_ZValid)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_v_z_valid(false); // A=False
+	detector.set_vertical_velocity(10.0f); // B=False
+	
+	// TP_D4_C1: C=True, D=True -> !vertical_movement = True
+	detector.set_z_derivative(true, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement());
+
+	// TP_D4_C2: C=False, D=True -> !vertical_movement = False
+	detector.set_z_derivative(false, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D4_VerticalVelocityFallback_D_ZDerivLow)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_v_z_valid(false); // A=False
+	detector.set_vertical_velocity(10.0f); // B=False
+	detector.set_z_derivative(true, 0.0f); // C=True
+
+	// TP_D4_D1: D=True -> !vertical_movement = True
+	detector.set_z_derivative(true, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement());
+
+	// TP_D4_D2: D=False -> !vertical_movement = False
+	detector.set_z_derivative(true, 10.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+/* ============================================================================
+ * DECISION D5: Horizontal Position Availability
+ * D5 = lpos_available && v_xy_valid && (v_xy.longerThan(threshold))
+ * Evaluated inside _get_ground_contact_state() to set _horizontal_movement
+ * ============================================================================ */
+
+TEST_F(LandDetectorFixture, MCDC_D5_HorizontalPosition_A_LposAvailable)
+{
+	detector.set_v_xy_valid(true); // B=True
+	detector.set_horizontal_velocity(5.0f, 0.0f); // C=True
+
+	// TP_D5_A1: A=True -> _horizontal_movement = True
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_horizontal_movement());
+
+	// TP_D5_A2: A=False -> _horizontal_movement = False
+	detector.set_local_position_timestamp(land_detector_test_now - 2_s);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_horizontal_movement());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D5_HorizontalPosition_B_VxyValid)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time()); // A=True
+	detector.set_horizontal_velocity(5.0f, 0.0f); // C=True
+
+	// TP_D5_B1: B=True -> _horizontal_movement = True
+	detector.set_v_xy_valid(true);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_horizontal_movement());
+
+	// TP_D5_B2: B=False -> _horizontal_movement = False
+	detector.set_v_xy_valid(false);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_horizontal_movement());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D5_HorizontalPosition_C_VxyHigh)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time()); // A=True
+	detector.set_v_xy_valid(true); // B=True
+
+	// TP_D5_C1: C=True -> _horizontal_movement = True
+	detector.set_horizontal_velocity(5.0f, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_horizontal_movement());
+
+	// TP_D5_C2: C=False -> _horizontal_movement = False
+	detector.set_horizontal_velocity(0.0f, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_horizontal_movement());
+}
+
+/* ============================================================================
+ * DECISION D6: Ground-Effect Eligibility
+ * D6 = lpos_available && dist_bottom_valid && alt_gnd_effect > 0 && dist_bottom < alt_gnd_effect
+ * Evaluated inside _get_ground_contact_state() to set _below_gnd_effect_hgt
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D6_GroundEffectEligibility_A_LposAvailable)
+{
+	detector.set_distance_bottom(true, 1.0f); // B=True, D=True
+	// C is true because configure_thresholds sets _param_lndmc_alt_gnd_effect to 2.f
+
+	// TP_D6_A1: A=True -> True
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_below_gnd_effect_hgt());
+
+	// TP_D6_A2: A=False -> False
+	detector.set_local_position_timestamp(land_detector_test_now - 2_s);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_below_gnd_effect_hgt());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D6_GroundEffectEligibility_B_DistBottomValid)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time()); // A=True
+	
+	// TP_D6_B1: B=True, D=True -> True
+	detector.set_distance_bottom(true, 1.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_below_gnd_effect_hgt());
+
+	// TP_D6_B2: B=False, D=True -> False
+	detector.set_distance_bottom(false, 1.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_below_gnd_effect_hgt());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D6_GroundEffectEligibility_D_DistBelowThresh)
+{
+	detector.set_local_position_timestamp(hrt_absolute_time()); // A=True
+	
+	// TP_D6_D1: D=True -> True
+	detector.set_distance_bottom(true, 1.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_below_gnd_effect_hgt());
+
+	// TP_D6_D2: D=False -> False
+	detector.set_distance_bottom(true, 5.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_below_gnd_effect_hgt());
+}
+
+/* ============================================================================
+ * DECISION D7: Hover-Thrust Retention
+ * D7 = !_in_descend || hover_thrust_estimate_valid
+ * Evaluated inside _get_ground_contact_state() to update _hover_thrust_estimate_valid
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D7_HoverThrustRetention_A_NotInDescend)
+{
+	// A = !_in_descend, B = hover_thrust_estimate_valid
+	
+	// TP_D7_A1: A=True, B=False -> Result is True
+	detector.set_in_descend(false); // A=True
+	detector.set_hover_thrust_estimate_last_valid(land_detector_test_now - 2_s); // B=False
+	detector.set_hover_thrust_estimate_valid(true); // Pre-set to true to see if it remains true
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_hover_thrust_estimate_valid());
+
+	// TP_D7_A2: A=False, B=False -> Result is False
+	detector.set_in_descend(true); // A=False
+	detector.set_hover_thrust_estimate_last_valid(land_detector_test_now - 2_s); // B=False
+	detector.set_hover_thrust_estimate_valid(true); 
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_hover_thrust_estimate_valid());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D7_HoverThrustRetention_B_HoverThrustValid)
+{
+	// TP_D7_B1: A=False, B=True -> Result is True
+	detector.set_in_descend(true); // A=False
+	detector.set_hover_thrust_estimate_last_valid(hrt_absolute_time()); // B=True
+	detector.set_hover_thrust_estimate_valid(false); 
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_hover_thrust_estimate_valid());
+
+	// TP_D7_B2: A=False, B=False -> Result is False
+	detector.set_in_descend(true); // A=False
+	detector.set_hover_thrust_estimate_last_valid(land_detector_test_now - 2_s); // B=False
+	detector.set_hover_thrust_estimate_valid(false); 
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_hover_thrust_estimate_valid());
+}
+
+/* ============================================================================
+ * DECISION D8: Commanded Descent
+ * D8 = ISFINITE(vel[2]) && (vel[2] >= 1.1 * z_vel_max)
+ * Evaluated inside _get_ground_contact_state() when _flag_control_climb_rate_enabled
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D8_CommandedDescent_A_IsFinite)
+{
+	detector.set_flag_control_climb_rate_enabled(true);
+	float thresh = 1.1f * 0.5f; // z_vel_max is 0.5
+	
+	// TP_D8_A1: A=True, B=True -> True
+	detector.publish_trajectory_setpoint(thresh + 0.1f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_in_descend());
+
+	// TP_D8_A2: A=False, B=True (if it were possible, NAN is not >= thresh, so C++ short-circuits. We test NAN)
+	detector.publish_trajectory_setpoint(NAN);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_in_descend());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D8_CommandedDescent_B_AboveThresh)
+{
+	detector.set_flag_control_climb_rate_enabled(true);
+	float thresh = 1.1f * 0.5f; 
+	
+	// TP_D8_B1: A=True, B=True -> True
+	detector.publish_trajectory_setpoint(thresh + 0.1f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_in_descend());
+
+	// TP_D8_B2: A=True, B=False -> False
+	detector.publish_trajectory_setpoint(thresh - 0.1f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_in_descend());
+}
+
+/* ============================================================================
+ * DECISION D9: Landed-State Gating
+ * D9 = !_maybe_landed_hysteresis && !_landed_hysteresis
+ * Evaluated inside _get_ground_contact_state() to apply in_descend to ground_contact
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D9_LandedStateGating_A_NotMaybeLanded)
+{
+	detector.set_flag_control_climb_rate_enabled(true);
+	// We make ground_contact true initially by setting low throttle
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
+	// We make in_descend false. If D9 is true, ground_contact becomes false (true &= false).
+	// If D9 is false, ground_contact remains true.
+	detector.publish_trajectory_setpoint(0.0f); // in_descend = false
+
+	// TP_D9_A1: A=True (!maybe_landed=T), B=True (!landed=T) -> D9=True -> ground_contact &= false -> False
+	detector.set_maybe_landed_hysteresis_state(false);
+	detector.set_landed_hysteresis_state(false);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_has_low_throttle() && detector.test_get_in_descend()); 
+	// Wait, test_get_has_low_throttle() just returns _has_low_throttle, which is not updated by the &= in_descend.
+	// We need to check if the overall _get_ground_contact_state() returns differently?
+	// The overall ground contact requires ground_contact to be true. 
+	// We'll set conditions such that overall would be true if ground_contact is true.
+	detector.set_horizontal_velocity(0.0f, 0.0f);
+	detector.set_vertical_velocity(0.0f);
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_armed(true);
+	// skip_close_to_ground_check = true by default if not observable
+	EXPECT_FALSE(detector.test_get_ground_contact_state()); // Because ground_contact became false
+
+	// TP_D9_A2: A=False (!maybe_landed=F), B=True -> D9=False -> ground_contact remains true -> overall True
+	detector.set_maybe_landed_hysteresis_state(true);
+	detector.set_landed_hysteresis_state(false);
+	EXPECT_TRUE(detector.test_get_ground_contact_state());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D9_LandedStateGating_B_NotLanded)
+{
+	detector.set_flag_control_climb_rate_enabled(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
+	detector.publish_trajectory_setpoint(0.0f); // in_descend = false
+	detector.set_horizontal_velocity(0.0f, 0.0f);
+	detector.set_vertical_velocity(0.0f);
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_armed(true);
+
+	// TP_D9_B1: A=True (!maybe_landed=T), B=True (!landed=T) -> D9=True -> overall False
+	detector.set_maybe_landed_hysteresis_state(false);
+	detector.set_landed_hysteresis_state(false);
+	EXPECT_FALSE(detector.test_get_ground_contact_state());
+
+	// TP_D9_B2: A=True (!maybe_landed=T), B=False (!landed=F) -> D9=False -> overall True
+	detector.set_maybe_landed_hysteresis_state(false);
+	detector.set_landed_hysteresis_state(true);
+	EXPECT_TRUE(detector.test_get_ground_contact_state());
+}
+
+/* ============================================================================
+ * DECISION D10: Distance-Check Alternatives
+ * D10 = (dist_bottom_valid && dist_bottom < thresh) || !_dist_bottom_is_observable || !dist_bottom_valid
+ * Evaluated in _get_ground_contact_state() to set _close_to_ground_or_skipped_check
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D10_DistanceCheck_A_CloseToGround)
+{
+	// D10 = A || B || C
+	// A = _is_close_to_ground() -> valid && dist < 1.0
+	// B = !_dist_bottom_is_observable
+	// C = !dist_bottom_valid
+	detector.set_dist_bottom_is_observable(true); // B=False
+	
+	// TP_D10_A1: A=True (valid=T, dist < 1.0), C=False (valid=T) -> True
+	detector.set_distance_bottom(true, 0.5f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_close_to_ground_or_skipped_check());
+
+	// TP_D10_A2: A=False (valid=T, dist > 1.0), C=False (valid=T) -> False
+	detector.set_distance_bottom(true, 1.5f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_close_to_ground_or_skipped_check());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D10_DistanceCheck_B_NotObservable)
+{
+	// TP_D10_B1: B=True, A=False, C=False -> True
+	detector.set_dist_bottom_is_observable(false);
+	detector.set_distance_bottom(true, 1.5f); // A=False, C=False
+	// wait, set_distance_bottom forces _dist_bottom_is_observable = true. We must overwrite it.
+	detector.set_dist_bottom_is_observable(false);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_close_to_ground_or_skipped_check());
+
+	// TP_D10_B2: B=False, A=False, C=False -> False
+	detector.set_dist_bottom_is_observable(true);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_close_to_ground_or_skipped_check());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D10_DistanceCheck_C_NotValid)
+{
+	// TP_D10_C1: C=True, A=False, B=False -> True
+	detector.set_dist_bottom_is_observable(true); // B=False
+	detector.set_distance_bottom(false, 1.5f); // C=True, A=False
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_close_to_ground_or_skipped_check());
+
+	// TP_D10_C2: C=False, A=False, B=False -> False
+	detector.set_distance_bottom(true, 1.5f); // C=False, A=False
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_close_to_ground_or_skipped_check());
+}
+
+/* ============================================================================
+ * DECISION D11: Vertical-Estimate Availability
+ * D11 = local_position_updated && vertical_velocity_valid
+ * Evaluated in _get_maybe_landed_state()
+ * ============================================================================ */
+TEST_F(LandDetectorFixture, MCDC_D11_VerticalEstimate_A_LocalPosUpdated)
+{
+	// D11 is evaluated as vertical_estimate. If vertical_estimate is true, 
+	// it uses _ground_contact_hysteresis. If false, it uses _minimum_thrust_8s_hysteresis.
+	// We'll set _ground_contact_hysteresis=true and _minimum_thrust_8s_hysteresis=false.
+	// So overall D2 is true ONLY if D11 is true.
+	detector.set_armed(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
+	detector.set_freefall_hysteresis_state(false);
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f));
+	detector.set_ground_contact_hysteresis_state(true);
+	detector.set_minimum_thrust_8s_hysteresis_state(false);
+
+	detector.set_v_z_valid(true); // B=True
+	
+	// TP_D11_A1: A=True -> D11=True -> overall True
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// TP_D11_A2: A=False -> D11=False -> overall False
+	detector.set_local_position_timestamp(land_detector_test_now - 2_s);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
+}
+
+TEST_F(LandDetectorFixture, MCDC_D11_VerticalEstimate_B_VzValid)
+{
+	detector.set_armed(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
+	detector.set_freefall_hysteresis_state(false);
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f));
+	detector.set_ground_contact_hysteresis_state(true);
+	detector.set_minimum_thrust_8s_hysteresis_state(false);
+
+	detector.set_local_position_timestamp(hrt_absolute_time()); // A=True
+
+	// TP_D11_B1: B=True -> D11=True -> overall True
+	detector.set_v_z_valid(true);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// TP_D11_B2: B=False -> D11=False -> overall False
+	detector.set_v_z_valid(false);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
+}
+
 /* ============================================================================
  * FREEFALL AND LANDED STATE TESTS
  * ============================================================================ */
 
-TEST_F(LandDetectorFixture, Freefall_AccelThresholdBoundary)
+
+TEST_F(LandDetectorFixture, Boundary_FreefallAcceleration)
 {
-	// Norm < 2.0 m/s^2 triggers freefall
-	detector.set_acceleration(matrix::Vector3f(1.0f, 0.0f, 1.0f)); // Norm = 1.414 < 2.0
+	// Threshold is strictly less than 2.0 m/s^2.
+	detector.set_acceleration(matrix::Vector3f(0.0f, 0.0f, 1.99f));
 	EXPECT_TRUE(detector.test_get_freefall_state());
 
-	// Norm >= 2.0 m/s^2 (e.g. 9.8 m/s^2 gravity) does NOT trigger freefall
-	detector.set_acceleration(matrix::Vector3f(0.0f, 0.0f, 9.81f)); // Norm = 9.81 >= 2.0
+	detector.set_acceleration(matrix::Vector3f(0.0f, 0.0f, 2.00f));
 	EXPECT_FALSE(detector.test_get_freefall_state());
+
+	detector.set_acceleration(matrix::Vector3f(0.0f, 0.0f, 2.01f));
+	EXPECT_FALSE(detector.test_get_freefall_state());
+}
+
+TEST_F(LandDetectorFixture, Boundary_VerticalVelocity)
+{
+	// Threshold is |vz| < 0.5
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	
+	detector.set_vertical_velocity(0.49f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement());
+	
+	detector.set_vertical_velocity(0.50f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+	
+	detector.set_vertical_velocity(0.51f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+TEST_F(LandDetectorFixture, Boundary_HorizontalVelocity)
+{
+	// Threshold is norm(v_xy) > 1.5
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	
+	detector.set_horizontal_velocity(1.49f, 0.0f);
+	detector.test_get_ground_contact_state(); 
+	EXPECT_FALSE(detector.test_get_horizontal_movement());
+	
+	detector.set_horizontal_velocity(1.50f, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_horizontal_movement());
+	
+	detector.set_horizontal_velocity(1.51f, 0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_horizontal_movement());
+}
+
+TEST_F(LandDetectorFixture, Boundary_RotationRate)
+{
+	// Threshold is > 20.0 deg/s (0.349066 rad/s)
+	float rot_max_rad = 20.0f * (M_PI / 180.0f);
+	
+	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad - 0.01f, 0.0f, 0.0f));
+	detector.test_get_maybe_landed_state();
+	EXPECT_FALSE(detector.test_get_rotational_movement());
+
+	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad, 0.0f, 0.0f));
+	detector.test_get_maybe_landed_state();
+	EXPECT_FALSE(detector.test_get_rotational_movement());
+
+	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad + 0.01f, 0.0f, 0.0f));
+	detector.test_get_maybe_landed_state();
+	EXPECT_TRUE(detector.test_get_rotational_movement());
+}
+
+TEST_F(LandDetectorFixture, Boundary_GroundEffectDistance)
+{
+	// Threshold is < 2.0m
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	
+	detector.set_distance_bottom(true, 1.99f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_below_gnd_effect_hgt());
+
+	detector.set_distance_bottom(true, 2.00f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_below_gnd_effect_hgt());
+
+	detector.set_distance_bottom(true, 2.01f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_below_gnd_effect_hgt());
+}
+
+TEST_F(LandDetectorFixture, Boundary_CloseToGroundDistance)
+{
+	// Threshold is < 1.0m (DIST_FROM_GROUND_THRESHOLD)
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	
+	detector.set_distance_bottom(true, 0.99f);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_close_to_ground_or_skipped_check());
+
+	detector.set_distance_bottom(true, 1.00f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_close_to_ground_or_skipped_check());
+
+	detector.set_distance_bottom(true, 1.01f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_close_to_ground_or_skipped_check());
+}
+
+TEST_F(LandDetectorFixture, Boundary_PositionStaleness)
+{
+	// Threshold is < 1.0s (1,000,000 us)
+	
+	// Just below: 999999 us
+	detector.set_local_position_timestamp(land_detector_test_now - 999999_us);
+	detector.set_vertical_velocity(0.0f);
+	detector.test_get_ground_contact_state();
+	EXPECT_FALSE(detector.test_get_vertical_movement()); // because lpos_available is true, vz < threshold
+	
+	// Exactly at threshold: 1000000 us
+	detector.set_local_position_timestamp(land_detector_test_now - 1_s);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement()); // because lpos_available is false
+
+	// Just above: 1000001 us
+	detector.set_local_position_timestamp(land_detector_test_now - 1000001_us);
+	detector.test_get_ground_contact_state();
+	EXPECT_TRUE(detector.test_get_vertical_movement());
+}
+
+TEST_F(LandDetectorFixture, Boundary_Thrust)
+{
+	// Threshold is <= (_params.minManThrottle + 0.01f) which is 0.08 + 0.01 = 0.09f
+	detector.set_armed(true);
+	detector.set_freefall_hysteresis_state(false);
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f));
+	detector.set_ground_contact_hysteresis_state(true);
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_v_z_valid(true);
+
+	// Below threshold (0.089f) -> thrust condition met -> maybe_landed = true
+	detector.set_vehicle_thrust_setpoint_throttle(0.089f);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// Equal to threshold (0.090f) -> thrust condition met -> maybe_landed = true
+	detector.set_vehicle_thrust_setpoint_throttle(0.090f);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// Above threshold (0.091f) -> thrust condition not met -> maybe_landed = false
+	detector.set_vehicle_thrust_setpoint_throttle(0.091f);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
 }
 
 TEST_F(LandDetectorFixture, Landed_StateTransitions)

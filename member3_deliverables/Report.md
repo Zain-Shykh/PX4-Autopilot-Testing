@@ -158,7 +158,7 @@ The Member 3 workbook contains its 23-test inventory and an empty reserved MC/DC
 A total of **23 student-authored functional test cases** were designed, implemented, and registered in CMake:
 
 - **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, and error recovery fallback.
-- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
+- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), load-drop correction, capped coulomb integration and voltage fusion, remaining flight time prediction, and AnalogBattery integration. The load-drop test does not claim RLS convergence.
 - **Execution Outcome**: 23/23 Tests Passed (100% Pass Rate) in 0.09s total runtime.
 
 ### 4.2 Structural Coverage Metrics Comparison
@@ -216,12 +216,12 @@ In compliance with the assignment grading criteria, every unexecuted line and br
    - *Resolution*: This is an architectural coupling requirement in PX4. We verified that in operational flight loops, Run() always executes updateSubscriptions() at 50 Hz before task switching.
 
 2. **Real-Time Command Freshness Constraint (200 ms Expiration)**:
-   - *Behavior*: 	ryApplyCommandIfAny() strictly rejects mode switch commands whose timestamp is > 200 ms in the past.
-   - *Verification*: TC_M3_FMM_06 confirmed that stale MAVLink commands (e.g., delayed over a high-latency telemetry link) are safely dropped, preventing delayed unexpected mode changes.
+   - *Behavior*: `tryApplyCommandIfAny()` accepts only commands strictly younger than 200 ms. Commands at or above the boundary are rejected; rejection does not necessarily clear the buffered command.
+   - *Verification*: TC-M3-FMM-10 checks timestamps immediately below, exactly at, and immediately above 200 ms using the real clock at each setup.
 
-3. **RLS Load Drop Compensation Stability**:
-   - *Behavior*: The Recursive Least Squares estimator in Battery dynamically estimates internal battery resistance.
-   - *Verification*: TC_M3_BAT_09 verified that rapid current step changes (0A -> 30A) do not cause numerical divergence in the covariance matrix P, correctly calculating load-drop-corrected Open Circuit Voltage.
+3. **Coulomb and voltage state-of-charge update**:
+   - *Behavior*: With configured capacity, the battery fuses voltage-based state of charge with the production-capped coulomb increment.
+   - *Verification*: TC-M3-BAT-08 configures capacity through `BAT1_CAPACITY`, uses five controlled 2-second samples at 10 A, and checks approximately 27.78 mAh discharged plus the resulting remaining SoC.
 
 ### 5.2 Final Quality Judgment (300–400 Words)
 
@@ -229,7 +229,7 @@ In compliance with the assignment grading criteria, every unexecuted line and br
 >
 > Structural analysis and functional test execution of the PX4 flight control (FlightModeManager) and energy safety (Battery, AnalogBattery) modules demonstrate robust, defensively engineered architectural design. By achieving **81.3% overall line coverage** (including **93.5% line and 100% function coverage** on the core Battery library) across 23 deterministic functional test cases, our verification confirms that safety-critical state transitions, mode switching fallbacks, command freshness validations, and hierarchical battery warning thresholds operate with high fidelity under deterministic inputs. The battery warning cases exercise representative state-of-charge comparisons. They do not establish a compound voltage/SoC MC/DC decision. The group uses the land detector for MC/DC, with corrected D1-D3 pairs and further governing-guard obligations still pending.
 >
-> Furthermore, targeted testing of internal mathematical filters—such as the Recursive Least Squares (RLS) estimator for dynamic cell resistance and load-drop-corrected Open Circuit Voltage—demonstrated numerical stability and rapid convergence under extreme step-current transients without numerical divergence. Similarly, FlightModeManager displayed consistent defensive behavior by strictly enforcing the 200 ms real-time freshness boundary on external MAVLink vehicle commands and maintaining safe default task fallbacks during navigation state transitions.
+> Furthermore, the battery tests verify configured capacity handling, production-capped coulomb integration, voltage-based state-of-charge calculation, and warning thresholds under controlled samples. FlightModeManager testing verifies the strict 200 ms freshness boundary for buffered commands and safe default task fallbacks during navigation state transitions.
 >
 > However, structural coverage evidence strictly bounds the scope of our quality claim. While the algorithmic and state-machine business logic within the tested components exhibits high reliability, the remaining coverage gaps (such as dynamic FlightTask execution, hardware-level ADC register sampling, and NSH CLI dispatchers) represent boundaries where POSIX unit and functional test harness isolation cannot fully emulate target microcontroller hardware. Furthermore, high structural coverage in isolated functional tests does not guarantee immunity against asynchronous race conditions across high-frequency uORB topics, extreme RTOS scheduling jitter, or sensor estimator divergent states in Gazebo SITL physics simulations.
 >

@@ -7,7 +7,7 @@
 A total of **23 student-authored functional test cases** were designed, implemented, and registered in CMake:
 
 - **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, and error recovery fallback.
-- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
+- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), capped coulomb integration and voltage fusion, remaining flight time prediction, and AnalogBattery integration.
 - **Execution Outcome**: 23/23 Tests Passed (100% Pass Rate) in 0.09s total runtime.
 
 ### 4.2 Structural Coverage Metrics Comparison
@@ -54,4 +54,3 @@ In compliance with the assignment grading criteria, every unexecuted line and br
   - *Root Cause*: Physical microcontroller ADC registers are absent in POSIX SITL simulation; PX4 defaults to synthetic ADC publisher topics.
 
 ---
-

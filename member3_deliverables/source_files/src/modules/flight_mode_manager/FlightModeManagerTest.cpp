@@ -389,24 +389,32 @@ TEST_F(FlightModeManagerTest, HandleCommandOrbitAndSpeedChange)
 	EXPECT_TRUE(_manager.isAnyTaskActive());
 }
 
-TEST_F(FlightModeManagerTest, TryApplyCommandTimeout)
+TEST_F(FlightModeManagerTest, TryApplyCommandAgeBoundaries)
 {
 	EXPECT_EQ(_manager.switchTask(FlightTaskIndex::Orbit), FlightTaskError::NoError);
 
-	// Case 1: Old command > 200ms -> not applied
+	// The production predicate is strictly younger than 200 ms.
 	vehicle_command_s cmd{};
-	cmd.timestamp = hrt_absolute_time() - 1000000ULL; // 1s old
 	cmd.command = vehicle_command_s::VEHICLE_CMD_DO_ORBIT;
-	_manager.setCommand(cmd);
 
-	_manager.tryApplyCommandIfAny();
-	EXPECT_EQ(_manager.getCommand().command, vehicle_command_s::VEHICLE_CMD_DO_ORBIT);
-
-	// Case 2: Fresh command <= 200ms -> applied and reset to 0
-	cmd.timestamp = hrt_absolute_time();
+	// Immediately below 200 ms: accepted and consumed.
+	cmd.timestamp = hrt_absolute_time() - 199000ULL;
+	cmd.command = vehicle_command_s::VEHICLE_CMD_DO_ORBIT;
 	_manager.setCommand(cmd);
 	_manager.tryApplyCommandIfAny();
 	EXPECT_EQ(_manager.getCommand().command, 0);
+
+	// Exactly 200 ms: rejected. Rejection does not clear the buffer.
+	cmd.timestamp = hrt_absolute_time() - 200000ULL;
+	_manager.setCommand(cmd);
+	_manager.tryApplyCommandIfAny();
+	EXPECT_EQ(_manager.getCommand().command, vehicle_command_s::VEHICLE_CMD_DO_ORBIT);
+
+	// Immediately above 200 ms: also rejected and retained.
+	cmd.timestamp = hrt_absolute_time() - 201000ULL;
+	_manager.setCommand(cmd);
+	_manager.tryApplyCommandIfAny();
+	EXPECT_EQ(_manager.getCommand().command, vehicle_command_s::VEHICLE_CMD_DO_ORBIT);
 }
 
 TEST_F(FlightModeManagerTest, GenerateTrajectorySetpointAndLandingGear)

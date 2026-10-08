@@ -19,54 +19,69 @@ test 106
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:lp_default not available
 106: ERROR [px4_work_queue] init failed
-106: [==========] Running 15 tests from 1 test suite.
+106: [==========] Running 19 tests from 1 test suite.
 106: [----------] Global test environment set-up.
-106: [----------] 15 tests from LandDetectorFixture
+106: [----------] 19 tests from LandDetectorFixture
 106: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+106: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (1 ms)
 106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (1 ms)
 106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (1 ms)
 106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (1 ms)
+106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (1 ms)
+106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (1 ms)
+106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
 106: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+106: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
@@ -81,32 +96,37 @@ test 106
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+106: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (1 ms)
+106: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+106: ERROR [px4_work_queue] not running
+106: ERROR [px4_work_queue] wq:nav_and_controllers not available
+106: ERROR [px4_work_queue] init failed
+106: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (1 ms)
 106: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+106: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (1 ms)
 106: [ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+106: [       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (1 ms)
 106: [ RUN      ] LandDetectorFixture.Landed_StateTransitions
 106: ERROR [px4_work_queue] not running
 106: ERROR [px4_work_queue] wq:nav_and_controllers not available
 106: ERROR [px4_work_queue] init failed
-106: [       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
-106: [----------] 15 tests from LandDetectorFixture (9 ms total)
+106: [       OK ] LandDetectorFixture.Landed_StateTransitions (1 ms)
+106: [----------] 19 tests from LandDetectorFixture (22 ms total)
 106: 
 106: [----------] Global test environment tear-down
-106: [==========] 15 tests from 1 test suite ran. (10 ms total)
-106: [  PASSED  ] 15 tests.
-1/1 Test #106: functional-LandDetector ..........   Passed    0.03 sec
+106: [==========] 19 tests from 1 test suite ran. (22 ms total)
+106: [  PASSED  ] 19 tests.
+1/1 Test #106: functional-LandDetector ..........   Passed    0.07 sec
 
 The following tests passed:
 	functional-LandDetector
 
 100% tests passed, 0 tests failed out of 1
 
-Total Test time (real) =   0.04 sec
+Total Test time (real) =   0.11 sec

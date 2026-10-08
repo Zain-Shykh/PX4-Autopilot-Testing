@@ -18,7 +18,7 @@ Because personal work plans are ignored by Git, this folder serves as the dedica
 | **`README.md`** | Master Index & Repository File Pointer | N/A | Entire Team |
 | **`part1_scope_record.md`** | Part 1 Scope Selection & Justification | Technical Report (`Report.md` Part 1) | Team Report Lead |
 | **`part2_mcdc_analysis.md`** | Part 2 MC/DC Derivation & Independence Proofs | Technical Report (`Report.md` Part 2) | Team Report Lead |
-| **`sheet2_mcdc_evidence.csv`** | 26-Row Master MC/DC Matrix | Testing Workbook (`Testing_Workbook.xlsx` Sheet 2) | **Member 1** (Workbook Lead) |
+| **`sheet2_mcdc_evidence.csv`** | **34-Row** Master MC/DC Matrix (all 17 independence pairs) | Testing Workbook (`Testing_Workbook.xlsx` Sheet 2) | **Member 1** (Workbook Lead) |
 | **`part3_coverage_evidence.md`** | Part 3 Structural Coverage Stats & Gap Analysis | Technical Report (`Report.md` Part 3) | **Member 3** (Coverage Lead) |
 | **`part4_final_quality_judgment.md`** | Official 322-Word Final Quality Judgment | Technical Report (`Report.md` Part 4) | Team Report Lead |
 | **`ctest_execution_log.txt`** | Raw `make tests` Command Line Execution Output | Submission Log Folder | Team Report Lead |
@@ -31,7 +31,7 @@ In addition to the documentation files in this directory, Member 2 has created/u
 
 1. **Student-Authored GTest C++ Test Suite**:
    - **Path**: `src/modules/land_detector/LandDetectorTest.cpp`
-   - **Description**: Contains 15 GTest functional test methods executing all derived MC/DC condition test pairs and boundary cases.
+   - **Description**: Contains **19 GTest functional test methods** executing all 17 MC/DC condition independence pairs (D1×5, D2×7, D3×5) and boundary cases.
 2. **Non-Intrusive Testability Header Update**:
    - **Path**: `src/modules/land_detector/MulticopterLandDetector.h`
    - **Description**: Added `friend class MulticopterLandDetectorTest;` under `private:` for deterministic state testing without altering runtime logic.

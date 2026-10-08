@@ -82,12 +82,16 @@ public:
 	void set_flag_control_climb_rate_enabled(bool enabled) { _flag_control_climb_rate_enabled = enabled; }
 	void set_takeoff_state(uint8_t state) { _takeoff_state = state; }
 	void set_below_gnd_effect_hgt(bool below) { _below_gnd_effect_hgt = below; }
-	void set_ground_contact_hysteresis_state(bool state) { _ground_contact_hysteresis.set_state_and_update(state, hrt_absolute_time()); }
-	void set_maybe_landed_hysteresis_state(bool state) { _maybe_landed_hysteresis.set_state_and_update(state, hrt_absolute_time()); }
-	void set_landed_hysteresis_state(bool state) { _landed_hysteresis.set_state_and_update(state, hrt_absolute_time()); }
-	void set_freefall_hysteresis_state(bool state) { _freefall_hysteresis.set_state_and_update(state, hrt_absolute_time()); }
-	void set_minimum_thrust_8s_hysteresis_state(bool state) { _minimum_thrust_8s_hysteresis.set_state_and_update(state, hrt_absolute_time()); }
+	// Use timestamp=1 so that when _get_maybe_landed_state() later calls set_state_and_update(x, now),
+	// the condition (now >= 1 + hysteresis_time) is guaranteed true for any reasonable hysteresis duration.
+	// This ensures the forced hysteresis state is not reset by internal timing logic.
+	void set_ground_contact_hysteresis_state(bool state) { _ground_contact_hysteresis.set_state_and_update(state, 1); }
+	void set_maybe_landed_hysteresis_state(bool state) { _maybe_landed_hysteresis.set_state_and_update(state, 1); }
+	void set_landed_hysteresis_state(bool state) { _landed_hysteresis.set_state_and_update(state, 1); }
+	void set_freefall_hysteresis_state(bool state) { _freefall_hysteresis.set_state_and_update(state, 1); }
+	void set_minimum_thrust_8s_hysteresis_state(bool state) { _minimum_thrust_8s_hysteresis.set_state_and_update(state, 1); }
 	void set_local_position_timestamp(hrt_abstime time) { _vehicle_local_position.timestamp = time; }
+	void set_v_z_valid(bool valid) { _vehicle_local_position.v_z_valid = valid; }
 };
 
 class LandDetectorFixture : public ::testing::Test
@@ -238,6 +242,74 @@ TEST_F(LandDetectorFixture, MaybeLandedMCDC_ConditionC_NotFreefall)
 	EXPECT_FALSE(detector.test_get_maybe_landed_state());
 }
 
+TEST_F(LandDetectorFixture, MaybeLandedMCDC_ConditionE_VerticalEstimate)
+{
+	// Pair: TP_D2_E1 vs TP_D2_E2
+	// Independence proof: flip E (vertical_estimate) while A=F, B=T, C=T, D=T, F=F, G=T
+	// When E=False(no vertical estimate), path is (!E && G) -> with G=True -> D2 = True
+	// When E=True (valid estimate), path is  (E && F)  -> with F=False -> D2 = False
+	detector.set_armed(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);   // B=True
+	detector.set_freefall_hysteresis_state(false);         // C=True  (!freefall)
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f)); // D=True (!rotation)
+	detector.set_ground_contact_hysteresis_state(false);   // F=False
+	detector.set_minimum_thrust_8s_hysteresis_state(true); // G=True
+
+	// TP_D2_E1: E=False (stale timestamp -> vertical_estimate=false), G=True -> D2 = True
+	detector.set_local_position_timestamp(0); // Make timestamp stale (> 1s old)
+	detector.set_v_z_valid(true);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// TP_D2_E2: E=True (fresh timestamp + v_z_valid=true), F=False -> (!E&&G) arm broken, (E&&F)=F -> D2 = False
+	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_v_z_valid(true);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
+}
+
+TEST_F(LandDetectorFixture, MaybeLandedMCDC_ConditionF_GroundContactHysteresis)
+{
+	// Pair: TP_D2_F1 vs TP_D2_F2
+	// Independence proof: flip F (_ground_contact_hysteresis) while A=F, B=T, C=T, D=T, E=T, G=F
+	// With E=True, path is (E&&F): flipping F flips D2.
+	detector.set_armed(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);   // B=True
+	detector.set_freefall_hysteresis_state(false);         // C=True  (!freefall)
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f)); // D=True
+	detector.set_local_position_timestamp(hrt_absolute_time()); // E=True (local_position_updated)
+	detector.set_v_z_valid(true);                          // E=True (v_z_valid)
+	detector.set_minimum_thrust_8s_hysteresis_state(false); // G=False (not relevant when E=True)
+
+	// TP_D2_F1: F=True (_ground_contact_hysteresis active) -> (E&&F) = True -> D2 = True
+	detector.set_ground_contact_hysteresis_state(true);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// TP_D2_F2: F=False (_ground_contact_hysteresis inactive) -> (E&&F) = False AND (!E&&G)=False -> D2 = False
+	detector.set_ground_contact_hysteresis_state(false);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
+}
+
+TEST_F(LandDetectorFixture, MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis)
+{
+	// Pair: TP_D2_G1 vs TP_D2_G2
+	// Independence proof: flip G (_minimum_thrust_8s_hysteresis) while A=F, B=T, C=T, D=T, E=F, F=F
+	// With E=False (stale timestamp), path is (!E&&G): flipping G flips D2.
+	detector.set_armed(true);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);   // B=True
+	detector.set_freefall_hysteresis_state(false);         // C=True (!freefall)
+	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f)); // D=True
+	detector.set_local_position_timestamp(0); // E=False (stale timestamp)
+	detector.set_v_z_valid(true);
+	detector.set_ground_contact_hysteresis_state(false);   // F=False
+
+	// TP_D2_G1: G=True (8s low-thrust hysteresis active) -> (!E&&G) = True -> D2 = True
+	detector.set_minimum_thrust_8s_hysteresis_state(true);
+	EXPECT_TRUE(detector.test_get_maybe_landed_state());
+
+	// TP_D2_G2: G=False (8s low-thrust hysteresis inactive) -> (!E&&G)=False AND (E&&F)=False -> D2 = False
+	detector.set_minimum_thrust_8s_hysteresis_state(false);
+	EXPECT_FALSE(detector.test_get_maybe_landed_state());
+}
+
 TEST_F(LandDetectorFixture, MaybeLandedMCDC_ConditionD_NotRotating)
 {
 	detector.set_armed(true);
@@ -302,6 +374,24 @@ TEST_F(LandDetectorFixture, GroundEffectMCDC_ConditionC_BelowGndHeight)
 
 	// TP_D3_C2: C=False (above ground effect height) -> D3 = False
 	detector.set_below_gnd_effect_hgt(false);
+	EXPECT_FALSE(detector.test_get_ground_effect_state());
+}
+
+TEST_F(LandDetectorFixture, GroundEffectMCDC_ConditionD_TakeoffStateFlight)
+{
+	// Pair: TP_D3_D1 vs TP_D3_D2
+	// Independence proof: flip D (TAKEOFF_STATE_FLIGHT) while A=F, B=any, C=T, E=F
+	// With C=True (_below_gnd_effect_hgt) and E=False (not RAMPUP), flipping D flips D3.
+	detector.set_in_descend(false);           // A=False
+	detector.set_below_gnd_effect_hgt(true);  // C=True
+	detector.set_takeoff_state(takeoff_status_s::TAKEOFF_STATE_DISARMED); // baseline: E=False
+
+	// TP_D3_D1: D=True (TAKEOFF_STATE_FLIGHT) -> (C&&D) = True -> D3 = True
+	detector.set_takeoff_state(takeoff_status_s::TAKEOFF_STATE_FLIGHT);
+	EXPECT_TRUE(detector.test_get_ground_effect_state());
+
+	// TP_D3_D2: D=False (TAKEOFF_STATE_DISARMED, not FLIGHT not RAMPUP) -> (C&&D)=False AND E=False -> D3 = False
+	detector.set_takeoff_state(takeoff_status_s::TAKEOFF_STATE_DISARMED);
 	EXPECT_FALSE(detector.test_get_ground_effect_state());
 }
 

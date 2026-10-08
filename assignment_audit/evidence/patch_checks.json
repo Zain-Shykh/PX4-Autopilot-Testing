@@ -1,0 +1,19 @@
+[
+  {
+    "patch": "member1_deliverables/member1_tests.patch",
+    "applies_to_baseline": true,
+    "differs_from_current": []
+  },
+  {
+    "patch": "member1_deliverables/px4_assignment2_tests.patch",
+    "applies_to_baseline": true,
+    "differs_from_current": [
+      "src/modules/land_detector/LandDetectorTest.cpp"
+    ]
+  },
+  {
+    "patch": "member3_deliverables/member3_tests.patch",
+    "applies_to_baseline": true,
+    "differs_from_current": []
+  }
+]

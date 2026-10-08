@@ -1,0 +1,44 @@
+[
+  {
+    "source": "src/lib/battery/battery.cpp",
+    "lines_hit": 216,
+    "lines_total": 231,
+    "branches_hit": 152,
+    "branches_total": 248
+  },
+  {
+    "source": "src/lib/hysteresis/hysteresis.cpp",
+    "lines_hit": 22,
+    "lines_total": 22,
+    "branches_hit": 17,
+    "branches_total": 20
+  },
+  {
+    "source": "src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp",
+    "lines_hit": 199,
+    "lines_total": 225,
+    "branches_hit": 347,
+    "branches_total": 556
+  },
+  {
+    "source": "src/modules/battery_status/analog_battery.cpp",
+    "lines_hit": 41,
+    "lines_total": 54,
+    "branches_hit": 10,
+    "branches_total": 28
+  },
+  {
+    "source": "src/modules/flight_mode_manager/FlightModeManager.cpp",
+    "lines_hit": 164,
+    "lines_total": 233,
+    "branches_hit": 141,
+    "branches_total": 288
+  },
+  {
+    "source": "src/modules/land_detector/MulticopterLandDetector.cpp",
+    "lines_hit": 71,
+    "lines_total": 116,
+    "branches_hit": 95,
+    "branches_total": 192
+  }
+]

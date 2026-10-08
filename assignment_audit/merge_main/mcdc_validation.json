@@ -1,0 +1,647 @@
+{
+  "status": "PASS",
+  "scope": "D1-D3 return decisions only; governing guards require further analysis",
+  "test_cases_in_execution": 19,
+  "verified_vectors": 34,
+  "verified_pairs": 17,
+  "short_circuit_note": "Masks are derived from source; runtime properties assert controlled operand values and actual production outcomes.",
+  "vectors": [
+    {
+      "vector_id": "TP_D1_A1",
+      "test": "GroundContactMCDC_ConditionA_Armed",
+      "values": [
+        "T",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_A2",
+      "test": "GroundContactMCDC_ConditionA_Armed",
+      "values": [
+        "F",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_B1",
+      "test": "GroundContactMCDC_ConditionB_CloseToGround",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_B2",
+      "test": "GroundContactMCDC_ConditionB_CloseToGround",
+      "values": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "T"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_C1",
+      "test": "GroundContactMCDC_ConditionC_LowThrottle",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_C2",
+      "test": "GroundContactMCDC_ConditionC_LowThrottle",
+      "values": [
+        "F",
+        "T",
+        "F",
+        "T",
+        "T"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_D1",
+      "test": "GroundContactMCDC_ConditionD_HorizontalMovement",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_D2",
+      "test": "GroundContactMCDC_ConditionD_HorizontalMovement",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "F",
+        "T"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_E1",
+      "test": "GroundContactMCDC_ConditionE_VerticalMovement",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D1_E2",
+      "test": "GroundContactMCDC_ConditionE_VerticalMovement",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_A1",
+      "test": "MaybeLandedMCDC_ConditionA_Armed",
+      "values": [
+        "T",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_A2",
+      "test": "MaybeLandedMCDC_ConditionA_Armed",
+      "values": [
+        "F",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_B1",
+      "test": "MaybeLandedMCDC_ConditionB_MinThrust",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_B2",
+      "test": "MaybeLandedMCDC_ConditionB_MinThrust",
+      "values": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_C1",
+      "test": "MaybeLandedMCDC_ConditionC_NotFreefall",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_C2",
+      "test": "MaybeLandedMCDC_ConditionC_NotFreefall",
+      "values": [
+        "F",
+        "T",
+        "F",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_D1",
+      "test": "MaybeLandedMCDC_ConditionD_NotRotating",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_D2",
+      "test": "MaybeLandedMCDC_ConditionD_NotRotating",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_E1",
+      "test": "MaybeLandedMCDC_ConditionE_VerticalEstimate",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "F",
+        "F",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_E2",
+      "test": "MaybeLandedMCDC_ConditionE_VerticalEstimate",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F",
+        "T"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_F1",
+      "test": "MaybeLandedMCDC_ConditionF_GroundContactHysteresis",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_F2",
+      "test": "MaybeLandedMCDC_ConditionF_GroundContactHysteresis",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "T",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_G1",
+      "test": "MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "F",
+        "F",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    {
+      "vector_id": "TP_D2_G2",
+      "test": "MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis",
+      "values": [
+        "F",
+        "T",
+        "T",
+        "T",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "G"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_A1",
+      "test": "GroundEffectMCDC_ConditionA_InDescend",
+      "values": [
+        "T",
+        "T",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_A2",
+      "test": "GroundEffectMCDC_ConditionA_InDescend",
+      "values": [
+        "F",
+        "T",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_B1",
+      "test": "GroundEffectMCDC_ConditionB_NoHorizontalMovement",
+      "values": [
+        "T",
+        "T",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_B2",
+      "test": "GroundEffectMCDC_ConditionB_NoHorizontalMovement",
+      "values": [
+        "T",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_C1",
+      "test": "GroundEffectMCDC_ConditionC_BelowGndHeight",
+      "values": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_C2",
+      "test": "GroundEffectMCDC_ConditionC_BelowGndHeight",
+      "values": [
+        "F",
+        "F",
+        "F",
+        "T",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_D1",
+      "test": "GroundEffectMCDC_ConditionD_TakeoffStateFlight",
+      "values": [
+        "F",
+        "F",
+        "T",
+        "T",
+        "F"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_D2",
+      "test": "GroundEffectMCDC_ConditionD_TakeoffStateFlight",
+      "values": [
+        "F",
+        "F",
+        "T",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "D",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_E1",
+      "test": "GroundEffectMCDC_ConditionE_TakeoffRampup",
+      "values": [
+        "F",
+        "F",
+        "F",
+        "F",
+        "T"
+      ],
+      "outcome": true,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "vector_id": "TP_D3_E2",
+      "test": "GroundEffectMCDC_ConditionE_TakeoffRampup",
+      "values": [
+        "F",
+        "F",
+        "F",
+        "F",
+        "F"
+      ],
+      "outcome": false,
+      "evaluated_by_source_short_circuit_rules": [
+        "A",
+        "C",
+        "E"
+      ]
+    }
+  ]
+}

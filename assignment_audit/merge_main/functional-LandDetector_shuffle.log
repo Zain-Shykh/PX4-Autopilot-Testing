@@ -1,0 +1,2105 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 2027 .
+[==========] Running 19 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 2028 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[----------] 19 tests from LandDetectorFixture (5 ms total)
+
+[==========] 19 tests from 1 test suite ran. (5 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 2029 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 2030 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 2031 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 2032 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 2033 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 2034 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[----------] 19 tests from LandDetectorFixture (5 ms total)
+
+[==========] 19 tests from 1 test suite ran. (5 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 2035 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 2036 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 11) . . .
+
+Note: Randomizing tests' orders with a seed of 2037 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 12) . . .
+
+Note: Randomizing tests' orders with a seed of 2038 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[----------] 19 tests from LandDetectorFixture (5 ms total)
+
+[==========] 19 tests from 1 test suite ran. (5 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 13) . . .
+
+Note: Randomizing tests' orders with a seed of 2039 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 14) . . .
+
+Note: Randomizing tests' orders with a seed of 2040 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 15) . . .
+
+Note: Randomizing tests' orders with a seed of 2041 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 16) . . .
+
+Note: Randomizing tests' orders with a seed of 2042 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 17) . . .
+
+Note: Randomizing tests' orders with a seed of 2043 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 18) . . .
+
+Note: Randomizing tests' orders with a seed of 2044 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 19) . . .
+
+Note: Randomizing tests' orders with a seed of 2045 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.
+
+Repeating all tests (iteration 20) . . .
+
+Note: Randomizing tests' orders with a seed of 2046 .
+[==========] Running 19 tests from 1 test suite.
+[----------] 19 tests from LandDetectorFixture
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+[ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+[ RUN      ] LandDetectorFixture.Landed_StateTransitions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+[ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+[ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+[ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+[----------] 19 tests from LandDetectorFixture (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 19 tests from 1 test suite ran. (4 ms total)
+[  PASSED  ] 19 tests.

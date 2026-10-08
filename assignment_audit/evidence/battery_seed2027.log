@@ -1,0 +1,51 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+Note: Randomizing tests' orders with a seed of 2027 .
+[==========] Running 11 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp:128: Failure
+Value of: std::isnan(status.time_remaining_s)
+  Actual: false
+Expected: true
+Stack trace:
+  0x5bb2d63603f0: BatteryStatusTest_DisconnectedBatteryState_Test::TestBody()
+  0x5bb2d64425d5: testing::internal::HandleExceptionsInMethodIfSupported<>()
+  0x5bb2d63fd12d: testing::Test::Run()
+  0x5bb2d63fe3e0: testing::TestInfo::Run()
+... Google Test internal frames ...
+
+[  FAILED  ] BatteryStatusTest.DisconnectedBatteryState (19 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[----------] 11 tests from BatteryStatusTest (21 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 1 test suite ran. (21 ms total)
+[  PASSED  ] 10 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] BatteryStatusTest.DisconnectedBatteryState
+
+ 1 FAILED TEST

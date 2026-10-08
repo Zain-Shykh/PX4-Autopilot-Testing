@@ -1,0 +1,685 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 2027 .
+[==========] Running 11 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (1 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 2028 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 2029 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 4) . . .
+
+Note: Randomizing tests' orders with a seed of 2030 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 5) . . .
+
+Note: Randomizing tests' orders with a seed of 2031 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 6) . . .
+
+Note: Randomizing tests' orders with a seed of 2032 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (1 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 7) . . .
+
+Note: Randomizing tests' orders with a seed of 2033 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 8) . . .
+
+Note: Randomizing tests' orders with a seed of 2034 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (1 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 9) . . .
+
+Note: Randomizing tests' orders with a seed of 2035 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (1 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 10) . . .
+
+Note: Randomizing tests' orders with a seed of 2036 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 11) . . .
+
+Note: Randomizing tests' orders with a seed of 2037 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 12) . . .
+
+Note: Randomizing tests' orders with a seed of 2038 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (1 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 13) . . .
+
+Note: Randomizing tests' orders with a seed of 2039 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 14) . . .
+
+Note: Randomizing tests' orders with a seed of 2040 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 15) . . .
+
+Note: Randomizing tests' orders with a seed of 2041 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 16) . . .
+
+Note: Randomizing tests' orders with a seed of 2042 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 17) . . .
+
+Note: Randomizing tests' orders with a seed of 2043 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 18) . . .
+
+Note: Randomizing tests' orders with a seed of 2044 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (1 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (1 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (1 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (1 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 19) . . .
+
+Note: Randomizing tests' orders with a seed of 2045 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (1 ms)
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (1 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[----------] 11 tests from BatteryStatusTest (11 ms total)
+
+[==========] 11 tests from 1 test suite ran. (11 ms total)
+[  PASSED  ] 11 tests.
+
+Repeating all tests (iteration 20) . . .
+
+Note: Randomizing tests' orders with a seed of 2046 .
+[==========] Running 11 tests from 1 test suite.
+[----------] 11 tests from BatteryStatusTest
+[ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+[       OK ] BatteryStatusTest.DisconnectedBatteryState (1 ms)
+[ RUN      ] BatteryStatusTest.DetermineWarningLadder
+[       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+[       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+[       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+[ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+[       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (1 ms)
+[ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+[       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+[ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+[       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+[ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+ERROR [parameters] get: param 65535 invalid
+[       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+[ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+[       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+[ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+[       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+[ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+[       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+[----------] 11 tests from BatteryStatusTest (10 ms total)
+
+[----------] Global test environment tear-down
+[==========] 11 tests from 1 test suite ran. (10 ms total)
+[  PASSED  ] 11 tests.

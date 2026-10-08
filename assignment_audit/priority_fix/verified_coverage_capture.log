@@ -1,0 +1,15 @@
+Capturing coverage data from /tmp/sqe-priority-fix/verified_selected_profiles
+geninfo cmd: '/usr/bin/geninfo /tmp/sqe-priority-fix/verified_selected_profiles --output-filename /tmp/sqe-priority-fix/verified_coverage.info --ignore-errors mismatch --include */src/lib/hysteresis/hysteresis.cpp --include */src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp --include */src/modules/land_detector/MulticopterLandDetector.cpp --include */src/lib/battery/battery.cpp --include */src/modules/battery_status/analog_battery.cpp --include */src/modules/flight_mode_manager/FlightModeManager.cpp --memory 0 --branch-coverage'
+Found gcov version: 13.3.0
+Using intermediate gcov format
+Writing temporary data to /tmp/geninfo_datESJN
+Scanning /tmp/sqe-priority-fix/verified_selected_profiles for .gcda files ...
+Found 6 data files in /tmp/sqe-priority-fix/verified_selected_profiles
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/flight_mode_manager/CMakeFiles/modules__flight_mode_manager.dir/FlightModeManager.cpp.gcda
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/land_detector/CMakeFiles/modules__land_detector.dir/MulticopterLandDetector.cpp.gcda
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q/CMakeFiles/functional-AttitudeEstimatorQ.dir/AttitudeEstimatorQTest.cpp.gcda
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/battery/CMakeFiles/battery.dir/battery.cpp.gcda
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/battery/CMakeFiles/functional-Battery.dir/__/__/modules/battery_status/analog_battery.cpp.gcda
+Processing /tmp/sqe-priority-fix/verified_selected_profiles/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/hysteresis/CMakeFiles/hysteresis.dir/hysteresis.cpp.gcda
+Excluded data for 64 files due to include/exclude options
+Finished .info-file creation

@@ -1,0 +1,15 @@
+{
+  "audit_date": "2026-10-08",
+  "reviewed_commit": "63242fbe0c5db90a257062c1e9d8c5b005412a61",
+  "baseline_commit": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "original_pdf_sha256": "8469fcaed0a7074e43d88de51f64b1c487e591212a91dc951affda735cdf9faf",
+  "normal_test_cases": 78,
+  "normal_failures": 0,
+  "files_reviewed_as_primary_test_suites": [
+    "src/modules/attitude_estimator_q/AttitudeEstimatorQTest.cpp",
+    "src/lib/hysteresis/HysteresisAssignmentTest.cpp",
+    "src/modules/land_detector/LandDetectorTest.cpp",
+    "src/modules/flight_mode_manager/FlightModeManagerTest.cpp",
+    "src/lib/battery/BatteryTest.cpp"
+  ]
+}

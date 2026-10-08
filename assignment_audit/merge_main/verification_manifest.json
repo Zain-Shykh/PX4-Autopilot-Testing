@@ -1,0 +1,69 @@
+{
+  "head": "fe03631f85edd7fd46f3ba9b189df631ebd18f17",
+  "baseline": "d6f12ad1c4f70ad3230afd7d86e971421e02fef4",
+  "build_check": {
+    "targets": [
+      "unit-HysteresisAssignment",
+      "functional-AttitudeEstimatorQ",
+      "functional-LandDetector",
+      "functional-Battery",
+      "functional-FlightModeManager"
+    ],
+    "exit": 0,
+    "note": "CMake build completed before these commands; both affected test objects and executables were rebuilt."
+  },
+  "commands": [
+    {
+      "args": [
+        "ctest",
+        "--test-dir",
+        "build/px4_sitl_test",
+        "-R",
+        "^(unit-HysteresisAssignment|functional-AttitudeEstimatorQ|functional-LandDetector|functional-Battery|functional-FlightModeManager)$",
+        "--timeout",
+        "30",
+        "-V"
+      ],
+      "exit": 0,
+      "GCOV_PREFIX": "/tmp/sqe-main-merge-verify-sso2y4au/normal/profiles",
+      "GTEST_OUTPUT": "xml:/tmp/sqe-main-merge-verify-sso2y4au/normal/xml/"
+    },
+    {
+      "args": [
+        "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-LandDetector",
+        "--gtest_shuffle",
+        "--gtest_random_seed=2027",
+        "--gtest_repeat=20"
+      ],
+      "exit": 0,
+      "GCOV_PREFIX": "/tmp/sqe-main-merge-verify-sso2y4au/shuffle/profiles"
+    },
+    {
+      "args": [
+        "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-Battery",
+        "--gtest_shuffle",
+        "--gtest_random_seed=2027",
+        "--gtest_repeat=20"
+      ],
+      "exit": 0,
+      "GCOV_PREFIX": "/tmp/sqe-main-merge-verify-sso2y4au/shuffle/profiles"
+    },
+    {
+      "args": [
+        "python3",
+        "member2_deliverables/scripts/validate_mcdc.py",
+        "--xml",
+        "/tmp/sqe-main-merge-verify-sso2y4au/normal/xml/functional-LandDetector.xml",
+        "--output",
+        "/tmp/sqe-main-merge-verify-sso2y4au/mcdc_validation.json"
+      ],
+      "exit": 0
+    }
+  ],
+  "source_sha256": {
+    "src/modules/land_detector/LandDetectorTest.cpp": "7998de18ae9d4f878e7dec5b03044d1aa0f079e3b3c0344c71b9572eae666ec2",
+    "src/modules/land_detector/CMakeLists.txt": "8fdbda2c062ed5d4eedcbecf4605dddcecd0b67ecbcefd38e340d9f5ed51bb6e",
+    "src/lib/battery/BatteryTest.cpp": "8f49ca6bc2368c6856fa04743c6db6b0ca72691b518a615821fea863d3069787",
+    "member2_deliverables/sheet2_mcdc_evidence.csv": "88908d0591f33104e9079b52ed5f3bbc0ace198d455aa4e7436af6a5533c77cc"
+  }
+}

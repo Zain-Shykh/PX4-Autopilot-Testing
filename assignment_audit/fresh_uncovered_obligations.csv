@@ -1,0 +1,739 @@
+Source,Line,Kind,LCOV block,LCOV edge,Source expression
+src/lib/battery/battery.cpp,53,branch,0,1,"_index(index < 1 || index > 9 ? 1 : index),"
+src/lib/battery/battery.cpp,54,branch,0,1,_source(source)
+src/lib/battery/battery.cpp,54,branch,e0,3,_source(source)
+src/lib/battery/battery.cpp,54,branch,e0,5,_source(source)
+src/lib/battery/battery.cpp,57,branch,e0,1,"_current_average_filter_a.setParameters(expected_filter_dt, 50.f);"
+src/lib/battery/battery.cpp,58,branch,e0,1,"_ocv_filter_v.setParameters(expected_filter_dt, 1.f);"
+src/lib/battery/battery.cpp,59,branch,e0,1,"_cell_voltage_filter_v.setParameters(expected_filter_dt, 1.f);"
+src/lib/battery/battery.cpp,61,branch,0,1,if (index > 9 || index < 1) {
+src/lib/battery/battery.cpp,61,branch,0,2,if (index > 9 || index < 1) {
+src/lib/battery/battery.cpp,62,branch,0,0,"PX4_ERR(""Battery index must be between 1 and 9 (inclusive). Received %d. Defaulting to 1."", index);"
+src/lib/battery/battery.cpp,62,branch,e0,1,"PX4_ERR(""Battery index must be between 1 and 9 (inclusive). Received %d. Defaulting to 1."", index);"
+src/lib/battery/battery.cpp,69,branch,e0,1,_param_handles.v_empty = param_find(param_name);
+src/lib/battery/battery.cpp,71,branch,0,0,if (_param_handles.v_empty == PARAM_INVALID) {
+src/lib/battery/battery.cpp,72,branch,0,0,"PX4_ERR(""Could not find parameter with name %s"", param_name);"
+src/lib/battery/battery.cpp,72,branch,e0,1,"PX4_ERR(""Could not find parameter with name %s"", param_name);"
+src/lib/battery/battery.cpp,76,branch,e0,1,_param_handles.v_charged = param_find(param_name);
+src/lib/battery/battery.cpp,79,branch,e0,1,_param_handles.n_cells = param_find(param_name);
+src/lib/battery/battery.cpp,82,branch,e0,1,_param_handles.capacity = param_find(param_name);
+src/lib/battery/battery.cpp,85,branch,e0,1,_param_handles.r_internal = param_find(param_name);
+src/lib/battery/battery.cpp,88,branch,e0,1,_param_handles.source = param_find(param_name);
+src/lib/battery/battery.cpp,90,branch,e0,1,"_param_handles.low_thr = param_find(""BAT_LOW_THR"");"
+src/lib/battery/battery.cpp,91,branch,e0,1,"_param_handles.crit_thr = param_find(""BAT_CRIT_THR"");"
+src/lib/battery/battery.cpp,92,branch,e0,1,"_param_handles.emergen_thr = param_find(""BAT_EMERGEN_THR"");"
+src/lib/battery/battery.cpp,94,branch,e0,1,"_param_handles.bat_avrg_current = param_find(""BAT_AVRG_CURRENT"");"
+src/lib/battery/battery.cpp,96,branch,e0,1,updateParams();
+src/lib/battery/battery.cpp,130,branch,0,5,if (_connected && !_battery_initialized && _internal_resistance_initialized && _params.n_cells > 0) {
+src/lib/battery/battery.cpp,130,branch,0,7,if (_connected && !_battery_initialized && _internal_resistance_initialized && _params.n_cells > 0) {
+src/lib/battery/battery.cpp,158,branch,e0,1,battery_status.time_remaining_s = computeRemainingTime(_current_a);
+src/lib/battery/battery.cpp,167,branch,e0,1,battery_status.timestamp = hrt_absolute_time();
+src/lib/battery/battery.cpp,172,branch,0,1,battery_status.volt_based_soc_estimate = _params.n_cells > 0 ? math::interpolate(_ocv_filter_v.getState() /
+src/lib/battery/battery.cpp,183,branch,0,1,if (_source == _params.source) {
+src/lib/battery/battery.cpp,191,branch,e0,1,publishBatteryStatus(getBatteryStatus());
+src/lib/battery/battery.cpp,191,branch,e0,3,publishBatteryStatus(getBatteryStatus());
+src/lib/battery/battery.cpp,215,branch,0,0,if (_params.n_cells == 0) {
+src/lib/battery/battery.cpp,224,branch,e0,1,"updateInternalResistanceEstimation(voltage_v, current_a);"
+src/lib/battery/battery.cpp,226,branch,0,0,if (_params.r_internal >= 0.f) { // Use user specified internal resistance value
+src/lib/battery/battery.cpp,235,branch,e0,1,_cell_voltage_filter_v.update(cell_voltage);
+src/lib/battery/battery.cpp,241,branch,e0,1,"Vector2f x{1, -current_a};"
+src/lib/battery/battery.cpp,242,branch,e0,1,"_voltage_prediction = (x.transpose() * _RLS_est)(0, 0);"
+src/lib/battery/battery.cpp,242,branch,e0,3,"_voltage_prediction = (x.transpose() * _RLS_est)(0, 0);"
+src/lib/battery/battery.cpp,244,branch,e0,1,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,3,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,5,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,7,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,9,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,11,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,244,branch,e0,13,"const Vector2f gamma = _estimation_covariance * x / (LAMBDA + (x.transpose() * _estimation_covariance * x)(0, 0));"
+src/lib/battery/battery.cpp,245,branch,e0,1,const Vector2f RSL_est_temp = _RLS_est + gamma * _prediction_error;
+src/lib/battery/battery.cpp,245,branch,e0,3,const Vector2f RSL_est_temp = _RLS_est + gamma * _prediction_error;
+src/lib/battery/battery.cpp,245,branch,e0,5,const Vector2f RSL_est_temp = _RLS_est + gamma * _prediction_error;
+src/lib/battery/battery.cpp,245,branch,e0,7,const Vector2f RSL_est_temp = _RLS_est + gamma * _prediction_error;
+src/lib/battery/battery.cpp,247,branch,e0,1,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,3,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,5,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,7,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,9,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,11,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,13,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,247,branch,e0,15,"- Matrix<float, 2, 1>(gamma) * (x.transpose() * _estimation_covariance)) / LAMBDA;"
+src/lib/battery/battery.cpp,254,branch,e0,1,_RLS_est = RSL_est_temp;
+src/lib/battery/battery.cpp,255,branch,e0,1,_estimation_covariance = estimation_covariance_temp;
+src/lib/battery/battery.cpp,258,branch,e0,1,"math::max(_RLS_est(1) / _params.n_cells, 0.f); // Only use positive values"
+src/lib/battery/battery.cpp,261,branch,e0,1,_RLS_est(0) = voltage_v + _RLS_est(1) * current_a;
+src/lib/battery/battery.cpp,261,branch,e0,3,_RLS_est(0) = voltage_v + _RLS_est(1) * current_a;
+src/lib/battery/battery.cpp,264,branch,e0,1,_ocv_filter_v.update(voltage_v + _internal_resistance_estimate * _params.n_cells * current_a);
+src/lib/battery/battery.cpp,279,branch,0,0,if (_params.r_internal >= 0.f) { // Use user specified internal resistance value
+src/lib/battery/battery.cpp,290,branch,0,2,if ((_capacity_mah > 0.f) && _battery_initialized) {
+src/lib/battery/battery.cpp,327,branch,0,1,if ((_params.n_cells > 0)
+src/lib/battery/battery.cpp,340,branch,0,1,if (PX4_ISFINITE(_scale)) {
+src/lib/battery/battery.cpp,356,branch,e0,1,if (_vehicle_status_sub.copy(&vehicle_status)) {
+src/lib/battery/battery.cpp,356,branch,0,3,if (_vehicle_status_sub.copy(&vehicle_status)) {
+src/lib/battery/battery.cpp,359,branch,0,3,if (vehicle_status.vehicle_type == vehicle_status_s::VEHICLE_TYPE_FIXED_WING && !_vehicle_status_is_fw) {
+src/lib/battery/battery.cpp,371,branch,0,1,|| reset_current_avg_filter) {
+src/lib/battery/battery.cpp,375,branch,0,3,if (_armed && PX4_ISFINITE(current_a)) {
+src/lib/battery/battery.cpp,377,branch,0,2,if (!_vehicle_status_is_fw || ((hrt_absolute_time() - _flight_phase_estimation_sub.get().timestamp) < 2_s
+src/lib/battery/battery.cpp,378,branch,0,0,&& _flight_phase_estimation_sub.get().flight_phase == flight_phase_estimation_s::FLIGHT_PHASE_LEVEL)) {
+src/lib/battery/battery.cpp,378,branch,0,1,&& _flight_phase_estimation_sub.get().flight_phase == flight_phase_estimation_s::FLIGHT_PHASE_LEVEL)) {
+src/lib/battery/battery.cpp,379,branch,0,1,if (_dt > FLT_EPSILON) {
+src/lib/battery/battery.cpp,380,branch,e0,1,"_current_average_filter_a.update(fmaxf(current_a, 0.f), _dt);"
+src/lib/battery/battery.cpp,383,branch,0,0,"_current_average_filter_a.update(fmaxf(current_a, 0.f));"
+src/lib/battery/battery.cpp,383,branch,e0,1,"_current_average_filter_a.update(fmaxf(current_a, 0.f));"
+src/lib/battery/battery.cpp,401,branch,e0,1,"param_get(_param_handles.v_empty, &_params.v_empty);"
+src/lib/battery/battery.cpp,402,branch,e0,1,"param_get(_param_handles.v_charged, &_params.v_charged);"
+src/lib/battery/battery.cpp,403,branch,e0,1,"param_get(_param_handles.n_cells, &_params.n_cells);"
+src/lib/battery/battery.cpp,404,branch,e0,1,"param_get(_param_handles.r_internal, &_params.r_internal);"
+src/lib/battery/battery.cpp,405,branch,e0,1,"param_get(_param_handles.source, &_params.source);"
+src/lib/battery/battery.cpp,406,branch,e0,1,"param_get(_param_handles.low_thr, &_params.low_thr);"
+src/lib/battery/battery.cpp,407,branch,e0,1,"param_get(_param_handles.crit_thr, &_params.crit_thr);"
+src/lib/battery/battery.cpp,408,branch,e0,1,"param_get(_param_handles.emergen_thr, &_params.emergen_thr);"
+src/lib/battery/battery.cpp,409,branch,e0,1,"param_get(_param_handles.bat_avrg_current, &_params.bat_avrg_current);"
+src/lib/battery/battery.cpp,412,branch,e0,1,"param_get(_param_handles.capacity, &capacity);"
+src/lib/battery/battery.cpp,413,branch,e0,1,setCapacityMah(capacity);
+src/lib/battery/battery.cpp,419,branch,0,3,if (!_internal_resistance_initialized && _params.n_cells > 0) {
+src/lib/battery/battery.cpp,420,branch,e0,1,_RLS_est(0) = OCV_DEFAULT * _params.n_cells;
+src/lib/battery/battery.cpp,421,branch,e0,1,_RLS_est(1) = R_DEFAULT * _params.n_cells;
+src/lib/battery/battery.cpp,431,branch,e0,1,ModuleParams::updateParams();
+src/lib/battery/battery.cpp,62,line,,,"PX4_ERR(""Battery index must be between 1 and 9 (inclusive). Received %d. Defaulting to 1."", index);"
+src/lib/battery/battery.cpp,72,line,,,"PX4_ERR(""Could not find parameter with name %s"", param_name);"
+src/lib/battery/battery.cpp,216,line,,,return -1.0f;
+src/lib/battery/battery.cpp,227,line,,,cell_voltage += _params.r_internal * current_a;
+src/lib/battery/battery.cpp,280,line,,,_cell_voltage_filter_v.reset(voltage_v / _params.n_cells + _params.r_internal * current_a);
+src/lib/battery/battery.cpp,293,line,,,const float weight_v = 3e-2f * (1 - _state_of_charge_volt_based);
+src/lib/battery/battery.cpp,294,line,,,_state_of_charge = (1 - weight_v) * _state_of_charge + weight_v * _state_of_charge_volt_based;
+src/lib/battery/battery.cpp,296,line,,,_state_of_charge -= _discharged_mah_loop / _capacity_mah;
+src/lib/battery/battery.cpp,297,line,,,"_state_of_charge = math::max(_state_of_charge, 0.f);"
+src/lib/battery/battery.cpp,299,line,,,"const float state_of_charge_current_based = math::max(1.f - _discharged_mah / _capacity_mah, 0.f);"
+src/lib/battery/battery.cpp,300,line,,,"_state_of_charge = math::min(state_of_charge_current_based, _state_of_charge);"
+src/lib/battery/battery.cpp,302,line,,,} else {
+src/lib/battery/battery.cpp,344,line,,,_scale = 1.f;
+src/lib/battery/battery.cpp,378,line,,,&& _flight_phase_estimation_sub.get().flight_phase == flight_phase_estimation_s::FLIGHT_PHASE_LEVEL)) {
+src/lib/battery/battery.cpp,383,line,,,"_current_average_filter_a.update(fmaxf(current_a, 0.f));"
+src/lib/hysteresis/hysteresis.cpp,77,branch,0,3,if (_state && !_requested_state) {
+src/lib/hysteresis/hysteresis.cpp,83,branch,0,1,} else if (!_state && _requested_state) {
+src/lib/hysteresis/hysteresis.cpp,83,branch,0,3,} else if (!_state && _requested_state) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,1,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,3,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,5,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,7,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,9,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,11,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,13,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,15,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,17,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,19,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,39,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,41,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,43,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,45,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,47,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,49,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,51,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,53,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,55,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,57,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,178,branch,e0,59,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,180,branch,e0,1,update_parameters(true);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,185,branch,e0,1,uORB::SubscriptionData<vehicle_attitude_s> vehicle_attitude_sub{ORB_ID(vehicle_attitude)};
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,186,branch,e0,1,vehicle_attitude_sub.update();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,188,branch,e0,1,if (vehicle_attitude_sub.advertised() && (hrt_elapsed_time(&vehicle_attitude_sub.get().timestamp) < 1_s)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,188,branch,e0,5,if (vehicle_attitude_sub.advertised() && (hrt_elapsed_time(&vehicle_attitude_sub.get().timestamp) < 1_s)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,189,branch,e0,1,"PX4_ERR(""init failed, vehicle_attitude already advertised"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,193,branch,e0,1,if (!_sensors_sub.registerCallback()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,193,branch,0,2,if (!_sensors_sub.registerCallback()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,194,branch,0,0,"PX4_ERR(""callback registration failed"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,194,branch,e0,1,"PX4_ERR(""callback registration failed"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,229,branch,e0,1,if (_vehicle_gps_position_sub.update(&gps)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,229,branch,0,3,if (_vehicle_gps_position_sub.update(&gps)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,232,branch,e0,1,"float mag_decl_deg = get_mag_declination_degrees(gps.latitude_deg, gps.longitude_deg);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,233,branch,e0,1,update_mag_declination(math::radians(mag_decl_deg));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,245,branch,e0,1,if (_vehicle_magnetometer_sub.update(&magnetometer)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,245,branch,0,3,if (_vehicle_magnetometer_sub.update(&magnetometer)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,246,branch,e0,1,_mag(0) = magnetometer.magnetometer_ga[0];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,247,branch,e0,1,_mag(1) = magnetometer.magnetometer_ga[1];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,248,branch,e0,1,_mag(2) = magnetometer.magnetometer_ga[2];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,250,branch,e0,1,if (_mag.length() < 0.01f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,251,branch,e0,1,"PX4_ERR(""degenerate mag!"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,263,branch,e0,1,if (_vehicle_mocap_odometry_sub.update(&mocap)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,263,branch,0,3,if (_vehicle_mocap_odometry_sub.update(&mocap)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,272,branch,e0,1,Dcmf Rmoc = Quatf(mocap.q);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,272,branch,e0,3,Dcmf Rmoc = Quatf(mocap.q);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,273,branch,e0,1,"Vector3f v(1.0f, 0.0f, 0.4f);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,278,branch,e0,1,_mocap_hdg = Rmoc.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,278,branch,e0,3,_mocap_hdg = Rmoc.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,278,branch,e0,5,_mocap_hdg = Rmoc.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,278,branch,e0,7,_mocap_hdg = Rmoc.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,283,branch,e0,3,_ext_hdg_good = mocap.timestamp_sample > 0 && (hrt_elapsed_time(&mocap.timestamp_sample) < 500000);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,294,branch,e0,1,if (_sensors_sub.update(&sensors)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,298,branch,e0,1,_gyro(0) = sensors.gyro_rad[0];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,299,branch,e0,1,_gyro(1) = sensors.gyro_rad[1];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,300,branch,e0,1,_gyro(2) = sensors.gyro_rad[2];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,304,branch,e0,1,_accel(0) = sensors.accelerometer_m_s2[0];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,305,branch,e0,1,_accel(1) = sensors.accelerometer_m_s2[1];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,306,branch,e0,1,_accel(2) = sensors.accelerometer_m_s2[2];
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,308,branch,e0,1,if (_accel.length() < 0.01f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,309,branch,e0,1,"PX4_ERR(""degenerate accel!"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,326,branch,e0,1,_q.copyTo(vehicle_attitude.q);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,329,branch,e0,1,vehicle_attitude.timestamp = hrt_absolute_time();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,330,branch,e0,1,_vehicle_attitude_pub.publish(vehicle_attitude);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,339,branch,e0,1,if (_vehicle_local_position_sub.update(&lpos)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,339,branch,0,3,if (_vehicle_local_position_sub.update(&lpos)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,341,branch,e0,1,if (_param_att_acc_comp.get() && (hrt_elapsed_time(&lpos.timestamp) < 20_ms)
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,345,branch,e0,1,"const Vector3f vel(lpos.vx, lpos.vy, lpos.vz);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,1,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,3,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,5,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,7,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,9,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,351,branch,e0,11,_pos_acc = _q.rotateVectorInverse((vel - _vel_prev) / vel_dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,355,branch,e0,1,_vel_prev = vel;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,359,branch,e0,1,_pos_acc.zero();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,360,branch,e0,1,_vel_prev.zero();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,372,branch,e0,1,if (_vehicle_visual_odometry_sub.update(&vision)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,372,branch,0,3,if (_vehicle_visual_odometry_sub.update(&vision)) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,381,branch,e0,1,Dcmf Rvis = Quatf(vision.q);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,381,branch,e0,3,Dcmf Rvis = Quatf(vision.q);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,382,branch,e0,1,"Vector3f v(1.0f, 0.0f, 0.4f);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,387,branch,e0,1,_vision_hdg = Rvis.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,387,branch,e0,3,_vision_hdg = Rvis.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,387,branch,e0,5,_vision_hdg = Rvis.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,387,branch,e0,7,_vision_hdg = Rvis.transpose() * v;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,392,branch,e0,3,_ext_hdg_good = vision.timestamp_sample > 0 && (hrt_elapsed_time(&vision.timestamp_sample) < 500000);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,405,branch,e0,1,_parameter_update_sub.copy(&pupdate);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,408,branch,e0,1,updateParams();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,417,branch,e0,1,_mag(0) = 1.f;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,418,branch,e0,1,_mag(1) = 0.f;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,419,branch,e0,1,_mag(2) = 0.f;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,422,branch,e0,1,update_mag_declination(math::radians(_param_att_mag_decl.get()));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,430,branch,e0,1,Vector3f k = -_accel;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,431,branch,e0,1,k.normalize();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,434,branch,e0,1,Vector3f i = (_mag - k * (_mag * k));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,434,branch,e0,3,Vector3f i = (_mag - k * (_mag * k));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,434,branch,e0,5,Vector3f i = (_mag - k * (_mag * k));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,434,branch,e0,7,Vector3f i = (_mag - k * (_mag * k));
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,435,branch,e0,1,i.normalize();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,438,branch,e0,1,Vector3f j = k % i;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,441,branch,e0,1,Dcmf R;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,442,branch,e0,1,R.row(0) = i;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,442,branch,e0,3,R.row(0) = i;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,443,branch,e0,1,R.row(1) = j;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,443,branch,e0,3,R.row(1) = j;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,444,branch,e0,1,R.row(2) = k;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,444,branch,e0,3,R.row(2) = k;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,447,branch,e0,1,_q = R;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,447,branch,e0,3,_q = R;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,450,branch,e0,1,"Quatf decl_rotation = Eulerf(0.0f, 0.0f, _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,450,branch,e0,3,"Quatf decl_rotation = Eulerf(0.0f, 0.0f, _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,451,branch,e0,1,_q = _q * decl_rotation;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,451,branch,e0,3,_q = _q * decl_rotation;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,453,branch,e0,1,_q.normalize();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,455,branch,e0,1,if (_q.isAllFinite() && _q.length() > 0.95f && _q.length() < 1.05f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,455,branch,e0,5,if (_q.isAllFinite() && _q.length() > 0.95f && _q.length() < 1.05f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,455,branch,0,7,if (_q.isAllFinite() && _q.length() > 0.95f && _q.length() < 1.05f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,455,branch,e0,9,if (_q.isAllFinite() && _q.length() > 0.95f && _q.length() < 1.05f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,455,branch,0,11,if (_q.isAllFinite() && _q.length() > 0.95f && _q.length() < 1.05f) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,473,branch,e0,1,return init_attitude_q();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,476,branch,e0,1,Quatf q_last = _q;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,480,branch,e0,1,float spinRate = _gyro.length();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,486,branch,e0,1,Vector3f vision_hdg_earth = _q.rotateVector(_vision_hdg);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,487,branch,e0,1,"float vision_hdg_err = wrap_pi(atan2f(vision_hdg_earth(1), vision_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,487,branch,e0,3,"float vision_hdg_err = wrap_pi(atan2f(vision_hdg_earth(1), vision_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,487,branch,e0,5,"float vision_hdg_err = wrap_pi(atan2f(vision_hdg_earth(1), vision_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,489,branch,e0,1,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -vision_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,489,branch,e0,3,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -vision_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,489,branch,e0,5,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -vision_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,489,branch,e0,7,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -vision_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,495,branch,e0,1,Vector3f mocap_hdg_earth = _q.rotateVector(_mocap_hdg);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,496,branch,e0,1,"float mocap_hdg_err = wrap_pi(atan2f(mocap_hdg_earth(1), mocap_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,496,branch,e0,3,"float mocap_hdg_err = wrap_pi(atan2f(mocap_hdg_earth(1), mocap_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,496,branch,e0,5,"float mocap_hdg_err = wrap_pi(atan2f(mocap_hdg_earth(1), mocap_hdg_earth(0)));"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,498,branch,e0,1,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mocap_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,498,branch,e0,3,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mocap_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,498,branch,e0,5,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mocap_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,498,branch,e0,7,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mocap_hdg_err)) * _param_att_w_ext_hdg.get();"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,505,branch,e0,1,Vector3f mag_earth = _q.rotateVector(_mag);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,506,branch,e0,1,"float mag_err = wrap_pi(atan2f(mag_earth(1), mag_earth(0)) - _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,506,branch,e0,3,"float mag_err = wrap_pi(atan2f(mag_earth(1), mag_earth(0)) - _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,506,branch,e0,5,"float mag_err = wrap_pi(atan2f(mag_earth(1), mag_earth(0)) - _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,515,branch,e0,1,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mag_err)) * _param_att_w_mag.get() * gainMult;"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,515,branch,e0,3,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mag_err)) * _param_att_w_mag.get() * gainMult;"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,515,branch,e0,5,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mag_err)) * _param_att_w_mag.get() * gainMult;"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,515,branch,e0,7,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mag_err)) * _param_att_w_mag.get() * gainMult;"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,515,branch,e0,9,"corr += _q.rotateVectorInverse(Vector3f(0.0f, 0.0f, -mag_err)) * _param_att_w_mag.get() * gainMult;"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,518,branch,e0,1,_q.normalize();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,526,branch,e0,1,"2.0f * (_q(1) * _q(3) - _q(0) * _q(2)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,526,branch,e0,3,"2.0f * (_q(1) * _q(3) - _q(0) * _q(2)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,526,branch,e0,5,"2.0f * (_q(1) * _q(3) - _q(0) * _q(2)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,527,branch,e0,1,"2.0f * (_q(2) * _q(3) + _q(0) * _q(1)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,527,branch,e0,3,"2.0f * (_q(2) * _q(3) + _q(0) * _q(1)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,527,branch,e0,5,"2.0f * (_q(2) * _q(3) + _q(0) * _q(1)),"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,1,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,3,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,5,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,7,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,9,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,11,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,13,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,528,branch,e0,15,(_q(0) * _q(0) - _q(1) * _q(1) - _q(2) * _q(2) + _q(3) * _q(3))
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,529,branch,e0,1,);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,529,branch,e0,3,);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,529,branch,e0,5,);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,533,branch,e0,1,const float accel_norm_sq = _accel.norm_squared();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,1,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,3,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,5,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,7,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,9,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,540,branch,e0,11,corr += (k % (_accel - _pos_acc).normalized()) * _param_att_w_acc.get();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,545,branch,e0,1,_gyro_bias += corr * (_param_att_w_gyro_bias.get() * dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,545,branch,e0,3,_gyro_bias += corr * (_param_att_w_gyro_bias.get() * dt);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,548,branch,e0,1,"_gyro_bias(i) = math::constrain(_gyro_bias(i), -_bias_max, _bias_max);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,548,branch,e0,3,"_gyro_bias(i) = math::constrain(_gyro_bias(i), -_bias_max, _bias_max);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,553,branch,e0,1,_rates = _gyro + _gyro_bias;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,553,branch,e0,3,_rates = _gyro + _gyro_bias;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,553,branch,e0,5,_rates = _gyro + _gyro_bias;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,556,branch,e0,1,corr += _rates;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,559,branch,e0,1,_q += _q.derivative1(corr) * dt;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,559,branch,e0,3,_q += _q.derivative1(corr) * dt;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,559,branch,e0,5,_q += _q.derivative1(corr) * dt;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,562,branch,e0,1,_q.normalize();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,564,branch,e0,1,if (!_q.isAllFinite()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,566,branch,e0,1,_q = q_last;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,567,branch,e0,1,_rates.zero();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,568,branch,e0,1,_gyro_bias.zero();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,583,branch,e0,1,"Quatf decl_rotation = Eulerf(0.0f, 0.0f, new_declination - _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,583,branch,e0,3,"Quatf decl_rotation = Eulerf(0.0f, 0.0f, new_declination - _mag_decl);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,584,branch,e0,1,_q = _q * decl_rotation;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,584,branch,e0,3,_q = _q * decl_rotation;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,0,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,1,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,2,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,e0,3,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,4,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,5,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,6,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,branch,0,7,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,598,branch,0,0,if (instance) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,598,branch,0,1,if (instance) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,602,branch,0,0,if (instance->init()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,602,branch,0,1,if (instance->init()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,610,branch,0,0,delete instance;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,610,branch,0,1,delete instance;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,619,branch,0,0,if (reason) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,619,branch,0,1,if (reason) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,194,line,,,"PX4_ERR(""callback registration failed"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,195,line,,,return false;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,589,line,,,"int AttitudeEstimatorQ::custom_command(int argc, char *argv[])"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,591,line,,,"return print_usage(""unknown command"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,594,line,,,"int AttitudeEstimatorQ::task_spawn(int argc, char *argv[])"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,596,line,,,AttitudeEstimatorQ *instance = new AttitudeEstimatorQ();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,598,line,,,if (instance) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,599,line,,,_object.store(instance);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,600,line,,,_task_id = task_id_is_work_queue;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,602,line,,,if (instance->init()) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,603,line,,,return PX4_OK;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,607,line,,,"PX4_ERR(""alloc failed"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,610,line,,,delete instance;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,611,line,,,_object.store(nullptr);
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,612,line,,,_task_id = -1;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,614,line,,,return PX4_ERROR;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,617,line,,,int AttitudeEstimatorQ::print_usage(const char *reason)
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,619,line,,,if (reason) {
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,620,line,,,"PX4_WARN(""%s\n"", reason);"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,623,line,,,PRINT_MODULE_DESCRIPTION(
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,630,line,,,"PRINT_MODULE_USAGE_NAME(""AttitudeEstimatorQ"", ""estimator"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,631,line,,,"PRINT_MODULE_USAGE_COMMAND(""start"");"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,632,line,,,PRINT_MODULE_USAGE_DEFAULT_COMMANDS();
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,634,line,,,return 0;
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,637,line,,,"extern ""C"" __EXPORT int attitude_estimator_q_main(int argc, char *argv[])"
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,639,line,,,"return AttitudeEstimatorQ::main(argc, argv);"
+src/modules/battery_status/analog_battery.cpp,53,branch,e0,1,"Battery(index, parent, sample_interval_us, source)"
+src/modules/battery_status/analog_battery.cpp,58,branch,e0,1,"_analog_param_handles.v_offs_cur = param_find(""BAT_V_OFFS_CURR"");"
+src/modules/battery_status/analog_battery.cpp,61,branch,e0,1,_analog_param_handles.v_div = param_find(param_name);
+src/modules/battery_status/analog_battery.cpp,64,branch,e0,1,_analog_param_handles.a_per_v = param_find(param_name);
+src/modules/battery_status/analog_battery.cpp,67,branch,e0,1,_analog_param_handles.v_channel = param_find(param_name);
+src/modules/battery_status/analog_battery.cpp,70,branch,e0,1,_analog_param_handles.i_channel = param_find(param_name);
+src/modules/battery_status/analog_battery.cpp,73,branch,e0,1,_analog_param_handles.i_overwrite = param_find(param_name);
+src/modules/battery_status/analog_battery.cpp,103,branch,0,0,if (_analog_params.i_overwrite > 0) {
+src/modules/battery_status/analog_battery.cpp,106,branch,0,0,if (_arming_state == vehicle_status_s::ARMING_STATE_DISARMED) {
+src/modules/battery_status/analog_battery.cpp,106,branch,0,1,if (_arming_state == vehicle_status_s::ARMING_STATE_DISARMED) {
+src/modules/battery_status/analog_battery.cpp,130,branch,0,0,if (_analog_params.v_channel == V_CHANNEL_DISABLED) {
+src/modules/battery_status/analog_battery.cpp,133,branch,0,0,} else if (_analog_params.v_channel >= 0) {
+src/modules/battery_status/analog_battery.cpp,144,branch,0,0,if (_analog_params.i_channel >= 0) {
+src/modules/battery_status/analog_battery.cpp,144,branch,0,1,if (_analog_params.i_channel >= 0) {
+src/modules/battery_status/analog_battery.cpp,169,branch,0,0,if (_vehicle_status_sub.update(&vehicle_status)) {
+src/modules/battery_status/analog_battery.cpp,169,branch,e0,1,if (_vehicle_status_sub.update(&vehicle_status)) {
+src/modules/battery_status/analog_battery.cpp,169,branch,0,2,if (_vehicle_status_sub.update(&vehicle_status)) {
+src/modules/battery_status/analog_battery.cpp,169,branch,0,3,if (_vehicle_status_sub.update(&vehicle_status)) {
+src/modules/battery_status/analog_battery.cpp,104,line,,,updateTopics();
+src/modules/battery_status/analog_battery.cpp,106,line,,,if (_arming_state == vehicle_status_s::ARMING_STATE_DISARMED) {
+src/modules/battery_status/analog_battery.cpp,107,line,,,current_a = _analog_params.i_overwrite;
+src/modules/battery_status/analog_battery.cpp,131,line,,,return -1;
+src/modules/battery_status/analog_battery.cpp,134,line,,,return _analog_params.v_channel;
+src/modules/battery_status/analog_battery.cpp,142,line,,,int AnalogBattery::get_current_channel()
+src/modules/battery_status/analog_battery.cpp,144,line,,,if (_analog_params.i_channel >= 0) {
+src/modules/battery_status/analog_battery.cpp,145,line,,,return _analog_params.i_channel;
+src/modules/battery_status/analog_battery.cpp,148,line,,,return DEFAULT_I_CHANNEL[_index - 1];
+src/modules/battery_status/analog_battery.cpp,165,line,,,void AnalogBattery::updateTopics()
+src/modules/battery_status/analog_battery.cpp,169,line,,,if (_vehicle_status_sub.update(&vehicle_status)) {
+src/modules/battery_status/analog_battery.cpp,170,line,,,_arming_state = vehicle_status.arming_state;
+src/modules/battery_status/analog_battery.cpp,172,line,,,}
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,1,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,3,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,5,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,7,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,9,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,11,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,13,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,15,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,17,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,19,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,21,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,43,branch,e0,23,"WorkItem(MODULE_NAME, px4::wq_configurations::nav_and_controllers)"
+src/modules/flight_mode_manager/FlightModeManager.cpp,45,branch,e0,1,updateParams();
+src/modules/flight_mode_manager/FlightModeManager.cpp,50,branch,e0,1,_initTask(static_cast<FlightTaskIndex>(i));
+src/modules/flight_mode_manager/FlightModeManager.cpp,54,branch,e0,1,_initTask(FlightTaskIndex::None);
+src/modules/flight_mode_manager/FlightModeManager.cpp,68,branch,0,0,if (!_vehicle_local_position_sub.registerCallback()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,68,branch,0,1,if (!_vehicle_local_position_sub.registerCallback()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,81,branch,0,0,if (should_exit()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,81,branch,0,1,if (should_exit()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,82,branch,0,0,_vehicle_local_position_sub.unregisterCallback();
+src/modules/flight_mode_manager/FlightModeManager.cpp,82,branch,e0,1,_vehicle_local_position_sub.unregisterCallback();
+src/modules/flight_mode_manager/FlightModeManager.cpp,83,branch,0,0,exit_and_cleanup();
+src/modules/flight_mode_manager/FlightModeManager.cpp,83,branch,e0,1,exit_and_cleanup();
+src/modules/flight_mode_manager/FlightModeManager.cpp,87,branch,0,0,perf_begin(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,87,branch,e0,1,perf_begin(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,90,branch,0,0,if (_parameter_update_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,90,branch,e0,1,if (_parameter_update_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,90,branch,0,2,if (_parameter_update_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,90,branch,0,3,if (_parameter_update_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,93,branch,0,0,_parameter_update_sub.copy(&param_update);
+src/modules/flight_mode_manager/FlightModeManager.cpp,93,branch,e0,1,_parameter_update_sub.copy(&param_update);
+src/modules/flight_mode_manager/FlightModeManager.cpp,94,branch,0,0,updateParams();
+src/modules/flight_mode_manager/FlightModeManager.cpp,94,branch,e0,1,updateParams();
+src/modules/flight_mode_manager/FlightModeManager.cpp,100,branch,0,0,if (_vehicle_local_position_sub.update(&vehicle_local_position)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,100,branch,e0,1,if (_vehicle_local_position_sub.update(&vehicle_local_position)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,100,branch,0,2,if (_vehicle_local_position_sub.update(&vehicle_local_position)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,100,branch,0,3,if (_vehicle_local_position_sub.update(&vehicle_local_position)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,106,branch,0,0,_vehicle_control_mode_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,106,branch,e0,1,_vehicle_control_mode_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,107,branch,0,0,_vehicle_land_detected_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,107,branch,e0,1,_vehicle_land_detected_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,108,branch,0,0,_vehicle_status_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,108,branch,e0,1,_vehicle_status_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,110,branch,0,0,start_flight_task();
+src/modules/flight_mode_manager/FlightModeManager.cpp,110,branch,e0,1,start_flight_task();
+src/modules/flight_mode_manager/FlightModeManager.cpp,112,branch,0,0,if (_vehicle_command_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,112,branch,e0,1,if (_vehicle_command_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,112,branch,0,2,if (_vehicle_command_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,112,branch,0,3,if (_vehicle_command_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,113,branch,0,0,handleCommand();
+src/modules/flight_mode_manager/FlightModeManager.cpp,113,branch,e0,1,handleCommand();
+src/modules/flight_mode_manager/FlightModeManager.cpp,116,branch,0,0,tryApplyCommandIfAny();
+src/modules/flight_mode_manager/FlightModeManager.cpp,116,branch,e0,1,tryApplyCommandIfAny();
+src/modules/flight_mode_manager/FlightModeManager.cpp,118,branch,0,0,if (isAnyTaskActive()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,118,branch,0,1,if (isAnyTaskActive()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,119,branch,0,0,"generateTrajectorySetpoint(dt, vehicle_local_position);"
+src/modules/flight_mode_manager/FlightModeManager.cpp,119,branch,e0,1,"generateTrajectorySetpoint(dt, vehicle_local_position);"
+src/modules/flight_mode_manager/FlightModeManager.cpp,124,branch,0,0,perf_end(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,124,branch,e0,1,perf_end(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,141,branch,0,1,&& (_vehicle_status_sub.get().nav_state <= vehicle_status_s::NAVIGATION_STATE_EXTERNAL8))) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,147,branch,0,0,if (_vehicle_status_sub.get().in_transition_mode && _vehicle_control_mode_sub.get().flag_control_altitude_enabled) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,147,branch,0,2,if (_vehicle_status_sub.get().in_transition_mode && _vehicle_control_mode_sub.get().flag_control_altitude_enabled) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,147,branch,0,3,if (_vehicle_status_sub.get().in_transition_mode && _vehicle_control_mode_sub.get().flag_control_altitude_enabled) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,147,branch,0,4,if (_vehicle_status_sub.get().in_transition_mode && _vehicle_control_mode_sub.get().flag_control_altitude_enabled) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,166,branch,0,0,if (error != FlightTaskError::NoError) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,174,branch,0,3,&& !_command_failed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,182,branch,0,0,if (error != FlightTaskError::NoError) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,190,branch,0,3,&& !nav_state_descend) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,193,branch,0,0,if (switchTask(FlightTaskIndex::Auto) != FlightTaskError::NoError) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,200,branch,0,0,if (_vehicle_status_sub.get().nav_state == vehicle_status_s::NAVIGATION_STATE_POSITION_SLOW) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,207,branch,0,2,if ((_vehicle_status_sub.get().nav_state == vehicle_status_s::NAVIGATION_STATE_POSCTL) || task_failure) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,229,branch,0,1,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,229,branch,0,3,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,233,branch,0,2,if ((_vehicle_status_sub.get().nav_state == vehicle_status_s::NAVIGATION_STATE_ALTCTL) || task_failure) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,249,branch,0,1,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,249,branch,0,3,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,260,branch,0,1,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,260,branch,0,3,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,264,branch,0,2,if (nav_state_descend || task_failure) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,270,branch,0,1,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,270,branch,0,3,matching_task_running = matching_task_running && !task_failure;
+src/modules/flight_mode_manager/FlightModeManager.cpp,273,branch,0,0,if (task_failure) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,278,branch,0,0,if (!found_some_task) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,0,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,2,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,3,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,4,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,5,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,282,branch,0,6,if (!matching_task_running && _vehicle_control_mode_sub.get().flag_armed && !_no_matching_task_error_printed) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,292,branch,0,1,if (isAnyTaskActive() && _current_command.command != 0 && hrt_absolute_time() < _current_command.timestamp + 200_ms) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,292,branch,0,3,if (isAnyTaskActive() && _current_command.command != 0 && hrt_absolute_time() < _current_command.timestamp + 200_ms) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,295,branch,e0,1,"if (_current_task.task->applyCommandParameters(_current_command, success)) {"
+src/modules/flight_mode_manager/FlightModeManager.cpp,295,branch,0,3,"if (_current_task.task->applyCommandParameters(_current_command, success)) {"
+src/modules/flight_mode_manager/FlightModeManager.cpp,298,branch,0,1,if (!success) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,299,branch,e0,1,switchTask(FlightTaskIndex::Failsafe);
+src/modules/flight_mode_manager/FlightModeManager.cpp,311,branch,e0,1,while (_vehicle_command_sub.update(&command)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,322,branch,0,1,if (_current_task.task) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,325,branch,0,1,&& (static_cast<uint8_t>(command.param1 + .5f) == vehicle_command_s::SPEED_TYPE_GROUNDSPEED)
+src/modules/flight_mode_manager/FlightModeManager.cpp,326,branch,0,1,&& (command.param2 > 0.f)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,327,branch,e0,1,_current_task.task->overrideCruiseSpeed(command.param2);
+src/modules/flight_mode_manager/FlightModeManager.cpp,340,branch,e0,1,if (_current_task.task->updateInitialize() && _current_task.task->update()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,340,branch,0,3,if (_current_task.task->updateInitialize() && _current_task.task->update()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,340,branch,e0,5,if (_current_task.task->updateInitialize() && _current_task.task->update()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,340,branch,0,7,if (_current_task.task->updateInitialize() && _current_task.task->update()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,340,branch,0,9,if (_current_task.task->updateInitialize() && _current_task.task->update()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,342,branch,e0,1,setpoint = _current_task.task->getTrajectorySetpoint();
+src/modules/flight_mode_manager/FlightModeManager.cpp,346,branch,e0,1,if (_takeoff_status_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,346,branch,0,2,if (_takeoff_status_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,349,branch,0,0,if (_takeoff_status_sub.copy(&takeoff_status)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,349,branch,e0,1,if (_takeoff_status_sub.copy(&takeoff_status)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,349,branch,0,2,if (_takeoff_status_sub.copy(&takeoff_status)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,349,branch,0,3,if (_takeoff_status_sub.copy(&takeoff_status)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,356,branch,e0,1,_current_task.task->reActivate();
+src/modules/flight_mode_manager/FlightModeManager.cpp,360,branch,e0,1,setpoint.timestamp = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,361,branch,e0,1,_trajectory_setpoint_pub.publish(setpoint);
+src/modules/flight_mode_manager/FlightModeManager.cpp,363,branch,e0,1,constraints.timestamp = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,364,branch,e0,1,_vehicle_constraints_pub.publish(constraints);
+src/modules/flight_mode_manager/FlightModeManager.cpp,369,branch,0,0,if (landing_gear.landing_gear != _old_landing_gear_position
+src/modules/flight_mode_manager/FlightModeManager.cpp,370,branch,0,0,&& landing_gear.landing_gear != landing_gear_s::GEAR_KEEP) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,370,branch,0,1,&& landing_gear.landing_gear != landing_gear_s::GEAR_KEEP) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,372,branch,0,0,landing_gear.timestamp = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,372,branch,e0,1,landing_gear.timestamp = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,373,branch,0,0,_landing_gear_pub.publish(landing_gear);
+src/modules/flight_mode_manager/FlightModeManager.cpp,373,branch,e0,1,_landing_gear_pub.publish(landing_gear);
+src/modules/flight_mode_manager/FlightModeManager.cpp,390,branch,e0,1,last_setpoint = _current_task.task->getTrajectorySetpoint();
+src/modules/flight_mode_manager/FlightModeManager.cpp,393,branch,e0,1,if (_initTask(new_task_index)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,393,branch,0,2,if (_initTask(new_task_index)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,398,branch,0,0,if (!isAnyTaskActive()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,404,branch,e0,1,if (!_current_task.task->updateInitialize() || !_current_task.task->activate(last_setpoint)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,404,branch,0,3,if (!_current_task.task->updateInitialize() || !_current_task.task->activate(last_setpoint)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,404,branch,e0,5,if (!_current_task.task->updateInitialize() || !_current_task.task->activate(last_setpoint)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,404,branch,0,6,if (!_current_task.task->updateInitialize() || !_current_task.task->activate(last_setpoint)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,404,branch,0,8,if (!_current_task.task->updateInitialize() || !_current_task.task->activate(last_setpoint)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,0,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,1,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,2,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,e0,3,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,4,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,5,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,6,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,branch,0,7,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,445,branch,0,0,if (instance) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,445,branch,0,1,if (instance) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,449,branch,0,0,if (instance->init()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,449,branch,0,1,if (instance->init()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,457,branch,0,0,delete instance;
+src/modules/flight_mode_manager/FlightModeManager.cpp,457,branch,0,1,delete instance;
+src/modules/flight_mode_manager/FlightModeManager.cpp,66,line,,,bool FlightModeManager::init()
+src/modules/flight_mode_manager/FlightModeManager.cpp,68,line,,,if (!_vehicle_local_position_sub.registerCallback()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,69,line,,,"PX4_ERR(""callback registration failed"");"
+src/modules/flight_mode_manager/FlightModeManager.cpp,70,line,,,return false;
+src/modules/flight_mode_manager/FlightModeManager.cpp,74,line,,,_vehicle_local_position_sub.set_interval_us(20_ms);
+src/modules/flight_mode_manager/FlightModeManager.cpp,75,line,,,_time_stamp_last_loop = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,76,line,,,return true;
+src/modules/flight_mode_manager/FlightModeManager.cpp,79,line,,,void FlightModeManager::Run()
+src/modules/flight_mode_manager/FlightModeManager.cpp,81,line,,,if (should_exit()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,82,line,,,_vehicle_local_position_sub.unregisterCallback();
+src/modules/flight_mode_manager/FlightModeManager.cpp,83,line,,,exit_and_cleanup();
+src/modules/flight_mode_manager/FlightModeManager.cpp,84,line,,,return;
+src/modules/flight_mode_manager/FlightModeManager.cpp,87,line,,,perf_begin(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,90,line,,,if (_parameter_update_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,93,line,,,_parameter_update_sub.copy(&param_update);
+src/modules/flight_mode_manager/FlightModeManager.cpp,94,line,,,updateParams();
+src/modules/flight_mode_manager/FlightModeManager.cpp,100,line,,,if (_vehicle_local_position_sub.update(&vehicle_local_position)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,101,line,,,const hrt_abstime time_stamp_now = vehicle_local_position.timestamp_sample;
+src/modules/flight_mode_manager/FlightModeManager.cpp,103,line,,,"const float dt = math::constrain(((time_stamp_now - _time_stamp_last_loop) / 1e6f), 0.0002f, 0.1f);"
+src/modules/flight_mode_manager/FlightModeManager.cpp,104,line,,,_time_stamp_last_loop = time_stamp_now;
+src/modules/flight_mode_manager/FlightModeManager.cpp,106,line,,,_vehicle_control_mode_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,107,line,,,_vehicle_land_detected_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,108,line,,,_vehicle_status_sub.update();
+src/modules/flight_mode_manager/FlightModeManager.cpp,110,line,,,start_flight_task();
+src/modules/flight_mode_manager/FlightModeManager.cpp,112,line,,,if (_vehicle_command_sub.updated()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,113,line,,,handleCommand();
+src/modules/flight_mode_manager/FlightModeManager.cpp,116,line,,,tryApplyCommandIfAny();
+src/modules/flight_mode_manager/FlightModeManager.cpp,118,line,,,if (isAnyTaskActive()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,119,line,,,"generateTrajectorySetpoint(dt, vehicle_local_position);"
+src/modules/flight_mode_manager/FlightModeManager.cpp,124,line,,,perf_end(_loop_perf);
+src/modules/flight_mode_manager/FlightModeManager.cpp,148,line,,,switchTask(FlightTaskIndex::Transition);
+src/modules/flight_mode_manager/FlightModeManager.cpp,149,line,,,return;
+src/modules/flight_mode_manager/FlightModeManager.cpp,167,line,,,matching_task_running = false;
+src/modules/flight_mode_manager/FlightModeManager.cpp,168,line,,,task_failure = true;
+src/modules/flight_mode_manager/FlightModeManager.cpp,183,line,,,matching_task_running = false;
+src/modules/flight_mode_manager/FlightModeManager.cpp,184,line,,,task_failure = true;
+src/modules/flight_mode_manager/FlightModeManager.cpp,194,line,,,matching_task_running = false;
+src/modules/flight_mode_manager/FlightModeManager.cpp,195,line,,,task_failure = true;
+src/modules/flight_mode_manager/FlightModeManager.cpp,201,line,,,found_some_task = true;
+src/modules/flight_mode_manager/FlightModeManager.cpp,202,line,,,FlightTaskError error = switchTask(FlightTaskIndex::ManualAccelerationSlow);
+src/modules/flight_mode_manager/FlightModeManager.cpp,203,line,,,task_failure = error != FlightTaskError::NoError;
+src/modules/flight_mode_manager/FlightModeManager.cpp,275,line,,,found_some_task = (switchTask(FlightTaskIndex::Failsafe) == FlightTaskError::NoError);
+src/modules/flight_mode_manager/FlightModeManager.cpp,279,line,,,switchTask(FlightTaskIndex::None);
+src/modules/flight_mode_manager/FlightModeManager.cpp,283,line,,,"PX4_ERR(""Matching flight task was not able to run, Nav state: %"" PRIu8 "", Task: %"" PRIu32,"
+src/modules/flight_mode_manager/FlightModeManager.cpp,349,line,,,if (_takeoff_status_sub.copy(&takeoff_status)) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,350,line,,,_takeoff_state = takeoff_status.takeoff_state;
+src/modules/flight_mode_manager/FlightModeManager.cpp,370,line,,,&& landing_gear.landing_gear != landing_gear_s::GEAR_KEEP) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,372,line,,,landing_gear.timestamp = hrt_absolute_time();
+src/modules/flight_mode_manager/FlightModeManager.cpp,373,line,,,_landing_gear_pub.publish(landing_gear);
+src/modules/flight_mode_manager/FlightModeManager.cpp,395,line,,,return FlightTaskError::InvalidTask;
+src/modules/flight_mode_manager/FlightModeManager.cpp,400,line,,,return FlightTaskError::NoError;
+src/modules/flight_mode_manager/FlightModeManager.cpp,405,line,,,_current_task.task->~FlightTask();
+src/modules/flight_mode_manager/FlightModeManager.cpp,406,line,,,_current_task.task = nullptr;
+src/modules/flight_mode_manager/FlightModeManager.cpp,407,line,,,_current_task.index = FlightTaskIndex::None;
+src/modules/flight_mode_manager/FlightModeManager.cpp,408,line,,,return FlightTaskError::ActivationFailed;
+src/modules/flight_mode_manager/FlightModeManager.cpp,441,line,,,"int FlightModeManager::task_spawn(int argc, char *argv[])"
+src/modules/flight_mode_manager/FlightModeManager.cpp,443,line,,,FlightModeManager *instance = new FlightModeManager();
+src/modules/flight_mode_manager/FlightModeManager.cpp,445,line,,,if (instance) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,446,line,,,_object.store(instance);
+src/modules/flight_mode_manager/FlightModeManager.cpp,447,line,,,_task_id = task_id_is_work_queue;
+src/modules/flight_mode_manager/FlightModeManager.cpp,449,line,,,if (instance->init()) {
+src/modules/flight_mode_manager/FlightModeManager.cpp,450,line,,,return PX4_OK;
+src/modules/flight_mode_manager/FlightModeManager.cpp,454,line,,,"PX4_ERR(""alloc failed"");"
+src/modules/flight_mode_manager/FlightModeManager.cpp,457,line,,,delete instance;
+src/modules/flight_mode_manager/FlightModeManager.cpp,458,line,,,_object.store(nullptr);
+src/modules/flight_mode_manager/FlightModeManager.cpp,459,line,,,_task_id = -1;
+src/modules/flight_mode_manager/FlightModeManager.cpp,461,line,,,return PX4_ERROR;
+src/modules/flight_mode_manager/FlightModeManager.cpp,503,line,,,"extern ""C"" __EXPORT int flight_mode_manager_main(int argc, char *argv[])"
+src/modules/flight_mode_manager/FlightModeManager.cpp,505,line,,,"return FlightModeManager::main(argc, argv);"
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,1,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,3,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,5,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,7,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,9,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,11,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,13,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,15,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,17,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,76,branch,e0,19,MulticopterLandDetector::MulticopterLandDetector()
+src/modules/land_detector/MulticopterLandDetector.cpp,78,branch,e0,1,"_paramHandle.minManThrottle = param_find(""MPC_MANTHR_MIN"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,79,branch,e0,1,"_paramHandle.minThrottle = param_find(""MPC_THR_MIN"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,80,branch,e0,1,"_paramHandle.useHoverThrustEstimate = param_find(""MPC_USE_HTE"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,81,branch,e0,1,"_paramHandle.hoverThrottle = param_find(""MPC_THR_HOVER"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,82,branch,e0,1,"_paramHandle.landSpeed = param_find(""MPC_LAND_SPEED"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,83,branch,e0,1,"_paramHandle.crawlSpeed = param_find(""MPC_LAND_CRWL"");"
+src/modules/land_detector/MulticopterLandDetector.cpp,84,branch,e0,1,"_minimum_thrust_8s_hysteresis.set_hysteresis_time_from(false, 8_s);"
+src/modules/land_detector/MulticopterLandDetector.cpp,91,branch,0,0,if (_vehicle_thrust_setpoint_sub.update(&vehicle_thrust_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,91,branch,e0,1,if (_vehicle_thrust_setpoint_sub.update(&vehicle_thrust_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,91,branch,0,2,if (_vehicle_thrust_setpoint_sub.update(&vehicle_thrust_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,91,branch,0,3,if (_vehicle_thrust_setpoint_sub.update(&vehicle_thrust_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,97,branch,0,0,if (_vehicle_control_mode_sub.update(&vehicle_control_mode)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,97,branch,e0,1,if (_vehicle_control_mode_sub.update(&vehicle_control_mode)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,97,branch,0,2,if (_vehicle_control_mode_sub.update(&vehicle_control_mode)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,97,branch,0,3,if (_vehicle_control_mode_sub.update(&vehicle_control_mode)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,101,branch,0,0,if (_params.useHoverThrustEstimate) {
+src/modules/land_detector/MulticopterLandDetector.cpp,101,branch,0,1,if (_params.useHoverThrustEstimate) {
+src/modules/land_detector/MulticopterLandDetector.cpp,104,branch,0,0,if (_hover_thrust_estimate_sub.update(&hte)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,104,branch,e0,1,if (_hover_thrust_estimate_sub.update(&hte)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,104,branch,0,2,if (_hover_thrust_estimate_sub.update(&hte)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,104,branch,0,3,if (_hover_thrust_estimate_sub.update(&hte)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,105,branch,0,0,if (hte.valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,105,branch,0,1,if (hte.valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,114,branch,0,0,if (_takeoff_status_sub.update(&takeoff_status)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,114,branch,e0,1,if (_takeoff_status_sub.update(&takeoff_status)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,114,branch,0,2,if (_takeoff_status_sub.update(&takeoff_status)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,114,branch,0,3,if (_takeoff_status_sub.update(&takeoff_status)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,121,branch,0,0,"param_get(_paramHandle.minThrottle, &_params.minThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,121,branch,e0,1,"param_get(_paramHandle.minThrottle, &_params.minThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,122,branch,0,0,"param_get(_paramHandle.minManThrottle, &_params.minManThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,122,branch,e0,1,"param_get(_paramHandle.minManThrottle, &_params.minManThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,123,branch,0,0,"param_get(_paramHandle.landSpeed, &_params.landSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,123,branch,e0,1,"param_get(_paramHandle.landSpeed, &_params.landSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,124,branch,0,0,"param_get(_paramHandle.crawlSpeed, &_params.crawlSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,124,branch,e0,1,"param_get(_paramHandle.crawlSpeed, &_params.crawlSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,129,branch,0,0,if (_param_lndmc_z_vel_max.get() > lndmc_upper_threshold) {
+src/modules/land_detector/MulticopterLandDetector.cpp,129,branch,0,1,if (_param_lndmc_z_vel_max.get() > lndmc_upper_threshold) {
+src/modules/land_detector/MulticopterLandDetector.cpp,130,branch,0,0,"PX4_ERR(""LNDMC_Z_VEL_MAX > MPC_LAND_CRWL or MPC_LAND_SPEED, updating %.3f -> %.3f"","
+src/modules/land_detector/MulticopterLandDetector.cpp,130,branch,e0,1,"PX4_ERR(""LNDMC_Z_VEL_MAX > MPC_LAND_CRWL or MPC_LAND_SPEED, updating %.3f -> %.3f"","
+src/modules/land_detector/MulticopterLandDetector.cpp,134,branch,0,0,_param_lndmc_z_vel_max.commit_no_notification();
+src/modules/land_detector/MulticopterLandDetector.cpp,134,branch,e0,1,_param_lndmc_z_vel_max.commit_no_notification();
+src/modules/land_detector/MulticopterLandDetector.cpp,138,branch,0,0,"param_get(_paramHandle.useHoverThrustEstimate, &use_hover_thrust_estimate);"
+src/modules/land_detector/MulticopterLandDetector.cpp,138,branch,e0,1,"param_get(_paramHandle.useHoverThrustEstimate, &use_hover_thrust_estimate);"
+src/modules/land_detector/MulticopterLandDetector.cpp,141,branch,0,0,if (!_params.useHoverThrustEstimate || !_hover_thrust_initialized) {
+src/modules/land_detector/MulticopterLandDetector.cpp,141,branch,0,1,if (!_params.useHoverThrustEstimate || !_hover_thrust_initialized) {
+src/modules/land_detector/MulticopterLandDetector.cpp,141,branch,0,2,if (!_params.useHoverThrustEstimate || !_hover_thrust_initialized) {
+src/modules/land_detector/MulticopterLandDetector.cpp,141,branch,0,3,if (!_params.useHoverThrustEstimate || !_hover_thrust_initialized) {
+src/modules/land_detector/MulticopterLandDetector.cpp,142,branch,0,0,"param_get(_paramHandle.hoverThrottle, &_params.hoverThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,142,branch,e0,1,"param_get(_paramHandle.hoverThrottle, &_params.hoverThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,165,branch,0,1,if (lpos_available) {
+src/modules/land_detector/MulticopterLandDetector.cpp,173,branch,0,1,if (_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,177,branch,0,1,if (_vehicle_local_position.v_z_valid && (fabsf(_vehicle_local_position.vz) < vertical_velocity_threshold)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,180,branch,0,0,} else if (_vehicle_local_position.z_valid && (fabsf(_vehicle_local_position.z_deriv) < vertical_velocity_threshold)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,180,branch,0,2,} else if (_vehicle_local_position.z_valid && (fabsf(_vehicle_local_position.z_deriv) < vertical_velocity_threshold)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,180,branch,0,3,} else if (_vehicle_local_position.z_valid && (fabsf(_vehicle_local_position.z_deriv) < vertical_velocity_threshold)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,194,branch,0,1,if (lpos_available && _vehicle_local_position.v_xy_valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,194,branch,0,3,if (lpos_available && _vehicle_local_position.v_xy_valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,195,branch,e0,1,"const Vector2f v_xy{_vehicle_local_position.vx, _vehicle_local_position.vy};"
+src/modules/land_detector/MulticopterLandDetector.cpp,196,branch,e0,1,_horizontal_movement = v_xy.longerThan(_param_lndmc_xy_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,202,branch,0,1,if (lpos_available && _vehicle_local_position.dist_bottom_valid && _param_lndmc_alt_gnd_effect.get() > 0) {
+src/modules/land_detector/MulticopterLandDetector.cpp,202,branch,0,5,if (lpos_available && _vehicle_local_position.dist_bottom_valid && _param_lndmc_alt_gnd_effect.get() > 0) {
+src/modules/land_detector/MulticopterLandDetector.cpp,211,branch,0,2,if (!_in_descend || hover_thrust_estimate_valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,217,branch,0,0,const float thr_pct_hover = _hover_thrust_estimate_valid ? 0.6f : 0.3f;
+src/modules/land_detector/MulticopterLandDetector.cpp,224,branch,0,0,if (_flag_control_climb_rate_enabled) {
+src/modules/land_detector/MulticopterLandDetector.cpp,227,branch,0,0,if (_trajectory_setpoint_sub.update(&trajectory_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,227,branch,e0,1,if (_trajectory_setpoint_sub.update(&trajectory_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,227,branch,0,2,if (_trajectory_setpoint_sub.update(&trajectory_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,227,branch,0,3,if (_trajectory_setpoint_sub.update(&trajectory_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,230,branch,0,0,&& (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,230,branch,0,1,&& (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,230,branch,0,2,&& (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,230,branch,0,3,&& (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,0,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,1,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,2,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,3,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,4,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,234,branch,0,5,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,245,branch,0,2,const bool skip_close_to_ground_check = !_dist_bottom_is_observable || !_vehicle_local_position.dist_bottom_valid;
+src/modules/land_detector/MulticopterLandDetector.cpp,256,branch,e0,1,hrt_abstime now = hrt_absolute_time();
+src/modules/land_detector/MulticopterLandDetector.cpp,260,branch,0,0,if (_flag_control_climb_rate_enabled) {
+src/modules/land_detector/MulticopterLandDetector.cpp,269,branch,e0,1,"_minimum_thrust_8s_hysteresis.set_state_and_update(minimum_thrust_now, now);"
+src/modules/land_detector/MulticopterLandDetector.cpp,276,branch,0,1,if (_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,280,branch,e0,1,_rotational_movement = _angular_velocity.xy().norm() > max_rotation_threshold;
+src/modules/land_detector/MulticopterLandDetector.cpp,280,branch,e0,3,_rotational_movement = _angular_velocity.xy().norm() > max_rotation_threshold;
+src/modules/land_detector/MulticopterLandDetector.cpp,285,branch,0,3,const bool vertical_estimate = local_position_updated && vertical_velocity_valid;
+src/modules/land_detector/MulticopterLandDetector.cpp,301,branch,0,0,return (_in_descend && !_horizontal_movement) ||
+src/modules/land_detector/MulticopterLandDetector.cpp,87,line,,,void MulticopterLandDetector::_update_topics()
+src/modules/land_detector/MulticopterLandDetector.cpp,91,line,,,if (_vehicle_thrust_setpoint_sub.update(&vehicle_thrust_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,92,line,,,_vehicle_thrust_setpoint_throttle = -vehicle_thrust_setpoint.xyz[2];
+src/modules/land_detector/MulticopterLandDetector.cpp,97,line,,,if (_vehicle_control_mode_sub.update(&vehicle_control_mode)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,98,line,,,_flag_control_climb_rate_enabled = vehicle_control_mode.flag_control_climb_rate_enabled;
+src/modules/land_detector/MulticopterLandDetector.cpp,101,line,,,if (_params.useHoverThrustEstimate) {
+src/modules/land_detector/MulticopterLandDetector.cpp,104,line,,,if (_hover_thrust_estimate_sub.update(&hte)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,105,line,,,if (hte.valid) {
+src/modules/land_detector/MulticopterLandDetector.cpp,106,line,,,_params.hoverThrottle = hte.hover_thrust;
+src/modules/land_detector/MulticopterLandDetector.cpp,107,line,,,_hover_thrust_estimate_last_valid = hte.timestamp;
+src/modules/land_detector/MulticopterLandDetector.cpp,114,line,,,if (_takeoff_status_sub.update(&takeoff_status)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,115,line,,,_takeoff_state = takeoff_status.takeoff_state;
+src/modules/land_detector/MulticopterLandDetector.cpp,117,line,,,}
+src/modules/land_detector/MulticopterLandDetector.cpp,119,line,,,void MulticopterLandDetector::_update_params()
+src/modules/land_detector/MulticopterLandDetector.cpp,121,line,,,"param_get(_paramHandle.minThrottle, &_params.minThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,122,line,,,"param_get(_paramHandle.minManThrottle, &_params.minManThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,123,line,,,"param_get(_paramHandle.landSpeed, &_params.landSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,124,line,,,"param_get(_paramHandle.crawlSpeed, &_params.crawlSpeed);"
+src/modules/land_detector/MulticopterLandDetector.cpp,127,line,,,"const float lndmc_upper_threshold = math::min(_params.crawlSpeed, _params.landSpeed) / 1.2f;"
+src/modules/land_detector/MulticopterLandDetector.cpp,129,line,,,if (_param_lndmc_z_vel_max.get() > lndmc_upper_threshold) {
+src/modules/land_detector/MulticopterLandDetector.cpp,130,line,,,"PX4_ERR(""LNDMC_Z_VEL_MAX > MPC_LAND_CRWL or MPC_LAND_SPEED, updating %.3f -> %.3f"","
+src/modules/land_detector/MulticopterLandDetector.cpp,133,line,,,_param_lndmc_z_vel_max.set(lndmc_upper_threshold);
+src/modules/land_detector/MulticopterLandDetector.cpp,134,line,,,_param_lndmc_z_vel_max.commit_no_notification();
+src/modules/land_detector/MulticopterLandDetector.cpp,137,line,,,int32_t use_hover_thrust_estimate = 0;
+src/modules/land_detector/MulticopterLandDetector.cpp,138,line,,,"param_get(_paramHandle.useHoverThrustEstimate, &use_hover_thrust_estimate);"
+src/modules/land_detector/MulticopterLandDetector.cpp,139,line,,,_params.useHoverThrustEstimate = (use_hover_thrust_estimate == 1);
+src/modules/land_detector/MulticopterLandDetector.cpp,141,line,,,if (!_params.useHoverThrustEstimate || !_hover_thrust_initialized) {
+src/modules/land_detector/MulticopterLandDetector.cpp,142,line,,,"param_get(_paramHandle.hoverThrottle, &_params.hoverThrottle);"
+src/modules/land_detector/MulticopterLandDetector.cpp,149,line,,,_hover_thrust_initialized = true;
+src/modules/land_detector/MulticopterLandDetector.cpp,151,line,,,}
+src/modules/land_detector/MulticopterLandDetector.cpp,182,line,,,_vertical_movement = false;
+src/modules/land_detector/MulticopterLandDetector.cpp,189,line,,,_vertical_movement = true;
+src/modules/land_detector/MulticopterLandDetector.cpp,199,line,,,_horizontal_movement = false; // not known
+src/modules/land_detector/MulticopterLandDetector.cpp,227,line,,,if (_trajectory_setpoint_sub.update(&trajectory_setpoint)) {
+src/modules/land_detector/MulticopterLandDetector.cpp,229,line,,,_in_descend = PX4_ISFINITE(trajectory_setpoint.velocity[2])
+src/modules/land_detector/MulticopterLandDetector.cpp,230,line,,,&& (trajectory_setpoint.velocity[2] >= 1.1f * _param_lndmc_z_vel_max.get());
+src/modules/land_detector/MulticopterLandDetector.cpp,234,line,,,if (!_maybe_landed_hysteresis.get_state() && !_landed_hysteresis.get_state()) {
+src/modules/land_detector/MulticopterLandDetector.cpp,235,line,,,ground_contact &= _in_descend;
+src/modules/land_detector/MulticopterLandDetector.cpp,262,line,,,minimum_thrust_threshold = _params.minThrottle + (_params.hoverThrottle - _params.minThrottle) * 0.1f;
+src/modules/land_detector/MulticopterLandDetector.cpp,316,line,,,void MulticopterLandDetector::_set_hysteresis_factor(const int factor)
+src/modules/land_detector/MulticopterLandDetector.cpp,318,line,,,"_ground_contact_hysteresis.set_hysteresis_time_from(false, _param_lndmc_trig_time.get() * 1_s / 3 * factor);"
+src/modules/land_detector/MulticopterLandDetector.cpp,319,line,,,"_landed_hysteresis.set_hysteresis_time_from(false, _param_lndmc_trig_time.get() * 1_s / 3 * factor);"
+src/modules/land_detector/MulticopterLandDetector.cpp,320,line,,,"_maybe_landed_hysteresis.set_hysteresis_time_from(false, _param_lndmc_trig_time.get() * 1_s / 3 * factor);"
+src/modules/land_detector/MulticopterLandDetector.cpp,321,line,,,"_freefall_hysteresis.set_hysteresis_time_from(false, FREEFALL_TRIGGER_TIME_US);"
+src/modules/land_detector/MulticopterLandDetector.cpp,322,line,,,}

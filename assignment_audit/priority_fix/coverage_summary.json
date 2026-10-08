@@ -1,0 +1,56 @@
+[
+  {
+    "source": "src/lib/battery/battery.cpp",
+    "FNF": 19,
+    "FNH": 19,
+    "BRF": 248,
+    "BRH": 156,
+    "LF": 231,
+    "LH": 218
+  },
+  {
+    "source": "src/lib/hysteresis/hysteresis.cpp",
+    "FNF": 3,
+    "FNH": 3,
+    "BRF": 20,
+    "BRH": 17,
+    "LF": 22,
+    "LH": 22
+  },
+  {
+    "source": "src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp",
+    "FNF": 21,
+    "FNH": 16,
+    "BRF": 556,
+    "BRH": 347,
+    "LF": 225,
+    "LH": 199
+  },
+  {
+    "source": "src/modules/battery_status/analog_battery.cpp",
+    "FNF": 7,
+    "FNH": 5,
+    "BRF": 28,
+    "BRH": 10,
+    "LF": 54,
+    "LH": 41
+  },
+  {
+    "source": "src/modules/flight_mode_manager/FlightModeManager.cpp",
+    "FNF": 18,
+    "FNH": 13,
+    "BRF": 288,
+    "BRH": 141,
+    "LF": 233,
+    "LH": 164
+  },
+  {
+    "source": "src/modules/land_detector/MulticopterLandDetector.cpp",
+    "FNF": 10,
+    "FNH": 7,
+    "BRF": 192,
+    "BRH": 96,
+    "LF": 116,
+    "LH": 71
+  }
+]

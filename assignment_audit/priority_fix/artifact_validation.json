@@ -1,0 +1,42 @@
+[
+  {
+    "workbook": "member1_deliverables/Testing_Workbook.xlsx",
+    "inventory_rows": 55,
+    "sheets": 2
+  },
+  {
+    "workbook": "member3_deliverables/Testing_Workbook.xlsx",
+    "inventory_rows": 23,
+    "sheets": 2
+  },
+  {
+    "xml": "member2_deliverables/logs/priority_fix/functional-LandDetector.xml",
+    "passing_cases": 19
+  },
+  {
+    "xml": "member3_deliverables/logs/priority_fix/functional-Battery.xml",
+    "passing_cases": 11
+  },
+  {
+    "xml": "member3_deliverables/logs/priority_fix/functional-FlightModeManager.xml",
+    "passing_cases": 12
+  },
+  {
+    "shuffle": "LandDetector",
+    "iterations": 20,
+    "case_executions": 380,
+    "seeds": [
+      2027,
+      2046
+    ]
+  },
+  {
+    "shuffle": "Battery",
+    "iterations": 20,
+    "case_executions": 220,
+    "seeds": [
+      2027,
+      2046
+    ]
+  }
+]

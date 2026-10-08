@@ -1,0 +1,461 @@
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:lp_default not available
+ERROR [px4_work_queue] init failed
+
+Repeating all tests (iteration 1) . . .
+
+Note: Randomizing tests' orders with a seed of 2026 .
+[==========] Running 12 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 12 tests from FlightModeManagerTest
+[ RUN      ] FlightModeManagerTest.ErrorToStringMapping
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.ErrorToStringMapping (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskPositionControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [flight_mode_manager] MPC_POS_MODE 99 invalid, resetting
+[       OK ] FlightModeManagerTest.StartFlightTaskPositionControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.TaskSwitchingBasics
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingBasics (0 ms)
+[ RUN      ] FlightModeManagerTest.StatusAndUsageFunctions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+INFO  [flight_mode_manager] Running, no flight task active
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+INFO  [flight_mode_manager] Running, active flight task: 11
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] Testing usage error string
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] unknown command
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+[       OK ] FlightModeManagerTest.StatusAndUsageFunctions (0 ms)
+[ RUN      ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange (0 ms)
+[ RUN      ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex (0 ms)
+[ RUN      ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback (0 ms)
+[ RUN      ] FlightModeManagerTest.TryApplyCommandTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+WARN  [FlightTaskOrbit] Orbit radius limit exceeded	
+[       OK ] FlightModeManagerTest.TryApplyCommandTimeout (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAutoModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAutoModes (0 ms)
+[----------] 12 tests from FlightModeManagerTest (6 ms total)
+
+[==========] 12 tests from 1 test suite ran. (6 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 2) . . .
+
+Note: Randomizing tests' orders with a seed of 2027 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from FlightModeManagerTest
+[ RUN      ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAutoModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAutoModes (0 ms)
+[ RUN      ] FlightModeManagerTest.ErrorToStringMapping
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.ErrorToStringMapping (0 ms)
+[ RUN      ] FlightModeManagerTest.StatusAndUsageFunctions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+INFO  [flight_mode_manager] Running, no flight task active
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+INFO  [flight_mode_manager] Running, active flight task: 11
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] Testing usage error string
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] unknown command
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+[       OK ] FlightModeManagerTest.StatusAndUsageFunctions (0 ms)
+[ RUN      ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend (0 ms)
+[ RUN      ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear (0 ms)
+[ RUN      ] FlightModeManagerTest.TryApplyCommandTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+WARN  [FlightTaskOrbit] Orbit radius limit exceeded	
+[       OK ] FlightModeManagerTest.TryApplyCommandTimeout (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskPositionControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [flight_mode_manager] MPC_POS_MODE 99 invalid, resetting
+[       OK ] FlightModeManagerTest.StartFlightTaskPositionControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback (0 ms)
+[ RUN      ] FlightModeManagerTest.TaskSwitchingBasics
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingBasics (0 ms)
+[----------] 12 tests from FlightModeManagerTest (6 ms total)
+
+[==========] 12 tests from 1 test suite ran. (6 ms total)
+[  PASSED  ] 12 tests.
+
+Repeating all tests (iteration 3) . . .
+
+Note: Randomizing tests' orders with a seed of 2028 .
+[==========] Running 12 tests from 1 test suite.
+[----------] 12 tests from FlightModeManagerTest
+[ RUN      ] FlightModeManagerTest.StartFlightTaskPositionControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [flight_mode_manager] MPC_POS_MODE 99 invalid, resetting
+[       OK ] FlightModeManagerTest.StartFlightTaskPositionControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear (0 ms)
+[ RUN      ] FlightModeManagerTest.TryApplyCommandTimeout
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+WARN  [FlightTaskOrbit] Orbit radius limit exceeded	
+[       OK ] FlightModeManagerTest.TryApplyCommandTimeout (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes (0 ms)
+[ RUN      ] FlightModeManagerTest.TaskSwitchingBasics
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingBasics (0 ms)
+[ RUN      ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange (0 ms)
+[ RUN      ] FlightModeManagerTest.ErrorToStringMapping
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.ErrorToStringMapping (0 ms)
+[ RUN      ] FlightModeManagerTest.StatusAndUsageFunctions
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+INFO  [flight_mode_manager] Running, no flight task active
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+INFO  [flight_mode_manager] Running, active flight task: 11
+flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] Testing usage error string
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+WARN  [flight_mode_manager] unknown command
+
+
+### Description
+This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+Usage: flight_mode_manager <command> [arguments...]
+ Commands:
+
+   start
+
+   stop
+
+   status        print status info
+[       OK ] FlightModeManagerTest.StatusAndUsageFunctions (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAutoModes
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAutoModes (0 ms)
+[ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend (0 ms)
+[ RUN      ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+ERROR [px4_work_queue] not running
+ERROR [px4_work_queue] wq:nav_and_controllers not available
+ERROR [px4_work_queue] init failed
+[       OK ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex (0 ms)
+[----------] 12 tests from FlightModeManagerTest (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 1 test suite ran. (6 ms total)
+[  PASSED  ] 12 tests.

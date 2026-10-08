@@ -1,0 +1,7 @@
+Source,Lines hit,Lines total,Line percent,Raw branches hit,Raw branches total,Raw branch percent
+src/lib/battery/battery.cpp,216,231,93.51,152,248,61.29
+src/lib/hysteresis/hysteresis.cpp,22,22,100.00,17,20,85.00
+src/modules/attitude_estimator_q/attitude_estimator_q_main.cpp,199,225,88.44,347,556,62.41
+src/modules/battery_status/analog_battery.cpp,41,54,75.93,10,28,35.71
+src/modules/flight_mode_manager/FlightModeManager.cpp,164,233,70.39,141,288,48.96
+src/modules/land_detector/MulticopterLandDetector.cpp,71,116,61.21,95,192,49.48

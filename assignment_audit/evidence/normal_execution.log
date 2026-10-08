@@ -1,0 +1,533 @@
+Internal ctest changing into directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Parse Config file:/home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/DartConfiguration.tcl
+Test project /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 4
+    Start   4: functional-Battery
+
+4: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-Battery
+4: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/lib/battery
+4: Test timeout computed to be: 30
+4: ERROR [px4_work_queue] not running
+4: ERROR [px4_work_queue] wq:lp_default not available
+4: ERROR [px4_work_queue] init failed
+4: [==========] Running 11 tests from 1 test suite.
+4: [----------] Global test environment set-up.
+4: [----------] 11 tests from BatteryStatusTest
+4: [ RUN      ] BatteryStatusTest.ParameterInitializationAndCellCount
+4: [       OK ] BatteryStatusTest.ParameterInitializationAndCellCount (0 ms)
+4: [ RUN      ] BatteryStatusTest.DisconnectedBatteryState
+4: [       OK ] BatteryStatusTest.DisconnectedBatteryState (0 ms)
+4: [ RUN      ] BatteryStatusTest.ConnectedBatteryInitialTransition
+4: [       OK ] BatteryStatusTest.ConnectedBatteryInitialTransition (0 ms)
+4: [ RUN      ] BatteryStatusTest.DetermineWarningLadder
+4: [       OK ] BatteryStatusTest.DetermineWarningLadder (0 ms)
+4: [ RUN      ] BatteryStatusTest.DetermineFaultsOvervoltage
+4: [       OK ] BatteryStatusTest.DetermineFaultsOvervoltage (0 ms)
+4: [ RUN      ] BatteryStatusTest.ComputeScaleThrustCompensation
+4: [       OK ] BatteryStatusTest.ComputeScaleThrustCompensation (0 ms)
+4: [ RUN      ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection
+4: [       OK ] BatteryStatusTest.StateOfChargeVoltageBasedAndLoadDropCorrection (0 ms)
+4: [ RUN      ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion
+4: [       OK ] BatteryStatusTest.StateOfChargeEstimationCoulombFusion (0 ms)
+4: [ RUN      ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing
+4: [       OK ] BatteryStatusTest.ComputeRemainingTimeArmedAndFixedWing (0 ms)
+4: [ RUN      ] BatteryStatusTest.ExternalStateOfChargeOverride
+4: [       OK ] BatteryStatusTest.ExternalStateOfChargeOverride (0 ms)
+4: [ RUN      ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels
+4: ERROR [functional-Battery] wrong type passed to param_get() for param (null)
+4: ERROR [parameters] get: param 65535 invalid
+4: [       OK ] BatteryStatusTest.AnalogBatteryADCConversionAndChannels (0 ms)
+4: [----------] 11 tests from BatteryStatusTest (2 ms total)
+4: 
+4: [----------] Global test environment tear-down
+4: [==========] 11 tests from 1 test suite ran. (2 ms total)
+4: [  PASSED  ] 11 tests.
+1/5 Test   #4: functional-Battery ...............   Passed    0.05 sec
+test 13
+    Start  13: unit-HysteresisAssignment
+
+13: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/unit-HysteresisAssignment
+13: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test
+13: Test timeout computed to be: 30
+13: [==========] Running 7 tests from 1 test suite.
+13: [----------] Global test environment set-up.
+13: [----------] 7 tests from HysteresisAssignment
+13: [ RUN      ] HysteresisAssignment.ExactDeadlinesInBothDirections
+13: [       OK ] HysteresisAssignment.ExactDeadlinesInBothDirections (0 ms)
+13: [ RUN      ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay
+13: [       OK ] HysteresisAssignment.CancelAtDeadlineAndRestartFullDelay (0 ms)
+13: [ RUN      ] HysteresisAssignment.ShortenPendingDelay
+13: [       OK ] HysteresisAssignment.ShortenPendingDelay (0 ms)
+13: [ RUN      ] HysteresisAssignment.ExtendPendingDelay
+13: [       OK ] HysteresisAssignment.ExtendPendingDelay (0 ms)
+13: [ RUN      ] HysteresisAssignment.PendingDelayCanBecomeImmediate
+13: [       OK ] HysteresisAssignment.PendingDelayCanBecomeImmediate (0 ms)
+13: [ RUN      ] HysteresisAssignment.InterleavedInstancesRemainIndependent
+13: [       OK ] HysteresisAssignment.InterleavedInstancesRemainIndependent (0 ms)
+13: [ RUN      ] HysteresisAssignment.LargeTimestampDeadline
+13: [       OK ] HysteresisAssignment.LargeTimestampDeadline (0 ms)
+13: [----------] 7 tests from HysteresisAssignment (1 ms total)
+13: 
+13: [----------] Global test environment tear-down
+13: [==========] 7 tests from 1 test suite ran. (1 ms total)
+13: [  PASSED  ] 7 tests.
+2/5 Test  #13: unit-HysteresisAssignment ........   Passed    0.03 sec
+test 74
+    Start  74: functional-AttitudeEstimatorQ
+
+74: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-AttitudeEstimatorQ
+74: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/attitude_estimator_q
+74: Test timeout computed to be: 30
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:lp_default not available
+74: ERROR [px4_work_queue] init failed
+74: [==========] Running 29 tests from 1 test suite.
+74: [----------] Global test environment set-up.
+74: [----------] 29 tests from AttitudeEstimatorQAssignment
+74: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRequiresData
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.InitializationRequiresData (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.InitializationRecoversTiltAndDeclination (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.DegenerateInitializationIsRejected (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.GyroIntegrationNormalizesQuaternion (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.VisionHeadingOverridesMagnetometer (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.MocapHeadingOverridesMagnetometer (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.InvalidExternalHeadingFallsBackToMag (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.MagnetometerSpinGainBoundaryAndCap (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.AccelerationGateExcludesExactLimits (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.AccelerationCompensationSubtractsMotion (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.BiasLearningClipsAndStopsAtSpinBoundary (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.NonFiniteUpdateRollsBack (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.ZeroCorrectedAccelerationRollsBack (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.DeclinationThresholdAndImmediateRotation (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.ParameterUpdateSupportsMissingMagnetometer (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.SensorTimestampAndAccelerationValidity (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: ERROR [functional-AttitudeEstimatorQ] degenerate accel!
+74: ERROR [functional-AttitudeEstimatorQ] degenerate mag!
+74: [       OK ] AttitudeEstimatorQAssignment.DegenerateSensorVectorsAndRecovery (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.GpsDeclinationAccuracyAndEnablement (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.OdometryVarianceAndQuaternionValidation (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.OdometrySourceSelectionAndTimeout (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.PositionDerivativeAndRepeatedTimestamp (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.PositionRejectionClearsHistory (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.AttitudePublicationAndDtClamps (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.RunProcessesOnlyNewImuSamples (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.ConfiguredBiasLimitIsNotApplied (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.ParameterNotificationRefreshesCachedGain (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: ERROR [functional-AttitudeEstimatorQ] init failed, vehicle_attitude already advertised
+74: [       OK ] AttitudeEstimatorQAssignment.StartupRejectsFreshCompetingAttitude (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.StopRequestBypassesProcessing (0 ms)
+74: [ RUN      ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher
+74: ERROR [px4_work_queue] not running
+74: ERROR [px4_work_queue] wq:nav_and_controllers not available
+74: ERROR [px4_work_queue] init failed
+74: [       OK ] AttitudeEstimatorQAssignment.StartupWithoutCompetingPublisher (0 ms)
+74: [----------] 29 tests from AttitudeEstimatorQAssignment (19 ms total)
+74: 
+74: [----------] Global test environment tear-down
+74: [==========] 29 tests from 1 test suite ran. (19 ms total)
+74: [  PASSED  ] 29 tests.
+3/5 Test  #74: functional-AttitudeEstimatorQ ....   Passed    0.04 sec
+test 108
+    Start 108: functional-FlightModeManager
+
+108: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-FlightModeManager
+108: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/flight_mode_manager
+108: Test timeout computed to be: 30
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:lp_default not available
+108: ERROR [px4_work_queue] init failed
+108: [==========] Running 12 tests from 1 test suite.
+108: [----------] Global test environment set-up.
+108: [----------] 12 tests from FlightModeManagerTest
+108: [ RUN      ] FlightModeManagerTest.TaskSwitchingBasics
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.TaskSwitchingBasics (0 ms)
+108: [ RUN      ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.TaskSwitchingWithIntegerIndex (0 ms)
+108: [ RUN      ] FlightModeManagerTest.ErrorToStringMapping
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.ErrorToStringMapping (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StartFlightTaskAutoModes
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.StartFlightTaskAutoModes (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StartFlightTaskPositionControlModes
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [flight_mode_manager] MPC_POS_MODE 99 invalid, resetting
+108: [       OK ] FlightModeManagerTest.StartFlightTaskPositionControlModes (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.StartFlightTaskAltitudeControlModes (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.StartFlightTaskAltitudeCruiseAndDescend (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.StartFlightTaskUnmatchedTaskFallback (0 ms)
+108: [ RUN      ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.HandleCommandOrbitAndSpeedChange (0 ms)
+108: [ RUN      ] FlightModeManagerTest.TryApplyCommandTimeout
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: WARN  [FlightTaskOrbit] Orbit radius limit exceeded	
+108: [       OK ] FlightModeManagerTest.TryApplyCommandTimeout (0 ms)
+108: [ RUN      ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: [       OK ] FlightModeManagerTest.GenerateTrajectorySetpointAndLandingGear (0 ms)
+108: [ RUN      ] FlightModeManagerTest.StatusAndUsageFunctions
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: ERROR [px4_work_queue] not running
+108: ERROR [px4_work_queue] wq:nav_and_controllers not available
+108: ERROR [px4_work_queue] init failed
+108: INFO  [flight_mode_manager] Running, no flight task active
+108: flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+108: INFO  [flight_mode_manager] Running, active flight task: 11
+108: flight_mode_manager: cycle: 0 events, 0us elapsed, 0.00us avg, min 0us max 0us 0.000us rms
+108: 
+108: ### Description
+108: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+108: Usage: flight_mode_manager <command> [arguments...]
+108:  Commands:
+108: 
+108:    start
+108: 
+108:    stop
+108: 
+108:    status        print status info
+108: WARN  [flight_mode_manager] Testing usage error string
+108: 
+108: 
+108: ### Description
+108: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+108: Usage: flight_mode_manager <command> [arguments...]
+108:  Commands:
+108: 
+108:    start
+108: 
+108:    stop
+108: 
+108:    status        print status info
+108: WARN  [flight_mode_manager] unknown command
+108: 
+108: 
+108: ### Description
+108: This implements the setpoint generation for all modes. It takes the current mode state of the vehicle as inpu
+108: Usage: flight_mode_manager <command> [arguments...]
+108:  Commands:
+108: 
+108:    start
+108: 
+108:    stop
+108: 
+108:    status        print status info
+108: [       OK ] FlightModeManagerTest.StatusAndUsageFunctions (0 ms)
+108: [----------] 12 tests from FlightModeManagerTest (7 ms total)
+108: 
+108: [----------] Global test environment tear-down
+108: [==========] 12 tests from 1 test suite ran. (7 ms total)
+108: [  PASSED  ] 12 tests.
+4/5 Test #108: functional-FlightModeManager .....   Passed    0.04 sec
+test 110
+    Start 110: functional-LandDetector
+
+110: Test command: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/functional-LandDetector
+110: Working Directory: /home/muhammad/SQE_A2/PX4-Autopilot-Testing/build/px4_sitl_test/src/modules/land_detector
+110: Test timeout computed to be: 30
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:lp_default not available
+110: ERROR [px4_work_queue] init failed
+110: [==========] Running 19 tests from 1 test suite.
+110: [----------] Global test environment set-up.
+110: [----------] 19 tests from LandDetectorFixture
+110: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionA_Armed (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionB_CloseToGround (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionC_LowThrottle (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionD_HorizontalMovement (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundContactMCDC_ConditionE_VerticalMovement (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionA_Armed (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionB_MinThrust (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionC_NotFreefall (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionE_VerticalEstimate (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionF_GroundContactHysteresis (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis (0 ms)
+110: [ RUN      ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.MaybeLandedMCDC_ConditionD_NotRotating (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionA_InDescend (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionB_NoHorizontalMovement (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionC_BelowGndHeight (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionD_TakeoffStateFlight (0 ms)
+110: [ RUN      ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.GroundEffectMCDC_ConditionE_TakeoffRampup (0 ms)
+110: [ RUN      ] LandDetectorFixture.Freefall_AccelThresholdBoundary
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.Freefall_AccelThresholdBoundary (0 ms)
+110: [ RUN      ] LandDetectorFixture.Landed_StateTransitions
+110: ERROR [px4_work_queue] not running
+110: ERROR [px4_work_queue] wq:nav_and_controllers not available
+110: ERROR [px4_work_queue] init failed
+110: [       OK ] LandDetectorFixture.Landed_StateTransitions (0 ms)
+110: [----------] 19 tests from LandDetectorFixture (6 ms total)
+110: 
+110: [----------] Global test environment tear-down
+110: [==========] 19 tests from 1 test suite ran. (6 ms total)
+110: [  PASSED  ] 19 tests.
+5/5 Test #110: functional-LandDetector ..........   Passed    0.03 sec
+
+The following tests passed:
+	functional-Battery
+	unit-HysteresisAssignment
+	functional-AttitudeEstimatorQ
+	functional-FlightModeManager
+	functional-LandDetector
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) =   0.20 sec

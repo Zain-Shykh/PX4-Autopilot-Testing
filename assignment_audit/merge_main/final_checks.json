@@ -1,0 +1,28 @@
+{
+  "git": {
+    "head_equals_fetched_origin_main": true,
+    "unmerged_entries": 0,
+    "staged_changes": 0,
+    "new_branch_commits": 0
+  },
+  "incoming_fixes": {
+    "D3_B_direct_setter_with_runtime_assertions": true,
+    "D2_E_matrix_matches_origin_main": true
+  },
+  "member1_workbook": {
+    "inventory_rows": 55,
+    "sheets": 2
+  },
+  "member3_workbook": {
+    "inventory_rows": 23,
+    "sheets": 2
+  },
+  "source_changes_vs_main": [
+    "src/lib/battery/BatteryTest.cpp",
+    "src/modules/land_detector/CMakeLists.txt",
+    "src/modules/land_detector/LandDetectorTest.cpp"
+  ],
+  "tested_sources_match_working_tree": true,
+  "unrelated_member3_and_pdf_preserved": true,
+  "local_evidence_links_resolve": 49
+}

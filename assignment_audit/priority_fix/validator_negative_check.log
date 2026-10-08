@@ -1,0 +1,11 @@
+Expected rejection of original HEAD matrix with stale D2-E second vector.
+Traceback (most recent call last):
+  File "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/member2_deliverables/scripts/validate_mcdc.py", line 102, in <module>
+    main()
+  File "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/member2_deliverables/scripts/validate_mcdc.py", line 94, in main
+    result = validate(args.matrix, args.xml)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/member2_deliverables/scripts/validate_mcdc.py", line 57, in validate
+    assert properties[vector_id] == f'{vector} -> {expected_outcome}', (name, vector_id, properties)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('MaybeLandedMCDC_ConditionE_VerticalEstimate', 'TP_D2_E2', {'TP_D2_E1': '[F T T T F F T] -> True', 'TP_D2_E2': '[F T T T T F T] -> False'})

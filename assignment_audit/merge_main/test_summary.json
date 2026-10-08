@@ -1,0 +1,29 @@
+{
+  "normal": [
+    {
+      "suite": "functional-LandDetector",
+      "passing": 19
+    },
+    {
+      "suite": "unit-HysteresisAssignment",
+      "passing": 7
+    },
+    {
+      "suite": "functional-Battery",
+      "passing": 11
+    },
+    {
+      "suite": "functional-AttitudeEstimatorQ",
+      "passing": 29
+    },
+    {
+      "suite": "functional-FlightModeManager",
+      "passing": 12
+    }
+  ],
+  "total_cases": 78,
+  "shuffled": {
+    "LandDetector": 380,
+    "Battery": 220
+  }
+}

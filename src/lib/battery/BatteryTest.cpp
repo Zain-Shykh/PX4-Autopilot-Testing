@@ -84,10 +84,25 @@ public:
 	TestAnalogBattery(int index = 1, ModuleParams *parent = nullptr, const int sample_interval_us = 100000, const uint8_t source = 0, const uint8_t priority = 0)
 		: AnalogBattery(index, parent, sample_interval_us, source, priority)
 	{
+		_analog_params = {};
+		_analog_params.v_div = 1.0f;
+		_analog_params.a_per_v = 1.0f;
+		_analog_params.v_channel = -1;
+		_analog_params.i_channel = -1;
+		_analog_params.i_overwrite = 0.0f;
+		_analog_params.v_offs_cur = 0.0f;
 	}
 
-	using AnalogBattery::updateParams;
+	void updateParams() override
+	{
+		AnalogBattery::updateParams();
+		if (_analog_param_handles.v_offs_cur == PARAM_INVALID) {
+			_analog_params.v_offs_cur = 0.0f;
+		}
+	}
+
 	using AnalogBattery::_analog_params;
+	using AnalogBattery::_analog_param_handles;
 };
 
 class BatteryStatusTest : public ::testing::Test
@@ -406,4 +421,63 @@ TEST_F(BatteryStatusTest, AnalogBatteryADCConversionAndChannels)
 	// Channel verification
 	EXPECT_TRUE(analog_battery.is_valid());
 	EXPECT_GE(analog_battery.get_voltage_channel(), -1);
+}
+
+TEST_F(BatteryStatusTest, ConfiguredInternalResistanceLoadDrop)
+{
+	int32_t n_cells = 3;
+	param_set(param_find("BAT1_N_CELLS"), &n_cells);
+	float r_internal = 0.02f;
+	param_set(param_find("BAT1_R_INTERNAL"), &r_internal);
+
+	TestBattery battery{1, nullptr, 100000, 0};
+	battery.updateParams();
+	battery.setConnected(true);
+
+	hrt_abstime now = hrt_absolute_time();
+	battery.updateVoltage(11.4f);
+	battery.updateCurrent(10.0f);
+	battery.updateBatteryStatus(now);
+
+	EXPECT_FLOAT_EQ(battery._params.r_internal, 0.02f);
+	EXPECT_GT(battery.getBatteryStatus().voltage_v, 11.0f);
+}
+
+TEST_F(BatteryStatusTest, ZeroCellCountAndNonfiniteHandling)
+{
+	int32_t n_cells = 0;
+	param_set(param_find("BAT1_N_CELLS"), &n_cells);
+
+	TestBattery battery{1, nullptr, 100000, 0};
+	battery.updateParams();
+
+	battery.updateVoltage(12.0f);
+	EXPECT_EQ(battery.determineFaults(), 0);
+
+	battery.computeScale();
+	EXPECT_FLOAT_EQ(battery.getBatteryStatus().scale, 1.0f);
+}
+
+TEST_F(BatteryStatusTest, AnalogBatteryCustomChannelChoices)
+{
+	float v_div = 11.0f;
+	param_set(param_find("BAT1_V_DIV"), &v_div);
+	float a_per_v = 15.0f;
+	param_set(param_find("BAT1_A_PER_V"), &a_per_v);
+
+	int32_t v_channel = 2;
+	param_set(param_find("BAT1_V_CHANNEL"), &v_channel);
+	int32_t i_channel = 3;
+	param_set(param_find("BAT1_I_CHANNEL"), &i_channel);
+
+	TestAnalogBattery analog_battery{1, nullptr, 100000, 2, 3};
+	analog_battery.updateParams();
+
+	EXPECT_EQ(analog_battery.get_voltage_channel(), 2);
+	EXPECT_EQ(analog_battery.get_current_channel(), 3);
+
+	hrt_abstime now = hrt_absolute_time();
+	analog_battery.updateBatteryStatusADC(now, 0.0f, 0.0f);
+	EXPECT_FLOAT_EQ(analog_battery.getBatteryStatus().voltage_v, 0.0f);
+	EXPECT_FLOAT_EQ(analog_battery.getBatteryStatus().current_a, 0.0f);
 }

@@ -78,6 +78,7 @@ public:
 	}
 
 	void setCommand(const vehicle_command_s &cmd) { _current_command = cmd; }
+	void run_sync() { FlightModeManager::Run(); }
 	vehicle_command_s getCommand() const { return _current_command; }
 	void setTakeoffState(uint8_t state) { _takeoff_state = state; }
 	void setOldLandingGearPosition(int8_t pos) { _old_landing_gear_position = pos; }
@@ -469,4 +470,70 @@ TEST_F(FlightModeManagerTest, StatusAndUsageFunctions)
 
 	char *args[] = { (char *)"flight_mode_manager", (char *)"invalid_subcmd" };
 	EXPECT_EQ(TestFlightModeManager::custom_command(2, args), 0);
+}
+TEST_F(FlightModeManagerTest, StartFlightTaskTransitionAndSlowModes)
+{
+	vehicle_status_s vstatus{};
+	vstatus.timestamp = hrt_absolute_time();
+	vstatus.in_transition_mode = true;
+	_vehicle_status_pub.publish(vstatus);
+
+	vehicle_control_mode_s vcontrol{};
+	vcontrol.timestamp = hrt_absolute_time();
+	vcontrol.flag_control_altitude_enabled = true;
+	_vehicle_control_mode_pub.publish(vcontrol);
+
+	_manager.updateSubscriptions();
+	_manager.start_flight_task();
+	EXPECT_TRUE(_manager.isAnyTaskActive());
+	EXPECT_EQ(_manager.getCurrentTaskIndex(), FlightTaskIndex::Transition);
+
+	vstatus.in_transition_mode = false;
+	vstatus.nav_state = vehicle_status_s::NAVIGATION_STATE_POSITION_SLOW;
+	_vehicle_status_pub.publish(vstatus);
+
+	_manager.updateSubscriptions();
+	_manager.start_flight_task();
+	EXPECT_TRUE(_manager.isAnyTaskActive());
+	EXPECT_EQ(_manager.getCurrentTaskIndex(), FlightTaskIndex::ManualAccelerationSlow);
+}
+
+TEST_F(FlightModeManagerTest, ParameterResetOnInvalidPositionMode)
+{
+	int32_t invalid_mode = 99;
+	param_set(param_find("MPC_POS_MODE"), &invalid_mode);
+
+	vehicle_status_s vstatus{};
+	vstatus.timestamp = hrt_absolute_time();
+	vstatus.nav_state = vehicle_status_s::NAVIGATION_STATE_POSCTL;
+	_vehicle_status_pub.publish(vstatus);
+
+	_manager.updateSubscriptions();
+	_manager.start_flight_task();
+
+	EXPECT_TRUE(_manager.isAnyTaskActive());
+	EXPECT_EQ(_manager.getCurrentTaskIndex(), FlightTaskIndex::ManualAcceleration);
+
+	int32_t current_mode = 0;
+	param_get(param_find("MPC_POS_MODE"), &current_mode);
+	EXPECT_EQ(current_mode, 4);
+}
+
+TEST_F(FlightModeManagerTest, SynchronousRunExecution)
+{
+	vehicle_status_s vstatus{};
+	vstatus.timestamp = hrt_absolute_time();
+	vstatus.nav_state = vehicle_status_s::NAVIGATION_STATE_ALTCTL;
+	_vehicle_status_pub.publish(vstatus);
+
+	vehicle_control_mode_s vcontrol{};
+	vcontrol.timestamp = hrt_absolute_time();
+	vcontrol.flag_armed = true;
+	vcontrol.flag_control_altitude_enabled = true;
+	_vehicle_control_mode_pub.publish(vcontrol);
+
+	_manager.run_sync();
+
+	EXPECT_TRUE(_manager.isAnyTaskActive());
+	EXPECT_TRUE(_trajectory_setpoint_sub.update());
 }

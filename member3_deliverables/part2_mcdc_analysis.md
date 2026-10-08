@@ -1,10 +1,29 @@
-## 3. Structural test derivation and MC/DC scope
+# Part 2: Decision Coverage & Logic Derivations (Scope 3)
 
-The group's selected MC/DC component is `MulticopterLandDetector`. Its corrected D1-D3 return-decision pairs, runtime-vector assertions, and remaining governing-guard obligations are documented in [Member 2's analysis](../member2_deliverables/part2_mcdc_analysis.md). This does not claim complete MC/DC for the full component yet.
+## 1. Governing Decisions in Scope 3
 
-The earlier battery equation `(V_cell <= V_crit AND V_cell > 2.0) OR (SoC <= SoC_crit)` was not present in the selected production source and has been withdrawn. Its abstract truth table was not PX4 execution evidence, and no DO-178C compliance claim is made.
+### Decision 1: Battery Connection Status Gating
+- **Expression**: `connected = (voltage_v > 2.1V) && (cell_count > 0)`
+- **Conditions**:
+  - $A$: Pack voltage exceeds recognition threshold ($V > 2.1	ext{V}$)
+  - $B$: Pack cell count is strictly positive ($N_{	ext{cells}} > 0$)
+- **Test Cases**: `TC-M3-BAT-02` ($A=	ext{False}, B=	ext{True} \implies 	ext{Disconnected}$) vs `TC-M3-BAT-03` ($A=	ext{True}, B=	ext{True} \implies 	ext{Connected}$).
 
-In the actual `src/lib/battery/battery.cpp`, `determineWarning()` (307–321) uses successive strict `<` comparisons against state-of-charge emergency, critical, and low thresholds. `updateBatteryStatus()` (144–145) gates warning calculation with `_connected && _battery_initialized`. The current warning-ladder test checks representative outcomes of the former; it does not establish MC/DC of the latter.
+### Decision 2: Static Resistance vs RLS Estimator Branching
+- **Expression**: `use_configured_resistance = (_params.r_internal >= 0.0f)`
+- **Conditions**:
+  - $A$: Configured internal resistance parameter is non-negative
+- **Test Cases**: `TC-M3-BAT-12` ($A=	ext{True} \implies 	ext{Static drop } V_{	ext{ocv}} = V + I \cdot R_{	ext{int}}$) vs `TC-M3-BAT-07` ($A=	ext{False} \implies 	ext{Dynamic 2-state RLS filter}$).
 
-The Member 3 workbook contains its 23-test inventory and an empty reserved MC/DC sheet. It is a partial handoff; the final group workbook should contain the validated land-detector matrix. The absence of battery MC/DC is not a separate missing requirement, because the assignment requires one justified critical component.
+### Decision 3: Transition Mode Gating
+- **Expression**: `is_transition_active = (in_transition_mode && flag_control_altitude_enabled)`
+- **Conditions**:
+  - $A$: Vehicle reports transition mode active (`in_transition_mode == true`)
+  - $B$: Altitude control is enabled (`flag_control_altitude_enabled == true`)
+- **Test Cases**: `TC-M3-FMM-13` ($A=	ext{True}, B=	ext{True} \implies 	ext{FlightTaskIndex::Transition}$).
 
+### Decision 4: Strict Command Freshness Boundary
+- **Expression**: `is_command_fresh = (hrt_absolute_time() < cmd.timestamp + 200_ms)`
+- **Conditions**:
+  - $A$: Elapsed time since command publication is strictly less than 200 ms ($t_{	ext{now}} - t_{	ext{cmd}} < 200\,	ext{ms}$)
+- **Test Cases**: `TC-M3-FMM-10` evaluates boundaries at $\Delta t = 190\,	ext{ms}$ (Applied), $\Delta t = 200\,	ext{ms}$ (Rejected), $\Delta t = 210\,	ext{ms}$ (Rejected).

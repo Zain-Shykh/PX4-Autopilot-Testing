@@ -1,0 +1,1 @@
+genhtml /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member3_deliverables/coverage/baseline/coverage.info --output-directory /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member3_deliverables/coverage/baseline/html --title 'Scope 3 Baseline Coverage' --show-details --legend --ignore-errors mismatch,source,corrupt

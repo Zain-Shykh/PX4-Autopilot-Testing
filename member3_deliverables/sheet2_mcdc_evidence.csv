@@ -1,1 +1,7 @@
-Decision ID,Component / Decision Description,Compound Decision Boolean Expression,Conditions,Truth Table Vector (Conditions -> Outcome),Independence Pair Selected,Demonstrated Condition,Test Reference / Method
+Decision ID,Module,Governing Boolean Expression,Conditions,Test Case Pair,Condition Evaluated,Outcome,Test ID Reference
+DEC-M3-BAT-01,Battery,connected = (voltage_v > 2.1V) && (cell_count > 0),"A: voltage_v > 2.1V, B: cell_count > 0",TC-M3-BAT-02 / TC-M3-BAT-03,"A=F, B=T vs A=T, B=T",connected=F vs connected=T,"TC-M3-BAT-02, TC-M3-BAT-03"
+DEC-M3-BAT-02,Battery,use_configured_r = (_params.r_internal >= 0.f),A: _params.r_internal >= 0.f,TC-M3-BAT-07 / TC-M3-BAT-12,A=F (RLS fallback) vs A=T (static R),RLS estimator vs Static drop,"TC-M3-BAT-07, TC-M3-BAT-12"
+DEC-M3-BAT-03,Battery,overvoltage_fault = (voltage_v > n_cells * v_charged * 1.05f),A: voltage_v > threshold,TC-M3-BAT-03 / TC-M3-BAT-05,A=F (12.0V) vs A=T (14.0V),faults=0 vs faults=FAULT_SPIKES,"TC-M3-BAT-03, TC-M3-BAT-05"
+DEC-M3-FMM-01,FlightModeManager,is_transition = (in_transition_mode && flag_control_altitude_enabled),"A: in_transition_mode, B: flag_control_altitude_enabled",TC-M3-FMM-06 / TC-M3-FMM-13,"A=F, B=T vs A=T, B=T",ManualAltitude vs Transition,"TC-M3-FMM-06, TC-M3-FMM-13"
+DEC-M3-FMM-02,FlightModeManager,command_valid = (now < cmd.timestamp + 200_ms),A: (now - cmd.timestamp) < 200ms,TC-M3-FMM-10 (boundary),A=T (<200ms) vs A=F (>=200ms),Command applied vs rejected,TC-M3-FMM-10
+DEC-M3-FMM-03,FlightModeManager,pos_mode_valid = (mpc_pos_mode == 0 || mpc_pos_mode == 4),"A: mode==0, B: mode==4",TC-M3-FMM-05 / TC-M3-FMM-14,"A=T (0) / B=T (4) vs A=F,B=F (99)",ManualPosition/ManualAcceleration vs Reset to 4,"TC-M3-FMM-05, TC-M3-FMM-14"

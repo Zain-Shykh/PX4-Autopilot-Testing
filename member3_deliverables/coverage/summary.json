@@ -1,0 +1,50 @@
+{
+  "baseline": {
+    "src/lib/battery/battery.cpp": {
+      "lines_hit": 0,
+      "lines_total": 231,
+      "functions_hit": 0,
+      "functions_total": 19
+    },
+    "src/modules/battery_status/analog_battery.cpp": {
+      "lines_hit": 0,
+      "lines_total": 54,
+      "functions_hit": 0,
+      "functions_total": 7
+    },
+    "src/modules/flight_mode_manager/FlightModeManager.cpp": {
+      "lines_hit": 0,
+      "lines_total": 233,
+      "functions_hit": 0,
+      "functions_total": 18
+    }
+  },
+  "final": {
+    "src/lib/battery/battery.cpp": {
+      "lines_hit": 228,
+      "lines_total": 231,
+      "functions_hit": 19,
+      "functions_total": 19
+    },
+    "src/modules/battery_status/analog_battery.cpp": {
+      "lines_hit": 45,
+      "lines_total": 54,
+      "functions_hit": 6,
+      "functions_total": 7
+    },
+    "src/modules/flight_mode_manager/FlightModeManager.cpp": {
+      "lines_hit": 192,
+      "lines_total": 233,
+      "functions_hit": 14,
+      "functions_total": 18
+    }
+  },
+  "totals": {
+    "lines_hit": 465,
+    "lines_total": 518,
+    "line_coverage_pct": 89.77,
+    "functions_hit": 39,
+    "functions_total": 44,
+    "function_coverage_pct": 88.64
+  }
+}

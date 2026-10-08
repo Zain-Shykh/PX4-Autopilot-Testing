@@ -1,0 +1,1 @@
+genhtml /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member3_deliverables/coverage/final/coverage.info --output-directory /home/hamza_atif/SQE_Assignment2/PX4-Autopilot-Testing/member3_deliverables/coverage/final/html --title 'Scope 3 Final Test Coverage' --show-details --legend --ignore-errors mismatch,source,corrupt

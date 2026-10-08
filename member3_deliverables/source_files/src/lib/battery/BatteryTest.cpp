@@ -74,6 +74,8 @@ public:
 	using Battery::_armed;
 	using Battery::_vehicle_status_is_fw;
 	using Battery::_cell_voltage_filter_v;
+
+	float getFilteredCurrent() const { return _current_average_filter_a.getState(); }
 };
 
 class TestAnalogBattery : public AnalogBattery
@@ -119,13 +121,17 @@ TEST_F(BatteryStatusTest, ParameterInitializationAndCellCount)
 {
 	int32_t n_cells = 3;
 	param_set(param_find("BAT1_N_CELLS"), &n_cells);
+	float v_empty = 3.6f;
+	param_set(param_find("BAT1_V_EMPTY"), &v_empty);
+	float v_charged = 4.2f;
+	param_set(param_find("BAT1_V_CHARGED"), &v_charged);
 
 	TestBattery battery{1, nullptr, 100000, 0};
 	battery.updateParams();
 
 	EXPECT_EQ(battery.cell_count(), 3);
-	EXPECT_GT(battery.full_cell_voltage(), battery.empty_cell_voltage());
-	EXPECT_GT(battery.empty_cell_voltage(), 2.0f);
+	EXPECT_FLOAT_EQ(battery.empty_cell_voltage(), 3.6f);
+	EXPECT_FLOAT_EQ(battery.full_cell_voltage(), 4.2f);
 }
 
 TEST_F(BatteryStatusTest, DisconnectedBatteryState)
@@ -233,24 +239,38 @@ TEST_F(BatteryStatusTest, ComputeScaleThrustCompensation)
 	EXPECT_LE(battery.getBatteryStatus().scale, 1.3f);
 }
 
-TEST_F(BatteryStatusTest, StateOfChargeVoltageBasedAndLoadDropCorrection)
+TEST_F(BatteryStatusTest, InternalResistanceRLSEstimation)
 {
 	int32_t n_cells = 3;
 	param_set(param_find("BAT1_N_CELLS"), &n_cells);
 
 	TestBattery battery{1, nullptr, 100000, 0};
 	battery.updateParams();
+	battery.setConnected(true);
 
-	// Zero current voltage based SoC
-	battery._cell_voltage_filter_v.reset(11.1f / 3.0f);
-	float soc_no_load = battery.calculateStateOfChargeVoltageBased(11.1f, 0.0f);
-	EXPECT_GE(soc_no_load, 0.0f);
-	EXPECT_LE(soc_no_load, 1.0f);
+	hrt_abstime now = hrt_absolute_time();
+	// Initialize
+	battery.updateVoltage(12.0f);
+	battery.updateCurrent(0.0f);
+	battery.updateBatteryStatus(now);
 
-	// High load current -> voltage drop compensation increases estimated cell voltage
-	battery._cell_voltage_filter_v.reset((11.1f / 3.0f) + 0.005f * 15.0f);
-	float soc_with_load = battery.calculateStateOfChargeVoltageBased(11.1f, 15.0f);
-	EXPECT_GT(soc_with_load, soc_no_load);
+	float simulated_ir_per_cell = 0.015f; // 15mOhm per cell
+	float total_ir = simulated_ir_per_cell * 3;
+
+	// Apply alternating loads so the resistance estimator receives distinct samples.
+	for (int i = 0; i < 50; ++i) {
+		float current = (i % 2 == 0) ? 15.0f : 2.0f; // alternate load
+		float voltage = 12.0f - total_ir * current; // True OCV = 12.0V
+
+		now += 100000ULL; // 0.1s steps
+		battery.updateVoltage(voltage);
+		battery.updateCurrent(current);
+		battery.updateBatteryStatus(now);
+	}
+
+	// Verify the estimated per-cell resistance responds to the simulated loads.
+	float estimated_ir = battery._internal_resistance_estimate;
+	EXPECT_NEAR(estimated_ir, simulated_ir_per_cell, 0.005f);
 }
 
 TEST_F(BatteryStatusTest, StateOfChargeEstimationCoulombFusion)
@@ -329,7 +349,9 @@ TEST_F(BatteryStatusTest, ComputeRemainingTimeArmedAndFixedWing)
 
 	float remaining_time = battery.computeRemainingTime(10.0f);
 	EXPECT_TRUE(PX4_ISFINITE(remaining_time));
-	EXPECT_GT(remaining_time, 0.0f);
+	float expected_current_ma = battery.getFilteredCurrent() * 1000.0f;
+	float expected_time = (battery._state_of_charge * 2200.0f) / expected_current_ma * 3600.0f;
+	EXPECT_NEAR(remaining_time, expected_time, 0.1f);
 
 	// Switch to Fixed-Wing level flight
 	const hrt_abstime fw_timestamp = hrt_absolute_time();
@@ -345,7 +367,9 @@ TEST_F(BatteryStatusTest, ComputeRemainingTimeArmedAndFixedWing)
 	battery.updateDt(hrt_absolute_time());
 	remaining_time = battery.computeRemainingTime(8.0f);
 	EXPECT_TRUE(PX4_ISFINITE(remaining_time));
-	EXPECT_GT(remaining_time, 0.0f);
+	expected_current_ma = battery.getFilteredCurrent() * 1000.0f;
+	expected_time = (battery._state_of_charge * 2200.0f) / expected_current_ma * 3600.0f;
+	EXPECT_NEAR(remaining_time, expected_time, 0.1f);
 }
 
 TEST_F(BatteryStatusTest, ExternalStateOfChargeOverride)
@@ -376,7 +400,8 @@ TEST_F(BatteryStatusTest, AnalogBatteryADCConversionAndChannels)
 
 	battery_status_s status = analog_battery.getBatteryStatus();
 	EXPECT_TRUE(status.connected);
-	EXPECT_GT(status.voltage_v, 0.0f);
+	EXPECT_FLOAT_EQ(status.voltage_v, 15.0f);
+	EXPECT_FLOAT_EQ(status.current_a, 10.0f);
 
 	// Channel verification
 	EXPECT_TRUE(analog_battery.is_valid());

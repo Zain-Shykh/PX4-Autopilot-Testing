@@ -103,7 +103,7 @@ To perform deep structural verification, our engineering team divided the reposi
 ### 2.2 Scope 3 Deep-Dive Architectural & Behavioral Analysis
 
 #### 2.2.1 `FlightModeManager` (`src/modules/flight_mode_manager/`)
-`FlightModeManager` acts as the master operational switchboard for autonomous and manual flight modes. It inherits from `ModuleBase`, `px4::WorkItemScheduled`, and `ModuleParams`.
+`FlightModeManager` acts as the master operational switchboard for autonomous and manual flight modes. It inherits from `ModuleBase`, `px4::WorkItem`, and `ModuleParams`.
 
 - **Core Responsibilities**:
   1. Synchronously ingests vehicle status (`vehicle_status_s`), control mode flags (`vehicle_control_mode_s`), landing states (`vehicle_land_detected_s`), and commands (`vehicle_command_s`).
@@ -112,7 +112,6 @@ To perform deep structural verification, our engineering team divided the reposi
   4. Enforces vehicle command freshness constraints (200 ms timeout window).
 
 - **Critical State Dependencies & Compound Decisions**:
-  - `isNavStateSwitchingAllowed()`: Validates that transitions between manual, offboard, mission, and failsafe states only occur if the required sensor estimators (e.g. valid position, altitude) are healthy.
   - `start_flight_task()`: Evaluates compound conditions mapping navigation states to task availability without active failsafes.
   - `tryApplyCommandIfAny()`: Enforces real-time command freshness (age <= 200 ms and valid vehicle command).
 
@@ -128,7 +127,7 @@ The `Battery` library and `AnalogBattery` driver provide vital energy monitoring
 
 - **Core Responsibilities**:
   1. Computes multi-cell battery pack voltage, individual cell voltages, and instant/integrated current draw.
-  2. Implements a Recursive Least Squares (RLS) adaptive estimator to calculate internal cell resistance and load-drop-corrected Open Circuit Voltage (OCV).
+  2. Tracks internal resistance for load-drop correction and estimates load-drop-corrected Open Circuit Voltage (OCV). The submitted tests verify the dedicated resistance response and load-drop correction; they do not claim general RLS convergence.
   3. Evaluates battery capacity, remaining percentage, and remaining flight time.
   4. Manages strict, non-oscillating battery warning state transitions: Normal -> Low (Warning) -> Critical (Failsafe Return) -> Emergency (Immediate Land).
 
@@ -157,8 +156,8 @@ The Member 3 workbook contains its 23-test inventory and an empty reserved MC/DC
 
 A total of **23 student-authored functional test cases** were designed, implemented, and registered in CMake:
 
-- **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, and error recovery fallback.
-- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), load-drop correction, capped coulomb integration and voltage fusion, remaining flight time prediction, and AnalogBattery integration. The load-drop test does not claim RLS convergence.
+- **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, error recovery fallback, cruise-speed change, invalid-position-mode reset, and required landing-gear publication/value.
+- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), configured internal-resistance response, load-drop correction, capped coulomb integration and voltage fusion, remaining flight time prediction, and AnalogBattery integration. The load-drop test does not claim general RLS convergence.
 - **Execution Outcome**: 23/23 Tests Passed (100% Pass Rate) in 0.09s total runtime.
 
 ### 4.2 Structural Coverage Metrics Comparison

@@ -3,7 +3,7 @@
 ### 2.2 Scope 3 Deep-Dive Architectural & Behavioral Analysis
 
 #### 2.2.1 `FlightModeManager` (`src/modules/flight_mode_manager/`)
-`FlightModeManager` acts as the master operational switchboard for autonomous and manual flight modes. It inherits from `ModuleBase`, `px4::WorkItemScheduled`, and `ModuleParams`.
+`FlightModeManager` acts as the master operational switchboard for autonomous and manual flight modes. It inherits from `ModuleBase`, `px4::WorkItem`, and `ModuleParams`.
 
 - **Core Responsibilities**:
   1. Synchronously ingests vehicle status (`vehicle_status_s`), control mode flags (`vehicle_control_mode_s`), landing states (`vehicle_land_detected_s`), and commands (`vehicle_command_s`).
@@ -12,7 +12,6 @@
   4. Enforces vehicle command freshness constraints (200 ms timeout window).
 
 - **Critical State Dependencies & Compound Decisions**:
-  - `isNavStateSwitchingAllowed()`: Validates that transitions between manual, offboard, mission, and failsafe states only occur if the required sensor estimators (e.g. valid position, altitude) are healthy.
   - `start_flight_task()`: Evaluates compound conditions mapping navigation states to task availability without active failsafes.
   - `tryApplyCommandIfAny()`: Enforces real-time command freshness (age <= 200 ms and valid vehicle command).
 
@@ -28,7 +27,7 @@ The `Battery` library and `AnalogBattery` driver provide vital energy monitoring
 
 - **Core Responsibilities**:
   1. Computes multi-cell battery pack voltage, individual cell voltages, and instant/integrated current draw.
-  2. Implements a Recursive Least Squares (RLS) adaptive estimator to calculate internal cell resistance and load-drop-corrected Open Circuit Voltage (OCV).
+  2. Tracks internal resistance for load-drop correction and estimates load-drop-corrected Open Circuit Voltage (OCV). The submitted tests do not claim general RLS convergence.
   3. Evaluates battery capacity, remaining percentage, and remaining flight time.
   4. Manages strict, non-oscillating battery warning state transitions: Normal -> Low (Warning) -> Critical (Failsafe Return) -> Emergency (Immediate Land).
 
@@ -38,4 +37,3 @@ The `Battery` library and `AnalogBattery` driver provide vital energy monitoring
   - Hysteresis & Filtering: Low-pass filtering on voltage and current to prevent momentary motor throttle bursts from triggering false emergency failsafes.
 
 ---
-

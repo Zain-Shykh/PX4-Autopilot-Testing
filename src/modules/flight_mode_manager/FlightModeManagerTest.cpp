@@ -396,7 +396,7 @@ TEST_F(FlightModeManagerTest, HandleCommandOrbitAndSpeedChange)
 
 	_manager.handleCommand();
 	EXPECT_TRUE(_manager.isAnyTaskActive());
-	
+
 	// Check the actual cruise-speed change
 	auto task = static_cast<TestFlightTaskAuto*>(_manager.getCurrentTask());
 	EXPECT_EQ(task->getCruiseSpeed(), 5.0f);
@@ -432,7 +432,7 @@ TEST_F(FlightModeManagerTest, TryApplyCommandAgeBoundaries)
 
 TEST_F(FlightModeManagerTest, GenerateTrajectorySetpointAndLandingGear)
 {
-	EXPECT_EQ(_manager.switchTask(FlightTaskIndex::ManualAltitude), FlightTaskError::NoError);
+	EXPECT_EQ(_manager.switchTask(FlightTaskIndex::Descend), FlightTaskError::NoError);
 
 	vehicle_local_position_s lpos{};
 	lpos.timestamp = hrt_absolute_time();
@@ -441,13 +441,13 @@ TEST_F(FlightModeManagerTest, GenerateTrajectorySetpointAndLandingGear)
 
 	// Landed state -> disarmed gear
 	_manager.setTakeoffState(takeoff_status_s::TAKEOFF_STATE_DISARMED);
+	_manager.setOldLandingGearPosition(landing_gear_s::GEAR_UP);
 	_manager.generateTrajectorySetpoint(0.02f, lpos);
 
 	EXPECT_TRUE(_trajectory_setpoint_sub.update());
 	EXPECT_TRUE(_vehicle_constraints_sub.update());
-	if (_landing_gear_sub.update()) {
-		EXPECT_EQ(_landing_gear_sub.get().landing_gear, landing_gear_s::GEAR_DOWN);
-	}
+	ASSERT_TRUE(_landing_gear_sub.update());
+	EXPECT_EQ(_landing_gear_sub.get().landing_gear, landing_gear_s::GEAR_DOWN);
 
 	// Flight state -> active setpoint generation
 	_manager.setTakeoffState(takeoff_status_s::TAKEOFF_STATE_FLIGHT);

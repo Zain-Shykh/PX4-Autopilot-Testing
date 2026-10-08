@@ -52,7 +52,6 @@ namespace land_detector
 class MulticopterLandDetectorTest : public MulticopterLandDetector
 {
 public:
-	float test_get_minManThrottle() { return _params.minManThrottle; }
 	MulticopterLandDetectorTest() : MulticopterLandDetector() {}
 	~MulticopterLandDetectorTest() override = default;
 

@@ -74,7 +74,7 @@ public:
 	using Battery::_armed;
 	using Battery::_vehicle_status_is_fw;
 	using Battery::_cell_voltage_filter_v;
-	
+
 	float getFilteredCurrent() const { return _current_average_filter_a.getState(); }
 };
 
@@ -256,19 +256,19 @@ TEST_F(BatteryStatusTest, InternalResistanceRLSEstimation)
 
 	float simulated_ir_per_cell = 0.015f; // 15mOhm per cell
 	float total_ir = simulated_ir_per_cell * 3;
-	
-	// Simulate current pulses to allow RLS to converge
+
+	// Apply alternating loads so the resistance estimator receives distinct samples.
 	for (int i = 0; i < 50; ++i) {
 		float current = (i % 2 == 0) ? 15.0f : 2.0f; // alternate load
 		float voltage = 12.0f - total_ir * current; // True OCV = 12.0V
-		
+
 		now += 100000ULL; // 0.1s steps
 		battery.updateVoltage(voltage);
 		battery.updateCurrent(current);
 		battery.updateBatteryStatus(now);
 	}
 
-	// Verify RLS convergence to the simulated internal resistance
+	// Verify the estimated per-cell resistance responds to the simulated loads.
 	float estimated_ir = battery._internal_resistance_estimate;
 	EXPECT_NEAR(estimated_ir, simulated_ir_per_cell, 0.005f);
 }

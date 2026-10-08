@@ -1,107 +1,19 @@
-# Member 2 Deliverable: Part 3 - Coverage Evidence & Analysis
+# Member 2 coverage evidence after main integration
 
-## 1. Overview & Tooling
-- **Target Component**: `src/modules/land_detector/MulticopterLandDetector.cpp`
-- **Coverage Tool**: `lcov` (v2.0-1) / `gcov` GCC coverage instrumenter with **`--branch-coverage`** flag
-- **Test Suite**: `src/modules/land_detector/LandDetectorTest.cpp`
-- **Test Count**: **19 tests, 19/19 PASS** (100%)
-- **Coverage Data File**: `coverage_multicopter.info`
-- **MC/DC Pairs Evidenced**: **17/17 independence pairs** across 3 decisions (D1: 5, D2: 7, D3: 5)
+The current 19-test suite passes in normal order and in 20 shuffled repetitions (seeds 2027–2046). The 34 runtime operand vectors and all 17 D1-D3 pairs pass `scripts/validate_mcdc.py`. This establishes the documented return-decision pairs, not complete MC/DC of every governing decision in the selected component.
 
----
+Fresh isolated, branch-enabled measurement: **71/116 lines (61.2%), 94/192 raw branches (49.0%), and 7/10 functions** in `MulticopterLandDetector.cpp`. The ground-effect return decision covers **10/10 raw branches**. The merged D3-B test uses Member 2's direct cached-flag setter with the local runtime assertions. Removing the incidental ground-contact call means two raw edges at line 211 are no longer covered by that test; they remain explicit obligations in the hover-thrust governing guard. The former priority-run total of 96/192 is historical. The earlier claims of 100% line/branch coverage within all five decision methods and exclusively infrastructural gaps are withdrawn.
 
-## 2. Measured Coverage Summary (With `--branch-coverage`)
+Evidence:
 
-The following results were produced by running:
-```bash
-lcov --directory build/px4_sitl_test/src/modules/land_detector \
-     --base-directory build/px4_sitl_test \
-     --gcov-tool gcov \
-     --capture \
-     --branch-coverage \
-     --ignore-errors mismatch \
-     -o coverage_land_detector.info
+- [Normal execution and all 78 group cases](logs/merge_main/normal_execution.log)
+- [Current 19-case XML with runtime vectors](logs/merge_main/functional-LandDetector.xml)
+- [20 shuffled repetitions](logs/merge_main/functional-LandDetector_shuffle.log)
+- [MC/DC validation and source-derived short-circuit masks](logs/merge_main/mcdc_validation.json)
+- [Generated current HTML](coverage/merge_main/html/index.html) and [LCOV](coverage/merge_main/coverage.info)
 
-lcov --extract coverage_land_detector.info "*MulticopterLandDetector.cpp" \
-     -o coverage_multicopter.info --branch-coverage
+Unexecuted business-method lines still include 182, 189, 199, 227, 229, 230, 234, 235, and 262: vertical derivative fallback, unavailable position, commanded-descent processing, landed-state gating, and climb-rate-mode thrust computation. These are not justified exclusions. The remaining compound guards are explicitly listed in [Part 2](part2_mcdc_analysis.md). `_update_params()` includes threshold adjustment logic and cannot be dismissed as an inaccessible parameter daemon; functional GTest supports parameters and local uORB. Constructor initialization is exercised by the fixture.
 
-lcov --summary coverage_multicopter.info --branch-coverage
-```
+This priority correction does not complete the full gap investigation or supply a comparable baseline coverage capture. Those remain required before final submission. Raw GCC edges include compiler-generated control flow and should not be relabeled as source-decision or MC/DC percentages.
 
-### 2.1 Measured Results for `MulticopterLandDetector.cpp`
-
-| Coverage Metric | Raw Count | Percentage | Notes |
-| --- | --- | --- | --- |
-| **Line / Statement Coverage** | 71 / 116 lines | **61.2%** (file total) | Clean post-test capture; not 100% method coverage |
-| **Function Coverage** | 7 / 10 functions | **70.0%** | 3 infrastructure functions not exercised in unit isolation |
-| **Branch Coverage** | 94 / 192 branches | **49.0%** (file total) | Clean post-test capture; includes selected methods and infrastructure |
-
----
-
-## 3. Scope Boundary: Analysed Decision Methods vs. Infrastructure
-
-### 3.1 Analysed Methods
-
-These five methods contain the selected decisions (D1-D3) and two simple state checks (D4-D5). The suite invokes each method, but invocation is not equivalent to complete line/branch coverage. LCOV records uncovered alternatives at lines 180, 260, 269, 276, and 280. The table identifies the tested logic, not a claim of complete coverage:
-
-| Method | Decision | Lines Executed | Branch Coverage |
-| --- | --- | --- | --- |
-| `_get_ground_contact_state()` | D1 | Invoked | Selected truth paths exercised |
-| `_get_maybe_landed_state()` | D2 | Invoked | Selected truth paths exercised |
-| `_get_ground_effect_state()` | D3 | Invoked | Selected truth paths exercised |
-| `_get_freefall_state()` | D4 (threshold) | Invoked | Boundary outcomes exercised |
-| `_get_landed_state()` | D5 | Invoked | Main outcomes exercised |
-
-### 3.2 Unexecuted Lines and Branches — Gap Analysis
-
-The **43 unexecuted lines** (116 total − 73 executed) and **92 unexecuted branches** are not exclusively middleware infrastructure. They include unexecuted topic/parameter paths and alternative branches inside the selected methods:
-
-1. **`_update_topics()` (~22 lines, ~40 branches)**: Live uORB subscriptions for thrust setpoint, control mode, hover-thrust estimate, and takeoff status. In unit tests, state is directly injected via test helper setters — no live publish/subscribe flow is exercised.
-
-2. **`_update_params()` (~15 lines, ~30 branches)**: Parameter fetches and the `LNDMC_Z_VEL_MAX` consistency correction via the PX4 parameter system. In unit tests, parameters were not exercised through this update path.
-
-3. **Selected-method alternatives**: invalid or stale local-position data, velocity-validity fallbacks, distance-estimate handling, hover-thrust validity, and short-circuit outcomes remain partly uncovered.
-4. **Constructor/destructor & registration boilerplate**: constructor setup and hysteresis-factor paths are not fully represented by this unit fixture.
-
-### 3.3 MC/DC Completeness Reconciliation
-
-Passing all 19 tests does not by itself establish complete MC/DC — the independence of each atomic Boolean condition must be **individually demonstrated**. The matrix demonstrates the following selected pairs:
-
-- **D1** (5 conditions): 10 test rows proving A, B, C, D, E each independently flip the decision.
-- **D2** (7 conditions): 14 test rows proving A, B, C, D, E, F, G each independently flip the decision.
-  - **D2-E** (`vertical_estimate`): Controlled via `set_local_position_timestamp(0)` (stale, making `local_position_updated=false`) vs. `set_local_position_timestamp(hrt_absolute_time())` (fresh). Verified `G=True, F=False` held constant.
-  - **D2-F** (`_ground_contact_hysteresis`): Toggled directly with `E=True, G=False` held constant — path `(E&&F)` flips the decision.
-  - **D2-G** (`_minimum_thrust_8s_hysteresis`): Toggled with `E=False, F=False` held constant — path `(!E&&G)` flips the decision. Hysteresis setter uses `timestamp=1` to ensure the 8-second threshold is elapsed when `_get_maybe_landed_state()` re-evaluates internally.
-- **D3** (5 conditions): 10 test rows proving A, B, C, D, E each independently flip the decision. The B pair directly controls `_horizontal_movement`, so changing B cannot also change A through `_get_ground_contact_state()`.
-  - **D3-D** (`TAKEOFF_STATE_FLIGHT`): Toggled with `A=False, C=True, E=False` (not RAMPUP) held constant — path `(C&&D)` flips the decision.
-
-Total: **34 evidence rows, 17 independence pairs** for D1-D3. This is complete for the selected matrix only, not for every compound decision in the class.
-
----
-
-## 4. Full `lcov` Command Sequence
-
-```bash
-# Step 1: Compile and run tests with coverage instrumentation
-make tests TESTFILTER=LandDetector
-
-# Step 2: Capture with --branch-coverage (REQUIRED for branch/MC/DC claims)
-lcov --directory build/px4_sitl_test/src/modules/land_detector \
-     --base-directory build/px4_sitl_test \
-     --gcov-tool gcov \
-     --capture \
-     --branch-coverage \
-     --ignore-errors mismatch \
-     -o coverage_land_detector.info
-
-# Step 3: Extract target file only
-lcov --extract coverage_land_detector.info "*MulticopterLandDetector.cpp" \
-     -o coverage_multicopter.info --branch-coverage
-
-# Step 4: Print summary
-lcov --summary coverage_multicopter.info --branch-coverage
-# Output:
-#   lines......: 61.2% (71 of 116 lines)
-#   functions..: 70.0% (7 of 10 functions)
-#   branches...: 49.0% (94 of 192 branches)
-```
+Build with `cmake -S . -B build/px4_sitl_test -G Ninja -DCONFIG=px4_sitl_test -DCMAKE_BUILD_TYPE=Coverage`, then build `functional-LandDetector`. The clock replacement is linked only into that test executable. [Merged-run verification notes](../assignment_audit/MAIN_MERGE.md) record the execution and isolated coverage procedure. Use explicit branch collection; `make tests` alone does not establish the build type on a fresh checkout.

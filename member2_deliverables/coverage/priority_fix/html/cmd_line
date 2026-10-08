@@ -1,0 +1,1 @@
+genhtml --branch-coverage --prefix /home/muhammad/SQE_A2/PX4-Autopilot-Testing member2_deliverables/coverage/priority_fix/coverage.info --output-directory member2_deliverables/coverage/priority_fix/html

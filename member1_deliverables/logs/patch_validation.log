@@ -10,5 +10,5 @@ exit=0
 $ git apply /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member1_deliverables/px4_assignment2_tests.patch
 exit=0
 px4_assignment2_tests.patch: reconstructed 8 files byte-for-byte against d6f12ad1c4f70ad3230afd7d86e971421e02fef4
-sha256=e6a2330d34b8b859ec436016e481e8575aa7ca13fb330db146f06a8fd1c6ff4d
+sha256=73d84c7e7a656f9e7306321a3b443ddcfa38667760093b54460f3bd0625f1c08
 

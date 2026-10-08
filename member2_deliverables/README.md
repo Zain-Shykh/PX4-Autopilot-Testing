@@ -1,52 +1,22 @@
-# Member 2 Deliverables Index & Integration Guide
-## Component: `src/modules/land_detector/` (`MulticopterLandDetector`)
+# Member 2 deliverables — MulticopterLandDetector
 
----
+The current suite contains **19 functional GTest cases**. All pass in normal order and 20 shuffled repetitions. **17 D1-D3 return-decision independence pairs / 34 runtime vectors** are checked against the production result and recorded in XML. Complete MC/DC of the additional governing guards remains unfinished.
 
-## 1. Overview & Directory Purpose
-
-This directory (`member2_deliverables/`) contains all extracted, finalized deliverables produced by **Member 2** for **Assignment #02: Structural Testing and Coverage Analysis of PX4 Autopilot (v1.17.0)**. 
-
-Because personal work plans are ignored by Git, this folder serves as the dedicated, trackable single location where team members can gather Member 2's contributions to compile the final submission bundle (`Report.md`, `Testing_Workbook.xlsx`, and `px4_assignment2_tests.patch`).
-
----
-
-## 2. Directory Contents & File Mapping
-
-| File | Description | Target Assignment Artifact | Owner / Recipient |
-| --- | --- | --- | --- |
-| **`README.md`** | Master Index & Repository File Pointer | N/A | Entire Team |
-| **`part1_scope_record.md`** | Part 1 Scope Selection & Justification | Technical Report (`Report.md` Part 1) | Team Report Lead |
-| **`part2_mcdc_analysis.md`** | Part 2 MC/DC Derivation & Independence Proofs | Technical Report (`Report.md` Part 2) | Team Report Lead |
-| **`sheet2_mcdc_evidence.csv`** | **34-Row** Master MC/DC Matrix (all 17 independence pairs) | Testing Workbook (`Testing_Workbook.xlsx` Sheet 2) | **Member 1** (Workbook Lead) |
-| **`part3_coverage_evidence.md`** | Part 3 Structural Coverage Stats & Gap Analysis | Technical Report (`Report.md` Part 3) | **Member 3** (Coverage Lead) |
-| **`part4_final_quality_judgment.md`** | 300–400-word Final Quality Judgment | Technical Report (`Report.md` Part 4) | Team Report Lead |
-| **`ctest_execution_log.txt`** | Raw `make tests` Command Line Execution Output | Submission Log Folder | Team Report Lead |
-
----
-
-## 3. Codebase File Locations (Git-Tracked Repository Deliverables)
-
-In addition to the documentation files in this directory, Member 2 has created/updated the following C++ source files directly inside the repository:
-
-1. **Student-Authored GTest C++ Test Suite**:
-   - **Path**: `src/modules/land_detector/LandDetectorTest.cpp`
-   - **Description**: Contains **19 GTest functional test methods** executing all 17 MC/DC condition independence pairs (D1×5, D2×7, D3×5) and boundary cases.
-2. **Non-Intrusive Testability Header Update**:
-   - **Path**: `src/modules/land_detector/MulticopterLandDetector.h`
-   - **Description**: Added `friend class MulticopterLandDetectorTest;` under `private:` for deterministic state testing without altering runtime logic.
-3. **CMake Build System Registration**:
-   - **Path**: `src/modules/land_detector/CMakeLists.txt`
-   - **Description**: Registered test target via `px4_add_functional_gtest(SRC LandDetectorTest.cpp LINKLIBS modules__land_detector geo)`.
-
----
-
-## 4. Verification Command
-
-To compile and verify Member 2's deliverables from the terminal:
+- [Scope record](part1_scope_record.md)
+- [Corrected MC/DC analysis and remaining guard obligations](part2_mcdc_analysis.md)
+- [Current MC/DC matrix](sheet2_mcdc_evidence.csv)
+- [Measured coverage and limits](part3_coverage_evidence.md)
+- [Scoped quality judgment](part4_final_quality_judgment.md)
+- [Current execution/XML/validation evidence](logs/merge_main)
+- [Current coverage HTML](coverage/merge_main/html/index.html)
+- [Merge decisions and fresh verification](../assignment_audit/MAIN_MERGE.md)
 
 ```bash
-# Compile and run Member 2 test suite
-make tests TESTFILTER=LandDetector
-# Expected Result: 100% tests passed (19/19 PASS)
+cmake --build build/px4_sitl_test --target functional-LandDetector -j 4
+ctest --test-dir build/px4_sitl_test -R '^functional-LandDetector$' --timeout 30 -V
+python3 member2_deliverables/scripts/validate_mcdc.py
 ```
+
+The validator's default XML is the saved current evidence. When checking a new execution, pass its path with `--xml`. The CMake registration includes the functional test and its private link-time clock replacement. The friend declaration is test access only; the production algorithms have not been changed.
+
+The old top-level execution log is historical. Current evidence is under `logs/merge_main/`. Generated baseline coverage, remaining guard tests/gap investigation, and final group consolidation still need completion.

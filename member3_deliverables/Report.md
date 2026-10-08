@@ -1,4 +1,7 @@
 # PX4-Autopilot Software Quality Engineering Assessment (Assignment 02)
+
+> **Priority correction status (8 October 2026):** Battery parameters/messages are isolated, all 23 cases pass, and the battery suite passes 20 shuffled repetitions. The fabricated battery MC/DC equation has been withdrawn. Current evidence is in [priority_fix HTML](coverage/priority_fix/html/index.html) and [the fix record](../assignment_audit/PRIORITY_FIX.md). The earlier coverage totals, gap explanations, and broad quality claims below are historical draft material; the audit identifies corrections still required. This is not a completed group submission.
+
 # Comprehensive Technical & Structural Verification Report
 
 **Course**: Software Quality Engineering (CS-4001 / SE-4001)  
@@ -16,7 +19,7 @@ This report presents a rigorous, structural software quality evaluation and test
 
 ### Submission Deliverables Index
 1. **Technical Report**: `Report.md` (This document, including deep-dive analysis, line-by-line coverage gap justifications, and final quality judgment).
-2. **Testing Workbook**: `Testing_Workbook.xlsx` (Consisting of exactly two fully populated sheets: *Sheet 1: Test Inventory* with 23 comprehensive tests and *Sheet 2: MC-DC Evidence* with compound decision truth tables and independence pairs).
+2. **Testing Workbook**: `Testing_Workbook.xlsx` (Partial Member 3 workbook: *Test Inventory* contains 23 tests; *MC-DC Evidence* is reserved and empty. The group matrix is supplied by Member 2).
 3. **Student-Authored C++ Test Suites**:
    - `src/modules/flight_mode_manager/FlightModeManagerTest.cpp` (12 Functional GTest cases)
    - `src/lib/battery/BatteryTest.cpp` (11 Functional GTest cases)
@@ -131,67 +134,20 @@ The `Battery` library and `AnalogBattery` driver provide vital energy monitoring
 
 - **Critical State Dependencies & Compound Decisions**:
   - `updateBatteryStatus()` warning threshold compound decision:
-    Evaluates cell voltage vs warning/critical/emergency thresholds (with voltage > 2.0V plausibility check) and state-of-charge percentage limits.
+    Requires `_connected && _battery_initialized` before calling `determineWarning()`, which compares state of charge with strict emergency, critical, and low thresholds. There is no compound voltage/SoC warning decision in this source.
   - Hysteresis & Filtering: Low-pass filtering on voltage and current to prevent momentary motor throttle bursts from triggering false emergency failsafes.
 
 ---
 
-## 3. Part 2 — Structural Test Derivation & MC/DC Analysis (CLO2)
+## 3. Structural test derivation and MC/DC scope
 
-To satisfy DO-178C Level A avionics safety verification standards, compound boolean decisions within the flight software were analyzed for **Modified Condition / Decision Coverage (MC/DC)**.
+The group's selected MC/DC component is `MulticopterLandDetector`. Its corrected D1-D3 return-decision pairs, runtime-vector assertions, and remaining governing-guard obligations are documented in [Member 2's analysis](../member2_deliverables/part2_mcdc_analysis.md). This does not claim complete MC/DC for the full component yet.
 
-### 3.1 Selected Critical Decision Analysis
-From `src/lib/battery/battery.cpp`, we selected the safety-critical battery warning escalation decision:
+The earlier battery equation `(V_cell <= V_crit AND V_cell > 2.0) OR (SoC <= SoC_crit)` was not present in the selected production source and has been withdrawn. Its abstract truth table was not PX4 execution evidence, and no DO-178C compliance claim is made.
 
-**Decision Equation**: D = (A and B) or C
+In the actual `src/lib/battery/battery.cpp`, `determineWarning()` (307–321) uses successive strict `<` comparisons against state-of-charge emergency, critical, and low thresholds. `updateBatteryStatus()` (144–145) gates warning calculation with `_connected && _battery_initialized`. The current warning-ladder test checks representative outcomes of the former; it does not establish MC/DC of the latter.
 
-Where:
-- **Condition A**: Terminal Cell Voltage below Critical Threshold (V_cell <= V_crit)
-- **Condition B**: Valid Physical Voltage Plausibility Check (V_cell > 2.0 V)
-- **Condition C**: State of Charge below Critical Threshold (SoC <= SoC_crit)
-
-### 3.2 Truth Table & Decision Outcomes (2^3 = 8 Combinations)
-
-| Test Vector | Condition A (V <= V_crit) | Condition B (V > 2.0V) | Condition C (SoC <= SoC_crit) | Compound Term (A and B) | Decision Outcome D = (A and B) or C |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **TV-01** | True | True | True | True | **True** (Critical Warning) |
-| **TV-02** | True | True | False | True | **True** (Critical Warning) |
-| **TV-03** | True | False | True | False | **True** (Critical Warning) |
-| **TV-04** | True | False | False | False | **False** (No Warning) |
-| **TV-05** | False | True | True | False | **True** (Critical Warning) |
-| **TV-06** | False | True | False | False | **False** (No Warning) |
-| **TV-07** | False | False | True | False | **True** (Critical Warning) |
-| **TV-08** | False | False | False | False | **False** (No Warning) |
-
----
-
-### 3.3 MC/DC Independence Pair Derivation
-
-To prove independence, each condition must be shown to independently affect the decision outcome while all other conditions remain fixed:
-
-#### 1. Independence Pair for Condition A (V <= V_crit)
-- **Vector Pair**: (TV-02, TV-06)
-- **Fixed Conditions**: B = True, C = False
-- **Variation**:
-  - TV-02: A = True => D = (True and True) or False = True
-  - TV-06: A = False => D = (False and True) or False = False
-- **Result**: Condition A independently controls decision D.
-
-#### 2. Independence Pair for Condition B (V > 2.0V)
-- **Vector Pair**: (TV-02, TV-04)
-- **Fixed Conditions**: A = True, C = False
-- **Variation**:
-  - TV-02: B = True => D = (True and True) or False = True
-  - TV-04: B = False => D = (True and False) or False = False
-- **Result**: Condition B independently controls decision D.
-
-#### 3. Independence Pair for Condition C (SoC <= SoC_crit)
-- **Vector Pair**: (TV-06, TV-05)
-- **Fixed Conditions**: A = False, B = True
-- **Variation**:
-  - TV-06: C = False => D = (False and True) or False = False
-  - TV-05: C = True => D = (False and True) or True = True
-- **Result**: Condition C independently controls decision D.
+The Member 3 workbook contains its 23-test inventory and an empty reserved MC/DC sheet. It is a partial handoff; the final group workbook should contain the validated land-detector matrix. The absence of battery MC/DC is not a separate missing requirement, because the assignment requires one justified critical component.
 
 ---
 
@@ -202,7 +158,7 @@ To prove independence, each condition must be shown to independently affect the 
 A total of **23 student-authored functional test cases** were designed, implemented, and registered in CMake:
 
 - **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, and error recovery fallback.
-- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), DO-178C MC/DC compound decision pairs, RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
+- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
 - **Execution Outcome**: 23/23 Tests Passed (100% Pass Rate) in 0.09s total runtime.
 
 ### 4.2 Structural Coverage Metrics Comparison
@@ -271,7 +227,7 @@ In compliance with the assignment grading criteria, every unexecuted line and br
 
 > **Evidence-Based Quality Assessment of Tested PX4 Flight Control & Safety Modules**
 >
-> Structural analysis and functional test execution of the PX4 flight control (FlightModeManager) and energy safety (Battery, AnalogBattery) modules demonstrate robust, defensively engineered architectural design. By achieving **81.3% overall line coverage** (including **93.5% line and 100% function coverage** on the core Battery library) across 23 deterministic functional test cases, our verification confirms that safety-critical state transitions, mode switching fallbacks, command freshness validations, and hierarchical battery warning thresholds operate with high fidelity under deterministic inputs. The DO-178C Level A MC/DC analysis on compound battery escalation decisions verified that individual atomic conditions (voltage thresholds, plausibility limits, and state-of-charge boundaries) independently control failsafe activation without unintended masking or coupling side effects.
+> Structural analysis and functional test execution of the PX4 flight control (FlightModeManager) and energy safety (Battery, AnalogBattery) modules demonstrate robust, defensively engineered architectural design. By achieving **81.3% overall line coverage** (including **93.5% line and 100% function coverage** on the core Battery library) across 23 deterministic functional test cases, our verification confirms that safety-critical state transitions, mode switching fallbacks, command freshness validations, and hierarchical battery warning thresholds operate with high fidelity under deterministic inputs. The battery warning cases exercise representative state-of-charge comparisons. They do not establish a compound voltage/SoC MC/DC decision. The group uses the land detector for MC/DC, with corrected D1-D3 pairs and further governing-guard obligations still pending.
 >
 > Furthermore, targeted testing of internal mathematical filters—such as the Recursive Least Squares (RLS) estimator for dynamic cell resistance and load-drop-corrected Open Circuit Voltage—demonstrated numerical stability and rapid convergence under extreme step-current transients without numerical divergence. Similarly, FlightModeManager displayed consistent defensive behavior by strictly enforcing the 200 ms real-time freshness boundary on external MAVLink vehicle commands and maintaining safe default task fallbacks during navigation state transitions.
 >
@@ -293,4 +249,4 @@ In accordance with academic integrity guidelines, this section documents all AI 
 3. **Student Verification & Validation**:
    - All C++ test assertions, uORB topic mappings, and parameter updates were manually audited and debugged against PX4 source code.
    - Discovered and corrected uORB subscription caching issues and parameter initialization defaults in test fixtures.
-   - Independently derived and verified MC/DC truth tables and independence pairs.
+   - The earlier battery MC/DC analysis was withdrawn after source review. Current land-detector D1-D3 evidence is maintained by Member 2; full governing-guard analysis remains pending.

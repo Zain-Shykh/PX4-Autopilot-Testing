@@ -11,6 +11,24 @@ The land detector directly governs flight state transitions, disarming signals, 
 
 ---
 
+## Evidence status after the priority correction
+
+The 17 pairs below cover **the D1-D3 return decisions only**. Each of the 34 executions now asserts the actual controlled condition vector as well as the production result, and records both in GTest XML. The validator compares the CSV against these runtime properties, checks that exactly the named condition changes, checks the decision flips, and checks True/False condition evaluations according to the source's short-circuit rules. The masks are source-derived, not compiler MC/DC instrumentation.
+
+The fixture uses a test-only clock fixed at 20 seconds. Position age is controlled explicitly; the 8-second low-thrust hysteresis is advanced through its real delay. Manual-thrust thresholds are set explicitly to 0.1 minimum, 0.5 hover, and 0.08 minimum manual throttle. Velocity/rotation/height thresholds are explicitly configured in the test peer. Production behavior is unchanged.
+
+D3-B uses Member 2's direct cached horizontal-movement setter, holding descent=true and all other operands fixed without calling the ground-contact helper. The asserted vector proves A and all other operands remain fixed across the pair. D1-A and D2-A now explicitly establish all the recorded False operands. D3-C/D/E explicitly establish the cached movement state. D2-E keeps G=True in both rows. These changes remove the previous discrepancy between input vectors and assertions.
+
+```bash
+python3 member2_deliverables/scripts/validate_mcdc.py \
+  --xml member2_deliverables/logs/merge_main/functional-LandDetector.xml \
+  --output member2_deliverables/logs/merge_main/mcdc_validation.json
+```
+
+`E` in D2 and its negation refer to the same stored Boolean: they are coupled occurrences, not separately controllable inputs. The matrix reports seven distinct Boolean inputs. A short-circuited operand has a controlled value, but is not claimed to have been evaluated by that execution; see the generated validation JSON for the source-derived evaluation masks.
+
+This is **not complete MC/DC for the full landing behavior**. Governing compound guards remain to be analyzed: vertical-velocity validity/fallback (177–182), horizontal-position availability (194), ground-effect eligibility (202), hover-thrust retention (211), commanded descent (229–230), landed-state gating (234), distance-check alternatives (245–246), and vertical-estimate availability (285). Their omission must be resolved before the final assignment can claim complete critical-component MC/DC.
+
 ## 2. Decision D1: Ground Contact State (`_get_ground_contact_state()`)
 
 ### 2.1 Compound Decision Expression
@@ -27,8 +45,8 @@ $$D_1 = A \lor (B \land C \land D \land E)$$
 ### 2.3 Atomic Condition Definitions
 - **Condition A**: `!_armed` (Vehicle is unarmed)
 - **Condition B**: `_close_to_ground_or_skipped_check` (Close to ground or check skipped)
-- **Condition C**: `ground_contact` (Low throttle setpoint and descent commanded)
-- **Condition D**: `!_horizontal_movement` (Horizontal velocity below threshold $V_{xy} < V_{xy,\text{max}}$)
+- **Condition C**: `ground_contact` (Low throttle; additional descent gating applies in climb-rate-control mode)
+- **Condition D**: `!_horizontal_movement` (Horizontal movement flag is false; the norm comparison permits equality at its threshold)
 - **Condition E**: `!_vertical_movement` (Vertical velocity below threshold $V_z < V_{z,\text{max}}$)
 
 ### 2.4 MC/DC Independence Pairs Proof for Decision D1
@@ -64,7 +82,7 @@ $$D_2 = A \lor \Big(B \land C \land D \land \big((E \land F) \lor (\neg E \land 
 - **Condition D**: `!_rotational_movement` (Angular rate below threshold $\omega_{xy} < \omega_{\text{max}}$)
 - **Condition E**: `vertical_estimate` (Local position timestamp & vertical velocity valid)
 - **Condition F**: `_ground_contact_hysteresis.get_state()` (Ground contact state active)
-- **Condition G**: `_minimum_thrust_8s_hysteresis.get_state()` (Low thrust maintained for $>8\text{ s}$ when vertical estimate unobservable)
+- **Condition G**: `_minimum_thrust_8s_hysteresis.get_state()` (Low thrust maintained for at least $8\text{ s}$ when vertical estimate unobservable)
 
 ### 3.4 MC/DC Independence Pairs Proof for Decision D2
 
@@ -96,7 +114,7 @@ $$D_3 = (A \land B) \lor (C \land D) \lor E$$
 ### 4.3 Atomic Condition Definitions
 - **Condition A**: `_in_descend` (Commanded descent)
 - **Condition B**: `!_horizontal_movement` (Horizontal velocity below threshold)
-- **Condition C**: `_below_gnd_effect_hgt` (Distance to bottom $< \text{LNDMC\_ALT\_GND\_EFFECT}$)
+- **Condition C**: `_below_gnd_effect_hgt` (Distance to bottom $< \text{LNDMC\_ALT\_GND}$)
 - **Condition D**: `_takeoff_state == TAKEOFF_STATE_FLIGHT` (Takeoff state is FLIGHT)
 - **Condition E**: `_takeoff_state == TAKEOFF_STATE_RAMPUP` (Takeoff state is RAMPUP)
 

@@ -8,7 +8,7 @@ Important assumptions and adjustments:
 - Actual parameter/uORB dependencies justify functional GTest for the estimator despite the distribution's proposed unit label. Hysteresis remains a unit suite.
 - A test-only clock and disabled autosave make exact freshness/deadline cases reproducible without a scheduler; this does not simulate real scheduling.
 - Existing upstream hysteresis tests establish a focused baseline but are not new contributions. Zero-count estimator data remains in that baseline.
-- The workbook imports Member 2's matrix with an explicit incomplete/unverified status, and contains no invented Member 3 evidence.
+- The initial workbook imported an unverified Member 2 matrix. After the priority correction, its builder validates all 34 D1-D3 rows against runtime XML; complete governing-guard MC/DC and Member 3 inventory integration remain pending.
 - `MC-DC Evidence` replaces the invalid Excel tab name `MC/DC Evidence`.
 - Names, roll numbers, and section are left for the group to supply.
 - The bias-limit test characterizes a verified production defect; passing it does not endorse that behavior as correct.

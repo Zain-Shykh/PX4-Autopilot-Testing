@@ -1,0 +1,30 @@
+[
+  {
+    "command": [
+      "git",
+      "apply",
+      "--check",
+      "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/member3_deliverables/member3_tests.patch"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "git",
+      "apply",
+      "/home/muhammad/SQE_A2/PX4-Autopilot-Testing/member3_deliverables/member3_tests.patch"
+    ],
+    "exit": 0
+  },
+  {
+    "reconstructed_exactly": [
+      "src/lib/battery/CMakeLists.txt",
+      "src/lib/battery/battery.h",
+      "src/lib/battery/BatteryTest.cpp",
+      "src/modules/flight_mode_manager/CMakeLists.txt",
+      "src/modules/flight_mode_manager/FlightModeManager.hpp",
+      "src/modules/flight_mode_manager/FlightModeManagerTest.cpp"
+    ],
+    "sha256": "3d0d70b795093c10825efc96ad1b0a19792dbb8d8f95f69246fd16e1a2de29e3"
+  }
+]

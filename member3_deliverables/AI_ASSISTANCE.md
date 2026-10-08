@@ -10,4 +10,6 @@ In accordance with academic integrity guidelines, this section documents all AI 
 3. **Student Verification & Validation**:
    - All C++ test assertions, uORB topic mappings, and parameter updates were manually audited and debugged against PX4 source code.
    - Discovered and corrected uORB subscription caching issues and parameter initialization defaults in test fixtures.
-   - Independently derived and verified MC/DC truth tables and independence pairs.
+   - The earlier battery MC/DC analysis was withdrawn after source review. Current land-detector D1-D3 evidence is maintained by Member 2; full governing-guard analysis remains pending.
+
+Codex assisted with the priority correction: resetting battery parameters and retained message state, making the unknown-capacity premise explicit, reproducing the former seed-2027 failure and checking 20 shuffled repetitions, and withdrawing the battery MC/DC equation that did not exist in the selected source. Remaining assertion and coverage-analysis limitations are recorded in the audit.

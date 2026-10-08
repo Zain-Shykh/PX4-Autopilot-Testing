@@ -1,0 +1,1 @@
+genhtml --branch-coverage /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member2_deliverables/coverage/merge_main/coverage.info --output-directory /home/muhammad/SQE_A2/PX4-Autopilot-Testing/member2_deliverables/coverage/merge_main/html --title 'Member 2 after main integration'

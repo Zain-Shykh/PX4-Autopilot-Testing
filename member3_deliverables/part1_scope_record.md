@@ -34,7 +34,7 @@ The `Battery` library and `AnalogBattery` driver provide vital energy monitoring
 
 - **Critical State Dependencies & Compound Decisions**:
   - `updateBatteryStatus()` warning threshold compound decision:
-    Evaluates cell voltage vs warning/critical/emergency thresholds (with voltage > 2.0V plausibility check) and state-of-charge percentage limits.
+    Requires `_connected && _battery_initialized` before calling `determineWarning()`, which compares state of charge with strict emergency, critical, and low thresholds. There is no compound voltage/SoC warning decision in this source.
   - Hysteresis & Filtering: Low-pass filtering on voltage and current to prevent momentary motor throttle bursts from triggering false emergency failsafes.
 
 ---

@@ -80,23 +80,40 @@ def inventory():
     code = (ROOT / source).read_text()
     statuses = execution(OUT / 'logs/member2_execution.xml')
     member2_inputs = {
-        'GroundContactMCDC_ConditionA_Armed': 'armed=false then true; horizontal velocity=(5,5)',
+        'GroundContactMCDC_ConditionA_Armed': 'armed=false then true; distance10m; thrust1; velocity=(5,5,5)',
         'GroundContactMCDC_ConditionB_CloseToGround': 'armed; thrust0; valid bottom distance .5m then10m; no movement',
         'GroundContactMCDC_ConditionC_LowThrottle': 'armed; no movement; thrust0 then1',
         'GroundContactMCDC_ConditionD_HorizontalMovement': 'armed; thrust0; vz0; vx0 then5m/s',
         'GroundContactMCDC_ConditionE_VerticalMovement': 'armed; thrust0; horizontal velocity0; vz0 then5m/s',
-        'MaybeLandedMCDC_ConditionA_Armed': 'thrust1; armed=false then true',
+        'MaybeLandedMCDC_ConditionA_Armed': 'thrust1; freefall; rotation(5,5,0); stale position; no ground contact; armed=false then true',
         'MaybeLandedMCDC_ConditionB_MinThrust': 'armed; not freefall; rotation0; ground contact true; thrust0 then1',
         'MaybeLandedMCDC_ConditionC_NotFreefall': 'armed; thrust0; rotation0; ground contact true; freefall false then true',
+        'MaybeLandedMCDC_ConditionE_VerticalEstimate': 'controlled clock20s; G=true after8s; F=false; position exactly1s old then fresh',
+        'MaybeLandedMCDC_ConditionF_GroundContactHysteresis': 'fresh vertical estimate; G=false; toggle ground contact true then false',
+        'MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis': 'position exactly1s old; F=false; G=true after8s then false',
+        'GroundEffectMCDC_ConditionD_TakeoffStateFlight': 'not descending; cached horizontal movement true; below height; FLIGHT then DISARMED',
         'MaybeLandedMCDC_ConditionD_NotRotating': 'armed; thrust0; no freefall; ground contact; rotation0 then(5,5,0)',
         'GroundEffectMCDC_ConditionA_InDescend': 'no horizontal movement; height flag false; DISARMED; descend true then false',
-        'GroundEffectMCDC_ConditionB_NoHorizontalMovement': 'descending; height flag false; DISARMED; vx0 then5; refresh movement flags',
+        'GroundEffectMCDC_ConditionB_NoHorizontalMovement': 'descending remains true; height flag false; DISARMED; cached horizontal movement false then true; all other D3 operands fixed',
         'GroundEffectMCDC_ConditionC_BelowGndHeight': 'not descending; FLIGHT; height flag true then false',
         'GroundEffectMCDC_ConditionE_TakeoffRampup': 'not descending; height flag false; RAMPUP then DISARMED',
     }
-    for i, match in enumerate(re.finditer(r'TEST_F\(LandDetectorFixture, (\w+)\)', code), 1):
+    # Preserve the published IDs of the original fifteen cases; append the four newer cases.
+    legacy_names = [
+        'GroundContactMCDC_ConditionA_Armed', 'GroundContactMCDC_ConditionB_CloseToGround',
+        'GroundContactMCDC_ConditionC_LowThrottle', 'GroundContactMCDC_ConditionD_HorizontalMovement',
+        'GroundContactMCDC_ConditionE_VerticalMovement', 'MaybeLandedMCDC_ConditionA_Armed',
+        'MaybeLandedMCDC_ConditionB_MinThrust', 'MaybeLandedMCDC_ConditionC_NotFreefall',
+        'MaybeLandedMCDC_ConditionD_NotRotating', 'GroundEffectMCDC_ConditionA_InDescend',
+        'GroundEffectMCDC_ConditionB_NoHorizontalMovement', 'GroundEffectMCDC_ConditionC_BelowGndHeight',
+        'GroundEffectMCDC_ConditionE_TakeoffRampup', 'Freefall_AccelThresholdBoundary', 'Landed_StateTransitions',
+        'MaybeLandedMCDC_ConditionE_VerticalEstimate', 'MaybeLandedMCDC_ConditionF_GroundContactHysteresis',
+        'MaybeLandedMCDC_ConditionG_MinThrust8sHysteresis', 'GroundEffectMCDC_ConditionD_TakeoffStateFlight',
+    ]
+    for match in re.finditer(r'TEST_F\(LandDetectorFixture, (\w+)\)', code):
         name = match.group(1)
         line = code[:match.start()].count('\n') + 1
+        i = legacy_names.index(name) + 1
         if name.startswith('GroundContact'):
             function = '_get_ground_contact_state'
         elif name.startswith('MaybeLanded'):
@@ -108,14 +125,14 @@ def inventory():
         else:
             function = '_get_landed_state'
         inputs = member2_inputs.get(name, '')
-        expected = 'Decision true then false; complete atomic-condition matrix remains unverified'
+        expected = 'Decision true then false; assert all controlled D1-D3 operand values and record runtime vectors'
         if name.startswith('Freefall'):
             inputs = 'Acceleration(1,0,1) then(0,0,9.81)'; expected = 'Freefall true then false'
         if name.startswith('Landed'):
             inputs = 'Disarmed; armed+maybe_landed true; armed+maybe_landed false'; expected = 'Landed true, true, false'
         rows.append([f'TC_M2_{i:02d}', 'MulticopterLandDetector::' + function, name, inputs, expected,
-                     statuses[name], 'Imported Member 2 decision tests; see integration_notes.md',
-                     f'{source}:{line}; logs/member2_execution.xml'])
+                     statuses[name], 'D1-D3 return-decision pairs verified against runtime vectors; broader governing guards pending',
+                     f'{source}:{line} ({name}); logs/member2_execution.xml'])
     return rows
 
 
@@ -150,6 +167,11 @@ def worksheet(rows, widths):
 
 
 def main():
+    # Fail rather than publish MC/DC rows that disagree with actual passing execution.
+    import subprocess
+    import sys
+    subprocess.run([sys.executable, str(ROOT / 'member2_deliverables/scripts/validate_mcdc.py'),
+                    '--xml', str(OUT / 'logs/member2_execution.xml')], check=True)
     rows = inventory()
     with (OUT / 'sheet1_test_inventory.csv').open('w', newline='') as f:
         writer = csv.writer(f); writer.writerow(HEADER); writer.writerows(rows)
@@ -159,7 +181,7 @@ def main():
     names = ['Test Inventory', 'MC-DC Evidence']
     mcdc[0].append('Integration review')
     for row in mcdc[1:]:
-        row.append('Imported from Member 2; execution rechecked; matrix not certified. Missing D2 E/F/G and D3 D pairs; see integration_notes.md.')
+        row.append('D1-D3: runtime operands/outcomes checked; 17 single-condition pairs validated. Masks follow source short-circuit rules. Other governing guards remain to be analyzed.')
     ns = 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'
     rel = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships'
     content = '<?xml version="1.0"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>'
@@ -181,8 +203,8 @@ def main():
         assert z.testzip() is None
         for file in z.namelist(): ET.fromstring(z.read(file))
         assert len(ET.fromstring(z.read('xl/workbook.xml')).find(f'{{{ns}}}sheets')) == 2
-    assert len(rows) == 51 and len(mcdc) == 27
-    print(f'Workbook validated: {len(rows)} tests (36 Member 1 + 15 Member 2), 26 imported MC/DC rows, exactly 2 sheets.')
+    assert len(rows) == 55 and len(mcdc) == 35
+    print(f'Workbook validated: {len(rows)} tests (36 Member 1 + 19 Member 2), 34 runtime-checked MC/DC rows, exactly 2 sheets.')
 
 
 if __name__ == '__main__':

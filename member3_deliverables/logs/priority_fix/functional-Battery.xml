@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="11" failures="0" disabled="0" errors="0" time="0.011" timestamp="2026-10-08T19:06:47.093" name="AllTests">
+  <testsuite name="BatteryStatusTest" tests="11" failures="0" disabled="0" skipped="0" errors="0" time="0.011" timestamp="2026-10-08T19:06:47.093">
+    <testcase name="ParameterInitializationAndCellCount" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="118" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.093" classname="BatteryStatusTest" />
+    <testcase name="DisconnectedBatteryState" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="131" status="run" result="completed" time="0." timestamp="2026-10-08T19:06:47.094" classname="BatteryStatusTest" />
+    <testcase name="ConnectedBatteryInitialTransition" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="150" status="run" result="completed" time="0." timestamp="2026-10-08T19:06:47.095" classname="BatteryStatusTest" />
+    <testcase name="DetermineWarningLadder" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="173" status="run" result="completed" time="0." timestamp="2026-10-08T19:06:47.096" classname="BatteryStatusTest" />
+    <testcase name="DetermineFaultsOvervoltage" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="191" status="run" result="completed" time="0." timestamp="2026-10-08T19:06:47.097" classname="BatteryStatusTest" />
+    <testcase name="ComputeScaleThrustCompensation" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="209" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.098" classname="BatteryStatusTest" />
+    <testcase name="StateOfChargeVoltageBasedAndLoadDropCorrection" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="236" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.099" classname="BatteryStatusTest" />
+    <testcase name="StateOfChargeEstimationCoulombFusion" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="256" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.101" classname="BatteryStatusTest" />
+    <testcase name="ComputeRemainingTimeArmedAndFixedWing" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="289" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.102" classname="BatteryStatusTest" />
+    <testcase name="ExternalStateOfChargeOverride" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="338" status="run" result="completed" time="0." timestamp="2026-10-08T19:06:47.103" classname="BatteryStatusTest" />
+    <testcase name="AnalogBatteryADCConversionAndChannels" file="/home/muhammad/SQE_A2/PX4-Autopilot-Testing/src/lib/battery/BatteryTest.cpp" line="350" status="run" result="completed" time="0.001" timestamp="2026-10-08T19:06:47.104" classname="BatteryStatusTest" />
+  </testsuite>
+</testsuites>

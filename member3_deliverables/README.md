@@ -1,5 +1,7 @@
 # Member 3 Deliverables — Scope 3 (FlightModeManager & Battery)
 
+> **Priority correction status (8 October 2026):** Battery parameters/messages are isolated, all 23 cases pass, and the battery suite passes 20 shuffled repetitions. The fabricated battery MC/DC equation has been withdrawn. Current evidence is in [priority_fix HTML](coverage/priority_fix/html/index.html) and [the fix record](../assignment_audit/PRIORITY_FIX.md). The earlier coverage totals, gap explanations, and broad quality claims below are historical draft material; the audit identifies corrections still required. This is not a completed group submission.
+
 **Assigned Scope**: 
 - src/modules/flight_mode_manager/ (FlightModeManager)
 - src/lib/battery/ and src/modules/battery_status/ (Battery & AnalogBattery)
@@ -9,7 +11,7 @@
 2. Report.md: Consolidated technical report.
 3. Testing_Workbook.xlsx: 2-sheet Excel testing workbook (Test Inventory & MC-DC Evidence).
 4. sheet1_test_inventory.csv: CSV export of 23 functional test cases.
-5. sheet2_mcdc_evidence.csv: CSV export of DO-178C MC/DC truth table and independence pairs.
+5. sheet2_mcdc_evidence.csv: Reserved CSV header; group MC/DC evidence is in Member 2 deliverables.
 6. member3_tests.patch: Standalone patch for Scope 3 test suites and CMake integrations.
 7. source_files/: Student-authored test files and header modifications.
 8. coverage/: LCOV tracefiles and interactive HTML coverage reports.

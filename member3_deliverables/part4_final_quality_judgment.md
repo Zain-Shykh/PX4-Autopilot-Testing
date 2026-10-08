@@ -1,5 +1,7 @@
 ## 5. Part 4 — Findings, Defensive Behavior & Final Quality Judgment (CLO3)
 
+> **Priority correction status (8 October 2026):** Battery parameters/messages are isolated, all 23 cases pass, and the battery suite passes 20 shuffled repetitions. The fabricated battery MC/DC equation has been withdrawn. Current evidence is in [priority_fix HTML](coverage/priority_fix/html/index.html) and [the fix record](../assignment_audit/PRIORITY_FIX.md). The earlier coverage totals, gap explanations, and broad quality claims below are historical draft material; the audit identifies corrections still required. This is not a completed group submission.
+
 ### 5.1 Key Findings & Defect Investigation
 
 1. **uORB Subscription Update Semantics**:
@@ -19,7 +21,7 @@
 
 > **Evidence-Based Quality Assessment of Tested PX4 Flight Control & Safety Modules**
 >
-> Structural analysis and functional test execution of the PX4 flight control (FlightModeManager) and energy safety (Battery, AnalogBattery) modules demonstrate robust, defensively engineered architectural design. By achieving **81.3% overall line coverage** (including **93.5% line and 100% function coverage** on the core Battery library) across 23 deterministic functional test cases, our verification confirms that safety-critical state transitions, mode switching fallbacks, command freshness validations, and hierarchical battery warning thresholds operate with high fidelity under deterministic inputs. The DO-178C Level A MC/DC analysis on compound battery escalation decisions verified that individual atomic conditions (voltage thresholds, plausibility limits, and state-of-charge boundaries) independently control failsafe activation without unintended masking or coupling side effects.
+> Structural analysis and functional test execution of the PX4 flight control (FlightModeManager) and energy safety (Battery, AnalogBattery) modules demonstrate robust, defensively engineered architectural design. By achieving **81.3% overall line coverage** (including **93.5% line and 100% function coverage** on the core Battery library) across 23 deterministic functional test cases, our verification confirms that safety-critical state transitions, mode switching fallbacks, command freshness validations, and hierarchical battery warning thresholds operate with high fidelity under deterministic inputs. The battery warning cases exercise representative state-of-charge comparisons. They do not establish a compound voltage/SoC MC/DC decision. The group uses the land detector for MC/DC, with corrected D1-D3 pairs and further governing-guard obligations still pending.
 >
 > Furthermore, targeted testing of internal mathematical filters—such as the Recursive Least Squares (RLS) estimator for dynamic cell resistance and load-drop-corrected Open Circuit Voltage—demonstrated numerical stability and rapid convergence under extreme step-current transients without numerical divergence. Similarly, FlightModeManager displayed consistent defensive behavior by strictly enforcing the 200 ms real-time freshness boundary on external MAVLink vehicle commands and maintaining safe default task fallbacks during navigation state transitions.
 >

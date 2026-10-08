@@ -1,11 +1,13 @@
 ## 4. Part 3 — Test Implementation & Coverage Gap Analysis (CLO2 / CLO3)
 
+> **Priority correction status (8 October 2026):** Battery parameters/messages are isolated, all 23 cases pass, and the battery suite passes 20 shuffled repetitions. The fabricated battery MC/DC equation has been withdrawn. Current evidence is in [priority_fix HTML](coverage/priority_fix/html/index.html) and [the fix record](../assignment_audit/PRIORITY_FIX.md). The earlier coverage totals, gap explanations, and broad quality claims below are historical draft material; the audit identifies corrections still required. This is not a completed group submission.
+
 ### 4.1 Test Suite Implementation Summary
 
 A total of **23 student-authored functional test cases** were designed, implemented, and registered in CMake:
 
 - **FlightModeManagerTest (12 Tests)**: Validated failsafe task generation, invalid/valid task index boundaries (-1, -2, 999), 200ms real-time command freshness expiration, vehicle status/control/land subscriptions, and error recovery fallback.
-- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), DO-178C MC/DC compound decision pairs, RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
+- **BatteryTest (11 Tests)**: Validated parameter initialization, multi-level warning thresholds (Low, Critical, Emergency), RLS load drop resistance estimation, remaining flight time prediction, and AnalogBattery integration.
 - **Execution Outcome**: 23/23 Tests Passed (100% Pass Rate) in 0.09s total runtime.
 
 ### 4.2 Structural Coverage Metrics Comparison

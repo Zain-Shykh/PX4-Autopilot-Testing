@@ -1,0 +1,13 @@
+Found 3 entries.
+Using user-specified filename prefix "/home/muhammad/SQE_A2/PX4-Autopilot-Testing"
+Generating output.
+Processing file src/lib/battery/battery.cpp
+  lines=231 hit=218 functions=19 hit=19 branches=248 hit=156
+Processing file src/modules/battery_status/analog_battery.cpp
+  lines=54 hit=41 functions=7 hit=5 branches=28 hit=10
+Processing file src/modules/flight_mode_manager/FlightModeManager.cpp
+  lines=233 hit=164 functions=18 hit=13 branches=288 hit=141
+Overall coverage rate:
+  lines......: 81.7% (423 of 518 lines)
+  functions......: 84.1% (37 of 44 functions)
+  branches......: 54.4% (307 of 564 branches)

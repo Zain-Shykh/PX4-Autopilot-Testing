@@ -1,0 +1,9 @@
+Found 1 entries.
+Using user-specified filename prefix "/home/muhammad/SQE_A2/PX4-Autopilot-Testing"
+Generating output.
+Processing file src/modules/land_detector/MulticopterLandDetector.cpp
+  lines=116 hit=71 functions=10 hit=7 branches=192 hit=96
+Overall coverage rate:
+  lines......: 61.2% (71 of 116 lines)
+  functions......: 70.0% (7 of 10 functions)
+  branches......: 50.0% (96 of 192 branches)

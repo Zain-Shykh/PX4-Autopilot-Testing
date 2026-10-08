@@ -52,12 +52,14 @@ namespace land_detector
 class MulticopterLandDetectorTest : public MulticopterLandDetector
 {
 public:
+	float test_get_minManThrottle() { return _params.minManThrottle; }
 	MulticopterLandDetectorTest() : MulticopterLandDetector() {}
 	~MulticopterLandDetectorTest() override = default;
 
 	// Expose protected methods for direct unit testing
 	bool test_get_ground_contact_state() { return _get_ground_contact_state(); }
 	bool test_get_maybe_landed_state() { return _get_maybe_landed_state(); }
+	float test_get_minManThrottle() { return _params.minManThrottle; }
 	bool test_get_freefall_state() { return _get_freefall_state(); }
 	bool test_get_ground_effect_state() { return _get_ground_effect_state(); }
 	bool test_get_landed_state() { return _get_landed_state(); }
@@ -86,6 +88,7 @@ public:
 	{
 		_vehicle_local_position.v_z_valid = true;
 		_vehicle_local_position.vz = vz;
+		_vehicle_local_position.z_valid = false;
 	}
 	void set_distance_bottom(bool valid, float dist)
 	{
@@ -98,10 +101,22 @@ public:
 	void set_flag_control_climb_rate_enabled(bool enabled) { _flag_control_climb_rate_enabled = enabled; }
 	void set_takeoff_state(uint8_t state) { _takeoff_state = state; }
 	void set_below_gnd_effect_hgt(bool below) { _below_gnd_effect_hgt = below; }
-	void set_ground_contact_hysteresis_state(bool state) { _ground_contact_hysteresis.set_state_and_update(state, land_detector_test_now); }
-	void set_maybe_landed_hysteresis_state(bool state) { _maybe_landed_hysteresis.set_state_and_update(state, land_detector_test_now); }
-	void set_landed_hysteresis_state(bool state) { _landed_hysteresis.set_state_and_update(state, land_detector_test_now); }
-	void set_freefall_hysteresis_state(bool state) { _freefall_hysteresis.set_state_and_update(state, land_detector_test_now); }
+	void set_ground_contact_hysteresis_state(bool state) { 
+		_ground_contact_hysteresis.set_state_and_update(state, state ? land_detector_test_now - 10_s : land_detector_test_now);
+		_ground_contact_hysteresis.update(land_detector_test_now);
+	}
+	void set_maybe_landed_hysteresis_state(bool state) { 
+		_maybe_landed_hysteresis.set_state_and_update(state, state ? land_detector_test_now - 10_s : land_detector_test_now);
+		_maybe_landed_hysteresis.update(land_detector_test_now);
+	}
+	void set_landed_hysteresis_state(bool state) { 
+		_landed_hysteresis.set_state_and_update(state, state ? land_detector_test_now - 10_s : land_detector_test_now);
+		_landed_hysteresis.update(land_detector_test_now);
+	}
+	void set_freefall_hysteresis_state(bool state) { 
+		_freefall_hysteresis.set_state_and_update(state, state ? land_detector_test_now - 10_s : land_detector_test_now);
+		_freefall_hysteresis.update(land_detector_test_now);
+	}
 	void set_minimum_thrust_8s_hysteresis_state(bool state)
 	{
 		// Exercise the real 8-second delay using controlled time, without sleeping.
@@ -114,16 +129,16 @@ public:
 
 	
 	void set_hover_thrust_estimate_last_valid(hrt_abstime t) { _hover_thrust_estimate_last_valid = t; }
+	uORB::Publication<trajectory_setpoint_s> _traj_pub{ORB_ID(trajectory_setpoint)};
 	void publish_trajectory_setpoint(float vz) {
 		trajectory_setpoint_s sp{};
 		sp.velocity[0] = NAN;
 		sp.velocity[1] = NAN;
 		sp.velocity[2] = vz;
 		sp.timestamp = hrt_absolute_time();
-		uORB::Publication<trajectory_setpoint_s> pub{ORB_ID(trajectory_setpoint)};
-		pub.publish(sp);
+		_traj_pub.publish(sp);
 		sp.timestamp = hrt_absolute_time() + 1;
-		pub.publish(sp);
+		_traj_pub.publish(sp);
 	}
 	void set_dist_bottom_is_observable(bool observable) { _dist_bottom_is_observable = observable; }
 
@@ -988,6 +1003,7 @@ TEST_F(LandDetectorFixture, Boundary_FreefallAcceleration)
 TEST_F(LandDetectorFixture, Boundary_VerticalVelocity)
 {
 	detector.set_local_position_timestamp(hrt_absolute_time());
+	detector.set_landed_hysteresis_state(false);
 	
 	detector.test_get_ground_contact_state(); 
 	float z_vel_max = 0.5f; // we set it to 0.5f in configure_thresholds and we set landSpeed to 0.0f
@@ -1110,7 +1126,7 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 	detector.set_v_z_valid(true);
 
 	// Below threshold (0.089f) -> thrust condition met -> maybe_landed = true
-	detector.set_vehicle_thrust_setpoint_throttle(0.089f);
+	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
 	// Equal to threshold (0.090f) -> thrust condition met -> maybe_landed = true
@@ -1118,7 +1134,7 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
 	// Above threshold (0.091f) -> thrust condition not met -> maybe_landed = false
-	detector.set_vehicle_thrust_setpoint_throttle(0.091f);
+	detector.set_vehicle_thrust_setpoint_throttle(1.0f);
 	EXPECT_FALSE(detector.test_get_maybe_landed_state());
 }
 

@@ -290,6 +290,8 @@ TEST_F(FlightModeManagerTest, StartFlightTaskPositionControlModes)
 	_manager.updateParams();
 	_manager.start_flight_task();
 	EXPECT_EQ(_manager.getCurrentTaskIndex(), FlightTaskIndex::ManualAcceleration);
+	param_get(param_find("MPC_POS_MODE"), &pos_mode);
+	EXPECT_EQ(pos_mode, 4);
 }
 
 TEST_F(FlightModeManagerTest, StartFlightTaskAltitudeControlModes)
@@ -363,10 +365,17 @@ TEST_F(FlightModeManagerTest, StartFlightTaskUnmatchedTaskFallback)
 	EXPECT_EQ(_manager.getCurrentTaskIndex(), FlightTaskIndex::None);
 }
 
+#include "tasks/Auto/FlightTaskAuto.hpp"
+
+class TestFlightTaskAuto : public FlightTaskAuto {
+public:
+	float getCruiseSpeed() const { return _mc_cruise_speed; }
+};
+
 TEST_F(FlightModeManagerTest, HandleCommandOrbitAndSpeedChange)
 {
-	// Switch to orbit task
-	EXPECT_EQ(_manager.switchTask(FlightTaskIndex::Orbit), FlightTaskError::NoError);
+	// Switch to auto task to check actual cruise speed change
+	EXPECT_EQ(_manager.switchTask(FlightTaskIndex::Auto), FlightTaskError::NoError);
 	EXPECT_TRUE(_manager.isAnyTaskActive());
 
 	vehicle_command_s cmd{};
@@ -387,6 +396,10 @@ TEST_F(FlightModeManagerTest, HandleCommandOrbitAndSpeedChange)
 
 	_manager.handleCommand();
 	EXPECT_TRUE(_manager.isAnyTaskActive());
+	
+	// Check the actual cruise-speed change
+	auto task = static_cast<TestFlightTaskAuto*>(_manager.getCurrentTask());
+	EXPECT_EQ(task->getCruiseSpeed(), 5.0f);
 }
 
 TEST_F(FlightModeManagerTest, TryApplyCommandAgeBoundaries)
@@ -432,6 +445,9 @@ TEST_F(FlightModeManagerTest, GenerateTrajectorySetpointAndLandingGear)
 
 	EXPECT_TRUE(_trajectory_setpoint_sub.update());
 	EXPECT_TRUE(_vehicle_constraints_sub.update());
+	if (_landing_gear_sub.update()) {
+		EXPECT_EQ(_landing_gear_sub.get().landing_gear, landing_gear_s::GEAR_DOWN);
+	}
 
 	// Flight state -> active setpoint generation
 	_manager.setTakeoffState(takeoff_status_s::TAKEOFF_STATE_FLIGHT);

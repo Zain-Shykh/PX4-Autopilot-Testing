@@ -166,7 +166,9 @@ protected:
 	bool _first_parameter_update{true};
 	void updateParams() override;
 
-protected:
+private:
+	friend class TestBattery;
+	friend class BatteryStatusTest;
 	float calculateStateOfChargeVoltageBased(const float voltage_v, const float current_a);
 	void estimateStateOfCharge();
 	uint16_t determineFaults();

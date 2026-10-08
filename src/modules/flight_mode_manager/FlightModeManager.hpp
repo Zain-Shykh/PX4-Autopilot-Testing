@@ -1,4 +1,4 @@
-﻿/****************************************************************************
+/****************************************************************************
  *
  *   Copyright (c) 2020 PX4 Development Team. All rights reserved.
  *
@@ -85,7 +85,8 @@ public:
 
 	bool init();
 
-protected:
+private:
+	friend class TestFlightModeManager;
 	void Run() override;
 	void updateParams() override;
 	void start_flight_task();

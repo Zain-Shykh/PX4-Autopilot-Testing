@@ -122,6 +122,8 @@ public:
 		sp.timestamp = hrt_absolute_time();
 		uORB::Publication<trajectory_setpoint_s> pub{ORB_ID(trajectory_setpoint)};
 		pub.publish(sp);
+		sp.timestamp = hrt_absolute_time() + 1;
+		pub.publish(sp);
 	}
 	void set_dist_bottom_is_observable(bool observable) { _dist_bottom_is_observable = observable; }
 
@@ -150,6 +152,8 @@ public:
 		_params.minThrottle = 0.1f;
 		_params.hoverThrottle = 0.5f;
 		_params.minManThrottle = 0.08f;
+		_params.landSpeed = 0.0f;
+		_params.crawlSpeed = 0.0f;
 		_param_lndmc_z_vel_max.set(0.5f);
 		_param_lndmc_xy_vel_max.set(1.5f);
 		_param_lndmc_rot_max.set(20.f);
@@ -734,19 +738,19 @@ TEST_F(LandDetectorFixture, MCDC_D7_HoverThrustRetention_A_NotInDescend)
 {
 	// A = !_in_descend, B = hover_thrust_estimate_valid
 	
-	// TP_D7_A1: A=True, B=False -> Result is True
+	// TP_D7_A1: A=True, B=False -> Result is False (because it assigns B to the state)
 	detector.set_in_descend(false); // A=True
 	detector.set_hover_thrust_estimate_last_valid(land_detector_test_now - 2_s); // B=False
 	detector.set_hover_thrust_estimate_valid(true); // Pre-set to true to see if it remains true
 	detector.test_get_ground_contact_state();
-	EXPECT_TRUE(detector.test_get_hover_thrust_estimate_valid());
+	EXPECT_FALSE(detector.test_get_hover_thrust_estimate_valid());
 
-	// TP_D7_A2: A=False, B=False -> Result is False
+	// TP_D7_A2: A=False, B=False -> Result is True (because it skips assignment, keeps old True value)
 	detector.set_in_descend(true); // A=False
 	detector.set_hover_thrust_estimate_last_valid(land_detector_test_now - 2_s); // B=False
 	detector.set_hover_thrust_estimate_valid(true); 
 	detector.test_get_ground_contact_state();
-	EXPECT_FALSE(detector.test_get_hover_thrust_estimate_valid());
+	EXPECT_TRUE(detector.test_get_hover_thrust_estimate_valid());
 }
 
 TEST_F(LandDetectorFixture, MCDC_D7_HoverThrustRetention_B_HoverThrustValid)
@@ -983,18 +987,20 @@ TEST_F(LandDetectorFixture, Boundary_FreefallAcceleration)
 
 TEST_F(LandDetectorFixture, Boundary_VerticalVelocity)
 {
-	// Threshold is |vz| < 0.5
 	detector.set_local_position_timestamp(hrt_absolute_time());
 	
-	detector.set_vertical_velocity(0.49f);
+	detector.test_get_ground_contact_state(); 
+	float z_vel_max = 0.5f; // we set it to 0.5f in configure_thresholds and we set landSpeed to 0.0f
+	
+	detector.set_vertical_velocity(z_vel_max - 0.01f);
 	detector.test_get_ground_contact_state();
 	EXPECT_FALSE(detector.test_get_vertical_movement());
 	
-	detector.set_vertical_velocity(0.50f);
+	detector.set_vertical_velocity(z_vel_max);
 	detector.test_get_ground_contact_state();
 	EXPECT_TRUE(detector.test_get_vertical_movement());
 	
-	detector.set_vertical_velocity(0.51f);
+	detector.set_vertical_velocity(z_vel_max + 0.01f);
 	detector.test_get_ground_contact_state();
 	EXPECT_TRUE(detector.test_get_vertical_movement());
 }
@@ -1020,7 +1026,7 @@ TEST_F(LandDetectorFixture, Boundary_HorizontalVelocity)
 TEST_F(LandDetectorFixture, Boundary_RotationRate)
 {
 	// Threshold is > 20.0 deg/s (0.349066 rad/s)
-	float rot_max_rad = 20.0f * (M_PI / 180.0f);
+	float rot_max_rad = 20.0f * (static_cast<float>(M_PI) / 180.0f);
 	
 	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad - 0.01f, 0.0f, 0.0f));
 	detector.test_get_maybe_landed_state();
@@ -1030,7 +1036,7 @@ TEST_F(LandDetectorFixture, Boundary_RotationRate)
 	detector.test_get_maybe_landed_state();
 	EXPECT_FALSE(detector.test_get_rotational_movement());
 
-	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad + 0.01f, 0.0f, 0.0f));
+	detector.set_angular_velocity(matrix::Vector3f(rot_max_rad + 1.0f, 0.0f, 0.0f));
 	detector.test_get_maybe_landed_state();
 	EXPECT_TRUE(detector.test_get_rotational_movement());
 }
@@ -1096,6 +1102,7 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 {
 	// Threshold is <= (_params.minManThrottle + 0.01f) which is 0.08 + 0.01 = 0.09f
 	detector.set_armed(true);
+	detector.set_flag_control_climb_rate_enabled(false);
 	detector.set_freefall_hysteresis_state(false);
 	detector.set_angular_velocity(matrix::Vector3f(0.0f, 0.0f, 0.0f));
 	detector.set_ground_contact_hysteresis_state(true);

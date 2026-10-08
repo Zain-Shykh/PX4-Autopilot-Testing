@@ -94,6 +94,21 @@ public:
 	void SetUp() override
 	{
 		param_control_autosave(false);
+		param_reset_all();
+		// New subscribers must not inherit another test's armed/fixed-wing messages.
+		vehicle_status_s status{};
+		status.timestamp = hrt_absolute_time();
+		status.arming_state = vehicle_status_s::ARMING_STATE_DISARMED;
+		status.vehicle_type = vehicle_status_s::VEHICLE_TYPE_ROTARY_WING;
+		ASSERT_TRUE(_vehicle_status_pub.publish(status));
+		flight_phase_estimation_s phase{};
+		phase.timestamp = hrt_absolute_time();
+		ASSERT_TRUE(_flight_phase_estimation_pub.publish(phase));
+	}
+
+	void TearDown() override
+	{
+		param_reset_all();
 	}
 
 	uORB::Publication<vehicle_status_s> _vehicle_status_pub{ORB_ID(vehicle_status)};
@@ -115,8 +130,12 @@ TEST_F(BatteryStatusTest, ParameterInitializationAndCellCount)
 
 TEST_F(BatteryStatusTest, DisconnectedBatteryState)
 {
+	// Unknown capacity is required for the expected NaN remaining-time result.
+	float capacity = 0.f;
+	ASSERT_EQ(param_set(param_find("BAT1_CAPACITY"), &capacity), 0);
 	TestBattery battery{1, nullptr, 100000, 0};
 	battery.updateParams();
+	ASSERT_FLOAT_EQ(battery._capacity_mah, 0.f);
 
 	// Voltage below LITHIUM_BATTERY_RECOGNITION_VOLTAGE (2.1V)
 	battery.updateVoltage(1.5f);

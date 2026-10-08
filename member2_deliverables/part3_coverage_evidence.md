@@ -32,9 +32,9 @@ lcov --summary coverage_multicopter.info --branch-coverage
 
 | Coverage Metric | Raw Count | Percentage | Notes |
 | --- | --- | --- | --- |
-| **Line / Statement Coverage** | 73 / 116 lines | **62.9%** (file total) | Includes the full source file; not 100% method coverage |
+| **Line / Statement Coverage** | 71 / 116 lines | **61.2%** (file total) | Clean post-test capture; not 100% method coverage |
 | **Function Coverage** | 7 / 10 functions | **70.0%** | 3 infrastructure functions not exercised in unit isolation |
-| **Branch Coverage** | 100 / 192 branches | **52.1%** (file total) | Includes branches in selected methods and infrastructure |
+| **Branch Coverage** | 94 / 192 branches | **49.0%** (file total) | Clean post-test capture; includes selected methods and infrastructure |
 
 ---
 
@@ -101,7 +101,7 @@ lcov --extract coverage_land_detector.info "*MulticopterLandDetector.cpp" \
 # Step 4: Print summary
 lcov --summary coverage_multicopter.info --branch-coverage
 # Output:
-#   lines......: 62.9% (73 of 116 lines)
+#   lines......: 61.2% (71 of 116 lines)
 #   functions..: 70.0% (7 of 10 functions)
-#   branches...: 52.1% (100 of 192 branches)
+#   branches...: 49.0% (94 of 192 branches)
 ```

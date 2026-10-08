@@ -257,33 +257,46 @@ TEST_F(BatteryStatusTest, StateOfChargeEstimationCoulombFusion)
 {
 	int32_t n_cells = 3;
 	param_set(param_find("BAT1_N_CELLS"), &n_cells);
+	float capacity = 2200.0f;
+	param_set(param_find("BAT1_CAPACITY"), &capacity);
 
 	TestBattery battery{1, nullptr, 100000, 0};
-	battery.setCapacityMah(2200.0f);
 	battery.updateParams();
+	ASSERT_FLOAT_EQ(battery._capacity_mah, capacity);
 	battery.setConnected(true);
 
 	// Initialize battery at high voltage
 	hrt_abstime t = hrt_absolute_time();
 	battery.updateVoltage(12.6f);
-	battery.updateCurrent(10.0f);
+	battery.updateCurrent(0.0f);
 	battery.updateBatteryStatus(t);
 
-	t += 2500000ULL;
+	// The initialization interval is just over 2 seconds; production clamps its
+	// contribution to 2 seconds when integrating current.
+	t += 2100000ULL;
+	battery.updateCurrent(10.0f);
 	battery.updateBatteryStatus(t);
 
 	float initial_soc = battery.getBatteryStatus().remaining;
 	EXPECT_GT(initial_soc, 0.8f);
 
-	// Discharged over 10 seconds at 10A = ~27.78 mAh
-	t += 10000000ULL;
-	battery.updateVoltage(12.0f);
-	battery.updateCurrent(10.0f);
-	battery.updateBatteryStatus(t);
+	// Five controlled 2-second samples at 10A integrate 10 seconds:
+	// 10 A * 10 s * 1000 / 3600 = 27.777... mAh.
+	for (int i = 0; i < 4; ++i) {
+		t += 2000000ULL;
+		battery.updateVoltage(12.6f);
+		battery.updateCurrent(10.0f);
+		battery.updateBatteryStatus(t);
+	}
 
-	float discharged_soc = battery.getBatteryStatus().remaining;
-	EXPECT_LE(discharged_soc, initial_soc);
-	EXPECT_GT(battery.getBatteryStatus().discharged_mah, 0.0f);
+	const battery_status_s status = battery.getBatteryStatus();
+	const float expected_discharged_mah = 10.0f * 10.0f * 1000.0f / 3600.0f;
+	const float expected_coulomb_soc = 1.0f - expected_discharged_mah / capacity;
+
+	EXPECT_FLOAT_EQ(status.voltage_v, 12.6f);
+	EXPECT_NEAR(status.discharged_mah, expected_discharged_mah, 0.01f);
+	EXPECT_NEAR(status.remaining, expected_coulomb_soc, 0.01f);
+	EXPECT_LT(status.remaining, initial_soc);
 }
 
 TEST_F(BatteryStatusTest, ComputeRemainingTimeArmedAndFixedWing)
@@ -311,25 +324,25 @@ TEST_F(BatteryStatusTest, ComputeRemainingTimeArmedAndFixedWing)
 	battery.updateCurrent(10.0f);
 	battery.updateBatteryStatus(now);
 
-	now += 100000;
-	battery.updateDt(now);
+	const hrt_abstime mc_update_time = hrt_absolute_time();
+	battery.updateDt(mc_update_time);
 
 	float remaining_time = battery.computeRemainingTime(10.0f);
 	EXPECT_TRUE(PX4_ISFINITE(remaining_time));
 	EXPECT_GT(remaining_time, 0.0f);
 
 	// Switch to Fixed-Wing level flight
-	now += 100000;
-	vstatus.timestamp = now;
+	const hrt_abstime fw_timestamp = hrt_absolute_time();
+	vstatus.timestamp = fw_timestamp;
 	vstatus.vehicle_type = vehicle_status_s::VEHICLE_TYPE_FIXED_WING;
 	_vehicle_status_pub.publish(vstatus);
 
 	flight_phase_estimation_s fpe{};
-	fpe.timestamp = now;
+	fpe.timestamp = fw_timestamp;
 	fpe.flight_phase = flight_phase_estimation_s::FLIGHT_PHASE_LEVEL;
 	_flight_phase_estimation_pub.publish(fpe);
 
-	battery.updateDt(now + 100000);
+	battery.updateDt(hrt_absolute_time());
 	remaining_time = battery.computeRemainingTime(8.0f);
 	EXPECT_TRUE(PX4_ISFINITE(remaining_time));
 	EXPECT_GT(remaining_time, 0.0f);

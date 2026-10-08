@@ -40,6 +40,7 @@
 #include <gtest/gtest.h>
 #include <array>
 #include <string>
+#include <px4_platform_common/px4_work_queue/WorkQueueManager.hpp>
 #include "MulticopterLandDetector.h"
 
 // This clock substitution is linked only into functional-LandDetector.
@@ -52,7 +53,6 @@ namespace land_detector
 class MulticopterLandDetectorTest : public MulticopterLandDetector
 {
 public:
-	float test_get_minManThrottle() { return _params.minManThrottle; }
 	MulticopterLandDetectorTest() : MulticopterLandDetector() {}
 	~MulticopterLandDetectorTest() override = default;
 
@@ -203,6 +203,15 @@ public:
 class LandDetectorFixture : public ::testing::Test
 {
 protected:
+	static void SetUpTestSuite() {
+		px4::WorkQueueManagerStart();
+		px4::WorkQueueFindOrCreate(px4::wq_configurations::nav_and_controllers);
+	}
+
+	static void TearDownTestSuite() {
+		px4::WorkQueueManagerStop();
+	}
+
 	MulticopterLandDetectorTest detector;
 
 	void SetUp() override
@@ -1129,12 +1138,12 @@ TEST_F(LandDetectorFixture, Boundary_Thrust)
 	detector.set_vehicle_thrust_setpoint_throttle(0.0f);
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
-	// Equal to threshold (0.090f) -> thrust condition met -> maybe_landed = true
-	detector.set_vehicle_thrust_setpoint_throttle(0.090f);
+	// Equal to threshold
+	detector.set_vehicle_thrust_setpoint_throttle(0.08f + 0.01f);
 	EXPECT_TRUE(detector.test_get_maybe_landed_state());
 
-	// Above threshold (0.091f) -> thrust condition not met -> maybe_landed = false
-	detector.set_vehicle_thrust_setpoint_throttle(1.0f);
+	// Above threshold -> thrust condition not met -> maybe_landed = false
+	detector.set_vehicle_thrust_setpoint_throttle(0.08f + 0.011f);
 	EXPECT_FALSE(detector.test_get_maybe_landed_state());
 }
 
